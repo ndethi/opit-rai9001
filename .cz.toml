@@ -1,0 +1,69 @@
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.1.0"
+tag_format = "v$version"
+
+[tool.commitizen.customize]
+message_template = """{{change_type}}{{scope}}: {{subject}}
+
+{{body}}
+
+{% if prompt %}
+Prompt: {{prompt}}
+{% endif %}
+{% if prompt_context %}
+Prompt-context: {{prompt_context}}
+{% endif %}
+{% if ai_assistant %}
+AI-assistant: {{ai_assistant}}
+{% endif %}
+{{footer}}"""
+
+[[tool.commitizen.customize.questions]]
+type = "list"
+name = "change_type"
+choices = [
+    {value = "feat", name = "feat: A new feature"},
+    {value = "fix", name = "fix: A bug fix"},
+    {value = "docs", name = "docs: Documentation changes"},
+    {value = "style", name = "style: Code style changes"},
+    {value = "refactor", name = "refactor: Code refactoring"},
+    {value = "test", name = "test: Adding tests"},
+    {value = "chore", name = "chore: Maintenance tasks"}
+]
+message = "Select the type of change you are committing"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "scope"
+message = "Scope (optional):"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "subject"
+message = "Subject:"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "body"
+message = "Body (optional):"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "prompt"
+message = "Actual prompt used (optional):"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "prompt_context"
+message = "Prompt context (optional):"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "ai_assistant"
+message = "AI Assistant used (optional):"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "footer"
+message = "Footer (optional):"
