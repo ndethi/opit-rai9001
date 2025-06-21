@@ -72,7 +72,8 @@ Traditional machine translation fails catastrophically when dealing with proverb
 
 ```
 ├── docs/
-│   ├── proposal/             # Research proposal and planning documents
+│   ├── dev/                 # Developer documentation and guides
+│   ├── proposal/            # Research proposal and planning documents
 │   └── thesis/              # Thesis documentation and writing
 ├── src/
 │   ├── ontology/            # Ontology development and management
@@ -81,6 +82,17 @@ Traditional machine translation fails catastrophically when dealing with proverb
 │   └── proverbs/           # Kikuyu proverb datasets and annotations
 └── README.md
 ```
+
+## Getting Started
+
+### For Researchers and End Users
+- Review the [research proposal](docs/proposal/) for detailed project background
+- Explore the [Expected Impact](#expected-impact) section for project outcomes
+
+### For Developers and Contributors  
+- See [Developer Documentation](docs/dev/) for technical guides
+- Review [Branching Strategy](docs/dev/BRANCHING_STRATEGY.md) for Git workflow
+- Follow the development setup in [docs/dev/](docs/dev/)
 
 ## Academic Context
 

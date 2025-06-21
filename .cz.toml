@@ -17,6 +17,9 @@ Prompt-context: {{prompt_context}}
 {% if ai_assistant %}
 AI-assistant: {{ai_assistant}}
 {% endif %}
+{% if ai_model %}
+AI-model: {{ai_model}}
+{% endif %}
 {{footer}}"""
 
 [[tool.commitizen.customize.questions]]
@@ -62,6 +65,11 @@ message = "Prompt context (optional):"
 type = "input"
 name = "ai_assistant"
 message = "AI Assistant used (optional):"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "ai_model"
+message = "AI Model used (optional):"
 
 [[tool.commitizen.customize.questions]]
 type = "input"
