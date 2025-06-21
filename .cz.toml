@@ -1,5 +1,5 @@
 [tool.commitizen]
-name = "cz_conventional_commits"
+name = "cz_customize"
 version = "0.1.0"
 tag_format = "v$version"
 
