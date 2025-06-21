@@ -91,3 +91,18 @@ git push origin v0.2.0
 - ✅ **Main branch**: Stable foundation with project setup
 - 🔄 **Dev branch**: Active development branch (current)
 - 📋 **Next**: Feature branches as needed for specific components
+
+## Commitizen Integration
+
+This project uses enhanced commitizen configuration for AI-assisted development tracking:
+
+```bash
+# Use commitizen for all commits
+cz commit
+
+# Includes tracking for:
+# - Actual prompts used
+# - Prompt context
+# - AI assistant (GitHub Copilot)
+# - AI model (Claude Sonnet 4 Preview, GPT-4, etc.)
+```
