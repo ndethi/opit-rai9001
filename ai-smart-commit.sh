@@ -63,25 +63,44 @@ save_to_history() {
 analyze_changes() {
     local changes_summary=""
     local staged_files=$(git diff --cached --name-only)
-    local file_count=$(echo "$staged_files" | grep -c '^' || echo 0)
     
-    # Skip if no files
-    if [ "$file_count" -eq 0 ]; then
+    # Count files properly
+    if [ -z "$staged_files" ]; then
         echo "Analysis: 0 files"
         echo "chore"
         return
     fi
     
-    # Categorize changes
-    local new_files=$(git diff --cached --diff-filter=A --name-only | grep -c '^' || echo 0)
-    local modified_files=$(git diff --cached --diff-filter=M --name-only | grep -c '^' || echo 0)
-    local deleted_files=$(git diff --cached --diff-filter=D --name-only | grep -c '^' || echo 0)
+    local file_count=$(echo "$staged_files" | wc -l | tr -d ' ')
     
-    # Analyze file types
-    local docs_changed=$(echo "$staged_files" | grep -cE "\.(md|txt|rst|tex)$" || echo 0)
-    local code_changed=$(echo "$staged_files" | grep -cE "\.(py|js|ts|java|cpp|c|go|rs|php)$" || echo 0)
-    local config_changed=$(echo "$staged_files" | grep -cE "\.(json|yaml|yml|toml|cfg|ini)$" || echo 0)
-    local test_changed=$(echo "$staged_files" | grep -cE "(test|spec)" || echo 0)
+    # Categorize changes (handle empty results properly)
+    local new_files_list=$(git diff --cached --diff-filter=A --name-only)
+    local modified_files_list=$(git diff --cached --diff-filter=M --name-only)
+    local deleted_files_list=$(git diff --cached --diff-filter=D --name-only)
+    
+    local new_files=0
+    local modified_files=0
+    local deleted_files=0
+    
+    [ -n "$new_files_list" ] && new_files=$(echo "$new_files_list" | wc -l | tr -d ' ')
+    [ -n "$modified_files_list" ] && modified_files=$(echo "$modified_files_list" | wc -l | tr -d ' ')
+    [ -n "$deleted_files_list" ] && deleted_files=$(echo "$deleted_files_list" | wc -l | tr -d ' ')
+    
+    # Analyze file types (handle empty results properly)
+    local docs_changed=0
+    local code_changed=0
+    local config_changed=0
+    local test_changed=0
+    
+    local docs_files=$(echo "$staged_files" | grep -E "\.(md|txt|rst|tex)$" || true)
+    local code_files=$(echo "$staged_files" | grep -E "\.(py|js|ts|java|cpp|c|go|rs|php)$" || true)
+    local config_files=$(echo "$staged_files" | grep -E "\.(json|yaml|yml|toml|cfg|ini)$" || true)
+    local test_files=$(echo "$staged_files" | grep -E "(test|spec)" || true)
+    
+    [ -n "$docs_files" ] && docs_changed=$(echo "$docs_files" | wc -l | tr -d ' ')
+    [ -n "$code_files" ] && code_changed=$(echo "$code_files" | wc -l | tr -d ' ')
+    [ -n "$config_files" ] && config_changed=$(echo "$config_files" | wc -l | tr -d ' ')
+    [ -n "$test_files" ] && test_changed=$(echo "$test_files" | wc -l | tr -d ' ')
     
     # Generate analysis
     changes_summary="Analysis: $file_count files"
