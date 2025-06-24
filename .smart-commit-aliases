@@ -9,9 +9,15 @@ alias aic='./ai-smart-commit.sh'
 alias qc='./ai-smart-commit.sh --quick'
 alias qcp='./ai-smart-commit.sh --quick --push'
 
+# Fast commit aliases (new!)
+alias fc='./ai-smart-commit.sh --fast'
+alias fcp='./ai-smart-commit.sh --fast --push'
+alias facp='./ai-smart-commit.sh --fast --all --push'
+
 # Useful git + smart commit combinations
 alias gsc='git status && ./ai-smart-commit.sh'
 alias gasc='git add . && ./ai-smart-commit.sh'
+alias gfc='git add . && ./ai-smart-commit.sh --fast'
 
 # Show smart commit tools
 alias sc-help='./ai-smart-commit.sh --help'
@@ -29,7 +35,11 @@ install_smart_commit_aliases() {
 # Usage examples:
 # sc         - Run interactive smart commit
 # aic        - Run AI-enhanced smart commit
-# qc         - Quick commit all changes
-# qcp        - Quick commit all changes and push
+# qc         - Quick commit all changes (interactive)
+# qcp        - Quick commit all changes and push (interactive)
+# fc         - Fast automated commit (no prompts)
+# fcp        - Fast commit and push
+# facp       - Fast commit all files and push
 # gsc        - Show status then smart commit
 # gasc       - Stage all then smart commit
+# gfc        - Stage all then fast commit
