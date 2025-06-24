@@ -1,0 +1,33 @@
+name: Weekly Progress Report
+
+on:
+  schedule:
+    # Run every Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  progress-report:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Generate Weekly Progress Report
+      run: |
+        echo "# Weekly Progress Report - $(date +%Y-%m-%d)" > progress.md
+        echo "" >> progress.md
+        echo "## Commits This Week" >> progress.md
+        git log --since="1 week ago" --pretty=format:"- %s" >> progress.md
+        echo "" >> progress.md
+        echo "## Files Changed" >> progress.md
+        git diff --name-only HEAD~7 HEAD >> progress.md
+        
+    - name: Create Issue for Progress Review
+      uses: peter-evans/create-issue-from-file@v5
+      with:
+        title: "Weekly Progress Report - $(date +%Y-%m-%d)"
+        content-filepath: progress.md
+        labels: weekly-report, progress

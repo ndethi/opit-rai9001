@@ -1,0 +1,35 @@
+# thiLLMo Smart Commit Aliases
+# Add these to your ~/.zshrc or ~/.bashrc file
+
+# Basic aliases
+alias sc='./smart-commit.sh'
+alias aic='./ai-smart-commit.sh'
+
+# Quick commit aliases
+alias qc='./ai-smart-commit.sh --quick'
+alias qcp='./ai-smart-commit.sh --quick --push'
+
+# Useful git + smart commit combinations
+alias gsc='git status && ./ai-smart-commit.sh'
+alias gasc='git add . && ./ai-smart-commit.sh'
+
+# Show smart commit tools
+alias sc-help='./ai-smart-commit.sh --help'
+alias sc-config='./ai-smart-commit.sh --config'
+alias sc-history='./ai-smart-commit.sh --history'
+
+# Installation function
+install_smart_commit_aliases() {
+    echo "# thiLLMo Smart Commit Aliases" >> ~/.zshrc
+    cat .smart-commit-aliases >> ~/.zshrc
+    echo "Smart commit aliases added to ~/.zshrc"
+    echo "Run 'source ~/.zshrc' to activate"
+}
+
+# Usage examples:
+# sc         - Run interactive smart commit
+# aic        - Run AI-enhanced smart commit
+# qc         - Quick commit all changes
+# qcp        - Quick commit all changes and push
+# gsc        - Show status then smart commit
+# gasc       - Stage all then smart commit

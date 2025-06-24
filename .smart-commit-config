@@ -1,0 +1,7 @@
+# thiLLMo Smart Commit Configuration
+DEFAULT_ASSISTANT="GitHub Copilot"
+DEFAULT_MODEL="GPT-4"
+AUTO_PUSH=false
+QUICK_MODE=false
+VERBOSE=true
+SAVE_HISTORY=true
