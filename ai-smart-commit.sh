@@ -213,7 +213,42 @@ detect_ai_context() {
     echo "$context|$assistant|$model"
 }
 
-# Generate smart commit message
+# Analyze specific changes in detail
+analyze_file_changes() {
+    local staged_files=$(git diff --cached --name-only)
+    local changes_details=""
+    
+    # Analyze specific file changes for better commit messages
+    local has_new_functions=false
+    local has_bug_fixes=false
+    local has_refactoring=false
+    local has_config_changes=false
+    local has_docs_updates=false
+    local has_new_features=false
+    
+    # Check for specific patterns in diff
+    local diff_content=$(git diff --cached)
+    
+    # Detect new function/method additions
+    if echo "$diff_content" | grep -q "^+.*function\|^+.*def \|^+.*const \|^+.*let \|^+.*var \|^+.*class "; then
+        has_new_functions=true
+    fi
+    
+    # Detect bug fix patterns
+    if echo "$diff_content" | grep -qE "^+.*fix|^+.*bug|^+.*error|^+.*issue|^-.*bug|^-.*error"; then
+        has_bug_fixes=true
+    fi
+    
+    # Detect new features/options
+    if echo "$diff_content" | grep -qE "^+.*--[a-z-]+|^+.*-[a-z]|^+.*new.*mode|^+.*add.*option"; then
+        has_new_features=true
+    fi
+    
+    # Return analysis flags
+    echo "$has_new_functions|$has_bug_fixes|$has_refactoring|$has_config_changes|$has_docs_updates|$has_new_features"
+}
+
+# Generate smart commit message with detailed analysis
 generate_smart_commit_message() {
     local commit_type="$1"
     local staged_files=$(git diff --cached --name-only)
@@ -221,15 +256,27 @@ generate_smart_commit_message() {
     local subject=""
     local body=""
     
-    # Determine scope based on file patterns
-    if echo "$staged_files" | grep -q "src/ontology/"; then
+    # Get detailed change analysis
+    local change_analysis=$(analyze_file_changes)
+    IFS='|' read -r has_new_functions has_bug_fixes has_refactoring has_config_changes has_docs_updates has_new_features <<< "$change_analysis"
+    
+    # Determine scope based on file patterns (more specific)
+    if echo "$staged_files" | grep -q "ai-smart-commit\.sh"; then
+        scope="smart-commit"
+    elif echo "$staged_files" | grep -q "smart-commit\.sh"; then
+        scope="commit-tools"
+    elif echo "$staged_files" | grep -q "setup-.*\.sh"; then
+        scope="setup"
+    elif echo "$staged_files" | grep -q "src/ontology/"; then
         scope="ontology"
     elif echo "$staged_files" | grep -q "src/og-rag/"; then
         scope="og-rag"
     elif echo "$staged_files" | grep -q "docs/thesis/"; then
         scope="thesis"
-    elif echo "$staged_files" | grep -q "\.github/"; then
+    elif echo "$staged_files" | grep -q "\.github/workflows/"; then
         scope="ci"
+    elif echo "$staged_files" | grep -q "\.github/"; then
+        scope="github"
     elif echo "$staged_files" | grep -q "admin/"; then
         scope="admin"
     elif echo "$staged_files" | grep -q "data/"; then
@@ -238,63 +285,156 @@ generate_smart_commit_message() {
         scope="core"
     fi
     
-    # Generate subject based on commit type and files
+    # Generate detailed subject based on actual changes
     case "$commit_type" in
         "feat")
-            if echo "$staged_files" | grep -q "ontology"; then
-                subject="enhance cultural ontology structure"
+            if echo "$staged_files" | grep -q "ai-smart-commit\.sh" && [ "$has_new_features" = true ]; then
+                # Analyze what new features were added
+                local diff_content=$(git diff --cached)
+                if echo "$diff_content" | grep -q "\--fast"; then
+                    subject="add fast mode for automated commits without interactive prompts"
+                elif echo "$diff_content" | grep -q "\--quick"; then
+                    subject="add quick mode for streamlined commit workflow"
+                elif echo "$diff_content" | grep -q "generate_smart_commit_message"; then
+                    subject="add intelligent commit message generation"
+                else
+                    subject="add new command-line options and functionality"
+                fi
+            elif echo "$staged_files" | grep -q "\.github/workflows/"; then
+                local workflow_files=$(echo "$staged_files" | grep "\.github/workflows/" | head -3)
+                if echo "$workflow_files" | grep -q "latex"; then
+                    subject="add LaTeX document build automation"
+                elif echo "$workflow_files" | grep -q "progress"; then
+                    subject="add weekly progress reporting workflow"
+                else
+                    subject="add GitHub automation workflows"
+                fi
+            elif echo "$staged_files" | grep -q "ontology"; then
+                subject="enhance cultural ontology structure and processing"
             elif echo "$staged_files" | grep -q "og-rag"; then
                 subject="improve OG-RAG system implementation"
-            elif echo "$staged_files" | grep -q "\.github/"; then
-                subject="add GitHub automation workflows"
+            elif [ "$has_new_functions" = true ]; then
+                subject="add new functions and core functionality"
             else
-                subject="implement new functionality"
+                # Fallback: try to infer from file names and content
+                local primary_file=$(echo "$staged_files" | head -1)
+                if echo "$primary_file" | grep -q "README"; then
+                    subject="add comprehensive project documentation"
+                elif echo "$primary_file" | grep -q "setup"; then
+                    subject="add project setup and configuration tools"
+                else
+                    subject="implement new features and functionality"
+                fi
             fi
             ;;
         "fix")
-            if echo "$staged_files" | grep -q "ontology"; then
-                subject="resolve ontology processing issues"
+            if echo "$staged_files" | grep -q "ai-smart-commit\.sh" && [ "$has_bug_fixes" = true ]; then
+                local diff_content=$(git diff --cached)
+                if echo "$diff_content" | grep -q "integer.*expected"; then
+                    subject="resolve bash integer comparison warnings in file analysis"
+                elif echo "$diff_content" | grep -q "wc -l"; then
+                    subject="fix file counting logic and error handling"
+                else
+                    subject="resolve script execution issues and improve error handling"
+                fi
+            elif echo "$staged_files" | grep -q "ontology"; then
+                subject="resolve ontology processing and validation issues"
             elif echo "$staged_files" | grep -q "og-rag"; then
-                subject="fix OG-RAG pipeline bugs"
+                subject="fix OG-RAG pipeline bugs and data processing"
             else
-                subject="resolve system issues"
+                # Try to infer from diff content
+                local diff_content=$(git diff --cached)
+                if echo "$diff_content" | grep -qE "^-.*error|^-.*bug"; then
+                    subject="resolve identified bugs and error conditions"
+                else
+                    subject="fix system issues and improve reliability"
+                fi
             fi
             ;;
         "docs")
-            if echo "$staged_files" | grep -q "README"; then
-                subject="update project documentation"
-            elif echo "$staged_files" | grep -q "thesis"; then
-                subject="enhance thesis documentation"
+            if echo "$staged_files" | grep -q "README.*\.md"; then
+                if echo "$staged_files" | grep -q "SMART-COMMIT"; then
+                    subject="add comprehensive smart commit system documentation"
+                else
+                    subject="update main project documentation and usage guides"
+                fi
+            elif echo "$staged_files" | grep -q "docs/thesis/"; then
+                subject="enhance thesis documentation and LaTeX structure"
+            elif echo "$staged_files" | grep -q "\.md$"; then
+                local doc_count=$(echo "$staged_files" | grep -c "\.md$")
+                if [ "$doc_count" -gt 3 ]; then
+                    subject="add comprehensive project documentation structure"
+                else
+                    subject="update documentation and user guides"
+                fi
             else
-                subject="improve documentation"
+                subject="improve project documentation and comments"
             fi
             ;;
         "chore")
             if echo "$staged_files" | grep -q "\.github/"; then
-                subject="update GitHub configuration"
+                if echo "$staged_files" | grep -q "ISSUE_TEMPLATE"; then
+                    subject="add GitHub issue templates for project management"
+                else
+                    subject="update GitHub configuration and automation"
+                fi
             elif echo "$staged_files" | grep -qE "(package\.json|requirements|Pipfile)"; then
-                subject="update dependencies"
+                subject="update project dependencies and package configuration"
+            elif echo "$staged_files" | grep -q "alias"; then
+                subject="add shell aliases for improved development workflow"
+            elif echo "$staged_files" | grep -q "config"; then
+                subject="update configuration files and project settings"
             else
-                subject="maintain project structure"
+                local file_count=$(echo "$staged_files" | wc -l | tr -d ' ')
+                if [ "$file_count" -gt 10 ]; then
+                    subject="restructure project organization and maintenance files"
+                else
+                    subject="update project configuration and maintenance files"
+                fi
             fi
             ;;
         "test")
-            subject="add/update test coverage"
+            subject="add/update test coverage and validation"
             ;;
         *)
-            subject="update project files"
+            # Analyze the most changed file for hints
+            local primary_file=$(echo "$staged_files" | head -1)
+            subject="update $(basename "$primary_file") and related components"
             ;;
     esac
     
-    # Generate body with file summary
+    # Generate detailed body with specific changes
     local file_count=$(echo "$staged_files" | wc -l | tr -d ' ')
     local new_files=$(git diff --cached --diff-filter=A --name-only | wc -l | tr -d ' ')
     local modified_files=$(git diff --cached --diff-filter=M --name-only | wc -l | tr -d ' ')
+    local deleted_files=$(git diff --cached --diff-filter=D --name-only | wc -l | tr -d ' ')
     
-    body="Automated commit with $file_count files affected"
-    [ "$new_files" -gt 0 ] && body+=", $new_files new"
-    [ "$modified_files" -gt 0 ] && body+=", $modified_files modified"
-    body+=". Generated by thiLLMo smart commit system."
+    # Create detailed body
+    body="Changes include"
+    if [ "$new_files" -gt 0 ] && [ "$modified_files" -gt 0 ]; then
+        body+=": $new_files new files and $modified_files modifications"
+    elif [ "$new_files" -gt 0 ]; then
+        body+=": $new_files new files"
+    elif [ "$modified_files" -gt 0 ]; then
+        body+=": $modified_files file modifications"
+    else
+        body+=": $file_count file updates"
+    fi
+    
+    [ "$deleted_files" -gt 0 ] && body+=", $deleted_files deletions"
+    
+    # Add specific change details
+    if [ "$has_new_functions" = true ]; then
+        body+=". Adds new functions and methods"
+    fi
+    if [ "$has_new_features" = true ]; then
+        body+=". Introduces new features and command-line options"
+    fi
+    if [ "$has_bug_fixes" = true ]; then
+        body+=". Resolves bugs and error conditions"
+    fi
+    
+    body+=". Auto-generated by thiLLMo smart commit system."
     
     # Format final commit message
     local commit_msg="$commit_type"
