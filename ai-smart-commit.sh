@@ -830,6 +830,11 @@ main() {
                 verbose=true
                 shift
                 ;;
+            --extra-verbose)
+                verbose=true
+                export VERBOSE_EXTRA=true
+                shift
+                ;;
             -s|--silent)
                 verbose=false
                 shift
