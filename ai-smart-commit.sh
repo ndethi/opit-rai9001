@@ -453,8 +453,8 @@ generate_smart_commit_message() {
     # Extract new command-line options
     local new_options=$(echo "$diff_content" | grep "^+.*--[a-z-]" | sed -E 's/.*(-[-a-z]+).*/\1/' | head -3 | tr '\n' ', ' | sed 's/, $//')
     
-    # Extract error/bug fix contexts
-    local fix_contexts=$(echo "$diff_content" | grep -E "^[-+].*error|^[-+].*bug|^[-+].*fix" | head -2 | sed 's/^[+-]//' | tr '\n' '; ' | sed 's/; $//')
+    # Extract error/bug fix contexts (clean and filter meaningful content)
+    local fix_contexts=$(echo "$diff_content" | grep -E "^[-+].*error|^[-+].*bug|^[-+].*fix" | head -2 | sed 's/^[+-][[:space:]]*//' | grep -v "^[[:space:]]*$" | tr '\n' '; ' | sed 's/; $//')
     
     # Generate highly specific subject lines based on actual changes
     case "$commit_type" in
@@ -503,16 +503,20 @@ generate_smart_commit_message() {
             ;;
         "fix")
             if [ -n "$fix_contexts" ] && [ "$fixed_errors" -gt 0 ]; then
-                if echo "$fix_contexts" | grep -q "bash.*syntax\|integer.*comparison"; then
-                    subject="resolve bash integer comparison and syntax warnings"
-                elif echo "$fix_contexts" | grep -q "error.*handling\|exception"; then
+                # Clean and filter fix contexts to avoid code fragments
+                local clean_contexts=$(echo "$fix_contexts" | sed 's/[{}();|]//g' | sed 's/IFS=.*//g' | sed 's/read -r.*//g')
+                if echo "$clean_contexts" | grep -q "bash.*syntax\|integer.*comparison\|syntax.*error"; then
+                    subject="resolve bash syntax and scripting issues"
+                elif echo "$clean_contexts" | grep -q "error.*handling\|exception\|validation"; then
                     subject="improve error handling and exception management"
-                elif echo "$fix_contexts" | grep -q "prompt.*handling\|interactive"; then
+                elif echo "$clean_contexts" | grep -q "prompt.*handling\|interactive\|input"; then
                     subject="fix interactive prompt handling and user input validation"
-                elif echo "$fix_contexts" | grep -q "git.*operation\|repository"; then
+                elif echo "$clean_contexts" | grep -q "git.*operation\|repository\|commit"; then
                     subject="resolve git repository operation failures"
+                elif echo "$diff_content" | grep -q "^+.*generate.*smart.*commit\|^+.*diff.*analysis"; then
+                    subject="enhance commit message generation logic and diff analysis"
                 else
-                    subject="fix critical issues in $(echo "$fix_contexts" | cut -d';' -f1)"
+                    subject="resolve critical functionality issues"
                 fi
             elif echo "$diff_content" | grep -q "^-.*manual\|^+.*automatic"; then
                 subject="replace manual processes with automated alternatives"
