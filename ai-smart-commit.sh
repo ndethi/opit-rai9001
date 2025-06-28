@@ -724,14 +724,18 @@ ${CYAN}Usage:${NC} $0 [options] [message]
 
 ${CYAN}Options:${NC}
   -h, --help       Show this help message
-  -q, --quick      Quick mode (auto-stage all, skip prompts)
+  -q, --quick      Quick mode (skip prompts, auto-stage is default)
   -f, --fast       Fast mode (auto-generate commit, no interaction)
-  -a, --all        Stage all changes automatically
   -p, --push       Auto-push after successful commit
   -v, --verbose    Verbose output (default)
   -s, --silent     Minimal output
   -c, --config     Show current configuration
   --history        Show recent commit history
+
+${CYAN}Core Philosophy:${NC}
+  🔄 Automatically stages all changes (git add .)
+  🤖 AI-powered commit message generation
+  ✅ Only prompts for push confirmation (unless -p used)
 
 ${CYAN}Features:${NC}
   🤖 AI-powered commit message suggestions
@@ -744,16 +748,16 @@ ${CYAN}Features:${NC}
 
 ${CYAN}Examples:${NC}
   $0                    # Interactive mode with full analysis
-  $0 -qa               # Quick commit all changes
-  $0 -qap              # Quick commit all changes and push
+  $0 -q                # Quick commit (skip prompts)
+  $0 -qp               # Quick commit and auto-push
   $0 -f                # Fast auto-generated commit
-  $0 -fap              # Fast commit, stage all, and push
+  $0 -fp               # Fast commit and auto-push
   $0 --config          # Show current configuration
 
 ${CYAN}Mode Comparison:${NC}
-  ${GREEN}Interactive${NC}  - Full commitizen prompt with suggestions
-  ${YELLOW}Quick${NC}        - Auto-stage files, but still interactive commit
-  ${PURPLE}Fast${NC}         - Fully automated commit with smart defaults
+  ${GREEN}Interactive${NC}  - Full commitizen prompt with AI suggestions (auto-stages)
+  ${YELLOW}Quick${NC}        - Skip prompts, interactive commit only (auto-stages)
+  ${PURPLE}Fast${NC}         - Fully automated commit with smart defaults (auto-stages)
 
 ${CYAN}AI Context Logging:${NC}
 This script integrates with your existing commitizen configuration
@@ -793,7 +797,6 @@ show_history() {
 main() {
     local quick_mode=false
     local fast_mode=false
-    local auto_stage_all=false
     local auto_push=false
     local verbose=true
     local commit_message=""
@@ -810,16 +813,10 @@ main() {
                 ;;
             -q|--quick)
                 quick_mode=true
-                auto_stage_all=true
                 shift
                 ;;
             -f|--fast)
                 fast_mode=true
-                auto_stage_all=true
-                shift
-                ;;
-            -a|--all)
-                auto_stage_all=true
                 shift
                 ;;
             -p|--push)
@@ -889,29 +886,18 @@ main() {
     fi
     echo
     
-    # Auto-stage if requested
-    if [ "$auto_stage_all" = true ]; then
-        git add .
-        if [ "$fast_mode" = true ]; then
-            echo -e "${GREEN}📁 All changes staged for fast commit${NC}"
-        else
-            echo -e "${GREEN}📁 All changes staged automatically${NC}"
-        fi
+    # Auto-stage all changes (core philosophy: automate add, commit, push cycle)
+    git add .
+    if [ "$fast_mode" = true ]; then
+        echo -e "${GREEN}📁 All changes staged for fast commit${NC}"
     else
-        # Show current status and ask about staging
-        echo -e "${BLUE}📋 Current repository status:${NC}"
-        git status --short
-        echo
-        
-        if [ "$(git diff --cached --name-only | wc -l)" -eq 0 ]; then
-            read -p "Stage all changes? (Y/n): " -n 1 -r
-            echo
-            if [[ ! $REPLY =~ ^[Nn]$ ]]; then
-                git add .
-                echo -e "${GREEN}📁 All changes staged${NC}"
-            fi
-        fi
+        echo -e "${GREEN}📁 All changes staged automatically${NC}"
     fi
+    
+    # Show current status for transparency
+    echo -e "${BLUE}📋 Repository status after staging:${NC}"
+    git status --short
+    echo
     
     # Analyze changes
     if [ "$fast_mode" = true ]; then
