@@ -110,9 +110,89 @@ Following the CRISP-DM framework:
 - **System Development**: OG-RAG implementation
 - **Evaluation**: Cultural fidelity assessment
 
+## 🚀 GitHub Issue Automation System
+
+### Quick Start
+
+```bash
+# 1. Install and setup (one-time)
+./install-and-setup.sh
+
+# 2. Create all issues from markdown
+./create-issues.sh --input .github/issues/consolidated-issues.md
+
+# 3. Generate project reports
+./generate-report.sh --type summary
+```
+
+### Complete Workflow
+
+1. **Setup & Installation**
+   ```bash
+   ./install-and-setup.sh  # Installs GitHub CLI, authenticates, checks dependencies
+   ```
+
+2. **Issue Creation from Markdown**
+   ```bash
+   # Preview issues before creation
+   ./create-issues.sh --dry-run --input .github/issues/consolidated-issues.md
+   
+   # Create all issues
+   ./create-issues.sh --input .github/issues/consolidated-issues.md
+   
+   # Create specific week only
+   ./create-issues.sh --week 1 --input .github/issues/consolidated-issues.md
+   ```
+
+3. **Progress Management**
+   ```bash
+   # Sync local markdown with GitHub issues
+   ./sync-progress.sh
+   
+   # Update time estimates
+   ./update-estimates.sh batch
+   
+   # Check deadlines
+   ./check-deadlines.sh --alert-days 7
+   ```
+
+4. **Reporting & Analytics**
+   ```bash
+   # Generate comprehensive reports
+   ./generate-report.sh --type summary --format html
+   ./generate-report.sh --type weekly --format markdown
+   ./generate-report.sh --type deadlines --format json
+   
+   # Estimation accuracy analysis
+   ./update-estimates.sh report
+   ```
+
+5. **Testing & Validation**
+   ```bash
+   # Run full test suite
+   ./test-script.sh all
+   
+   # Test specific components
+   ./test-script.sh parsing
+   ./test-script.sh --integration all
+   ```
+
+### Advanced Features
+
+- **Automated Project Field Integration**: Sets custom GitHub Project fields via GraphQL
+- **Progress Synchronization**: Bidirectional sync between local markdown and GitHub
+- **Deadline Monitoring**: Automated alerts for overdue and upcoming deadlines  
+- **Time Tracking**: Estimation accuracy and velocity reporting
+- **Batch Operations**: Handle 50+ issues with rate limiting and error recovery
+- **Cross-platform Support**: macOS, Linux, Windows compatibility
+
+### Documentation
+
+- [📖 Complete Usage Guide](.github/issues/README.md)
+- [🔧 Troubleshooting Guide](./troubleshooting-guide.md)
+- [🛠 Integration Guide](.github/INTEGRATION_GUIDE.md)
+- [📋 Example Run Log](./example-run.log)
+
 ---
 
 *"Proverbs transcend simple linguistic expressions; they are profound repositories of a community's worldview, values, and historical experiences."*
-# Test comment for fast mode
-# Another test comment
-# Testing enhanced commit message generation
