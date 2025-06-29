@@ -14,3 +14,4 @@
 2025-06-28 21:56:41|fix(smart-commit): resolve git repository operation failures
 2025-06-28 22:09:51|fix(smart-commit): fix variable expansion by adding proper shell quoting
 2025-06-28 22:10:43|fix(smart-commit): resolve git repository operation failures
+2025-06-29 16:02:47|feat(github): add command-line argument parsing with proper parameter shifting

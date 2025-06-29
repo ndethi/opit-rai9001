@@ -1,0 +1,26 @@
+# GitHub Issue Automation Configuration
+# Generated on Sun Jun 29 16:26:11 EAT 2025
+
+# Repository settings
+GITHUB_REPO="ndethi/opit-rai9001"
+GITHUB_USER="ndethi"
+
+# File paths
+CONSOLIDATED_ISSUES_FILE="/Users/ndethi/dev/opit/opit-rai9001/.github/issues/consolidated-issues.md"
+ISSUE_PARSER_SCRIPT="/Users/ndethi/dev/opit/opit-rai9001/parse-issues.py"
+ISSUE_CREATOR_SCRIPT="/Users/ndethi/dev/opit/opit-rai9001/create-issues.sh"
+
+# Default settings
+DEFAULT_ASSIGNEE="@me"
+RATE_LIMIT_DELAY=1
+MAX_RETRIES=3
+BATCH_SIZE=10
+
+# Logging
+LOG_LEVEL="INFO"
+LOG_FILE="/Users/ndethi/dev/opit/opit-rai9001/issue-automation.log"
+
+# Advanced features
+ENABLE_PROJECT_FIELDS=true
+ENABLE_DEPENDENCY_TRACKING=true
+DRY_RUN_MODE=false

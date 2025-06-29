@@ -1,0 +1,363 @@
+{
+  "metadata": {
+    "source_file": ".github/issues/consolidated-issues.md",
+    "parsed_at": "2025-06-29T17:18:12.731505",
+    "total_issues": 20
+  },
+  "issues": [
+    {
+      "id": "WEEK_1_SPRINT",
+      "title": "[SPRINT W1] Week 1 Planning - Foundation Sprint",
+      "labels": [
+        "planning",
+        "sprint",
+        "week-1",
+        "critical"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-06-26",
+      "body": "```",
+      "project_fields": {},
+      "raw_section": "## WEEK_1_SPRINT\n**TITLE:** [SPRINT W1] Week 1 Planning - Foundation Sprint\n**LABELS:** planning,sprint,week-1,critical\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-06-26\n**BODY:**\n```"
+    },
+    {
+      "id": "WEEK_1_TASK_1",
+      "title": "[BLOCKER] Verify Partnership Agreement Status - URGENT",
+      "labels": [
+        "blocker",
+        "urgent",
+        "admin",
+        "week-1"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-06-20",
+      "body": "```\n## 🛑 URGENT BLOCKER\n\n### Immediate Impact\n- **Deadline at Risk:** All project timelines\n- **Work Stopped Since:** N/A (project start)\n- **Estimated Resolution Time:** 1 hour\n\n### Problem Description\nPartnership agreement was due June 1 but current status unclear. Need immediate verification to ensure project can proceed without administrative blocks.\n\n### What I've Tried\n- Initial check of project requirements\n- Review of OPIT documentation\n\n### Help Needed\n- [ ] Program coordinator clarification\n- [ ] Supervisor input on alternatives if agreement missing\n- [ ] Access to OPIT forms portal\n\n### Temporary Workaround\nProceed with independent research setup while verification in progress\n\n### Escalation Trigger\nEscalate to supervisor if not resolved by: June 20, 2025 EOD",
+      "project_fields": {
+        "Sprint_Week": "Week 1 (Jun 20-26)",
+        "Criticality": "🛑 BLOCKER",
+        "OPIT_Deadline": "Not Applicable",
+        "Thesis_Section": "Admin/Forms",
+        "Effort_Hours": "1"
+      },
+      "raw_section": "## WEEK_1_TASK_1\n**TITLE:** [BLOCKER] Verify Partnership Agreement Status - URGENT\n**LABELS:** blocker,urgent,admin,week-1\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-06-20\n**BODY:**\n```\n## 🛑 URGENT BLOCKER\n\n### Immediate Impact\n- **Deadline at Risk:** All project timelines\n- **Work Stopped Since:** N/A (project start)\n- **Estimated Resolution Time:** 1 hour\n\n### Problem Description\nPartnership agreement was due June 1 but current status unclear. Need immediate verification to ensure project can proceed without administrative blocks.\n\n### What I've Tried\n- Initial check of project requirements\n- Review of OPIT documentation\n\n### Help Needed\n- [ ] Program coordinator clarification\n- [ ] Supervisor input on alternatives if agreement missing\n- [ ] Access to OPIT forms portal\n\n### Temporary Workaround\nProceed with independent research setup while verification in progress\n\n### Escalation Trigger\nEscalate to supervisor if not resolved by: June 20, 2025 EOD\n\n**PROJECT_FIELDS:**\n- Sprint_Week: Week 1 (Jun 20-26)\n- Criticality: 🛑 BLOCKER\n- OPIT_Deadline: Not Applicable\n- Thesis_Section: Admin/Forms\n- Effort_Hours: 1\n```\n\n---\n"
+    },
+    {
+      "id": "WEEK_1_TASK_2",
+      "title": "[CRITICAL] Add OG-RAG Architecture Diagrams to Research Proposal",
+      "labels": [
+        "critical",
+        "proposal",
+        "diagrams",
+        "week-1"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-06-22",
+      "body": "```\n## 🚨 CRITICAL TASK\n\n### Impact on Deadlines\n- [ ] Examining Committee Selection (Jul 13)\n- [x] Supervisor satisfaction with proposal quality\n\n### Task Description\nEnhance research proposal with visual diagrams showing OG-RAG architecture per supervisor feedback: \"If you add some Visual Diagrams on the OG-RAG architecture would break up the text and help readers intuitively grasp your system.\"\n\n### Success Criteria\n- [ ] Conceptual OG-RAG system architecture diagram\n- [ ] Ontology construction workflow diagram\n- [ ] RAG retrieval mechanism flowchart\n- [ ] Cultural knowledge integration visualization\n- [ ] All diagrams properly integrated into proposal LaTeX\n\n### Blockers & Dependencies\n- Understanding of hypergraph representation details\n- Access to diagram creation tools (Draw.io, Lucidchart, TikZ)\n\n### Escalation Plan\nContact supervisor if architectural concepts unclear after initial research\n\n### Due Date: June 22, 2025\n### Estimated Effort: 8 hours\n### Review Required: Yes - Supervisor approval needed",
+      "project_fields": {
+        "Sprint_Week": "Week 1 (Jun 20-26)",
+        "Criticality": "🚨 CRITICAL",
+        "OPIT_Deadline": "Examining Committee (Jul 13)",
+        "Thesis_Section": "Introduction",
+        "Review_Status": "Not Started",
+        "Effort_Hours": "8"
+      },
+      "raw_section": "## WEEK_1_TASK_2\n**TITLE:** [CRITICAL] Add OG-RAG Architecture Diagrams to Research Proposal\n**LABELS:** critical,proposal,diagrams,week-1\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-06-22\n**BODY:**\n```\n## 🚨 CRITICAL TASK\n\n### Impact on Deadlines\n- [ ] Examining Committee Selection (Jul 13)\n- [x] Supervisor satisfaction with proposal quality\n\n### Task Description\nEnhance research proposal with visual diagrams showing OG-RAG architecture per supervisor feedback: \"If you add some Visual Diagrams on the OG-RAG architecture would break up the text and help readers intuitively grasp your system.\"\n\n### Success Criteria\n- [ ] Conceptual OG-RAG system architecture diagram\n- [ ] Ontology construction workflow diagram  \n- [ ] RAG retrieval mechanism flowchart\n- [ ] Cultural knowledge integration visualization\n- [ ] All diagrams properly integrated into proposal LaTeX\n\n### Blockers & Dependencies\n- Understanding of hypergraph representation details\n- Access to diagram creation tools (Draw.io, Lucidchart, TikZ)\n\n### Escalation Plan\nContact supervisor if architectural concepts unclear after initial research\n\n### Due Date: June 22, 2025\n### Estimated Effort: 8 hours\n### Review Required: Yes - Supervisor approval needed\n\n**PROJECT_FIELDS:**\n- Sprint_Week: Week 1 (Jun 20-26)\n- Criticality: 🚨 CRITICAL\n- OPIT_Deadline: Examining Committee (Jul 13)\n- Thesis_Section: Introduction\n- Review_Status: Not Started\n- Effort_Hours: 8\n```\n\n---\n"
+    },
+    {
+      "id": "WEEK_1_TASK_3",
+      "title": "[CRITICAL] Complete GitHub Project and LaTeX Infrastructure Setup",
+      "labels": [
+        "critical",
+        "infrastructure",
+        "setup",
+        "week-1"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-06-21",
+      "body": "```\n## 🚨 CRITICAL TASK\n\n### Task Description\nEstablish complete project management and documentation infrastructure including GitHub Projects, issue templates, LaTeX structure, and Overleaf integration.\n\n### Success Criteria\n- [ ] GitHub repository with complete directory structure\n- [ ] Project board with custom fields and views configured\n- [ ] All issue templates functional\n- [ ] LaTeX thesis template initialized\n- [ ] Overleaf integration working\n- [ ] Automated workflows active\n\n### Components Checklist\n- [ ] Repository structure creation\n- [ ] Issue templates installation\n- [ ] Project board configuration\n- [ ] Custom fields setup\n- [ ] Multiple view creation (Dashboard, Sprint, Thesis Progress, Supervisor)\n- [ ] LaTeX main.tex and chapter structure\n- [ ] Bibliography setup with Zotero integration\n\n### Due Date: June 21, 2025\n### Estimated Effort: 4 hours\n### Review Required: No - Self-verification sufficient",
+      "project_fields": {
+        "Sprint_Week": "Week 1 (Jun 20-26)",
+        "Criticality": "🚨 CRITICAL",
+        "Thesis_Section": "Technical Setup",
+        "Effort_Hours": "4"
+      },
+      "raw_section": "## WEEK_1_TASK_3\n**TITLE:** [CRITICAL] Complete GitHub Project and LaTeX Infrastructure Setup\n**LABELS:** critical,infrastructure,setup,week-1\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-06-21\n**BODY:**\n```\n## 🚨 CRITICAL TASK\n\n### Task Description\nEstablish complete project management and documentation infrastructure including GitHub Projects, issue templates, LaTeX structure, and Overleaf integration.\n\n### Success Criteria\n- [ ] GitHub repository with complete directory structure\n- [ ] Project board with custom fields and views configured\n- [ ] All issue templates functional\n- [ ] LaTeX thesis template initialized\n- [ ] Overleaf integration working\n- [ ] Automated workflows active\n\n### Components Checklist\n- [ ] Repository structure creation\n- [ ] Issue templates installation  \n- [ ] Project board configuration\n- [ ] Custom fields setup\n- [ ] Multiple view creation (Dashboard, Sprint, Thesis Progress, Supervisor)\n- [ ] LaTeX main.tex and chapter structure\n- [ ] Bibliography setup with Zotero integration\n\n### Due Date: June 21, 2025\n### Estimated Effort: 4 hours\n### Review Required: No - Self-verification sufficient\n\n**PROJECT_FIELDS:**\n- Sprint_Week: Week 1 (Jun 20-26)\n- Criticality: 🚨 CRITICAL\n- Thesis_Section: Technical Setup\n- Effort_Hours: 4\n```\n\n---\n"
+    },
+    {
+      "id": "WEEK_1_MEETING",
+      "title": "[MEETING] Supervisor Meeting #1 - Project Kickoff & Enhanced Proposal",
+      "labels": [
+        "meeting",
+        "supervisor",
+        "week-1"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-06-24",
+      "body": "```",
+      "project_fields": {},
+      "raw_section": "## WEEK_1_MEETING\n**TITLE:** [MEETING] Supervisor Meeting #1 - Project Kickoff & Enhanced Proposal\n**LABELS:** meeting,supervisor,week-1\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-06-24\n**BODY:**\n```"
+    },
+    {
+      "id": "WEEK_2_SPRINT",
+      "title": "[SPRINT W2] Week 2 Planning - Data Understanding Deep Dive",
+      "labels": [
+        "planning",
+        "sprint",
+        "week-2",
+        "critical"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-07-03",
+      "body": "```",
+      "project_fields": {},
+      "raw_section": "## WEEK_2_SPRINT\n**TITLE:** [SPRINT W2] Week 2 Planning - Data Understanding Deep Dive\n**LABELS:** planning,sprint,week-2,critical\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-07-03\n**BODY:**\n```"
+    },
+    {
+      "id": "WEEK_2_TASK_1",
+      "title": "[CRITICAL] Source and Catalog 300+ Kikuyu Proverbs with Cultural Analysis",
+      "labels": [
+        "critical",
+        "data-collection",
+        "methodology",
+        "week-2"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-07-01",
+      "body": "```\n## 🚨 CRITICAL TASK\n\n### Task Description\nSystematically collect Kikuyu proverbs from multiple sources and create structured catalog with cultural context annotations.\n\n### Success Criteria\n- [ ] 300+ unique Kikuyu proverbs sourced\n- [ ] Initial English translations documented\n- [ ] Cultural themes identified and categorized\n- [ ] Usage contexts documented where available\n- [ ] Source attribution for each proverb\n- [ ] Data stored in structured format (CSV/Excel + database ready)\n\n### Data Sources Strategy\n- \"1000 Kikuyu Proverbs\" by Gikandi\n- Academic papers and theses\n- Cultural organization websites\n- Community elder interviews (post-ethics approval)\n- Existing digital collections\n\n### Quality Assurance\n- Cross-reference proverbs across sources\n- Note variations in wording or translation\n- Document source reliability and date\n\n### Due Date: July 1, 2025\n### Estimated Effort: 16 hours",
+      "project_fields": {
+        "Sprint_Week": "Week 2 (Jun 27-Jul 3)",
+        "Criticality": "🚨 CRITICAL",
+        "Thesis_Section": "Methodology",
+        "Effort_Hours": "16"
+      },
+      "raw_section": "## WEEK_2_TASK_1\n**TITLE:** [CRITICAL] Source and Catalog 300+ Kikuyu Proverbs with Cultural Analysis\n**LABELS:** critical,data-collection,methodology,week-2\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-07-01\n**BODY:**\n```\n## 🚨 CRITICAL TASK\n\n### Task Description\nSystematically collect Kikuyu proverbs from multiple sources and create structured catalog with cultural context annotations.\n\n### Success Criteria\n- [ ] 300+ unique Kikuyu proverbs sourced\n- [ ] Initial English translations documented\n- [ ] Cultural themes identified and categorized\n- [ ] Usage contexts documented where available\n- [ ] Source attribution for each proverb\n- [ ] Data stored in structured format (CSV/Excel + database ready)\n\n### Data Sources Strategy\n- \"1000 Kikuyu Proverbs\" by Gikandi\n- Academic papers and theses\n- Cultural organization websites\n- Community elder interviews (post-ethics approval)\n- Existing digital collections\n\n### Quality Assurance\n- Cross-reference proverbs across sources\n- Note variations in wording or translation\n- Document source reliability and date\n\n### Due Date: July 1, 2025\n### Estimated Effort: 16 hours\n\n**PROJECT_FIELDS:**\n- Sprint_Week: Week 2 (Jun 27-Jul 3)\n- Criticality: 🚨 CRITICAL\n- Thesis_Section: Methodology\n- Effort_Hours: 16\n```\n\n---\n"
+    },
+    {
+      "id": "WEEK_3_SPRINT",
+      "title": "[SPRINT W3] Week 3 Planning - CRITICAL DEADLINE PREPARATION",
+      "labels": [
+        "planning",
+        "sprint",
+        "week-3",
+        "blocker",
+        "july-13-deadline"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-07-10",
+      "body": "```",
+      "project_fields": {},
+      "raw_section": "## WEEK_3_SPRINT\n**TITLE:** [SPRINT W3] Week 3 Planning - CRITICAL DEADLINE PREPARATION\n**LABELS:** planning,sprint,week-3,blocker,july-13-deadline\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-07-10\n**BODY:**\n```"
+    },
+    {
+      "id": "WEEK_3_TASK_1",
+      "title": "[BLOCKER] Complete Full Thesis Draft for July 13 Submission",
+      "labels": [
+        "blocker",
+        "urgent",
+        "thesis-draft",
+        "july-13-deadline",
+        "week-3"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-07-07",
+      "body": "```\n## 🛑 URGENT BLOCKER - HIGHEST PRIORITY\n\n### Immediate Impact\n- **Deadline at Risk:** July 13 dual deadline\n- **Work Stopped Since:** All other activities deprioritized\n- **Estimated Resolution Time:** 40 hours over 4 days\n\n### Thesis Sections Checklist\n- [ ] Abstract (250 words) - 2h\n- [ ] Introduction (2000 words) - 6h\n- [ ] Literature Review (3000 words) - 8h\n- [ ] Methodology (2500 words) - 6h\n- [ ] Implementation/Ontology (3000 words) - 8h\n- [ ] Evaluation Framework (2000 words) - 4h\n- [ ] Preliminary Results (1500 words) - 3h\n- [ ] Discussion (1500 words) - 2h\n- [ ] Conclusion (1000 words) - 1h\n\n### Daily Targets\n- **July 4:** Abstract + Introduction complete\n- **July 5:** Literature Review + Methodology complete\n- **July 6:** Implementation + Evaluation complete\n- **July 7:** Results + Discussion + Conclusion complete\n\n### Quality Standards\n- Academic writing standards maintained\n- All citations properly formatted\n- Figures and tables included where critical\n- Coherent argument throughout\n\n### Escalation Trigger\nIf behind schedule by >4 hours on any day, immediately contact supervisor\n\n### Due Date: July 7, 2025\n### Estimated Effort: 40 hours",
+      "project_fields": {
+        "Sprint_Week": "Week 3 (Jul 4-10)",
+        "Criticality": "🛑 BLOCKER",
+        "OPIT_Deadline": "Dissertation to Advisor (Jul 13)",
+        "Thesis_Section": "All Sections",
+        "Review_Status": "In Progress",
+        "Effort_Hours": "40"
+      },
+      "raw_section": "## WEEK_3_TASK_1\n**TITLE:** [BLOCKER] Complete Full Thesis Draft for July 13 Submission\n**LABELS:** blocker,urgent,thesis-draft,july-13-deadline,week-3\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-07-07\n**BODY:**\n```\n## 🛑 URGENT BLOCKER - HIGHEST PRIORITY\n\n### Immediate Impact\n- **Deadline at Risk:** July 13 dual deadline\n- **Work Stopped Since:** All other activities deprioritized\n- **Estimated Resolution Time:** 40 hours over 4 days\n\n### Thesis Sections Checklist\n- [ ] Abstract (250 words) - 2h\n- [ ] Introduction (2000 words) - 6h  \n- [ ] Literature Review (3000 words) - 8h\n- [ ] Methodology (2500 words) - 6h\n- [ ] Implementation/Ontology (3000 words) - 8h\n- [ ] Evaluation Framework (2000 words) - 4h\n- [ ] Preliminary Results (1500 words) - 3h\n- [ ] Discussion (1500 words) - 2h\n- [ ] Conclusion (1000 words) - 1h\n\n### Daily Targets\n- **July 4:** Abstract + Introduction complete\n- **July 5:** Literature Review + Methodology complete  \n- **July 6:** Implementation + Evaluation complete\n- **July 7:** Results + Discussion + Conclusion complete\n\n### Quality Standards\n- Academic writing standards maintained\n- All citations properly formatted\n- Figures and tables included where critical\n- Coherent argument throughout\n\n### Escalation Trigger\nIf behind schedule by >4 hours on any day, immediately contact supervisor\n\n### Due Date: July 7, 2025\n### Estimated Effort: 40 hours\n\n**PROJECT_FIELDS:**\n- Sprint_Week: Week 3 (Jul 4-10)\n- Criticality: 🛑 BLOCKER\n- OPIT_Deadline: Dissertation to Advisor (Jul 13)\n- Thesis_Section: All Sections\n- Review_Status: In Progress\n- Effort_Hours: 40\n```\n\n---\n"
+    },
+    {
+      "id": "WEEK_4_SPRINT",
+      "title": "[SPRINT W4] Week 4 Planning - OG-RAG System Development",
+      "labels": [
+        "planning",
+        "sprint",
+        "week-4",
+        "critical",
+        "implementation"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-07-17",
+      "body": "```",
+      "project_fields": {},
+      "raw_section": "## WEEK_4_SPRINT\n**TITLE:** [SPRINT W4] Week 4 Planning - OG-RAG System Development\n**LABELS:** planning,sprint,week-4,critical,implementation\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-07-17\n**BODY:**\n```"
+    },
+    {
+      "id": "WEEK_5_SPRINT",
+      "title": "[SPRINT W5] Week 5 Planning - Evaluation Framework & Committee Submission",
+      "labels": [
+        "planning",
+        "sprint",
+        "week-5",
+        "critical",
+        "july-27-deadline"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-07-24",
+      "body": "```",
+      "project_fields": {},
+      "raw_section": "## WEEK_5_SPRINT\n**TITLE:** [SPRINT W5] Week 5 Planning - Evaluation Framework & Committee Submission\n**LABELS:** planning,sprint,week-5,critical,july-27-deadline\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-07-24\n**BODY:**\n```"
+    },
+    {
+      "id": "WEEK_6_SPRINT",
+      "title": "[SPRINT W6] Week 6 Planning - Human Evaluation Execution",
+      "labels": [
+        "planning",
+        "sprint",
+        "week-6",
+        "critical",
+        "evaluation"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-07-31",
+      "body": "```",
+      "project_fields": {},
+      "raw_section": "## WEEK_6_SPRINT\n**TITLE:** [SPRINT W6] Week 6 Planning - Human Evaluation Execution\n**LABELS:** planning,sprint,week-6,critical,evaluation\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-07-31\n**BODY:**\n```"
+    },
+    {
+      "id": "WEEK_7_SPRINT",
+      "title": "[SPRINT W7] Week 7 Planning - Results Analysis & Defense Preparation",
+      "labels": [
+        "planning",
+        "sprint",
+        "week-7",
+        "critical",
+        "defense-form-deadline"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-08-07",
+      "body": "```",
+      "project_fields": {},
+      "raw_section": "## WEEK_7_SPRINT\n**TITLE:** [SPRINT W7] Week 7 Planning - Results Analysis & Defense Preparation\n**LABELS:** planning,sprint,week-7,critical,defense-form-deadline\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-08-07\n**BODY:**\n```"
+    },
+    {
+      "id": "WEEK_8_SPRINT",
+      "title": "[SPRINT W8] Week 8 Planning - Intensive Defense Preparation",
+      "labels": [
+        "planning",
+        "sprint",
+        "week-8",
+        "high",
+        "defense"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-08-14",
+      "body": "```",
+      "project_fields": {},
+      "raw_section": "## WEEK_8_SPRINT\n**TITLE:** [SPRINT W8] Week 8 Planning - Intensive Defense Preparation\n**LABELS:** planning,sprint,week-8,high,defense\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-08-14\n**BODY:**\n```"
+    },
+    {
+      "id": "WEEK_9_SPRINT",
+      "title": "[SPRINT W9] Week 9 Planning - Defense Execution",
+      "labels": [
+        "planning",
+        "sprint",
+        "week-9",
+        "blocker",
+        "defense"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-08-21",
+      "body": "```",
+      "project_fields": {},
+      "raw_section": "## WEEK_9_SPRINT\n**TITLE:** [SPRINT W9] Week 9 Planning - Defense Execution\n**LABELS:** planning,sprint,week-9,blocker,defense\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-08-21\n**BODY:**\n```"
+    },
+    {
+      "id": "WEEK_10_SPRINT",
+      "title": "[SPRINT W10] Week 10 Planning - Final Submission Sprint",
+      "labels": [
+        "planning",
+        "sprint",
+        "week-10",
+        "blocker",
+        "final-deadline"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-08-30",
+      "body": "```",
+      "project_fields": {},
+      "raw_section": "## WEEK_10_SPRINT\n**TITLE:** [SPRINT W10] Week 10 Planning - Final Submission Sprint\n**LABELS:** planning,sprint,week-10,blocker,final-deadline\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-08-30\n**BODY:**\n```"
+    },
+    {
+      "id": "MILESTONE_JULY_13",
+      "title": "[MILESTONE] July 13 Dual Deadline - Committee Selection & Advisor Submission",
+      "labels": [
+        "milestone",
+        "critical-deadline",
+        "july-13",
+        "blocker"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-07-13",
+      "body": "```\n## 🚨 CRITICAL OPIT DEADLINE MILESTONE\n\n### Deadline Details\n- **Date:** July 13, 2025, 11:59 PM\n- **Days Remaining:** Calculate from current date\n- **Buffer Target:** Complete by July 10 (3-day buffer)\n\n### Required Submissions\n- [ ] Examining Committee Selection Form\n- [ ] Dissertation to Advisor for Review and Plagiarism Check\n\n### Prerequisites Checklist\n- [ ] Complete thesis draft finished\n- [ ] Supervisor review and approval received\n- [ ] Committee members identified and confirmed\n- [ ] All OPIT formatting requirements met\n- [ ] Plagiarism check completed with acceptable results\n\n### Critical Path Tasks\n1. **Complete Draft:** Issue #[X] - Due July 7\n2. **Supervisor Review:** Issue #[Y] - Due July 9\n3. **Committee Selection:** Issue #[Z] - Due July 10\n4. **Form Submissions:** Issue #[A] - Due July 11\n\n### Risk Monitoring\n- **Green:** All tasks on schedule with buffer time\n- **Yellow:** Some tasks at risk but recoverable\n- **Red:** Deadline in serious jeopardy\n\n### Emergency Protocols\nIf status becomes RED:\n1. Immediate supervisor consultation\n2. Scope reduction considerations\n3. Daily progress check-ins\n4. Extended work hours authorization\n5. Secondary task postponement\n\n### Success Criteria\n- [ ] All submissions completed 72+ hours before deadline\n- [ ] No technical submission issues\n- [ ] Supervisor satisfaction with quality\n- [ ] Committee members confirmed and available",
+      "project_fields": {
+        "Criticality": "🛑 BLOCKER",
+        "OPIT_Deadline": "Examining Committee (Jul 13)",
+        "Effort_Hours": "60"
+      },
+      "raw_section": "## MILESTONE_JULY_13\n**TITLE:** [MILESTONE] July 13 Dual Deadline - Committee Selection & Advisor Submission\n**LABELS:** milestone,critical-deadline,july-13,blocker\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-07-13\n**BODY:**\n```\n## 🚨 CRITICAL OPIT DEADLINE MILESTONE\n\n### Deadline Details\n- **Date:** July 13, 2025, 11:59 PM\n- **Days Remaining:** Calculate from current date\n- **Buffer Target:** Complete by July 10 (3-day buffer)\n\n### Required Submissions\n- [ ] Examining Committee Selection Form\n- [ ] Dissertation to Advisor for Review and Plagiarism Check\n\n### Prerequisites Checklist\n- [ ] Complete thesis draft finished\n- [ ] Supervisor review and approval received\n- [ ] Committee members identified and confirmed\n- [ ] All OPIT formatting requirements met\n- [ ] Plagiarism check completed with acceptable results\n\n### Critical Path Tasks\n1. **Complete Draft:** Issue #[X] - Due July 7\n2. **Supervisor Review:** Issue #[Y] - Due July 9\n3. **Committee Selection:** Issue #[Z] - Due July 10\n4. **Form Submissions:** Issue #[A] - Due July 11\n\n### Risk Monitoring\n- **Green:** All tasks on schedule with buffer time\n- **Yellow:** Some tasks at risk but recoverable\n- **Red:** Deadline in serious jeopardy\n\n### Emergency Protocols\nIf status becomes RED:\n1. Immediate supervisor consultation\n2. Scope reduction considerations\n3. Daily progress check-ins\n4. Extended work hours authorization\n5. Secondary task postponement\n\n### Success Criteria\n- [ ] All submissions completed 72+ hours before deadline\n- [ ] No technical submission issues\n- [ ] Supervisor satisfaction with quality\n- [ ] Committee members confirmed and available\n\n**PROJECT_FIELDS:**\n- Criticality: 🛑 BLOCKER\n- OPIT_Deadline: Examining Committee (Jul 13)\n- Effort_Hours: 60\n```\n\n---\n"
+    },
+    {
+      "id": "MILESTONE_JULY_27",
+      "title": "[MILESTONE] July 27 Thesis to Examining Committee Submission",
+      "labels": [
+        "milestone",
+        "critical-deadline",
+        "july-27",
+        "critical"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-07-27",
+      "body": "```\n## 🚨 CRITICAL OPIT DEADLINE MILESTONE\n\n### Deadline Details\n- **Date:** July 27, 2025, 11:59 PM\n- **Buffer Target:** Complete by July 24 (3-day buffer)\n\n### Required Submission\n- [ ] Final thesis to examining committee\n\n### Prerequisites Checklist\n- [ ] All advisor feedback incorporated\n- [ ] Thesis meets OPIT formatting standards\n- [ ] Committee members confirmed and notified\n- [ ] All technical requirements verified\n\n### Success Criteria\n- [ ] Submission completed 72+ hours before deadline\n- [ ] Committee members have received thesis\n- [ ] All formatting and content requirements met",
+      "project_fields": {
+        "Criticality": "🛑 BLOCKER",
+        "OPIT_Deadline": "Thesis to Committee (Jul 27)",
+        "Effort_Hours": "20"
+      },
+      "raw_section": "## MILESTONE_JULY_27\n**TITLE:** [MILESTONE] July 27 Thesis to Examining Committee Submission\n**LABELS:** milestone,critical-deadline,july-27,critical\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-07-27\n**BODY:**\n```\n## 🚨 CRITICAL OPIT DEADLINE MILESTONE\n\n### Deadline Details\n- **Date:** July 27, 2025, 11:59 PM\n- **Buffer Target:** Complete by July 24 (3-day buffer)\n\n### Required Submission\n- [ ] Final thesis to examining committee\n\n### Prerequisites Checklist\n- [ ] All advisor feedback incorporated\n- [ ] Thesis meets OPIT formatting standards\n- [ ] Committee members confirmed and notified\n- [ ] All technical requirements verified\n\n### Success Criteria\n- [ ] Submission completed 72+ hours before deadline\n- [ ] Committee members have received thesis\n- [ ] All formatting and content requirements met\n\n**PROJECT_FIELDS:**\n- Criticality: 🛑 BLOCKER\n- OPIT_Deadline: Thesis to Committee (Jul 27)\n- Effort_Hours: 20\n```\n\n---\n"
+    },
+    {
+      "id": "MILESTONE_AUGUST_3",
+      "title": "[MILESTONE] August 3 Thesis Defense Form Submission",
+      "labels": [
+        "milestone",
+        "critical-deadline",
+        "august-3",
+        "critical"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-08-03",
+      "body": "```\n## 🚨 CRITICAL OPIT DEADLINE MILESTONE\n\n### Deadline Details\n- **Date:** August 3, 2025, 11:59 PM\n- **Buffer Target:** Complete by August 1 (2-day buffer)\n\n### Required Submission\n- [ ] Thesis Defense Form\n\n### Prerequisites Checklist\n- [ ] Results chapter completed\n- [ ] Discussion chapter completed\n- [ ] Defense presentation outline ready\n- [ ] All committee feedback addressed\n\n### Success Criteria\n- [ ] Form submitted 48+ hours before deadline\n- [ ] Defense date scheduled and confirmed\n- [ ] All committee members available",
+      "project_fields": {
+        "Criticality": "🚨 CRITICAL",
+        "OPIT_Deadline": "Defense Form (Aug 3)",
+        "Effort_Hours": "5"
+      },
+      "raw_section": "## MILESTONE_AUGUST_3\n**TITLE:** [MILESTONE] August 3 Thesis Defense Form Submission\n**LABELS:** milestone,critical-deadline,august-3,critical\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-08-03\n**BODY:**\n```\n## 🚨 CRITICAL OPIT DEADLINE MILESTONE\n\n### Deadline Details\n- **Date:** August 3, 2025, 11:59 PM\n- **Buffer Target:** Complete by August 1 (2-day buffer)\n\n### Required Submission\n- [ ] Thesis Defense Form\n\n### Prerequisites Checklist\n- [ ] Results chapter completed\n- [ ] Discussion chapter completed\n- [ ] Defense presentation outline ready\n- [ ] All committee feedback addressed\n\n### Success Criteria\n- [ ] Form submitted 48+ hours before deadline\n- [ ] Defense date scheduled and confirmed\n- [ ] All committee members available\n\n**PROJECT_FIELDS:**\n- Criticality: 🚨 CRITICAL\n- OPIT_Deadline: Defense Form (Aug 3)\n- Effort_Hours: 5\n```\n\n---\n"
+    },
+    {
+      "id": "MILESTONE_AUGUST_30",
+      "title": "[MILESTONE] August 30 Post-Defense Final Submission",
+      "labels": [
+        "milestone",
+        "final-deadline",
+        "august-30",
+        "blocker"
+      ],
+      "assignee": "@me",
+      "due_date": "2025-08-30",
+      "body": "```\n## 🚨 FINAL OPIT DEADLINE MILESTONE\n\n### Deadline Details\n- **Date:** August 30, 2025, 11:59 PM\n- **Buffer Target:** Complete by August 27 (3-day buffer)\n\n### Required Submission\n- [ ] Final thesis with all defense feedback incorporated\n\n### Prerequisites Checklist\n- [ ] Successful thesis defense completed\n- [ ] All committee feedback addressed\n- [ ] Final proofreading and formatting completed\n- [ ] All OPIT submission requirements met\n\n### Success Criteria\n- [ ] Final submission completed 72+ hours before deadline\n- [ ] All defense feedback fully incorporated\n- [ ] Thesis meets all quality and formatting standards\n- [ ] Project successfully completed",
+      "project_fields": {
+        "Criticality": "🛑 BLOCKER",
+        "OPIT_Deadline": "Post-Defense (Aug 30)",
+        "Effort_Hours": "40"
+      },
+      "raw_section": "## MILESTONE_AUGUST_30\n**TITLE:** [MILESTONE] August 30 Post-Defense Final Submission\n**LABELS:** milestone,final-deadline,august-30,blocker\n**ASSIGNEE:** @me\n**DUE_DATE:** 2025-08-30\n**BODY:**\n```\n## 🚨 FINAL OPIT DEADLINE MILESTONE\n\n### Deadline Details\n- **Date:** August 30, 2025, 11:59 PM\n- **Buffer Target:** Complete by August 27 (3-day buffer)\n\n### Required Submission\n- [ ] Final thesis with all defense feedback incorporated\n\n### Prerequisites Checklist\n- [ ] Successful thesis defense completed\n- [ ] All committee feedback addressed\n- [ ] Final proofreading and formatting completed\n- [ ] All OPIT submission requirements met\n\n### Success Criteria\n- [ ] Final submission completed 72+ hours before deadline\n- [ ] All defense feedback fully incorporated\n- [ ] Thesis meets all quality and formatting standards\n- [ ] Project successfully completed\n\n**PROJECT_FIELDS:**\n- Criticality: 🛑 BLOCKER\n- OPIT_Deadline: Post-Defense (Aug 30)\n- Effort_Hours: 40\n```\n"
+    }
+  ]
+}

@@ -5,6 +5,10 @@
 
 set -e
 
+# Disable GitHub CLI pager to prevent terminal issues
+export GH_PAGER=""
+export PAGER=""
+
 # Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -34,7 +38,10 @@ fi
 
 # Logging function
 log() {
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a "$LOG_FILE"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
+    if [[ "$VERBOSE" == true ]]; then
+        echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >&2
+    fi
 }
 
 # Progress tracking
@@ -63,21 +70,21 @@ check_prerequisites() {
     
     # Check if GitHub CLI is installed
     if ! command -v gh >/dev/null 2>&1; then
-        echo -e "${RED}❌ GitHub CLI (gh) is not installed${NC}"
-        echo "Please run ./install-and-setup.sh first"
+        echo -e "${RED}❌ GitHub CLI (gh) is not installed${NC}" >&2
+        echo "Please run ./install-and-setup.sh first" >&2
         exit 1
     fi
     
     # Check if authenticated
     if ! gh auth status >/dev/null 2>&1; then
-        echo -e "${RED}❌ Not authenticated with GitHub${NC}"
-        echo "Please run: gh auth login"
+        echo -e "${RED}❌ Not authenticated with GitHub${NC}" >&2
+        echo "Please run: gh auth login" >&2
         exit 1
     fi
     
     # Check if Python is available
     if ! command -v python3 >/dev/null 2>&1; then
-        echo -e "${RED}❌ Python 3 is required${NC}"
+        echo -e "${RED}❌ Python 3 is required${NC}" >&2
         exit 1
     fi
     
@@ -87,14 +94,14 @@ check_prerequisites() {
     fi
     
     if [[ -z "$GITHUB_REPO" ]]; then
-        echo -e "${RED}❌ GitHub repository not configured${NC}"
-        echo "Please run ./install-and-setup.sh first"
+        echo -e "${RED}❌ GitHub repository not configured${NC}" >&2
+        echo "Please run ./install-and-setup.sh first" >&2
         exit 1
     fi
     
     # Verify repository access
     if ! gh repo view "$GITHUB_REPO" >/dev/null 2>&1; then
-        echo -e "${RED}❌ Cannot access repository: $GITHUB_REPO${NC}"
+        echo -e "${RED}❌ Cannot access repository: $GITHUB_REPO${NC}" >&2
         exit 1
     fi
     
@@ -107,7 +114,7 @@ parse_issues() {
     local filter_args="$2"
     local output_file="$TEMP_DIR/parsed-issues.json"
     
-    log "Parsing issues from: $input_file"
+    log "Parsing issues from: $input_file" >&2
     
     mkdir -p "$TEMP_DIR"
     
@@ -122,11 +129,11 @@ parse_issues() {
         parse_cmd="$parse_cmd --verbose"
     fi
     
-    if eval "$parse_cmd"; then
+    if eval "$parse_cmd" >&2; then
         echo "$output_file"
         return 0
     else
-        echo -e "${RED}❌ Failed to parse issues${NC}"
+        echo -e "${RED}❌ Failed to parse issues${NC}" >&2
         exit 1
     fi
 }
@@ -263,9 +270,16 @@ create_single_issue() {
             gh_cmd="$gh_cmd --assignee \"$assignee_clean\""
         fi
         
-        # Execute command
-        if eval "$gh_cmd" >/dev/null 2>&1; then
+        # Execute command with detailed error capture
+        error_output=$(eval "$gh_cmd" 2>&1)
+        exit_code=$?
+        
+        if [[ $exit_code -eq 0 ]]; then
             log "SUCCESS: Created issue $issue_id - $title"
+            if [[ "$VERBOSE" == true ]]; then
+                echo -e "${GREEN}✅ Created: $title${NC}"
+                echo "   URL: $error_output"
+            fi
             
             # Clean up temporary body file
             [[ -f "$body_file" ]] && rm -f "$body_file"
@@ -275,7 +289,14 @@ create_single_issue() {
             
             return 0
         else
-            log "ERROR: Failed to create issue $issue_id (attempt $attempt)"
+            log "ERROR: Failed to create issue $issue_id (attempt $attempt) - Exit code: $exit_code"
+            log "ERROR: Command output: $error_output"
+            if [[ "$VERBOSE" == true ]]; then
+                echo -e "${RED}❌ Failed to create: $title (attempt $attempt)${NC}"
+                echo "   Command: $gh_cmd"
+                echo "   Exit code: $exit_code"
+                echo "   Output: $error_output"
+            fi
             attempt=$((attempt + 1))
         fi
     done
