@@ -6,6 +6,10 @@ on:
     - cron: '0 9 * * 1'
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   progress-report:
     runs-on: ubuntu-latest
@@ -17,17 +21,19 @@ jobs:
     
     - name: Generate Weekly Progress Report
       run: |
-        echo "# Weekly Progress Report - $(date +%Y-%m-%d)" > progress.md
+        REPORT_DATE=$(date +%Y-%m-%d)
+        echo "# Weekly Progress Report - $REPORT_DATE" > progress.md
         echo "" >> progress.md
         echo "## Commits This Week" >> progress.md
         git log --since="1 week ago" --pretty=format:"- %s" >> progress.md
         echo "" >> progress.md
         echo "## Files Changed" >> progress.md
         git diff --name-only HEAD~7 HEAD >> progress.md
+        echo "REPORT_DATE=$REPORT_DATE" >> $GITHUB_ENV
         
     - name: Create Issue for Progress Review
       uses: peter-evans/create-issue-from-file@v5
       with:
-        title: "Weekly Progress Report - $(date +%Y-%m-%d)"
+        title: "Weekly Progress Report - ${{ env.REPORT_DATE }}"
         content-filepath: progress.md
         labels: weekly-report, progress
