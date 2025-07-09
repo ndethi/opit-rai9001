@@ -223,7 +223,7 @@ detect_ai_context() {
         fi
     fi
     
-    # Infer prompt from commit changes and context
+    # Infer prompt from commit changes and context with enhanced specificity
     local staged_files=$(git diff --cached --name-only)
     if echo "$staged_files" | grep -q "ai-smart-commit\.sh"; then
         local diff_content=$(git diff --cached --no-color)
@@ -233,9 +233,12 @@ detect_ai_context() {
         elif echo "$diff_content" | grep -q "fast.*mode.*push\|auto.*push"; then
             prompt="Test the combination of fast mode and auto-push flags to achieve complete automation in the commit workflow"
             context="Testing automated commit workflow with combined flags"
-        elif echo "$diff_content" | grep -q "commit.*message.*generation\|specific.*commit\|doc_content_context"; then
-            prompt="Re-engineer the commit message generator to be more specific about file content and context rather than generic patterns"
-            context="Enhancing commit message specificity by analyzing actual content changes"
+        elif echo "$diff_content" | grep -q "commit.*message.*generation\|specific.*commit\|doc_content_context\|extract_content_context"; then
+            prompt="Re-engineer the commit message generator to be more specific about file content and context rather than generic patterns, and incorporate prompt context for better commit messages"
+            context="Enhancing commit message specificity by analyzing actual content changes and incorporating user prompts"
+        elif echo "$diff_content" | grep -q "contextualize.*commit.*message\|pull.*prompt"; then
+            prompt="Further contextualize commit messages by incorporating the actual prompt that resulted in the change"
+            context="Adding prompt-driven context to commit message generation for better traceability"
         fi
     elif echo "$staged_files" | grep -q "README.*chapters\|docs.*thesis"; then
         local diff_content=$(git diff --cached --no-color)
@@ -245,6 +248,9 @@ detect_ai_context() {
         elif echo "$diff_content" | grep -q "template.*reference\|\.\.\/template"; then
             prompt="Add reference to OPIT LaTeX template location in thesis documentation structure"
             context="Integrating institutional template requirements into thesis workflow"
+        elif echo "$diff_content" | grep -q "remove.*test.*text\|clean.*up.*test"; then
+            prompt="Remove test text from README file to clean up documentation"
+            context="Documentation cleanup and maintenance"
         fi
     elif echo "$staged_files" | grep -q "README"; then
         local diff_content=$(git diff --cached --no-color)
@@ -412,13 +418,19 @@ extract_content_context() {
     local staged_files=$(git diff --cached --name-only)
     local content_context=""
     
+    # Get AI context for prompt-driven context detection
+    local ai_context_for_analysis=$(detect_ai_context)
+    local ai_prompt=$(echo "$ai_context_for_analysis" | cut -d'|' -f1)
+    
     # Prioritize the actual file being changed over content patterns
     # This prevents false positives where we're editing a file that contains certain keywords
     
     # First check what files are being modified - this is more reliable than content patterns
     if echo "$staged_files" | grep -q "ai-smart-commit\.sh"; then
         # We're modifying the smart commit script itself
-        if echo "$diff_content" | grep -q "^+.*technical_changes.*=\|^-.*technical_changes.*="; then
+        if [ -n "$ai_prompt" ] && echo "$ai_prompt" | grep -q "contextualize.*commit.*message\|pull.*prompt"; then
+            content_context="prompt-driven commit message contextualization"
+        elif echo "$diff_content" | grep -q "^+.*technical_changes.*=\|^-.*technical_changes.*="; then
             content_context="commit message generation logic improvements"
         elif echo "$diff_content" | grep -q "^+.*extract_content_context\|^-.*extract_content_context"; then
             content_context="content context detection refinements"
@@ -431,7 +443,9 @@ extract_content_context() {
         fi
     elif echo "$staged_files" | grep -q "docs/thesis/chapters/README\.md"; then
         # We're modifying thesis documentation
-        if echo "$diff_content" | grep -q "^+.*OPIT.*STUDENT_ID.*AUTHOR_LASTNAME"; then
+        if [ -n "$ai_prompt" ] && echo "$ai_prompt" | grep -q "remove.*test.*text\|clean.*up"; then
+            content_context="documentation cleanup and maintenance"
+        elif echo "$diff_content" | grep -q "^+.*OPIT.*STUDENT_ID.*AUTHOR_LASTNAME"; then
             content_context="thesis document naming convention guidelines"
         elif echo "$diff_content" | grep -q "^+.*template.*reference\|^+.*\.\.\/template"; then
             content_context="LaTeX template integration guidelines"
@@ -811,6 +825,20 @@ generate_smart_commit_message() {
     if [ "$file_count" -le 3 ]; then
         local file_list=$(echo "$staged_files" | sed 's|.*/||' | tr '\n' ', ' | sed 's/, $//')
         body+=". Files: $file_list"
+    fi
+    
+    # Get AI context for prompt incorporation
+    local ai_context_for_body=$(detect_ai_context)
+    local ai_prompt_for_body=$(echo "$ai_context_for_body" | cut -d'|' -f1)
+    
+    # Add prompt context if available and meaningful
+    if [ -n "$ai_prompt_for_body" ] && [ ${#ai_prompt_for_body} -gt 20 ]; then
+        # Truncate very long prompts for readability
+        local prompt_summary="$ai_prompt_for_body"
+        if [ ${#prompt_summary} -gt 100 ]; then
+            prompt_summary="$(echo "$prompt_summary" | cut -c1-97)..."
+        fi
+        body+=". Prompt: $prompt_summary"
     fi
     
     body+=". Generated by thiLLMo AI-enhanced commit system"
