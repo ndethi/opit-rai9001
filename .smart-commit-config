@@ -1,6 +1,6 @@
 # thiLLMo Smart Commit Configuration
 DEFAULT_ASSISTANT="Claude"
-DEFAULT_MODEL="Claude 3.5 Sonnet"
+DEFAULT_MODEL="Claude Sonnet 4"
 AUTO_PUSH=false
 QUICK_MODE=false
 VERBOSE=true

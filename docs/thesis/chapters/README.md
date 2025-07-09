@@ -64,5 +64,3 @@ OPIT_RAI9001_NDETHI_Literature_Review_2025-02-01.md
 - Keep chapters focused and well-structured
 - Reference the OPIT template in `../template/` for institutional formatting requirements
 - Follow the naming convention above for all new documents
-
-<!-- Test: AI model detection accuracy verified - Claude 3.5 Sonnet now correctly identified -->
