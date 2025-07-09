@@ -65,4 +65,4 @@ OPIT_RAI9001_NDETHI_Literature_Review_2025-02-01.md
 - Reference the OPIT template in `../template/` for institutional formatting requirements
 - Follow the naming convention above for all new documents
 
-<!-- Final test: AI model detection accuracy -->
+<!-- Test: Fixing AI model detection accuracy and commit message generation -->

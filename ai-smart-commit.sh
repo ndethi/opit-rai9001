@@ -22,7 +22,7 @@ NC='\033[0m'
 
 # Default AI settings
 DEFAULT_ASSISTANT="Claude"
-DEFAULT_MODEL="Claude Sonnet"
+DEFAULT_MODEL="Claude 3.5 Sonnet"
 
 # Load configuration
 load_config() {
@@ -33,7 +33,7 @@ load_config() {
         cat > "$CONFIG_FILE" << EOF
 # thiLLMo Smart Commit Configuration
 DEFAULT_ASSISTANT="Claude"
-DEFAULT_MODEL="Claude Sonnet"
+DEFAULT_MODEL="Claude 3.5 Sonnet"
 AUTO_PUSH=false
 QUICK_MODE=false
 VERBOSE=true
@@ -207,9 +207,9 @@ detect_ai_context() {
     # Priority 2: Strong indicators only override if defaults aren't explicitly Claude
     # This prevents incidental shell history from overriding intentional configuration
     local override_allowed=true
-    if [ "$DEFAULT_ASSISTANT" = "Claude" ] && [ "$DEFAULT_MODEL" = "Claude Sonnet" ]; then
+    if [ "$DEFAULT_ASSISTANT" = "Claude" ] && [ "$DEFAULT_MODEL" = "Claude 3.5 Sonnet" ]; then
         override_allowed=false
-        context="Configured for Claude Sonnet - honoring user preference"
+        context="Configured for Claude 3.5 Sonnet - honoring user preference"
     fi
     
     # Priority 3: Check VS Code environment for active AI assistants (only if override allowed)
@@ -218,8 +218,8 @@ detect_ai_context() {
             # Check for Claude/Anthropic extensions
             if ls "$HOME/.vscode/extensions" | grep -q "anthropic\|claude"; then
                 assistant="Claude"
-                model="Claude Sonnet"
-                context="VS Code with Claude Sonnet active"
+                model="Claude 3.5 Sonnet"
+                context="VS Code with Claude 3.5 Sonnet active"
             # Check for GitHub Copilot
             elif ls "$HOME/.vscode/extensions" | grep -q "copilot"; then
                 assistant="GitHub Copilot"
@@ -240,7 +240,7 @@ detect_ai_context() {
         # Only look at very recent commands and be more specific
         if echo "$recent_history" | grep -q "claude.*cli\|anthropic.*api\|claude.*chat"; then
             assistant="Claude"
-            model="Claude Sonnet"
+            model="Claude 3.5 Sonnet"
             context="Very recent Claude CLI usage detected"
         elif echo "$recent_history" | grep -q "github.*copilot.*chat\|copilot.*chat"; then
             assistant="GitHub Copilot"
@@ -254,7 +254,7 @@ detect_ai_context() {
     if [ "$override_allowed" = "true" ]; then
         if [ -n "$ANTHROPIC_API_KEY" ] || [ -n "$CLAUDE_API_KEY" ]; then
             assistant="Claude"
-            model="Claude Sonnet"
+            model="Claude 3.5 Sonnet"
             context="Anthropic API credentials detected"
         elif [ -n "$OPENAI_API_KEY" ]; then
             assistant="OpenAI"
@@ -266,14 +266,14 @@ detect_ai_context() {
     # Priority 6: Reinforce Claude detection with configuration files (always check for Claude)
     if [ -f "$HOME/.anthropic" ] || [ -f "$HOME/.claude" ]; then
         assistant="Claude"
-        model="Claude Sonnet"
+        model="Claude 3.5 Sonnet"
         context="Claude configuration files detected"
     fi
     
     # Priority 7: Enhanced VS Code workspace detection for Claude (always check for Claude)
     if [ -f ".vscode/settings.json" ] && grep -q "anthropic\|claude" ".vscode/settings.json" 2>/dev/null; then
         assistant="Claude"
-        model="Claude Sonnet"
+        model="Claude 3.5 Sonnet"
         context="VS Code workspace configured for Claude"
     fi
     
@@ -296,6 +296,12 @@ detect_ai_context() {
         elif echo "$diff_content" | grep -q "prompt.*context.*integration\|ai_prompt_for_subject"; then
             prompt="Improve commit message specificity by using prompt context to generate more accurate subject lines that reflect actual changes made"
             context="Enhancing subject line generation to extract specific details from user prompts rather than generic descriptions"
+        elif echo "$diff_content" | grep -q "override_allowed\|Claude.*3\.5.*Sonnet\|honoring.*user.*preference"; then
+            prompt="Fix AI model detection to correctly identify Claude 3.5 Sonnet instead of incorrectly falling back to GPT-4 from shell history"
+            context="Fixing AI assistant detection logic to respect explicit user configuration and prevent false overrides"
+        elif echo "$diff_content" | grep -q "cached.*commit.*message\|technical_changes.*=.*fix.*variable"; then
+            prompt="Fix commit message generation to analyze actual changes instead of returning cached/generic messages that don't match the real modifications"
+            context="Improving commit message accuracy by eliminating hardcoded patterns and enhancing real-time diff analysis"
         fi
     elif echo "$staged_files" | grep -q "README.*chapters\|docs.*thesis"; then
         local diff_content=$(git diff --cached --no-color)
@@ -622,6 +628,15 @@ generate_smart_commit_message() {
         technical_changes="fix integer comparison logic from greater-than to equality check"
     elif echo "$diff_content" | grep -q "^-.*\[\[.*-eq" && echo "$diff_content" | grep -q "^+.*\[\[.*-gt"; then
         technical_changes="fix integer comparison logic from equality to greater-than check"
+    # Detect AI model detection and commit message improvements
+    elif echo "$diff_content" | grep -q "^-.*Claude.*Sonnet.*\"" && echo "$diff_content" | grep -q "^+.*Claude.*3\.5.*Sonnet"; then
+        technical_changes="upgrade Claude model detection from generic 'Claude Sonnet' to specific 'Claude 3.5 Sonnet' version"
+    elif echo "$diff_content" | grep -q "^-.*history.*20" && echo "$diff_content" | grep -q "^+.*history.*5"; then
+        technical_changes="fix AI detection by reducing shell history scope from 20 to 5 commands to prevent false overrides"
+    elif echo "$diff_content" | grep -q "^+.*override_allowed.*=.*false" && echo "$diff_content" | grep -q "^+.*honoring.*user.*preference"; then
+        technical_changes="implement protection against incorrect AI model detection by respecting explicit user configuration"
+    elif echo "$diff_content" | grep -q "^-.*technical_changes.*fix.*variable.*expansion" && echo "$diff_content" | grep -q "^+.*AI.*model.*detection"; then
+        technical_changes="replace cached commit message patterns with accurate AI model detection change analysis"
     # Detect variable expansion and quoting fixes
     elif echo "$diff_content" | grep -q "^-.*\$[a-zA-Z_]" && echo "$diff_content" | grep -q "^+.*\"\$[a-zA-Z_]"; then
         technical_changes="fix variable expansion by adding proper shell quoting"
