@@ -18,3 +18,4 @@
 2025-06-29 17:20:27|feat(github): fix variable expansion by adding proper shell quoting
 2025-07-09 22:48:04|docs: add opit latex template to thesis folder
 2025-07-09 23:05:16|docs(thesis): add comprehensive usage examples and configuration guide
+2025-07-09 23:18:00|fix(smart-commit): fix variable expansion by adding proper shell quoting
