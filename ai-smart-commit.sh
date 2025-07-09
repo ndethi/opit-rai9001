@@ -233,12 +233,22 @@ detect_ai_context() {
         elif echo "$diff_content" | grep -q "fast.*mode.*push\|auto.*push"; then
             prompt="Test the combination of fast mode and auto-push flags to achieve complete automation in the commit workflow"
             context="Testing automated commit workflow with combined flags"
-        elif echo "$diff_content" | grep -q "commit.*message.*generation\|specific.*commit"; then
-            prompt="Improve commit message generation to be more specific about what changes are being made rather than using generic descriptions"
-            context="Enhancing commit message specificity and context awareness"
+        elif echo "$diff_content" | grep -q "commit.*message.*generation\|specific.*commit\|doc_content_context"; then
+            prompt="Re-engineer the commit message generator to be more specific about file content and context rather than generic patterns"
+            context="Enhancing commit message specificity by analyzing actual content changes"
+        fi
+    elif echo "$staged_files" | grep -q "README.*chapters\|docs.*thesis"; then
+        local diff_content=$(git diff --cached --no-color)
+        if echo "$diff_content" | grep -q "naming.*convention\|OPIT.*STUDENT.*AUTHOR"; then
+            prompt="Create a semantic naming convention for thesis documentation files that includes institution, student ID, author, document type, and version information"
+            context="Establishing systematic thesis document naming and organization standards"
+        elif echo "$diff_content" | grep -q "template.*reference\|\.\.\/template"; then
+            prompt="Add reference to OPIT LaTeX template location in thesis documentation structure"
+            context="Integrating institutional template requirements into thesis workflow"
         fi
     elif echo "$staged_files" | grep -q "README"; then
-        if git diff --cached --no-color | grep -q "test.*comment"; then
+        local diff_content=$(git diff --cached --no-color)
+        if echo "$diff_content" | grep -q "test.*comment"; then
             prompt="Add test comments to README to verify the enhanced AI smart commit functionality"
             context="Testing documentation updates for script validation"
         fi
@@ -396,6 +406,36 @@ analyze_diff_insights() {
     echo "$insights"
 }
 
+# Extract specific content context from diff to make commit messages more precise
+extract_content_context() {
+    local diff_content=$(git diff --cached --no-color)
+    local staged_files=$(git diff --cached --name-only)
+    local content_context=""
+    
+    # Check for specific content patterns in added lines
+    if echo "$diff_content" | grep -q "^+.*OPIT.*STUDENT_ID.*AUTHOR_LASTNAME"; then
+        content_context="thesis document naming convention"
+    elif echo "$diff_content" | grep -q "^+.*Research_Proposal\|^+.*Progress_Report\|^+.*Thesis_Draft"; then
+        content_context="academic document type categorization"
+    elif echo "$diff_content" | grep -q "^+.*template.*reference\|^+.*\.\.\/template"; then
+        content_context="LaTeX template integration guidelines"
+    elif echo "$diff_content" | grep -q "^+.*cultural.*ontology\|^+.*kikuyu.*proverb"; then
+        content_context="cultural knowledge representation framework"
+    elif echo "$diff_content" | grep -q "^+.*og.*rag.*system\|^+.*retrieval.*augmented"; then
+        content_context="ontology-grounded RAG implementation"
+    elif echo "$diff_content" | grep -q "^+.*commit.*message.*generation\|^+.*doc_content_context"; then
+        content_context="AI commit message specificity enhancement"
+    elif echo "$diff_content" | grep -q "^+.*fast.*mode\|^+.*automatic.*staging"; then
+        content_context="development workflow automation"
+    elif echo "$diff_content" | grep -q "^+.*chapter.*structure\|^+.*thesis.*organization"; then
+        content_context="thesis structural organization"
+    elif echo "$diff_content" | grep -q "^+.*evaluation.*methodology\|^+.*experimental.*design"; then
+        content_context="research methodology framework"
+    fi
+    
+    echo "$content_context"
+}
+
 # Generate highly specific commit messages based on deep diff analysis
 generate_smart_commit_message() {
     local commit_type="$1"
@@ -404,6 +444,9 @@ generate_smart_commit_message() {
     local scope=""
     local subject=""
     local body=""
+    
+    # Extract specific content context for more precise messaging
+    local content_context=$(extract_content_context)
     
     # Enhanced scope detection with priority-based file matching
     if echo "$staged_files" | grep -q "ai-smart-commit\.sh"; then
@@ -610,8 +653,15 @@ generate_smart_commit_message() {
             fi
             ;;
         "docs")
+            # Use extracted content context for highly specific commit messages
+            local specific_context="$content_context"
+            
             if echo "$staged_files" | grep -q "README" && echo "$diff_content" | grep -q "^+.*#.*Usage\|^+.*#.*Examples"; then
-                subject="add comprehensive usage examples and configuration guide"
+                if [ -n "$specific_context" ]; then
+                    subject="add $specific_context"
+                else
+                    subject="add comprehensive usage examples and configuration guide"
+                fi
             elif echo "$staged_files" | grep -q "README" && echo "$diff_content" | grep -q "^+.*test.*comment"; then
                 subject="add test comments to demonstrate enhanced functionality"
             elif echo "$staged_files" | grep -q "SMART-COMMIT.*README"; then
@@ -620,14 +670,24 @@ generate_smart_commit_message() {
                 subject="add new thesis chapter and section structure"
             elif echo "$staged_files" | grep -q "docs/thesis/" && echo "$diff_content" | grep -q "^+.*\\\\cite\|^+.*\\\\ref"; then
                 subject="enhance thesis with additional citations and references"
+            elif echo "$staged_files" | grep -q "chapters.*README" && [ -n "$specific_context" ]; then
+                subject="add $specific_context"
             elif echo "$staged_files" | grep -q "\.md$" && [ "$(echo "$staged_files" | wc -l | tr -d ' ')" -gt 1 ]; then
                 local doc_count=$(echo "$staged_files" | grep -c "\.md$")
-                subject="update $doc_count documentation files with latest information"
+                if [ -n "$specific_context" ]; then
+                    subject="update $doc_count documentation files with $specific_context"
+                else
+                    subject="update $doc_count documentation files with latest information"
+                fi
             elif echo "$diff_content" | grep -q "^+.*API.*documentation\|^+.*function.*description"; then
                 subject="enhance API documentation with detailed function descriptions"
             else
                 local primary_doc=$(echo "$staged_files" | head -1 | sed 's|.*/||' | sed 's/\.[^.]*$//')
-                subject="improve $primary_doc documentation"
+                if [ -n "$specific_context" ]; then
+                    subject="improve $primary_doc with $specific_context"
+                else
+                    subject="improve $primary_doc documentation"
+                fi
             fi
             ;;
         "chore")
