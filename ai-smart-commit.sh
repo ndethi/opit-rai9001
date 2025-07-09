@@ -197,8 +197,23 @@ detect_ai_context() {
     local model="$DEFAULT_MODEL"
     local prompt=""
     
-    # Check VS Code environment for active AI assistants
-    if command -v code &> /dev/null && pgrep -f "code" > /dev/null; then
+    # Priority 1: Respect explicitly configured defaults (highest priority)
+    # If user has configured Claude as default, honor that choice unless
+    # there's strong evidence of a different AI being actively used
+    assistant="$DEFAULT_ASSISTANT"
+    model="$DEFAULT_MODEL"
+    context="Using configured default: $DEFAULT_ASSISTANT ($DEFAULT_MODEL)"
+    
+    # Priority 2: Strong indicators only override if defaults aren't explicitly Claude
+    # This prevents incidental shell history from overriding intentional configuration
+    local override_allowed=true
+    if [ "$DEFAULT_ASSISTANT" = "Claude" ] && [ "$DEFAULT_MODEL" = "Claude Sonnet" ]; then
+        override_allowed=false
+        context="Configured for Claude Sonnet - honoring user preference"
+    fi
+    
+    # Priority 3: Check VS Code environment for active AI assistants (only if override allowed)
+    if [ "$override_allowed" = "true" ] && command -v code &> /dev/null && pgrep -f "code" > /dev/null; then
         if [ -d "$HOME/.vscode/extensions" ]; then
             # Check for Claude/Anthropic extensions
             if ls "$HOME/.vscode/extensions" | grep -q "anthropic\|claude"; then
@@ -215,52 +230,47 @@ detect_ai_context() {
                 assistant="ChatGPT"
                 model="GPT-4"
                 context="VS Code with OpenAI extension active"
-            else
-                # Default to Claude if VS Code is running (common current setup)
-                assistant="Claude"
-                model="Claude Sonnet"
-                context="VS Code environment detected"
             fi
         fi
     fi
     
-    # Check recent shell command history for AI tool usage
-    if command -v history &> /dev/null; then
-        local recent_history=$(history 20 2>/dev/null || true)
-        if echo "$recent_history" | grep -q "claude\|anthropic"; then
+    # Priority 4: Check for very recent AI tool usage (last 5 commands only, and only if override allowed)
+    if [ "$override_allowed" = "true" ] && command -v history &> /dev/null; then
+        local recent_history=$(history 5 2>/dev/null || true)
+        # Only look at very recent commands and be more specific
+        if echo "$recent_history" | grep -q "claude.*cli\|anthropic.*api\|claude.*chat"; then
             assistant="Claude"
             model="Claude Sonnet"
-            context="Recent Claude CLI usage detected"
-        elif echo "$recent_history" | grep -q "copilot\|github.*copilot"; then
+            context="Very recent Claude CLI usage detected"
+        elif echo "$recent_history" | grep -q "github.*copilot.*chat\|copilot.*chat"; then
             assistant="GitHub Copilot"
             model="GPT-4"
-            context="Recent Copilot CLI usage detected"
-        elif echo "$recent_history" | grep -q "chatgpt\|openai"; then
-            assistant="ChatGPT"
+            context="Very recent Copilot chat usage detected"
+        fi
+        # Note: Ignore incidental mentions like "gh copilot explain" as they don't indicate active AI session
+    fi
+    
+    # Priority 5: Check environment variables for AI tool indicators (only if override allowed)
+    if [ "$override_allowed" = "true" ]; then
+        if [ -n "$ANTHROPIC_API_KEY" ] || [ -n "$CLAUDE_API_KEY" ]; then
+            assistant="Claude"
+            model="Claude Sonnet"
+            context="Anthropic API credentials detected"
+        elif [ -n "$OPENAI_API_KEY" ]; then
+            assistant="OpenAI"
             model="GPT-4"
-            context="Recent OpenAI tool usage"
+            context="OpenAI API credentials detected"
         fi
     fi
     
-    # Check environment variables for AI tool indicators
-    if [ -n "$ANTHROPIC_API_KEY" ] || [ -n "$CLAUDE_API_KEY" ]; then
-        assistant="Claude"
-        model="Claude Sonnet"
-        context="Anthropic API credentials detected"
-    elif [ -n "$OPENAI_API_KEY" ]; then
-        assistant="OpenAI"
-        model="GPT-4"
-        context="OpenAI API credentials detected"
-    fi
-    
-    # Check for Claude-specific patterns in recent activity
+    # Priority 6: Reinforce Claude detection with configuration files (always check for Claude)
     if [ -f "$HOME/.anthropic" ] || [ -f "$HOME/.claude" ]; then
         assistant="Claude"
         model="Claude Sonnet"
         context="Claude configuration files detected"
     fi
     
-    # Enhanced VS Code workspace detection for Claude
+    # Priority 7: Enhanced VS Code workspace detection for Claude (always check for Claude)
     if [ -f ".vscode/settings.json" ] && grep -q "anthropic\|claude" ".vscode/settings.json" 2>/dev/null; then
         assistant="Claude"
         model="Claude Sonnet"
