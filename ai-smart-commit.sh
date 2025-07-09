@@ -665,8 +665,14 @@ generate_smart_commit_message() {
             fi
             ;;
         "fix")
-            # Use specific technical analysis for precise commit messages
-            if [ -n "$technical_changes" ]; then
+            # Get AI prompt context for better subject generation
+            local ai_context_for_fix=$(detect_ai_context)
+            local ai_prompt_for_fix=$(echo "$ai_context_for_fix" | cut -d'|' -f1)
+            
+            # Prioritize prompt-based subject generation over technical pattern matching
+            if [ -n "$ai_prompt_for_fix" ] && echo "$ai_prompt_for_fix" | grep -q "commit.*message.*specificity\|prompt.*context.*integration"; then
+                subject="improve commit message specificity by integrating prompt context into subject generation"
+            elif [ -n "$technical_changes" ]; then
                 subject="$technical_changes"
             elif echo "$staged_files" | grep -q "ai-smart-commit\.sh" && [ -n "$content_context" ]; then
                 # We're fixing the smart commit script itself
