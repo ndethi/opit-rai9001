@@ -21,8 +21,8 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 
 # Default AI settings
-DEFAULT_ASSISTANT="GitHub Copilot"
-DEFAULT_MODEL="GPT-4"
+DEFAULT_ASSISTANT="Claude"
+DEFAULT_MODEL="Claude Sonnet"
 
 # Load configuration
 load_config() {
@@ -32,8 +32,8 @@ load_config() {
         # Create default config
         cat > "$CONFIG_FILE" << EOF
 # thiLLMo Smart Commit Configuration
-DEFAULT_ASSISTANT="GitHub Copilot"
-DEFAULT_MODEL="GPT-4"
+DEFAULT_ASSISTANT="Claude"
+DEFAULT_MODEL="Claude Sonnet"
 AUTO_PUSH=false
 QUICK_MODE=false
 VERBOSE=true
@@ -197,30 +197,74 @@ detect_ai_context() {
     local model="$DEFAULT_MODEL"
     local prompt=""
     
-    # Check VS Code environment for Copilot
+    # Check VS Code environment for active AI assistants
     if command -v code &> /dev/null && pgrep -f "code" > /dev/null; then
-        if [ -d "$HOME/.vscode/extensions" ] && ls "$HOME/.vscode/extensions" | grep -q copilot; then
-            assistant="GitHub Copilot"
-            model="GPT-4"
-            context="VS Code with Copilot active"
+        if [ -d "$HOME/.vscode/extensions" ]; then
+            # Check for Claude/Anthropic extensions
+            if ls "$HOME/.vscode/extensions" | grep -q "anthropic\|claude"; then
+                assistant="Claude"
+                model="Claude Sonnet"
+                context="VS Code with Claude Sonnet active"
+            # Check for GitHub Copilot
+            elif ls "$HOME/.vscode/extensions" | grep -q "copilot"; then
+                assistant="GitHub Copilot"
+                model="GPT-4"
+                context="VS Code with Copilot active"
+            # Check for other AI extensions
+            elif ls "$HOME/.vscode/extensions" | grep -q "openai\|chatgpt"; then
+                assistant="ChatGPT"
+                model="GPT-4"
+                context="VS Code with OpenAI extension active"
+            else
+                # Default to Claude if VS Code is running (common current setup)
+                assistant="Claude"
+                model="Claude Sonnet"
+                context="VS Code environment detected"
+            fi
         fi
     fi
     
     # Check recent shell command history for AI tool usage
     if command -v history &> /dev/null; then
         local recent_history=$(history 20 2>/dev/null || true)
-        if echo "$recent_history" | grep -q "copilot\|github.*copilot"; then
+        if echo "$recent_history" | grep -q "claude\|anthropic"; then
+            assistant="Claude"
+            model="Claude Sonnet"
+            context="Recent Claude CLI usage detected"
+        elif echo "$recent_history" | grep -q "copilot\|github.*copilot"; then
             assistant="GitHub Copilot"
+            model="GPT-4"
             context="Recent Copilot CLI usage detected"
         elif echo "$recent_history" | grep -q "chatgpt\|openai"; then
             assistant="ChatGPT"
             model="GPT-4"
             context="Recent OpenAI tool usage"
-        elif echo "$recent_history" | grep -q "claude\|anthropic"; then
-            assistant="Claude"
-            model="Claude-3"
-            context="Recent Anthropic tool usage"
         fi
+    fi
+    
+    # Check environment variables for AI tool indicators
+    if [ -n "$ANTHROPIC_API_KEY" ] || [ -n "$CLAUDE_API_KEY" ]; then
+        assistant="Claude"
+        model="Claude Sonnet"
+        context="Anthropic API credentials detected"
+    elif [ -n "$OPENAI_API_KEY" ]; then
+        assistant="OpenAI"
+        model="GPT-4"
+        context="OpenAI API credentials detected"
+    fi
+    
+    # Check for Claude-specific patterns in recent activity
+    if [ -f "$HOME/.anthropic" ] || [ -f "$HOME/.claude" ]; then
+        assistant="Claude"
+        model="Claude Sonnet"
+        context="Claude configuration files detected"
+    fi
+    
+    # Enhanced VS Code workspace detection for Claude
+    if [ -f ".vscode/settings.json" ] && grep -q "anthropic\|claude" ".vscode/settings.json" 2>/dev/null; then
+        assistant="Claude"
+        model="Claude Sonnet"
+        context="VS Code workspace configured for Claude"
     fi
     
     # Infer prompt from commit changes and context with enhanced specificity
