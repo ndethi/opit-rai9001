@@ -239,6 +239,9 @@ detect_ai_context() {
         elif echo "$diff_content" | grep -q "contextualize.*commit.*message\|pull.*prompt"; then
             prompt="Further contextualize commit messages by incorporating the actual prompt that resulted in the change"
             context="Adding prompt-driven context to commit message generation for better traceability"
+        elif echo "$diff_content" | grep -q "prompt.*context.*integration\|ai_prompt_for_subject"; then
+            prompt="Improve commit message specificity by using prompt context to generate more accurate subject lines that reflect actual changes made"
+            context="Enhancing subject line generation to extract specific details from user prompts rather than generic descriptions"
         fi
     elif echo "$staged_files" | grep -q "README.*chapters\|docs.*thesis"; then
         local diff_content=$(git diff --cached --no-color)
@@ -696,12 +699,30 @@ generate_smart_commit_message() {
             fi
             ;;
         "docs")
-            # Use extracted content context for highly specific commit messages
+            # Use extracted content context and prompt context for highly specific commit messages
             local specific_context="$content_context"
             
-            if echo "$staged_files" | grep -q "ai-smart-commit\.sh"; then
-                # We're documenting or changing the smart commit script itself
-                subject="enhance smart commit system with $specific_context"
+            # Get AI prompt context for better subject generation
+            local ai_context_for_subject=$(detect_ai_context)
+            local ai_prompt_for_subject=$(echo "$ai_context_for_subject" | cut -d'|' -f1)
+            
+            # Generate subject based on prompt intent when available
+            if [ -n "$ai_prompt_for_subject" ]; then
+                if echo "$ai_prompt_for_subject" | grep -q "semantic.*naming.*convention"; then
+                    subject="add semantic naming convention for thesis documentation"
+                elif echo "$ai_prompt_for_subject" | grep -q "template.*reference.*location"; then
+                    subject="add LaTeX template reference and location guidelines"
+                elif echo "$ai_prompt_for_subject" | grep -q "remove.*test.*text\|clean.*up.*test"; then
+                    subject="remove test comments from documentation"
+                elif echo "$ai_prompt_for_subject" | grep -q "contextualize.*commit.*message\|prompt.*context"; then
+                    subject="add prompt-driven commit message contextualization"
+                elif echo "$staged_files" | grep -q "ai-smart-commit\.sh"; then
+                    # We're documenting or changing the smart commit script itself
+                    subject="enhance smart commit system with $specific_context"
+                else
+                    # Use specific context if prompt doesn't provide clear direction
+                    [ -n "$specific_context" ] && subject="add $specific_context" || subject="update documentation with latest information"
+                fi
             elif echo "$staged_files" | grep -q "chapters.*README" && [ -n "$specific_context" ]; then
                 subject="add $specific_context"
             elif echo "$staged_files" | grep -q "README" && echo "$diff_content" | grep -q "^+.*#.*Usage\|^+.*#.*Examples"; then
