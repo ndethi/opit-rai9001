@@ -19,3 +19,4 @@ This directory contains the individual chapter files for the thesis.
 - Include proper figure and table references
 - Maintain academic writing standards
 - Keep chapters focused and well-structured
+- Reference the OPIT template in `../template/` for institutional formatting requirements
