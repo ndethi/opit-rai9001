@@ -64,7 +64,3 @@ OPIT_RAI9001_NDETHI_Literature_Review_2025-02-01.md
 - Keep chapters focused and well-structured
 - Reference the OPIT template in `../template/` for institutional formatting requirements
 - Follow the naming convention above for all new documents
-
-## Testing Enhanced Commit Messages
-
-This line is added to test if the enhanced smart commit system generates more accurate commit messages based on file context rather than generic patterns.
