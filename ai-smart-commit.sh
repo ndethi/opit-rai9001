@@ -539,7 +539,7 @@ extract_content_context() {
     echo "$content_context"
 }
 
-# Generate highly specific commit messages based on deep diff analysis
+# Generate intent-aware semantic commit messages
 generate_smart_commit_message() {
     local commit_type="$1"
     local staged_files=$(git diff --cached --name-only)
@@ -548,10 +548,12 @@ generate_smart_commit_message() {
     local subject=""
     local body=""
     
-    # Extract specific content context for more precise messaging
-    local content_context=$(extract_content_context)
+    # Get AI context for intent understanding (highest priority)
+    local ai_context=$(detect_ai_context)
+    local ai_prompt=$(echo "$ai_context" | cut -d'|' -f1)
+    local context=$(echo "$ai_context" | cut -d'|' -f2)
     
-    # Enhanced scope detection with priority-based file matching
+    # Enhanced scope detection with semantic priority
     if echo "$staged_files" | grep -q "ai-smart-commit\.sh"; then
         scope="smart-commit"
     elif echo "$staged_files" | grep -q "smart-commit\.sh"; then
@@ -566,6 +568,8 @@ generate_smart_commit_message() {
         scope="evaluation"
     elif echo "$staged_files" | grep -q "docs/thesis/"; then
         scope="thesis"
+    elif echo "$staged_files" | grep -q "docs/proposal/"; then
+        scope="proposal"
     elif echo "$staged_files" | grep -q "\.github/workflows/"; then
         scope="ci"
     elif echo "$staged_files" | grep -q "\.github/"; then
@@ -584,300 +588,21 @@ generate_smart_commit_message() {
         scope="presentations"
     fi
     
-    # Deep diff analysis - extract specific code changes
-    local added_functions=$(echo "$diff_content" | grep -c "^+.*function \|^+.*def \|^+.*const [a-zA-Z_][a-zA-Z0-9_]* = \|^+.*let [a-zA-Z_][a-zA-Z0-9_]* = ")
-    local added_methods=$(echo "$diff_content" | grep -c "^+.*[a-zA-Z_][a-zA-Z0-9_]*([^)]*) {")
-    local added_classes=$(echo "$diff_content" | grep -c "^+.*class [A-Z][a-zA-Z0-9_]*")
-    local added_parameters=$(echo "$diff_content" | grep -c "^+.*--[a-z-][a-z-]*\|^+.*-[a-z]")
-    local fixed_errors=$(echo "$diff_content" | grep -c "^-.*error\|^-.*bug\|^+.*fix\|^+.*resolve")
-    local added_tests=$(echo "$diff_content" | grep -c "^+.*test\|^+.*describe\|^+.*it(")
-    local config_changes=$(echo "$diff_content" | grep -c "^+.*config\|^+.*\.json\|^+.*\.yaml\|^+.*\.yml")
-    
-    # Extract specific function/variable names from additions
-    local new_function_names=$(echo "$diff_content" | grep "^+.*function \|^+.*def \|^+.*const [a-zA-Z_]" | sed -E 's/^[+].*[[:space:]](function[[:space:]]+|def[[:space:]]+|const[[:space:]]+|let[[:space:]]+)([a-zA-Z_][a-zA-Z0-9_]*).*/\2/' | head -3 | tr '\n' ', ' | sed 's/, $//')
-    
-    # Extract new command-line options
-    local new_options=$(echo "$diff_content" | grep "^+.*--[a-z-]" | sed -E 's/.*(-[-a-z]+).*/\1/' | head -3 | tr '\n' ', ' | sed 's/, $//')
-    
-    # Extract error/bug fix contexts (clean and filter meaningful content)
-    local fix_contexts=$(echo "$diff_content" | grep -E "^[-+].*error|^[-+].*bug|^[-+].*fix" | head -2 | sed 's/^[+-][[:space:]]*//' | grep -v "^[[:space:]]*$" | tr '\n' '; ' | sed 's/; $//')
-    
-    # Extract specific technical changes from diff for precise commit messages
-    local technical_changes=""
-    
-    # Get AI context for better intent understanding
-    local ai_context_for_analysis=$(detect_ai_context)
-    local ai_prompt=$(echo "$ai_context_for_analysis" | cut -d'|' -f1)
-    
-    # Detect regex pattern fixes
-    if echo "$diff_content" | grep -q "^-.*grep.*-q[^E]" && echo "$diff_content" | grep -q "^+.*grep.*-qE"; then
-        technical_changes="fix broken regex pattern by adding -E flag for extended regex support"
-    elif echo "$diff_content" | grep -q "^-.*grep.*-c[^E]" && echo "$diff_content" | grep -q "^+.*grep.*-cE"; then
-        technical_changes="fix regex counting by enabling extended regex with -E flag"
-    # Detect whitespace/parsing fixes in shell commands
-    elif echo "$diff_content" | grep -q "^-.*wc -l[^|]" && echo "$diff_content" | grep -q "^+.*wc -l | tr -d"; then
-        technical_changes="fix file count parsing by stripping whitespace from wc command output"
-    elif echo "$diff_content" | grep -q "^-.*\$(.*| wc" && echo "$diff_content" | grep -q "^+.*\$(.*| wc.*| tr"; then
-        technical_changes="resolve counting issues by cleaning whitespace from command output"
-    # Detect function parameter and logic changes
-    elif echo "$diff_content" | grep -q "^-.*function.*().*{" && echo "$diff_content" | grep -q "^+.*function.*().*{"; then
-        local func_name=$(echo "$diff_content" | grep "^[+-].*function" | head -1 | sed -E 's/.*function[[:space:]]+([a-zA-Z_][a-zA-Z0-9_]*).*/\1/')
-        technical_changes="refactor $func_name function signature and parameter handling"
-    # Detect integer comparison fixes
-    elif echo "$diff_content" | grep -q "^-.*\[\[.*-gt" && echo "$diff_content" | grep -q "^+.*\[\[.*-eq"; then
-        technical_changes="fix integer comparison logic from greater-than to equality check"
-    elif echo "$diff_content" | grep -q "^-.*\[\[.*-eq" && echo "$diff_content" | grep -q "^+.*\[\[.*-gt"; then
-        technical_changes="fix integer comparison logic from equality to greater-than check"
-    # Detect AI model detection and commit message improvements
-    elif echo "$diff_content" | grep -q "^-.*Claude.*Sonnet.*\"" && echo "$diff_content" | grep -q "^+.*Claude.*3\.5.*Sonnet"; then
-        technical_changes="upgrade Claude model detection from generic 'Claude Sonnet' to specific 'Claude 3.5 Sonnet' version"
-    elif echo "$diff_content" | grep -q "^-.*history.*20" && echo "$diff_content" | grep -q "^+.*history.*5"; then
-        technical_changes="fix AI detection by reducing shell history scope from 20 to 5 commands to prevent false overrides"
-    elif echo "$diff_content" | grep -q "^+.*override_allowed.*=.*false" && echo "$diff_content" | grep -q "^+.*honoring.*user.*preference"; then
-        technical_changes="implement protection against incorrect AI model detection by respecting explicit user configuration"
-    elif echo "$diff_content" | grep -q "^-.*technical_changes.*fix.*variable.*expansion" && echo "$diff_content" | grep -q "^+.*AI.*model.*detection"; then
-        technical_changes="replace cached commit message patterns with accurate AI model detection change analysis"
-    # Detect variable expansion and quoting fixes
-    elif echo "$diff_content" | grep -q "^-.*\$[a-zA-Z_]" && echo "$diff_content" | grep -q "^+.*\"\$[a-zA-Z_]"; then
-        technical_changes="fix variable expansion by adding proper shell quoting"
-    elif echo "$diff_content" | grep -q "^-.*\$(.*)" && echo "$diff_content" | grep -q "^+.*\"\$(.*)\"\|^+.*\`.*\`"; then
-        technical_changes="fix command substitution with proper quoting to handle spaces"
-    # Detect control flow improvements
-    elif echo "$diff_content" | grep -q "^-.*if.*then" && echo "$diff_content" | grep -q "^+.*case.*in"; then
-        technical_changes="refactor conditional logic from if-then to case statement for better readability"
-    elif echo "$diff_content" | grep -q "^-.*while.*do" && echo "$diff_content" | grep -q "^+.*for.*in"; then
-        technical_changes="optimize loop structure from while to for-in for better performance"
-    # Detect automation and staging improvements
-    elif echo "$diff_content" | grep -q "^-.*manual.*staging\|^-.*git add" && echo "$diff_content" | grep -q "^+.*auto.*add\|^+.*git add \."; then
-        technical_changes="remove manual staging requirement and implement automatic git add functionality"
-    elif echo "$diff_content" | grep -q "^-.*read -p" && echo "$diff_content" | grep -q "^+.*fast_mode.*true"; then
-        technical_changes="replace interactive prompts with automated fast mode processing"
-    # Detect flag and parameter parsing improvements
-    elif echo "$diff_content" | grep -q "^+.*--fast" && echo "$diff_content" | grep -q "^+.*fast_mode.*=.*true"; then
-        technical_changes="implement --fast flag parameter parsing with mode activation logic"
-    elif echo "$diff_content" | grep -q "^+.*-[a-z].*)" && echo "$diff_content" | grep -q "^+.*shift"; then
-        technical_changes="add command-line argument parsing with proper parameter shifting"
-    # Detect error handling improvements
-    elif echo "$diff_content" | grep -q "^-.*exit 1" && echo "$diff_content" | grep -q "^+.*return 1"; then
-        technical_changes="fix error handling by using return instead of exit in functions"
-    elif echo "$diff_content" | grep -q "^+.*\|\|.*true" && echo "$diff_content" | grep -q "^-.*grep"; then
-        technical_changes="add error handling with || true to prevent grep failures"
-    # Detect string manipulation and cleanup fixes
-    elif echo "$diff_content" | grep -q "^-.*sed 's/.*//'" && echo "$diff_content" | grep -q "^+.*sed.*'s/.*$//'"; then
-        technical_changes="fix sed pattern for proper string cleanup and trailing character removal"
-    elif echo "$diff_content" | grep -q "^+.*sed.*'s/[{}();|]//g'" || echo "$diff_content" | grep -q "^+.*sed.*'s/IFS=.*//g'"; then
-        technical_changes="add string sanitization to remove code fragments from extracted contexts"
-    # Detect diff analysis improvements  
-    elif echo "$diff_content" | grep -q "^+.*generate.*smart.*commit" && echo "$diff_content" | grep -q "^+.*diff.*analysis"; then
-        technical_changes="enhance commit message generation with deep diff content analysis"
-    elif echo "$diff_content" | grep -q "^+.*extract.*specific.*changes" && echo "$diff_content" | grep -q "^+.*technical.*details"; then
-        technical_changes="implement technical change extraction for precise commit message generation"
-    # Use AI prompt context for additional specificity
-    elif [ -n "$ai_prompt" ]; then
-        if echo "$ai_prompt" | grep -q "fix.*issue.*files.*detected" && echo "$diff_content" | grep -q "^+.*tr -d"; then
-            technical_changes="fix file detection issues by cleaning whitespace from command output"
-        elif echo "$ai_prompt" | grep -q "make.*work.*fast.*mode" && echo "$diff_content" | grep -q "^+.*--fast"; then
-            technical_changes="implement fast mode parameter parsing and automated workflow"
-        elif echo "$ai_prompt" | grep -q "specific.*commit.*message" && echo "$diff_content" | grep -q "^+.*technical.*analysis"; then
-            technical_changes="implement precise commit message generation using technical diff analysis"
-        elif echo "$ai_prompt" | grep -q "automatic.*staging" && echo "$diff_content" | grep -q "^+.*git add"; then
-            technical_changes="implement automatic staging to eliminate manual git add requirement"
-        fi
+    # Intent-first analysis: Extract semantic intent from AI prompt
+    local intent=""
+    if [ -n "$ai_prompt" ]; then
+        intent=$(extract_semantic_intent_from_prompt "$ai_prompt" "$context")
     fi
     
-    # Generate highly specific subject lines based on actual changes
-    case "$commit_type" in
-        "feat")
-            # Use specific technical analysis for precise feature descriptions
-            if [ -n "$technical_changes" ] && echo "$technical_changes" | grep -q "implement\|add"; then
-                subject="$technical_changes"
-            elif [ -n "$new_function_names" ] && [ "$added_functions" -gt 0 ]; then
-                if [ "$added_functions" -eq 1 ]; then
-                    subject="add $new_function_names function"
-                else
-                    subject="add $added_functions new functions ($new_function_names)"
-                fi
-            elif [ -n "$new_options" ] && [ "$added_parameters" -gt 0 ]; then
-                if [ "$added_parameters" -eq 1 ]; then
-                    subject="add $new_options command-line option"
-                else
-                    subject="add $added_parameters new command-line options ($new_options)"
-                fi
-            elif echo "$diff_content" | grep -q "^+.*--fast.*mode\|^+.*fast_mode.*=.*true"; then
-                subject="implement fast mode for automated commits without prompts"
-            elif echo "$diff_content" | grep -q "^+.*auto.*push\|^+.*git push"; then
-                subject="add automatic push capability for streamlined workflow"
-            elif echo "$diff_content" | grep -q "^+.*auto.*stage\|^+.*git add"; then
-                subject="implement automatic staging to eliminate manual git add"
-            elif echo "$diff_content" | grep -q "^+.*commit.*message.*generation\|^+.*generate.*smart"; then
-                subject="enhance commit message generation with deep diff analysis"
-            elif echo "$diff_content" | grep -q "^+.*AI.*context\|^+.*prompt.*logging"; then
-                subject="add AI context and prompt detection for better tracking"
-            elif echo "$diff_content" | grep -q "^+.*alias\|^+.*\.bashrc\|^+.*\.zshrc"; then
-                subject="add shell aliases for improved development workflow"
-            elif echo "$diff_content" | grep -q "^+.*workflow\|^+.*\.github.*actions"; then
-                subject="implement GitHub Actions CI/CD automation"
-            elif echo "$diff_content" | grep -q "^+.*ontology.*processing\|^+.*cultural.*analysis"; then
-                subject="expand cultural ontology processing capabilities"
-            elif echo "$diff_content" | grep -q "^+.*rag.*system\|^+.*retrieval"; then
-                subject="enhance OG-RAG system with advanced retrieval features"
-            elif echo "$diff_content" | grep -q "^+.*proverb.*translation\|^+.*kikuyu"; then
-                subject="add Kikuyu proverb processing and translation support"
-            elif [ "$added_classes" -gt 0 ]; then
-                subject="add $added_classes new class$([ "$added_classes" -gt 1 ] && echo "es") for enhanced functionality"
-            elif [ "$added_tests" -gt 0 ]; then
-                subject="add $added_tests test cases for improved coverage"
-            else
-                # Fallback to file-based detection
-                local primary_file=$(echo "$staged_files" | head -1 | sed 's|.*/||' | sed 's/\.[^.]*$//')
-                subject="implement new functionality in $primary_file"
-            fi
-            ;;
-        "fix")
-            # Get AI prompt context for better subject generation
-            local ai_context_for_fix=$(detect_ai_context)
-            local ai_prompt_for_fix=$(echo "$ai_context_for_fix" | cut -d'|' -f1)
-            
-            # Prioritize prompt-based subject generation over technical pattern matching
-            if [ -n "$ai_prompt_for_fix" ] && echo "$ai_prompt_for_fix" | grep -q "commit.*message.*specificity\|prompt.*context.*integration"; then
-                subject="improve commit message specificity by integrating prompt context into subject generation"
-            elif [ -n "$technical_changes" ]; then
-                subject="$technical_changes"
-            elif echo "$staged_files" | grep -q "ai-smart-commit\.sh" && [ -n "$content_context" ]; then
-                # We're fixing the smart commit script itself
-                subject="fix $content_context"
-            elif [ -n "$fix_contexts" ] && [ "$fixed_errors" -gt 0 ]; then
-                # Clean and filter fix contexts to avoid code fragments
-                local clean_contexts=$(echo "$fix_contexts" | sed 's/[{}();|]//g' | sed 's/IFS=.*//g' | sed 's/read -r.*//g')
-                if echo "$clean_contexts" | grep -q "bash.*syntax\|integer.*comparison\|syntax.*error"; then
-                    subject="resolve bash syntax and scripting issues"
-                elif echo "$clean_contexts" | grep -q "error.*handling\|exception\|validation"; then
-                    subject="improve error handling and exception management"
-                elif echo "$clean_contexts" | grep -q "prompt.*handling\|interactive\|input"; then
-                    subject="fix interactive prompt handling and user input validation"
-                elif echo "$clean_contexts" | grep -q "git.*operation\|repository\|commit"; then
-                    subject="resolve git repository operation failures"
-                elif echo "$diff_content" | grep -q "^+.*generate.*smart.*commit\|^+.*diff.*analysis"; then
-                    subject="enhance commit message generation logic and diff analysis"
-                else
-                    subject="resolve critical functionality issues"
-                fi
-            elif echo "$diff_content" | grep -q "^-.*manual\|^+.*automatic"; then
-                subject="replace manual processes with automated alternatives"
-            elif echo "$diff_content" | grep -q "^-.*deprecated\|^+.*updated"; then
-                subject="update deprecated code to use modern alternatives"
-            elif echo "$diff_content" | grep -q "^-.*hardcoded\|^+.*configurable"; then
-                subject="replace hardcoded values with configurable options"
-            else
-                local primary_file=$(echo "$staged_files" | head -1 | sed 's|.*/||' | sed 's/\.[^.]*$//')
-                subject="resolve issues in $primary_file"
-            fi
-            ;;
-        "docs")
-            # Use extracted content context and prompt context for highly specific commit messages
-            local specific_context="$content_context"
-            
-            # Get AI prompt context for better subject generation
-            local ai_context_for_subject=$(detect_ai_context)
-            local ai_prompt_for_subject=$(echo "$ai_context_for_subject" | cut -d'|' -f1)
-            
-            # Generate subject based on prompt intent when available
-            if [ -n "$ai_prompt_for_subject" ]; then
-                if echo "$ai_prompt_for_subject" | grep -q "semantic.*naming.*convention"; then
-                    subject="add semantic naming convention for thesis documentation"
-                elif echo "$ai_prompt_for_subject" | grep -q "template.*reference.*location"; then
-                    subject="add LaTeX template reference and location guidelines"
-                elif echo "$ai_prompt_for_subject" | grep -q "remove.*test.*text\|clean.*up.*test"; then
-                    subject="remove test comments from documentation"
-                elif echo "$ai_prompt_for_subject" | grep -q "contextualize.*commit.*message\|prompt.*context"; then
-                    subject="add prompt-driven commit message contextualization"
-                elif echo "$staged_files" | grep -q "ai-smart-commit\.sh"; then
-                    # We're documenting or changing the smart commit script itself
-                    subject="enhance smart commit system with $specific_context"
-                else
-                    # Use specific context if prompt doesn't provide clear direction
-                    [ -n "$specific_context" ] && subject="add $specific_context" || subject="update documentation with latest information"
-                fi
-            elif echo "$staged_files" | grep -q "chapters.*README" && [ -n "$specific_context" ]; then
-                subject="add $specific_context"
-            elif echo "$staged_files" | grep -q "README" && echo "$diff_content" | grep -q "^+.*#.*Usage\|^+.*#.*Examples"; then
-                if [ -n "$specific_context" ]; then
-                    subject="add $specific_context"
-                else
-                    subject="add comprehensive usage examples and configuration guide"
-                fi
-            elif echo "$staged_files" | grep -q "README" && echo "$diff_content" | grep -q "^+.*test.*comment"; then
-                subject="add test comments to demonstrate enhanced functionality"
-            elif echo "$staged_files" | grep -q "SMART-COMMIT.*README"; then
-                subject="create comprehensive smart commit system documentation"
-            elif echo "$staged_files" | grep -q "docs/thesis/" && echo "$diff_content" | grep -q "^+.*\\\\chapter\|^+.*\\\\section"; then
-                subject="add new thesis chapter and section structure"
-            elif echo "$staged_files" | grep -q "docs/thesis/" && echo "$diff_content" | grep -q "^+.*\\\\cite\|^+.*\\\\ref"; then
-                subject="enhance thesis with additional citations and references"
-            elif echo "$staged_files" | grep -q "\.md$" && [ "$(echo "$staged_files" | wc -l | tr -d ' ')" -gt 1 ]; then
-                local doc_count=$(echo "$staged_files" | grep -c "\.md$")
-                if [ -n "$specific_context" ]; then
-                    subject="update $doc_count documentation files with $specific_context"
-                else
-                    subject="update $doc_count documentation files with latest information"
-                fi
-            elif echo "$diff_content" | grep -q "^+.*API.*documentation\|^+.*function.*description"; then
-                subject="enhance API documentation with detailed function descriptions"
-            else
-                local primary_doc=$(echo "$staged_files" | head -1 | sed 's|.*/||' | sed 's/\.[^.]*$//')
-                if [ -n "$specific_context" ]; then
-                    subject="improve $primary_doc with $specific_context"
-                else
-                    subject="improve $primary_doc documentation"
-                fi
-            fi
-            ;;
-        "chore")
-            if echo "$staged_files" | grep -q "package\.json\|requirements\|Pipfile" && [ "$config_changes" -gt 0 ]; then
-                subject="update project dependencies and package requirements"
-            elif echo "$staged_files" | grep -q "\.github.*ISSUE_TEMPLATE"; then
-                subject="add comprehensive GitHub issue templates for project management"
-            elif echo "$staged_files" | grep -q "\.github.*workflows" && echo "$diff_content" | grep -q "^+.*on:.*push\|^+.*jobs:"; then
-                subject="configure GitHub Actions workflow automation"
-            elif echo "$diff_content" | grep -q "^+.*alias.*smart.*commit\|^+.*export.*PATH"; then
-                subject="configure shell aliases and environment for development workflow"
-            elif echo "$staged_files" | grep -q "setup.*\.sh" && echo "$diff_content" | grep -q "^+.*install\|^+.*configure"; then
-                subject="enhance automated project setup and configuration scripts"
-            elif [ "$(echo "$staged_files" | wc -l | tr -d ' ')" -gt 5 ]; then
-                subject="reorganize project structure and update multiple configuration files"
-            else
-                subject="maintain project configuration and development environment"
-            fi
-            ;;
-        "refactor")
-            if [ -n "$technical_changes" ] && echo "$technical_changes" | grep -q "refactor\|optimize"; then
-                subject="$technical_changes"
-            else
-                local primary_file=$(echo "$staged_files" | head -1 | sed 's|.*/||' | sed 's/\.[^.]*$//')
-                subject="refactor $primary_file for improved maintainability and performance"
-            fi
-            ;;
-        "test")
-            if [ "$added_tests" -gt 0 ]; then
-                subject="add $added_tests test cases for improved code coverage"
-            else
-                subject="enhance test coverage and validation framework"
-            fi
-            ;;
-        *)
-            # Smart fallback with actual file analysis
-            local primary_file=$(echo "$staged_files" | head -1 | sed 's|.*/||' | sed 's/\.[^.]*$//')
-            if [ "$added_functions" -gt 0 ] || [ "$added_methods" -gt 0 ]; then
-                subject="enhance $primary_file with $((added_functions + added_methods)) new functions"
-            elif [ "$config_changes" -gt 0 ]; then
-                subject="update $primary_file configuration and settings"
-            else
-                subject="modify $primary_file with system improvements"
-            fi
-            ;;
-    esac
+    # Secondary: Analyze file patterns for semantic meaning
+    if [ -z "$intent" ]; then
+        intent=$(analyze_semantic_file_patterns "$staged_files" "$diff_content")
+    fi
     
-    # Generate comprehensive body with detailed metrics
+    # Generate semantic subject based on intent
+    subject=$(generate_semantic_subject "$intent" "$commit_type" "$scope")
+    
+    # Generate comprehensive body with semantic context
     local file_count=$(echo "$staged_files" | wc -l | tr -d ' ')
     local new_files=$(git diff --cached --diff-filter=A --name-only | wc -l | tr -d ' ')
     local modified_files=$(git diff --cached --diff-filter=M --name-only | wc -l | tr -d ' ')
@@ -885,10 +610,13 @@ generate_smart_commit_message() {
     local lines_added=$(echo "$diff_content" | grep -c "^+")
     local lines_removed=$(echo "$diff_content" | grep -c "^-")
     
-    # Build detailed body with metrics
-    body="Modified $file_count file$([ "$file_count" -gt 1 ] && echo "s")"
+    # Build semantic body
+    body="Accomplished: $subject"
     
-    # Add file change breakdown
+    # Add change context
+    body+=". Modified $file_count file$([ "$file_count" -gt 1 ] && echo "s")"
+    
+    # Add semantic change breakdown
     local changes=""
     [ "$new_files" -gt 0 ] && changes+="$new_files new"
     [ "$modified_files" -gt 0 ] && [ -n "$changes" ] && changes+=", $modified_files modified"
@@ -898,24 +626,14 @@ generate_smart_commit_message() {
     
     [ -n "$changes" ] && body+=" ($changes)"
     
-    # Add line change metrics
+    # Add line metrics
     if [ "$lines_added" -gt 0 ] || [ "$lines_removed" -gt 0 ]; then
-        body+=". Changes: +$lines_added/-$lines_removed lines"
+        body+=". Impact: +$lines_added/-$lines_removed lines"
     fi
     
-    # Add specific improvement details
-    local improvements=""
-    [ "$added_functions" -gt 0 ] && improvements+="$added_functions functions"
-    [ "$added_methods" -gt 0 ] && [ -n "$improvements" ] && improvements+=", $added_methods methods"
-    [ "$added_methods" -gt 0 ] && [ -z "$improvements" ] && improvements+="$added_methods methods"
-    [ "$added_classes" -gt 0 ] && [ -n "$improvements" ] && improvements+=", $added_classes classes"
-    [ "$added_classes" -gt 0 ] && [ -z "$improvements" ] && improvements+="$added_classes classes"
-    [ "$added_parameters" -gt 0 ] && [ -n "$improvements" ] && improvements+=", $added_parameters CLI options"
-    [ "$added_parameters" -gt 0 ] && [ -z "$improvements" ] && improvements+="$added_parameters CLI options"
-    [ "$added_tests" -gt 0 ] && [ -n "$improvements" ] && improvements+=", $added_tests tests"
-    [ "$added_tests" -gt 0 ] && [ -z "$improvements" ] && improvements+="$added_tests tests"
-    
-    [ -n "$improvements" ] && body+=". Added: $improvements"
+    # Add semantic improvements
+    local improvements=$(extract_semantic_improvements "$diff_content")
+    [ -n "$improvements" ] && body+=". Enhancements: $improvements"
     
     # Add file list for small changesets
     if [ "$file_count" -le 3 ]; then
@@ -923,28 +641,233 @@ generate_smart_commit_message() {
         body+=". Files: $file_list"
     fi
     
-    # Get AI context for prompt incorporation
-    local ai_context_for_body=$(detect_ai_context)
-    local ai_prompt_for_body=$(echo "$ai_context_for_body" | cut -d'|' -f1)
-    
-    # Add prompt context if available and meaningful
-    if [ -n "$ai_prompt_for_body" ] && [ ${#ai_prompt_for_body} -gt 20 ]; then
-        # Truncate very long prompts for readability
-        local prompt_summary="$ai_prompt_for_body"
+    # Add AI context for traceability
+    if [ -n "$ai_prompt" ] && [ ${#ai_prompt} -gt 20 ]; then
+        local prompt_summary="$ai_prompt"
         if [ ${#prompt_summary} -gt 100 ]; then
             prompt_summary="$(echo "$prompt_summary" | cut -c1-97)..."
         fi
-        body+=". Prompt: $prompt_summary"
+        body+=". Intent: $prompt_summary"
     fi
     
-    body+=". Generated by thiLLMo AI-enhanced commit system"
+    body+=". Generated by thiLLMo semantic commit system"
     
-    # Format final commit message with scope
+    # Format final commit message
     local commit_msg="$commit_type"
     [ -n "$scope" ] && commit_msg+="($scope)"
     commit_msg+=": $subject"
     
     echo "$commit_msg|$body"
+}
+
+# Extract semantic intent from AI prompt context
+extract_semantic_intent_from_prompt() {
+    local prompt="$1"
+    local context="$2"
+    local intent=""
+    
+    # Convert markdown to LaTeX patterns
+    if echo "$prompt" | grep -q "convert.*markdown.*latex\|markdown.*to.*latex"; then
+        intent="document format conversion"
+    # Documentation enhancement patterns
+    elif echo "$prompt" | grep -q "add.*documentation.*usage\|enhance.*documentation"; then
+        intent="documentation enhancement"
+    # Workflow automation patterns
+    elif echo "$prompt" | grep -q "implement.*fast.*mode\|streamlined.*commit"; then
+        intent="workflow automation"
+    # Fix specificity patterns
+    elif echo "$prompt" | grep -q "commit.*message.*specificity\|specific.*commit"; then
+        intent="commit message enhancement"
+    # File detection fixes
+    elif echo "$prompt" | grep -q "fix.*file.*detection\|resolve.*counting"; then
+        intent="file analysis accuracy"
+    # Configuration and setup patterns
+    elif echo "$prompt" | grep -q "setup.*alias\|configure.*environment"; then
+        intent="development environment setup"
+    # Research proposal patterns
+    elif echo "$prompt" | grep -q "research.*proposal\|thesis.*document"; then
+        intent="academic document preparation"
+    # Issue template patterns
+    elif echo "$prompt" | grep -q "issue.*template\|github.*template"; then
+        intent="project management template"
+    # AI context patterns
+    elif echo "$prompt" | grep -q "ai.*context\|prompt.*context"; then
+        intent="AI context integration"
+    # Automation patterns
+    elif echo "$prompt" | grep -q "automatic.*staging\|eliminate.*manual"; then
+        intent="process automation"
+    # Documentation cleanup patterns
+    elif echo "$prompt" | grep -q "remove.*test.*text\|clean.*up.*test"; then
+        intent="documentation cleanup"
+    fi
+    
+    echo "$intent"
+}
+
+# Analyze semantic file patterns
+analyze_semantic_file_patterns() {
+    local files="$1"
+    local diff="$2"
+    local pattern=""
+    
+    # Documentation transformation patterns
+    if [[ "$files" =~ .*\.md.* ]] && [[ "$diff" =~ .*\.tex.* ]]; then
+        pattern="documentation format conversion"
+    elif [[ "$files" =~ README.*\.md ]] && echo "$diff" | grep -q "^+.*## Usage"; then
+        pattern="user documentation enhancement"
+    # LaTeX document patterns
+    elif [[ "$files" =~ .*\.tex$ ]] && echo "$diff" | grep -q "^+.*\\\\documentclass"; then
+        pattern="academic document creation"
+    # Project structure patterns
+    elif [[ "$files" =~ \.github/workflows.* ]] && echo "$diff" | grep -q "^+.*latex.*build"; then
+        pattern="document building automation"
+    elif [[ "$files" =~ \.github/ISSUE_TEMPLATE.* ]]; then
+        pattern="project management template"
+    # Ontology patterns
+    elif [[ "$files" =~ src/ontology.* ]] && echo "$diff" | grep -q "^+.*class.*Cultural"; then
+        pattern="cultural knowledge expansion"
+    # Configuration patterns
+    elif [[ "$files" =~ setup.*\.sh ]] && echo "$diff" | grep -q "^+.*alias"; then
+        pattern="development workflow setup"
+    # Smart commit patterns
+    elif [[ "$files" =~ ai-smart-commit\.sh ]] && echo "$diff" | grep -q "^+.*fast.*mode"; then
+        pattern="commit workflow automation"
+    elif [[ "$files" =~ ai-smart-commit\.sh ]] && echo "$diff" | grep -q "^+.*semantic.*commit"; then
+        pattern="commit message intelligence"
+    fi
+    
+    echo "$pattern"
+}
+
+# Generate semantic subject based on intent
+generate_semantic_subject() {
+    local intent="$1"
+    local commit_type="$2"
+    local scope="$3"
+    local subject=""
+    
+    case "$intent" in
+        "document format conversion")
+            subject="convert research proposal from markdown to LaTeX format"
+            ;;
+        "documentation enhancement")
+            subject="enhance user documentation with comprehensive usage guide"
+            ;;
+        "workflow automation")
+            subject="enable streamlined commit workflow with fast mode"
+            ;;
+        "commit message enhancement")
+            subject="improve commit message specificity with semantic analysis"
+            ;;
+        "file analysis accuracy")
+            subject="resolve file counting accuracy in change detection"
+            ;;
+        "development environment setup")
+            subject="configure development environment with smart commit aliases"
+            ;;
+        "academic document preparation")
+            subject="prepare thesis documentation with professional LaTeX formatting"
+            ;;
+        "project management template")
+            subject="create comprehensive GitHub issue templates for project workflow"
+            ;;
+        "AI context integration")
+            subject="integrate AI prompt context into commit message generation"
+            ;;
+        "process automation")
+            subject="automate git staging process to eliminate manual steps"
+            ;;
+        "documentation cleanup")
+            subject="clean up documentation by removing test content"
+            ;;
+        "cultural knowledge expansion")
+            subject="expand cultural ontology framework for proverb analysis"
+            ;;
+        "commit workflow automation")
+            subject="enhance commit workflow with automated staging and fast mode"
+            ;;
+        "commit message intelligence")
+            subject="implement semantic commit message generation with AI context"
+            ;;
+        *)
+            # Fallback to conventional patterns
+            case "$commit_type" in
+                "feat")
+                    subject="implement new functionality for enhanced workflow"
+                    ;;
+                "fix")
+                    subject="resolve functionality issues and improve reliability"
+                    ;;
+                "docs")
+                    subject="update documentation with latest information"
+                    ;;
+                "chore")
+                    subject="maintain project configuration and environment"
+                    ;;
+                *)
+                    subject="improve system capabilities and user experience"
+                    ;;
+            esac
+            ;;
+    esac
+    
+    echo "$subject"
+}
+
+# Extract semantic improvements from diff
+extract_semantic_improvements() {
+    local diff="$1"
+    local improvements=""
+    
+    # Function/method additions
+    if echo "$diff" | grep -q "^+.*function \|^+.*def \|^+.*class \|^+.*interface"; then
+        local new_funcs=$(echo "$diff" | grep -c "^+.*function \|^+.*def ")
+        [ "$new_funcs" -gt 0 ] && improvements+="$new_funcs new functions"
+    fi
+    
+    # Feature flags and modes
+    if echo "$diff" | grep -q "^+.*--fast\|^+.*fast.*mode"; then
+        [ -n "$improvements" ] && improvements+=", "
+        improvements+="fast mode capability"
+    fi
+    
+    # Automation improvements
+    if echo "$diff" | grep -q "^+.*automatic\|^+.*auto.*"; then
+        [ -n "$improvements" ] && improvements+=", "
+        improvements+="process automation"
+    fi
+    
+    # Error handling
+    if echo "$diff" | grep -q "^+.*error.*handling\|^+.*validation"; then
+        [ -n "$improvements" ] && improvements+=", "
+        improvements+="error handling"
+    fi
+    
+    # Configuration enhancements
+    if echo "$diff" | grep -q "^+.*config\|^+.*setup\|^+.*alias"; then
+        [ -n "$improvements" ] && improvements+=", "
+        improvements+="configuration management"
+    fi
+    
+    # Documentation additions
+    if echo "$diff" | grep -q "^+.*#.*Usage\|^+.*#.*Examples\|^+.*README"; then
+        [ -n "$improvements" ] && improvements+=", "
+        improvements+="documentation coverage"
+    fi
+    
+    # Template additions
+    if echo "$diff" | grep -q "^+.*template\|^+.*\.github"; then
+        [ -n "$improvements" ] && improvements+=", "
+        improvements+="project templates"
+    fi
+    
+    # AI context enhancements
+    if echo "$diff" | grep -q "^+.*AI.*context\|^+.*prompt.*context"; then
+        [ -n "$improvements" ] && improvements+=", "
+        improvements+="AI context tracking"
+    fi
+    
+    echo "$improvements"
 }
 
 # Fast commit without interactive prompts
