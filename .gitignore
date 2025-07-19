@@ -1,0 +1,31 @@
+# Gitignore for LaTeX project in OPIT-RAI9001
+
+# TeX intermediate files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# PDF output
+*.pdf
+
+# Backup files
+*~
+*.bak
+
+# Generated scripts/logs
+*.run.xml
+
+# Python cache (for scripts in workspace)
+__pycache__/
+*.py[cod]
+
+# Shell scripts logs
+*.log

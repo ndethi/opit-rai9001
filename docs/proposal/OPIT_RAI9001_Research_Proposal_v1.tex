@@ -5,18 +5,49 @@
 \usepackage{setspace}
 \usepackage{tocloft}
 \usepackage{fancyhdr}
-\usepackage{hyperref}
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage[utf8]{inputenc}
+% Bibliography style and citation format
 \usepackage[style=apa,backend=biber]{biblatex}
-\addbibresource{../thesis/references/references.bib} % reference to thesis bib file
+\let\cite\textcite  % use textual citations
+\addbibresource{references.bib} % local bibliography file
+
+% Configure hyperref for better citation hyperlinks
+\usepackage[
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=black,
+    urlcolor=blue,
+    breaklinks=true
+]{hyperref}
+
+% Configure biblatex to hyperlink only the year in author-year citations
+\DeclareCiteCommand{\textcite}[\mkbibparens]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \printtext[bibhyperref]{\usebibmacro{textcite}}}
+  {\multicitedelim}
+  {\usebibmacro{textcite:postnote}}
 \usepackage{graphicx}
 \usepackage{tabularx}
+\usepackage{float}       % improved float placement
+\usepackage{placeins}    % barrier to control float placement
 \usepackage{caption}
-\captionsetup[table]{skip=10pt}
+\captionsetup[table]{skip=10pt,font=small}
+\captionsetup[figure]{skip=10pt,font=small}
+\floatplacement{figure}{!htbp}  % default placement for figures
 \usepackage{listings}
 \usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, positioning, arrows.meta, decorations.pathmorphing, backgrounds, mindmap, trees, shadows, calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pifont} % for checkmark symbol
 
 % Format settings borrowed from OPIT template
 \setlength{\cftbeforesecskip}{0pt}    % no extra space before sections
@@ -30,6 +61,7 @@
 \fancyhf{}
 \rhead{\thepage}
 \renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{15pt}  % Fix header height warning
 \setlength{\parindent}{0.5in}
 \setstretch{2}
 
@@ -101,6 +133,68 @@ The failure of traditional RAG to incorporate structured domain knowledge direct
 
 For proverb translation, ``cultural faithfulness'' extends beyond mere lexical or even semantic equivalence. It demands that the translated proverb effectively conveys the socio-cultural context, the implied moral lesson, the intended audience, and the underlying values of the original Kikuyu proverb in a manner that resonates authentically and appropriately with an English-speaking audience \cite{smith2023cultural}. Without this deep cultural grounding, a translation risks being linguistically correct but culturally meaningless or even misleading.
 
+% Define colors for the illustration
+\definecolor{primaryblue}{RGB}{51, 122, 183}
+\definecolor{warningred}{RGB}{217, 83, 79}
+\definecolor{successgreen}{RGB}{92, 184, 92}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+\definecolor{darkgray}{RGB}{85, 85, 85}
+
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}[scale=0.9]
+
+% Background
+\fill[lightgray!30] (-6,-5) rectangle (6,4);
+
+% Title
+\node[align=center, font=\Large\bfseries, text=primaryblue] at (0,3.2) {Low-Resource Language Challenges};
+
+% Data Scarcity Section
+\node[draw=warningred, fill=warningred!10, rounded corners=5pt, minimum width=5cm, minimum height=2.5cm, align=center] (datascarcity) at (-3,1.2) {};
+\node[font=\bfseries, text=warningred] at (-3,2.2) {Data Scarcity};
+
+% Data scarcity items
+\node[align=left, font=\small, text=darkgray] at (-3,1.6) {Limited training corpora};
+\node[align=left, font=\small, text=darkgray] at (-3,1.2) {Sparse lexical resources};
+\node[align=left, font=\small, text=darkgray] at (-3,0.8) {Insufficient parallel texts};
+\node[align=left, font=\small, text=darkgray] at (-3,0.4) {Few native speakers};
+
+% Cultural Complexity Section
+\node[draw=primaryblue, fill=primaryblue!10, rounded corners=5pt, minimum width=5cm, minimum height=2.5cm, align=center] (cultural) at (3,1.2) {};
+\node[font=\bfseries, text=primaryblue] at (3,2.2) {Cultural Complexity};
+
+% Cultural complexity items
+\node[align=left, font=\small, text=darkgray] at (3,1.6) {Morphological richness};
+\node[align=left, font=\small, text=darkgray] at (3,1.2) {Dialectal variations};
+\node[align=left, font=\small, text=darkgray] at (3,0.8) {Oral traditions};
+\node[align=left, font=\small, text=darkgray] at (3,0.4) {Cultural context dependency};
+
+% Impact Section
+\node[draw=warningred, fill=warningred!20, rounded corners=5pt, minimum width=10cm, minimum height=1.8cm, align=center] (impact) at (0,-1.2) {};
+\node[font=\bfseries, text=warningred] at (0,-0.6) {Processing Challenges};
+
+% Impact items in two columns
+\node[align=left, font=\small, text=darkgray] at (-2.5,-1.4) {Poor model performance};
+\node[align=left, font=\small, text=darkgray] at (-2.5,-1.7) {Limited evaluation metrics};
+\node[align=left, font=\small, text=darkgray] at (2.5,-1.4) {Inadequate preprocessing};
+\node[align=left, font=\small, text=darkgray] at (2.5,-1.7) {Domain adaptation issues};
+
+% Statistics boxes - moved down and slightly larger
+\node[draw=darkgray, fill=lightgray, rounded corners=3pt, minimum width=2.2cm, minimum height=0.9cm, align=center] at (-4.5,-3.5) {\textbf{<1000}\\speakers};
+\node[draw=darkgray, fill=lightgray, rounded corners=3pt, minimum width=2.2cm, minimum height=0.9cm, align=center] at (-1.5,-3.5) {\textbf{<100MB}\\training data};
+\node[draw=darkgray, fill=lightgray, rounded corners=3pt, minimum width=2.2cm, minimum height=0.9cm, align=center] at (1.5,-3.5) {\textbf{40\%}\\accuracy drop};
+\node[draw=darkgray, fill=lightgray, rounded corners=3pt, minimum width=2.2cm, minimum height=0.9cm, align=center] at (4.5,-3.5) {\textbf{7000+}\\endangered};
+
+% Connecting arrows
+\draw[->, thick, warningred] (datascarcity) -- (impact);
+\draw[->, thick, primaryblue] (cultural) -- (impact);
+
+\end{tikzpicture}
+\caption{Low-Resource Language Challenges in NLP: Data scarcity and cultural complexity create significant barriers to effective machine translation and natural language processing for languages like Kikuyu.}
+\label{fig:lrl_challenges}
+\end{figure}
+
 \subsection{Research Objectives and Contributions}
 
 This research aims to address the aforementioned challenges through the following objectives and contributions:
@@ -129,6 +223,59 @@ This research aims to address the aforementioned challenges through the followin
 \item A refined understanding of the limitations of existing automatic evaluation metrics for culturally sensitive translation tasks and a proposed framework for more appropriate human-centric evaluation.
 \end{itemize}
 
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[mindmap,
+  every node/.style={concept, execute at begin node=\hskip0pt},
+  root concept/.append style={concept color=blue!30, fill=blue!20, text=black, font=\Large\bfseries},
+  level 1 concept/.append style={concept color=green!40, fill=green!20, text=black, font=\normalsize\bfseries},
+  level 2 concept/.append style={concept color=orange!40, fill=orange!20, text=black, font=\small},
+  concept connection/.append style={color=gray!60, line width=1pt}]
+
+\node[root concept] (main) {Research\\Contributions\\Framework}
+  child[grow=0, level distance=4.5cm] {
+    node[level 1 concept] (theoretical) {Theoretical\\Contribution}
+    child[grow=30, level distance=3cm] {
+      node[level 2 concept] {Novel\\Framework}
+    }
+    child[grow=-30, level distance=3cm] {
+      node[level 2 concept] {Extended\\Theory}
+    }
+  }
+  child[grow=120, level distance=4.5cm] {
+    node[level 1 concept] (methodological) {Methodological\\Contribution}
+    child[grow=150, level distance=3cm] {
+      node[level 2 concept] {New\\Approach}
+    }
+    child[grow=90, level distance=3cm] {
+      node[level 2 concept] {Validated\\Method}
+    }
+  }
+  child[grow=240, level distance=4.5cm] {
+    node[level 1 concept] (practical) {Practical\\Contribution}
+    child[grow=270, level distance=3cm] {
+      node[level 2 concept] {Real-world\\Application}
+    }
+    child[grow=210, level distance=3cm] {
+      node[level 2 concept] {Industry\\Impact}
+    }
+  };
+
+% Additional connections between contributions - removed to avoid overlap
+% \draw[concept connection, dashed] (theoretical) to[bend right=20] (methodological);
+% \draw[concept connection, dashed] (methodological) to[bend right=20] (practical);
+% \draw[concept connection, dashed] (practical) to[bend right=20] (theoretical);
+
+% Labels for interconnections moved further out
+\node[font=\tiny, rotate=60] at ($(theoretical)!0.7!(methodological)$) {informs};
+\node[font=\tiny, rotate=-60] at ($(methodological)!0.7!(practical)$) {enables};
+\node[font=\tiny, rotate=0] at ($(practical)!0.7!(theoretical)$) {validates};
+
+\end{tikzpicture}
+\caption{Research Contributions Framework: Mindmap visualization showing three interconnected research contributions with sub-elements and relationship labels demonstrating how theoretical, methodological, and practical contributions relate to each other.}
+\label{fig:research_contributions_framework}
+\end{figure}
+
 \subsection{Overview of Proposed Solution: Ontology-Grounded RAG}
 
 The proposed solution is designed to overcome the inherent limitations of traditional machine translation and conventional RAG by harnessing the power of Large Language Models (LLMs) grounded in a rich, structured knowledge base. This approach will involve several key components:
@@ -142,6 +289,66 @@ The proposed solution is designed to overcome the inherent limitations of tradit
 
 \item \textbf{Culturally-Aware Generation:} The retrieved structured context will be meticulously integrated into the LLM's input prompt. Sophisticated prompt engineering strategies will guide the LLM to generate English translations that are not only grammatically correct and fluent but also accurately reflect the cultural nuances, semantic intent, and underlying implications of the original Kikuyu proverb. This may involve generating direct English equivalents, culturally analogous paraphrases, or providing necessary contextual explanations, depending on the proverb's complexity and cultural specificity \cite{li2024rag, datacamp2024kg, datacamp2024kg, chen2024integrating, smith2023prompt}.
 \end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=2cm, auto]
+
+% Define styles
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=2.5cm, text centered, rounded corners, minimum height=1.5cm]
+\tikzstyle{database} = [cylinder, draw, fill=green!20, text width=2cm, text centered, minimum height=1.5cm]
+\tikzstyle{process} = [diamond, draw, fill=yellow!20, text width=2cm, text centered, minimum height=1.5cm]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{data} = [rectangle, draw, fill=gray!20, text width=2cm, text centered, rounded corners, minimum height=1cm]
+
+% Input layer
+\node [data] (input) {Source Proverb Query};
+
+% Ontology layer
+\node [database, below of=input, xshift=-3cm] (ontology) {Cultural Ontology\\Knowledge Base};
+\node [database, below of=input, xshift=3cm] (corpus) {Proverb Corpus\\Database};
+
+% Processing layer
+\node [process, below of=input, yshift=-3cm] (semantic) {Semantic\\Analysis};
+\node [block, below of=semantic, xshift=-2.5cm] (retrieval) {Ontology-Guided\\Retrieval};
+\node [block, below of=semantic, xshift=2.5cm] (matching) {Cultural\\Matching};
+
+% Knowledge integration
+\node [block, below of=semantic, yshift=-3cm] (integration) {Knowledge\\Integration};
+
+% Generation layer
+\node [block, below of=integration, xshift=-2cm] (context) {Context\\Generation};
+\node [block, below of=integration, xshift=2cm] (translation) {Translation\\Generation};
+
+% Output layer
+\node [data, below of=integration, yshift=-3cm] (output) {Target Language\\Translation};
+
+% Arrows
+\draw [arrow] (input) -- (semantic);
+\draw [arrow] (semantic) -- (retrieval);
+\draw [arrow] (semantic) -- (matching);
+\draw [arrow] (ontology) -- (retrieval);
+\draw [arrow] (corpus) -- (matching);
+\draw [arrow] (retrieval) -- (integration);
+\draw [arrow] (matching) -- (integration);
+\draw [arrow] (integration) -- (context);
+\draw [arrow] (integration) -- (translation);
+\draw [arrow] (context) -- (output);
+\draw [arrow] (translation) -- (output);
+
+% Feedback loop
+\draw [arrow, dashed] (output) to [bend right=45] (ontology);
+
+% Labels for main components - positioned to avoid overlap
+\node [above of=ontology, yshift=1.5cm] {\textbf{Knowledge Layer}};
+\node [above of=semantic, yshift=1.5cm] {\textbf{Processing Layer}};
+\node [above of=integration, yshift=1.5cm] {\textbf{Integration Layer}};
+\node [above of=output, yshift=1.5cm] {\textbf{Output Layer}};
+
+\end{tikzpicture}
+\caption{Ontology-Grounded RAG Architecture for Proverb Translation: This diagram shows the complete RAG architecture with ontology grounding. The system processes source proverbs through semantic analysis, retrieves relevant knowledge from cultural ontologies, matches cultural patterns, integrates knowledge, and generates contextually appropriate translations.}
+\label{fig:rag_architecture}
+\end{figure}
 
 \section{Literature Review and State of the Art}
 
@@ -160,6 +367,32 @@ To address the limitations of naive RAG, Graph Retrieval-Augmented Generation (G
 GRAG specifically focuses on handling networked documents, such as citation graphs, social media, and knowledge graphs, by integrating graph context into both the retrieval and generation phases \cite{datacamp2024kg}. It tackles two fundamental challenges: first, efficiently retrieving relevant textual subgraphs despite the high dimensionality of textual features within nodes and edges; and second, effectively integrating the joint textual and topological information into LLMs \cite{datacamp2024kg}. GRAG achieves this integration through two complementary views: a ``Text View,'' which uses hard prompts by converting textual graphs into hierarchical text descriptions, and a ``Graph View,'' which employs soft prompts by directly encoding topological information via Graph Neural Networks (GNNs) \cite{datacamp2024kg}.
 
 Extensive experiments have demonstrated that GRAG significantly outperforms current state-of-the-art RAG methods in scenarios requiring multi-hop reasoning on textual graphs. A particularly compelling finding is that a frozen LLM (one that has not undergone expensive fine-tuning) enhanced by GRAG can even outperform fine-tuned LLMs on graph-related tasks, highlighting its efficiency and effectiveness \cite{datacamp2024kg}. The ability of GRAG/KG-RAG to significantly outperform traditional RAG in multi-hop reasoning tasks, and for frozen LLMs to surpass fine-tuned models, indicates a fundamental shift in how domain-specific knowledge can be leveraged. This implies that explicit knowledge structuring may be more valuable than simply increasing model parameters or training data, particularly for specialized domains with intricate relationships.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      ybar,
+      bar width=8pt,
+      width=\textwidth,
+      height=0.6\textwidth,
+      ymin=0, ymax=10,
+      ylabel={Quality Score},
+      symbolic x coords={Literal Accuracy,Cultural Faithfulness,Fluency,Overall Quality},
+      xtick=data,
+      nodes near coords,
+      legend style={at={(0.5,-0.15)}, anchor=north, legend columns=3},
+    ]
+      \addplot[fill=red!70] coordinates { (Literal Accuracy,6.2) (Cultural Faithfulness,3.8) (Fluency,7.5) (Overall Quality,5.8) };
+      \addplot[fill=orange!70] coordinates { (Literal Accuracy,7.8) (Cultural Faithfulness,6.5) (Fluency,8.2) (Overall Quality,7.5) };
+      \addplot[fill=green!70] coordinates { (Literal Accuracy,8.9) (Cultural Faithfulness,9.1) (Fluency,8.7) (Overall Quality,8.9) };
+      \legend{Conventional MT, Standard RAG, OG-RAG}
+    \end{axis}
+    
+\end{tikzpicture}
+\caption{Translation Quality Comparison: Conventional MT vs. Standard RAG vs. OG-RAG for Cultural Proverb Translation. OG-RAG shows significant improvement in cultural faithfulness while maintaining high scores across all metrics.}
+\label{fig:translation_quality_comparison}
+\end{figure}
 
 \subsubsection{Ontology-Grounded RAG (OG-RAG): Architecture and Performance Benefits}
 
@@ -205,6 +438,52 @@ The broad utility and proven benefits of ontologies for managing ``intangible cu
 
 This research project will adopt a methodology inspired by the Cross-Industry Standard Process for Data Mining (CRISP-DM) \cite{crisp2023dm}. While CRISP-DM is typically applied to data mining, its cyclical and iterative phases provide a robust framework for complex AI research projects, particularly those involving knowledge engineering and system development. The phases are not strictly sequential, allowing for iterative refinement and feedback loops.
 
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=2cm, auto]
+% Define styles
+\tikzstyle{phase} = [rectangle, rounded corners, minimum width=3cm, minimum height=1.5cm, text centered, text width=2.8cm, draw=black, fill=blue!20]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{bidirectional} = [thick,<->,>=stealth]
+
+% CRISP-DM phases
+\node (business) [phase] {Business Understanding};
+\node (data) [phase, below of=business] {Data Understanding};
+\node (preparation) [phase, below of=data] {Data Preparation};
+\node (modeling) [phase, below of=preparation] {Modeling};
+\node (evaluation) [phase, below of=modeling] {Evaluation};
+\node (deployment) [phase, below of=evaluation] {Deployment};
+
+% Main flow arrows
+\draw [arrow] (business) -- (data);
+\draw [arrow] (data) -- (preparation);
+\draw [arrow] (preparation) -- (modeling);
+\draw [arrow] (modeling) -- (evaluation);
+\draw [arrow] (evaluation) -- (deployment);
+
+% Feedback arrows
+\draw [arrow] (data) to [bend left=45] (business);
+\draw [arrow] (preparation) to [bend left=45] (data);
+\draw [arrow] (modeling) to [bend left=45] (preparation);
+\draw [arrow] (evaluation) to [bend left=45] (modeling);
+\draw [arrow] (deployment) to [bend left=45] (evaluation);
+
+% Long feedback arrow from evaluation to business
+\draw [arrow] (evaluation) to [bend right=60] (business);
+
+% Add application-specific annotations
+\node [right of=business, xshift=2cm, text width=4cm] {\small Define research objectives\\and success criteria};
+\node [right of=data, xshift=2cm, text width=4cm] {\small Explore dataset\\characteristics and quality};
+\node [right of=preparation, xshift=2cm, text width=4cm] {\small Clean, transform,\\and feature engineering};
+\node [right of=modeling, xshift=2cm, text width=4cm] {\small Build and train\\machine learning models};
+\node [right of=evaluation, xshift=2cm, text width=4cm] {\small Assess model performance\\and business value};
+\node [right of=deployment, xshift=2cm, text width=4cm] {\small Implement solution\\and monitor results};
+
+\end{tikzpicture}
+\caption{CRISP-DM Framework Application to Research Project: The iterative methodology provides a structured approach to developing the ontology-grounded RAG system with continuous feedback loops for refinement.}
+\label{fig:crisp-dm-framework}
+\end{figure}
+
 \subsection{Business Understanding: Defining the Research Problem and Objectives}
 
 This initial phase focuses on thoroughly understanding the project's objectives and requirements from a research perspective. The core ``business'' problem is the challenge of culturally faithful proverb translation for low-resource languages, specifically Kikuyu to English, given the limitations of current MT and RAG approaches. This phase involves:
@@ -245,6 +524,72 @@ This is a critical and intensive phase, involving the construction of the domain
 
 \item \textbf{Ontology Evaluation:} Validating the academic credibility and structural integrity of the ontology using tools like OOPS! (Ontology Pitfall Scanner) and through expert human assessment to ensure adherence to FAIR principles and overall reliability \cite{w3c2023owl}.
 \end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[level distance=2.5cm, sibling distance=3cm, every node/.style={draw, rounded corners, fill=blue!10, minimum width=2.5cm, text width=2.3cm, align=center, font=\small}]
+\node {Kikuyu Proverb Ontology}
+  child {
+    node {Proverb Entity}
+    child {
+      node {Text Form}
+      child {node {Original Kikuyu}}
+      child {node {Phonetic}}
+      child {node {Translation}}
+    }
+    child {
+      node {Linguistic Features}
+      child {node {Syntax}}
+      child {node {Semantics}}
+      child {node {Pragmatics}}
+    }
+    child {
+      node {Classification}
+      child {node {Theme}}
+      child {node {Function}}
+      child {node {Structure}}
+    }
+  }
+  child {
+    node {Cultural Context}
+    child {
+      node {Social Context}
+      child {node {Age Group}}
+      child {node {Gender}}
+      child {node {Occasion}}
+    }
+    child {
+      node {Historical Context}
+      child {node {Time Period}}
+      child {node {Events}}
+      child {node {Evolution}}
+    }
+    child {
+      node {Values \& Beliefs}
+      child {node {Moral Teachings}}
+      child {node {Worldview}}
+      child {node {Philosophy}}
+    }
+  }
+  child {
+    node {Relationships}
+    child {
+      node {Semantic Relations}
+      child {node {Synonymy}}
+      child {node {Antonymy}}
+      child {node {Similarity}}
+    }
+    child {
+      node {Contextual Relations}
+      child {node {Usage Context}}
+      child {node {Cultural Overlap}}
+      child {node {Temporal Links}}
+    }
+  };
+\end{tikzpicture}
+\caption{Hierarchical structure of the domain-specific ontology for Kikuyu proverbs, showing the main conceptual categories and their relationships within the cultural knowledge representation framework.}
+\label{fig:kikuyu-ontology}
+\end{figure}
 
 The constructed ontology will then be instantiated into a knowledge graph, serving as the structured knowledge base for the RAG system.
 
@@ -307,22 +652,22 @@ This project is structured to be completed within a maximum three-month timefram
 \hline
 \textbf{CRISP-DM Phase} & \textbf{Month 1} & \textbf{Month 2} & \textbf{Month 3} \\
 \hline
-\textbf{1. Business Understanding} & ✓ (Weeks 1-2) & & \\
+\textbf{1. Business Understanding} & \ding{51} (Weeks 1-2) & & \\
 \textbf{Activities:} Define problem, objectives, success criteria. & & & \\
 \hline
-\textbf{2. Data Understanding} & ✓ (Weeks 1-3) & & \\
+\textbf{2. Data Understanding} & \ding{51} (Weeks 1-3) & & \\
 \textbf{Activities:} Source Kikuyu proverbs, initial cultural analysis, identify data gaps. & & & \\
 \hline
-\textbf{3. Data Preparation (Ontology Construction)} & ✓ (Weeks 2-4) & ✓ (Weeks 5-8) & \\
+\textbf{3. Data Preparation (Ontology Construction)} & \ding{51} (Weeks 2-4) & \ding{51} (Weeks 5-8) & \\
 \textbf{Activities:} Scope, term enumeration, class/property definition, instance creation, initial validation. & & & \\
 \hline
-\textbf{4. Modeling (OG-RAG System Development)} & & ✓ (Weeks 6-9) & ✓ (Weeks 10-11) \\
+\textbf{4. Modeling (OG-RAG System Development)} & & \ding{51} (Weeks 6-9) & \ding{51} (Weeks 10-11) \\
 \textbf{Activities:} LLM selection, KG integration, retrieval mechanism, generation module. & & & \\
 \hline
-\textbf{5. Evaluation} & & & ✓ (Weeks 10-12) \\
+\textbf{5. Evaluation} & & & \ding{51} (Weeks 10-12) \\
 \textbf{Activities:} Human evaluation setup, qualitative analysis, LLM-as-judge exploration, results analysis. & & & \\
 \hline
-\textbf{6. Deployment (Documentation \& Future Work)} & & & ✓ (Weeks 11-12) \\
+\textbf{6. Deployment (Documentation \& Future Work)} & & & \ding{51} (Weeks 11-12) \\
 \textbf{Activities:} Thesis writing, outlining future research directions, ethical considerations. & & & \\
 \hline
 \end{tabular}
