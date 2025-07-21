@@ -476,66 +476,66 @@ This is a critical and intensive phase, involving the construction of the domain
 
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[level distance=2.5cm, sibling distance=3cm, every node/.style={draw, rounded corners, fill=blue!10, minimum width=2.5cm, text width=2.3cm, align=center, font=\small}]
-\node {Kikuyu Proverb Ontology}
+\scalebox{0.8}{
+\begin{tikzpicture}[
+  level 1/.style={level distance=2.5cm, sibling distance=5.0cm},
+  level 2/.style={level distance=2.2cm, sibling distance=2.8cm},
+  every node/.style={
+    draw, 
+    rounded corners=2pt, 
+    fill=blue!8, 
+    minimum width=2.0cm, 
+    text width=1.8cm, 
+    align=center, 
+    font=\small,
+    inner sep=3pt
+  },
+  root/.style={
+    fill=blue!20,
+    minimum width=2.8cm,
+    text width=2.6cm,
+    font=\normalsize
+  },
+  level1/.style={
+    fill=blue!12,
+    minimum width=2.2cm,
+    text width=2.0cm,
+    font=\small
+  },
+  level2/.style={
+    fill=blue!6,
+    minimum width=1.8cm,
+    text width=1.6cm,
+    font=\scriptsize
+  }
+]
+
+\node[root] {Kikuyu Proverb\\Ontology}
   child {
-    node {Proverb Entity}
+    node[level1] {Proverb\\Entity}
+    child {node[level2] {Text Forms\\(Original,\\Translation)}}
     child {
-      node {Text Form}
-      child {node {Original Kikuyu}}
-      child {node {Phonetic}}
-      child {node {Translation}}
-    }
-    child {
-      node {Linguistic Features}
-      child {node {Syntax}}
-      child {node {Semantics}}
-      child {node {Pragmatics}}
-    }
-    child {
-      node {Classification}
-      child {node {Theme}}
-      child {node {Function}}
-      child {node {Structure}}
+      node[level2] {Social\\Usage\\Context}
+      child[grow=down] {node[level2] {Linguistic\\Features}}
+      child[grow=down] {node[level2] {Thematic\\Classification}}
     }
   }
   child {
-    node {Cultural Context}
-    child {
-      node {Social Context}
-      child {node {Age Group}}
-      child {node {Gender}}
-      child {node {Occasion}}
-    }
-    child {
-      node {Historical Context}
-      child {node {Time Period}}
-      child {node {Events}}
-      child {node {Evolution}}
-    }
-    child {
-      node {Values \& Beliefs}
-      child {node {Moral Teachings}}
-      child {node {Worldview}}
-      child {node {Philosophy}}
-    }
+    node[level1] {Cultural\\Context}
+    child {node[level2] {Historical\\Background}}
+    child {node[level2] {Cultural\\Values}}
   }
   child {
-    node {Relationships}
+    node[level1] {Semantic\\Relationships}
+    child {node[level2] {Contextual\\Dependencies}}
     child {
-      node {Semantic Relations}
-      child {node {Synonymy}}
-      child {node {Antonymy}}
-      child {node {Similarity}}
-    }
-    child {
-      node {Contextual Relations}
-      child {node {Usage Context}}
-      child {node {Cultural Overlap}}
-      child {node {Temporal Links}}
+      node[level2] {Inter-Proverb\\Relations}
+      child[grow=down] {node[level2, fill=blue!4] {Synonymy\\Relations}}
+      child[grow=down] {node[level2, fill=blue!4] {Temporal\\Context}}
     }
   };
 \end{tikzpicture}
+}
 \caption{Hierarchical structure of the domain-specific ontology for Kikuyu proverbs, showing the main conceptual categories and their relationships within the cultural knowledge representation framework.}
 \label{fig:kikuyu-ontology}
 \end{figure}
