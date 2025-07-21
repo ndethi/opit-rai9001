@@ -223,58 +223,7 @@ This research aims to address the aforementioned challenges through the followin
 \item A refined understanding of the limitations of existing automatic evaluation metrics for culturally sensitive translation tasks and a proposed framework for more appropriate human-centric evaluation.
 \end{itemize}
 
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[mindmap,
-  every node/.style={concept, execute at begin node=\hskip0pt},
-  root concept/.append style={concept color=blue!30, fill=blue!20, text=black, font=\Large\bfseries},
-  level 1 concept/.append style={concept color=green!40, fill=green!20, text=black, font=\normalsize\bfseries},
-  level 2 concept/.append style={concept color=orange!40, fill=orange!20, text=black, font=\small},
-  concept connection/.append style={color=gray!60, line width=1pt}]
 
-\node[root concept] (main) {Research\\Contributions\\Framework}
-  child[grow=0, level distance=4.5cm] {
-    node[level 1 concept] (theoretical) {Theoretical\\Contribution}
-    child[grow=30, level distance=3cm] {
-      node[level 2 concept] {Novel\\Framework}
-    }
-    child[grow=-30, level distance=3cm] {
-      node[level 2 concept] {Extended\\Theory}
-    }
-  }
-  child[grow=120, level distance=4.5cm] {
-    node[level 1 concept] (methodological) {Methodological\\Contribution}
-    child[grow=150, level distance=3cm] {
-      node[level 2 concept] {New\\Approach}
-    }
-    child[grow=90, level distance=3cm] {
-      node[level 2 concept] {Validated\\Method}
-    }
-  }
-  child[grow=240, level distance=4.5cm] {
-    node[level 1 concept] (practical) {Practical\\Contribution}
-    child[grow=270, level distance=3cm] {
-      node[level 2 concept] {Real-world\\Application}
-    }
-    child[grow=210, level distance=3cm] {
-      node[level 2 concept] {Industry\\Impact}
-    }
-  };
-
-% Additional connections between contributions - removed to avoid overlap
-% \draw[concept connection, dashed] (theoretical) to[bend right=20] (methodological);
-% \draw[concept connection, dashed] (methodological) to[bend right=20] (practical);
-% \draw[concept connection, dashed] (practical) to[bend right=20] (theoretical);
-
-% Labels for interconnections moved further out
-\node[font=\tiny, rotate=60] at ($(theoretical)!0.7!(methodological)$) {informs};
-\node[font=\tiny, rotate=-60] at ($(methodological)!0.7!(practical)$) {enables};
-\node[font=\tiny, rotate=0] at ($(practical)!0.7!(theoretical)$) {validates};
-
-\end{tikzpicture}
-\caption{Research Contributions Framework: Mindmap visualization showing three interconnected research contributions with sub-elements and relationship labels demonstrating how theoretical, methodological, and practical contributions relate to each other.}
-\label{fig:research_contributions_framework}
-\end{figure}
 
 \subsection{Overview of Proposed Solution: Ontology-Grounded RAG}
 
