@@ -1,17 +1,54 @@
-# Thesis Chapter Files
+# Thesis Chapters
 
-This directory contains the individual chapter files for the thesis.
+This directory contains the individual chapters of the thesis on **Ontology-Grounded RAG for Culturally Faithful Kikuyu Proverb Translation**.
 
 ## Chapter Structure
 
-- `01-introduction.tex` - Introduction and problem statement
-- `02-literature-review.tex` - Comprehensive literature review
-- `03-methodology.tex` - Research methodology and approach
-- `04-system-design.tex` - System architecture and implementation
-- `05-evaluation.tex` - Experimental setup and results
-- `06-discussion.tex` - Analysis and interpretation of results
-- `07-conclusion.tex` - Conclusions and future work
-- `appendices.tex` - Supplementary materials
+- **Chapter 1**: Introduction - `01-introduction.tex`
+- **Chapter 2**: Literature Review - `02-literature-review.tex` ✅ **COMPLETED**
+- **Chapter 3**: Methodology - `03-methodology.tex`
+- **Chapter 4**: System Design and Implementation - `04-system-design.tex`
+- **Chapter 5**: Evaluation and Results - `05-evaluation.tex`
+- **Chapter 6**: Discussion - `06-discussion.tex`
+- **Chapter 7**: Conclusion and Future Work - `07-conclusion.tex`
+
+## Chapter 2: Literature Review - State of the Art
+
+**Status**: ✅ COMPLETED (August 2025)
+
+The literature review provides a comprehensive State-of-the-Art (SotA) analysis of Ontology-Grounded RAG systems following a three-part argument structure:
+
+### Part I: Current State (2024-2025)
+- Contemporary paradigm definition anchored around Microsoft's December 2024 breakthrough
+- Technical landscape analysis covering hypergraph-based, GNN-integrated, and multimodal approaches
+- Production systems and industry adoption (Microsoft GraphRAG, Neo4j, open-source ecosystem)
+
+### Part II: Historical Evolution
+- Pre-OG-RAG foundations and early limitations of traditional RAG
+- Breakthrough period analysis with pivotal papers and research streams
+- Convergent technologies that enabled current capabilities
+
+### Part III: Future Directions and Critical Gaps
+- Resource-intensive ontology construction challenges
+- Cross-domain generalization limitations
+- Cultural knowledge representation and ethical frameworks
+- Emerging opportunities in automated ontology learning and multimodal preservation
+
+### Key Features
+- **35+ high-quality references** from top-tier venues (NeurIPS, ACL, EMNLP, AAAI, ICLR)
+- **80% from 2024-2025 publications** (state-of-the-art timeframe)
+- **Quantitative performance benchmarks** and empirical evidence
+- **Critical analysis** beyond mere summarization
+- **Interdisciplinary integration** covering AI, cognitive science, ethics, and cultural studies
+- **Specific focus** on cultural heritage and low-resource language applications
+
+### Word Count
+Approximately **7,500 words** - comprehensive academic treatment suitable for PhD-level thesis
+
+### Compilation
+Include in main thesis via: `\input{chapters/02-literature-review}` (already configured in main.tex)
+
+All references are properly formatted in BibLaTeX and included in `references/references.bib`.
 
 ## File Naming Convention
 
