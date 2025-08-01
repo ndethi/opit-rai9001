@@ -223,58 +223,7 @@ This research aims to address the aforementioned challenges through the followin
 \item A refined understanding of the limitations of existing automatic evaluation metrics for culturally sensitive translation tasks and a proposed framework for more appropriate human-centric evaluation.
 \end{itemize}
 
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[mindmap,
-  every node/.style={concept, execute at begin node=\hskip0pt},
-  root concept/.append style={concept color=blue!30, fill=blue!20, text=black, font=\Large\bfseries},
-  level 1 concept/.append style={concept color=green!40, fill=green!20, text=black, font=\normalsize\bfseries},
-  level 2 concept/.append style={concept color=orange!40, fill=orange!20, text=black, font=\small},
-  concept connection/.append style={color=gray!60, line width=1pt}]
 
-\node[root concept] (main) {Research\\Contributions\\Framework}
-  child[grow=0, level distance=4.5cm] {
-    node[level 1 concept] (theoretical) {Theoretical\\Contribution}
-    child[grow=30, level distance=3cm] {
-      node[level 2 concept] {Novel\\Framework}
-    }
-    child[grow=-30, level distance=3cm] {
-      node[level 2 concept] {Extended\\Theory}
-    }
-  }
-  child[grow=120, level distance=4.5cm] {
-    node[level 1 concept] (methodological) {Methodological\\Contribution}
-    child[grow=150, level distance=3cm] {
-      node[level 2 concept] {New\\Approach}
-    }
-    child[grow=90, level distance=3cm] {
-      node[level 2 concept] {Validated\\Method}
-    }
-  }
-  child[grow=240, level distance=4.5cm] {
-    node[level 1 concept] (practical) {Practical\\Contribution}
-    child[grow=270, level distance=3cm] {
-      node[level 2 concept] {Real-world\\Application}
-    }
-    child[grow=210, level distance=3cm] {
-      node[level 2 concept] {Industry\\Impact}
-    }
-  };
-
-% Additional connections between contributions - removed to avoid overlap
-% \draw[concept connection, dashed] (theoretical) to[bend right=20] (methodological);
-% \draw[concept connection, dashed] (methodological) to[bend right=20] (practical);
-% \draw[concept connection, dashed] (practical) to[bend right=20] (theoretical);
-
-% Labels for interconnections moved further out
-\node[font=\tiny, rotate=60] at ($(theoretical)!0.7!(methodological)$) {informs};
-\node[font=\tiny, rotate=-60] at ($(methodological)!0.7!(practical)$) {enables};
-\node[font=\tiny, rotate=0] at ($(practical)!0.7!(theoretical)$) {validates};
-
-\end{tikzpicture}
-\caption{Research Contributions Framework: Mindmap visualization showing three interconnected research contributions with sub-elements and relationship labels demonstrating how theoretical, methodological, and practical contributions relate to each other.}
-\label{fig:research_contributions_framework}
-\end{figure}
 
 \subsection{Overview of Proposed Solution: Ontology-Grounded RAG}
 
@@ -527,66 +476,66 @@ This is a critical and intensive phase, involving the construction of the domain
 
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[level distance=2.5cm, sibling distance=3cm, every node/.style={draw, rounded corners, fill=blue!10, minimum width=2.5cm, text width=2.3cm, align=center, font=\small}]
-\node {Kikuyu Proverb Ontology}
+\scalebox{0.8}{
+\begin{tikzpicture}[
+  level 1/.style={level distance=2.5cm, sibling distance=5.0cm},
+  level 2/.style={level distance=2.2cm, sibling distance=2.8cm},
+  every node/.style={
+    draw, 
+    rounded corners=2pt, 
+    fill=blue!8, 
+    minimum width=2.0cm, 
+    text width=1.8cm, 
+    align=center, 
+    font=\small,
+    inner sep=3pt
+  },
+  root/.style={
+    fill=blue!20,
+    minimum width=2.8cm,
+    text width=2.6cm,
+    font=\normalsize
+  },
+  level1/.style={
+    fill=blue!12,
+    minimum width=2.2cm,
+    text width=2.0cm,
+    font=\small
+  },
+  level2/.style={
+    fill=blue!6,
+    minimum width=1.8cm,
+    text width=1.6cm,
+    font=\scriptsize
+  }
+]
+
+\node[root] {Kikuyu Proverb\\Ontology}
   child {
-    node {Proverb Entity}
+    node[level1] {Proverb\\Entity}
+    child {node[level2] {Text Forms\\(Original,\\Translation)}}
     child {
-      node {Text Form}
-      child {node {Original Kikuyu}}
-      child {node {Phonetic}}
-      child {node {Translation}}
-    }
-    child {
-      node {Linguistic Features}
-      child {node {Syntax}}
-      child {node {Semantics}}
-      child {node {Pragmatics}}
-    }
-    child {
-      node {Classification}
-      child {node {Theme}}
-      child {node {Function}}
-      child {node {Structure}}
+      node[level2] {Social\\Usage\\Context}
+      child[grow=down] {node[level2] {Linguistic\\Features}}
+      child[grow=down] {node[level2] {Thematic\\Classification}}
     }
   }
   child {
-    node {Cultural Context}
-    child {
-      node {Social Context}
-      child {node {Age Group}}
-      child {node {Gender}}
-      child {node {Occasion}}
-    }
-    child {
-      node {Historical Context}
-      child {node {Time Period}}
-      child {node {Events}}
-      child {node {Evolution}}
-    }
-    child {
-      node {Values \& Beliefs}
-      child {node {Moral Teachings}}
-      child {node {Worldview}}
-      child {node {Philosophy}}
-    }
+    node[level1] {Cultural\\Context}
+    child {node[level2] {Historical\\Background}}
+    child {node[level2] {Cultural\\Values}}
   }
   child {
-    node {Relationships}
+    node[level1] {Semantic\\Relationships}
+    child {node[level2] {Contextual\\Dependencies}}
     child {
-      node {Semantic Relations}
-      child {node {Synonymy}}
-      child {node {Antonymy}}
-      child {node {Similarity}}
-    }
-    child {
-      node {Contextual Relations}
-      child {node {Usage Context}}
-      child {node {Cultural Overlap}}
-      child {node {Temporal Links}}
+      node[level2] {Inter-Proverb\\Relations}
+      child[grow=down] {node[level2, fill=blue!4] {Synonymy\\Relations}}
+      child[grow=down] {node[level2, fill=blue!4] {Temporal\\Context}}
     }
   };
 \end{tikzpicture}
+}
 \caption{Hierarchical structure of the domain-specific ontology for Kikuyu proverbs, showing the main conceptual categories and their relationships within the cultural knowledge representation framework.}
 \label{fig:kikuyu-ontology}
 \end{figure}
