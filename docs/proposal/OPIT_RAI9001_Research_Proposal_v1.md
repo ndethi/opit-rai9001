@@ -117,7 +117,7 @@ This initial phase focuses on thoroughly understanding the project's objectives 
 
 This phase involves an initial immersion into the available data and its characteristics. For this project, the "data" includes Kikuyu proverbs and their associated cultural contexts, with a specific focus on wealth and prosperity. Key activities will include:
 
-*   Sourcing existing collections of Kikuyu proverbs, such as "1000 Kikuyu Proverbs" \[15, 16\], and a recently identified collection of 100 proverbs on wealth and prosperity translated by a noted scholar, which will serve as a primary corpus.  
+*   Sourcing existing collections of Kikuyu proverbs, such as "1000 Kikuyu Proverbs" \[15, 16\], and a collection of 100 proverbs and wise sayings of the Gikuyu (Kenya) about money and wealth compiled by Margaret Wambere Ireri \[19\], which will serve as a primary corpus for wealth and prosperity-related proverbs.  
 *   Analyzing the semantic and cultural differences between Kikuyu and English proverbs, as highlighted by studies indicating a lack of similar semantic structures or cultural themes even for seemingly equivalent proverbs.\[1\] This analysis will inform the necessary depth and scope of the ontology.  
 *   Identifying the types of cultural information (e.g., rituals, social practices, beliefs, historical context) that are essential for understanding Kikuyu proverbs and their nuances.\[1\]  
 *   Recognizing the data scarcity inherent in low-resource languages and the potential for outdated or inaccurate existing resources.\[4\]
@@ -244,4 +244,6 @@ Future work will involve scaling the developed framework to a larger corpus of K
 \[17\] Jones, K. (Year). *Human Evaluation in Machine Translation: Best Practices*. Journal of Language Technology, Vol(Issue), pp-pp. 
 
 \[18\] Johnson, L. (Year). *Assessing Cultural Fidelity in Cross-Lingual Communication*. International Journal of Intercultural Relations, Vol(Issue), pp-pp.
+
+\[19\] Ireri, Margaret Wambere. (2024). *A Collection of 100 Proverbs and Wise Sayings of the Gikuyu (Kenya) about Money and Wealth*. African Proverbs Working Group, Nairobi, Kenya.
 
