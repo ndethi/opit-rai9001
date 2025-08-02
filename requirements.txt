@@ -1,57 +1,63 @@
-# Core ML/NLP
+# Core ML/NLP for OG-RAG Research
 torch>=2.0.0
 transformers>=4.30.0
-sentence-transformers>=2.2.0
-nltk>=3.8
+sentence-transformers>=2.2.0  # For semantic embeddings and similarity
+nltk>=3.8                     # Cultural text processing and METEOR evaluation
 
-# Knowledge Graph & Ontology
-neo4j>=5.0.0
-owlready2>=0.46
-rdflib>=7.0.0
-protege-client>=0.1.0
-networkx>=3.0
-torch-geometric>=2.3.0
-dgl>=1.1.0
+# Knowledge Graph & Ontology (Core Research Focus)
+neo4j>=5.0.0                  # Primary graph database for proverb knowledge
+owlready2>=0.46               # OWL ontology construction and manipulation
+rdflib>=7.0.0                 # RDF/OWL processing and validation
+networkx>=3.0                 # Graph analysis and visualization
+sparqlwrapper>=2.0.0          # SPARQL queries for ontology data
+# torch-geometric>=2.3.0      # Advanced GNN (if pursuing hypergraph architectures)
+# dgl>=1.1.0                  # Alternative GNN library (research exploration)
 
-# LLM APIs
-openai>=1.0.0
-google-generativeai>=0.3.0
-anthropic>=0.3.0
-langchain>=0.1.0
-langchain-community>=0.0.20
+# LLM APIs (Practical Implementation)
+openai>=1.0.0                 # GPT-4 for baseline comparisons
+google-generativeai>=0.3.0    # Gemini 2.0 - mentioned in proposal
+anthropic>=0.3.0              # Claude for alternative evaluation
+langchain>=0.1.0              # RAG pipeline framework
+langchain-community>=0.0.20   # Additional integrations
 
-# Data & Analysis
-pandas>=2.0.0
-numpy>=1.24.0
-scikit-learn>=1.3.0
-jupyter>=1.0.0
+# Data & Analysis (Essential for Research)
+pandas>=2.0.0                 # Proverb data processing and analysis
+numpy>=1.24.0                 # Numerical computations
+scikit-learn>=1.3.0           # Traditional ML for embeddings and clustering
+jupyter>=1.0.0                # Research notebooks and experimentation
 
-# Evaluation
-rouge-score>=0.1.2
-bert-score>=0.3.13
-sacrebleu>=2.3.0
-bleurt>=0.0.2
+# Evaluation (Cultural Fidelity Focus)
+rouge-score>=0.1.2            # Traditional MT evaluation
+bert-score>=0.3.13            # Semantic similarity evaluation
+sacrebleu>=2.3.0              # Standard MT evaluation
+bleu>=0.3                     # Basic BLEU implementation
+# nltk already included above   # Contains METEOR implementation
 
-# Vector Databases & Search
-faiss-cpu>=1.7.4
-chromadb>=0.4.0
-pinecone-client>=2.2.0
-weaviate-client>=3.15.0
+# Vector Databases (Supporting Traditional RAG Baselines)
+faiss-cpu>=1.7.4              # Efficient similarity search for baseline RAG
+# chromadb>=0.4.0             # Optional: vector DB for experiments
+# pinecone-client>=2.2.0      # Cloud vector DB (if needed)
+# weaviate-client>=3.15.0     # Alternative vector DB
 
-# Web Scraping & Data Collection
-beautifulsoup4>=4.12.0
-scrapy>=2.8.0
-requests>=2.31.0
+# Cultural Data Collection & Processing
+beautifulsoup4>=4.12.0        # Web scraping for additional proverb sources
+requests>=2.31.0              # HTTP requests for data collection
+# scrapy>=2.8.0               # Heavy web scraping (if needed for extensive data)
 
-# Visualization & Analysis
-matplotlib>=3.7.0
-seaborn>=0.12.0
-plotly>=5.14.0
-streamlit>=1.28.0
+# Visualization & Analysis (Research Communication)
+matplotlib>=3.7.0             # Basic plotting for results
+seaborn>=0.12.0               # Statistical visualizations
+plotly>=5.14.0                # Interactive visualizations
+# streamlit>=1.28.0           # Demo interface (post-research deployment)
 
 # Utilities & Development
-tqdm>=4.65.0
-python-dotenv>=1.0.0
-pyyaml>=6.0
-click>=8.1.0
-pytest>=7.4.0
+tqdm>=4.65.0                  # Progress bars for long-running processes
+python-dotenv>=1.0.0          # Environment configuration
+pyyaml>=6.0                   # Configuration files
+click>=8.1.0                  # CLI tools for research scripts
+pytest>=7.4.0                # Testing framework
+
+# Specialized Libraries for Cultural Heritage Research
+textstat>=0.7.3               # Text readability and complexity analysis
+polyglot>=16.7.4              # Multi-language processing
+langdetect>=1.0.9             # Language detection for mixed datasets
