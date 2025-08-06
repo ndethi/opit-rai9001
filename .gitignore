@@ -12,16 +12,17 @@
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+*.bcf
+*.run.xml
 
-# PDF output
+# PDF output (exclude globally but allow in thesis chapters)
 *.pdf
+!docs/thesis/chapters/*.pdf
+!docs/thesis/*.pdf
 
 # Backup files
 *~
 *.bak
-
-# Generated scripts/logs
-*.run.xml
 
 # Python cache (for scripts in workspace)
 __pycache__/
