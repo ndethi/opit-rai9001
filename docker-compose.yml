@@ -4,7 +4,7 @@ services:
   # Neo4j Graph Database - Core knowledge graph for OG-RAG
   neo4j:
     image: neo4j:5.15-community
-    container_name: og-rag-neo4j
+    container_name: kikuyu-og-rag-neo4j
     restart: unless-stopped
     ports:
       - "7474:7474"   # HTTP Web Interface
@@ -20,9 +20,13 @@ services:
       - NEO4J_dbms_query_cache_size=1000
       - NEO4J_dbms_logs_query_enabled=true
       - NEO4J_dbms_logs_query_threshold=1s
+      - NEO4J_dbms_default__database=kikuyu_kg
+      - NEO4J_dbms_allow__upgrade=true
     volumes:
       - ./src/neo4j/database:/data
+      - ./src/neo4j/logs:/logs
       - ./src/neo4j/imports:/var/lib/neo4j/import
+      - ./src/neo4j/plugins:/plugins
       - ./src/neo4j/config/neo4j.conf:/var/lib/neo4j/conf/neo4j.conf:ro
       - ./src/neo4j/backups:/backups
     networks:
