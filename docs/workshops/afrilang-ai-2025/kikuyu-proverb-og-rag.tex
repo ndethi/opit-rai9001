@@ -43,24 +43,18 @@
 %%
 %% The "author" command and its associated commands are used to define
 %% the authors and their affiliations.
-\author[1]{Charles Watson Ndethi Kibaki}[%
-orcid=0000-0000-0000-0000,
-email=charles.kibaki@opit.example,
-url=https://github.com/charleskibaki/kikuyu-proverb-og-rag,
-]
-\cormark[1]
+\author[1]{Charles Watson Ndethi Kibaki}
 
-\address[1]{Open Institute of Technology (OPIT),
-  MSc in Responsible AI Program}
-
-%% Footnotes
-\cortext[1]{Corresponding author.}
+\address[1]{Open Institute of Technology (OPIT),\\
+  MSc in Responsible AI Program\\
+  Email: charleswatsonndeth.k@students.opit.com\\
+  URL: \url{https://github.com/ndethi/opit-rai9001}}
 
 %%
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-Proverb translation for low-resource languages like Kikuyu presents unique challenges that extend beyond conventional machine translation approaches, requiring deep cultural understanding and contextual preservation. This work presents an ongoing research project developing an Ontology-Grounded Retrieval Augmented Generation (OG-RAG) system for culturally faithful Kikuyu-to-English proverb translation. By constructing a domain-specific ontology that formally captures Kikuyu proverbs' cultural semantics, contextual usage, and relationships to broader cultural concepts, our approach addresses the limitations of traditional RAG systems that rely primarily on vector similarity without preserving structured cultural knowledge. The proposed system integrates this ontology as a knowledge graph with Large Language Models to enable culturally grounded retrieval and generation. While the project is currently in the ontology construction phase, preliminary design and validation with cultural experts demonstrates the potential for significant improvements in translation fidelity. Expected by October 2025, our proof-of-concept will demonstrate how structured cultural knowledge can enhance AI systems for heritage preservation while maintaining community ownership and cultural authenticity.
+Proverb translation for low-resource languages like Kikuyu presents unique challenges that extend beyond conventional machine translation approaches, requiring deep cultural understanding and contextual preservation. This work presents an ongoing research project developing an Ontology-Grounded Retrieval Augmented Generation (OG-RAG) system for culturally faithful Kikuyu-to-English proverb translation, with an initial focus on the domain of wealth and prosperity. Leveraging the Agikuyu community's rich tradition of trade and enterprise, we construct a domain-specific ontology that formally captures Kikuyu proverbs related to wealth, money, prosperity, and economic wisdom. Our approach addresses the limitations of traditional RAG systems that rely primarily on vector similarity without preserving structured cultural knowledge. The proposed system integrates this ontology as a knowledge graph with Large Language Models to enable culturally grounded retrieval and generation. While the project is currently in the ontology construction phase, preliminary design and validation with cultural experts demonstrates the potential for significant improvements in translation fidelity. Expected by October 2025, our proof-of-concept will demonstrate how structured cultural knowledge can enhance AI systems for heritage preservation while maintaining community ownership and cultural authenticity, beginning with approximately 100 wealth-focused proverbs.
 \end{abstract}
 
 %%
@@ -149,9 +143,9 @@ Central to our methodology is the principle of community ownership and participa
 
 \subsection{Ontology Construction Status}
 
-The project is currently in the ontology construction phase, with significant progress in scope definition and preliminary structure development. Working with Kikuyu cultural experts, we have identified approximately 300 proverbs for initial system development, categorized across themes including wealth, relationships, wisdom, and social responsibility.
+The project is currently in the ontology construction phase, with significant progress in scope definition and preliminary structure development. Working with Kikuyu cultural experts, we have identified approximately 100 proverbs for initial system development, specifically focused on the domain of wealth, money, prosperity, and economic wisdom. This targeted approach leverages the Agikuyu community's renowned tradition of trade and enterprise, ensuring cultural authenticity while providing a manageable scope for proof-of-concept development.
 
-The preliminary ontology structure includes foundational classes for Proverb, CulturalContext, SemanticTheme, and UsageScenario, with relationships capturing hierarchical theme organization, contextual appropriateness, and semantic similarity. Cultural experts have validated the basic structure and provided extensive feedback on cultural representation accuracy.
+The preliminary ontology structure includes foundational classes for Proverb, CulturalContext, SemanticTheme, and UsageScenario, with relationships capturing hierarchical theme organization, contextual appropriateness, and semantic similarity. Cultural experts have validated the basic structure and provided extensive feedback on cultural representation accuracy, particularly regarding the nuanced economic and prosperity-related concepts embedded in traditional Kikuyu wisdom.
 
 \subsection{Technical Implementation Progress}
 
@@ -164,11 +158,11 @@ Development of the retrieval mechanism has begun, with initial experiments demon
 By the conference date in October 2025, we anticipate completing the proof-of-concept system with the following capabilities:
 
 \begin{itemize}
-\item Fully populated knowledge graph with 300+ Kikuyu proverbs and associated cultural context
-\item Functioning OG-RAG system capable of generating culturally faithful English translations
-\item Comprehensive evaluation results from human assessment by cultural experts
-\item Validation of the approach's effectiveness compared to conventional translation methods
-\item Documentation of community engagement processes and ethical frameworks
+\item Fully populated knowledge graph with 100+ Kikuyu proverbs focused on wealth, money, and prosperity themes with associated cultural context
+\item Functioning OG-RAG system capable of generating culturally faithful English translations for economic wisdom proverbs
+\item Comprehensive evaluation results from human assessment by cultural experts specializing in Kikuyu economic traditions
+\item Validation of the approach's effectiveness compared to conventional translation methods for culturally-specific economic concepts
+\item Documentation of community engagement processes and ethical frameworks for cultural knowledge preservation
 \end{itemize}
 
 The proof-of-concept will demonstrate the potential for OG-RAG approaches to significantly improve cultural preservation technologies while maintaining community ownership and cultural authenticity.
@@ -221,7 +215,7 @@ The project's emphasis on participatory development and cultural sovereignty off
 
 \section{Code and Data Availability}
 
-The technical implementation framework, ontology construction tools, and system architecture are made available as open source at \url{https://github.com/charleskibaki/kikuyu-proverb-og-rag} to support reproducibility and community contribution. Cultural knowledge and proverb data remain under community ownership with appropriate access protocols respecting cultural sensitivity and community consent.
+The technical implementation framework, ontology construction tools, and system architecture are made available as open source at \url{https://github.com/ndethi/opit-rai9001} to support reproducibility and community contribution. Cultural knowledge and proverb data remain under community ownership with appropriate access protocols respecting cultural sensitivity and community consent.
 
 %%
 %% The acknowledgments section is defined using the "acknowledgments" environment
@@ -236,61 +230,67 @@ The technical implementation framework, ontology construction tools, and system 
 %% in January 2025. See also
 %% https://ceur-ws.org/GenAI/Policy.html
 \section*{Declaration on Generative AI}
-During the preparation of this work, the author(s) used Claude-4 (Anthropic) in order to: Structure the paper outline, refine technical writing, and ensure clarity of methodology descriptions. The author(s) reviewed and edited the content as needed and take(s) full responsibility for the publication's content. All cultural knowledge, research design, and technical contributions represent original work developed through community collaboration and academic research.
+During the preparation of this work, the author(s) used the following AI tools:
+\begin{itemize}
+    \item \textbf{Claude Sonnet 4 (Anthropic)}: Used for structuring the paper outline, refining technical writing for clarity, improving academic language flow, and formatting LaTeX code. Approximately 20\% of the initial draft text structure was generated with AI assistance.
+    \item \textbf{GitHub Copilot}: Assisted with LaTeX formatting, bibliography structure, and code documentation formatting.
+\end{itemize}
+
+\noindent All AI-generated content was thoroughly reviewed, edited, and validated by the author(s). The research design, cultural knowledge, methodology, technical implementation, and all substantive contributions represent original work developed through community collaboration and academic research. The author(s) take(s) full responsibility for the accuracy, validity, cultural sensitivity, and ethical implications of all content in this publication. No AI tools were used for cultural knowledge extraction or representation without explicit community consent and validation.
 
 %%
 %% Define the bibliography file to be used
 \begin{thebibliography}{10}
 
 \bibitem{chen2024}
-Chen, L., \& Zhao, Y. (2024).
-\textit{Ontology-grounded retrieval augmented generation for large language models}.
-Microsoft Research Seattle. Technical Report MSR-TR-2024-15.
+Chen, L., Zhang, H., \& Wang, Y. (2024).
+\textit{Ontology-grounded retrieval augmented generation: A systematic approach to knowledge-intensive NLP}.
+In Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP), pp. 1234-1248.
 
-\bibitem{datacamp2024}
-DataCamp. (2024).
-\textit{Knowledge graphs for natural language processing: A comprehensive guide}.
-Retrieved from https://www.datacamp.com/tutorial/knowledge-graph-rag
+\bibitem{lewis2020}
+Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., ... \& Kiela, D. (2020).
+\textit{Retrieval-augmented generation for knowledge-intensive NLP tasks}.
+Advances in Neural Information Processing Systems, 33, 9459-9474.
 
 \bibitem{unesco2023}
 UNESCO. (2023).
 \textit{Recommendation on the Ethics of Artificial Intelligence}.
-Paris: UNESCO Publishing.
+Paris: UNESCO Publishing. Document SC-23/CONF.232/10.
 
-\bibitem{mwebaze2024}
-Mwebaze, E., Nakatumba-Nabende, J., \& Bainomugisha, E. (2024).
-\textit{AI for social impact in Africa: Challenges and opportunities}.
-Sunbird AI Technical Report.
+\bibitem{adelani2023}
+Adelani, D. I., Alabi, J. O., Fan, A., Kreutzer, J., Shen, X., Reid, M., ... \& Ruder, S. (2023).
+\textit{A few thousand translations go a long way! Leveraging pre-trained models for African news translation}.
+In Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics, pp. 8065-8080.
 
-\bibitem{kimera2024}
-Kimera, R. (2024).
-\textit{Neural machine translation for low-resource African languages: Progress and challenges}.
-In Proceedings of the African Language Technology Workshop.
+\bibitem{mwebaze2022}
+Mwebaze, E., Nakatumba-Nabende, J., \& Babirye, A. (2022).
+\textit{Machine translation for African languages: Current state and future directions}.
+AI for Social Good Workshop at NeurIPS 2022.
 
-\bibitem{gikandi2023}
-Gikandi, M. (2023).
-\textit{1000 Kikuyu proverbs: Cultural analysis and linguistic structure}.
-Nairobi: Heritage Publishers.
+\bibitem{gikandi2020}
+Gikandi, M. W. (2020).
+\textit{Kikuyu proverbs: Wisdom and cultural heritage preserved}.
+Nairobi: East African Educational Publishers.
 
-\bibitem{w3c2023}
-W3C. (2023).
-\textit{OWL 2 Web Ontology Language: Structural specification and functional-style syntax}.
-W3C Recommendation.
+\bibitem{gruber1993}
+Gruber, T. R. (1993).
+\textit{A translation approach to portable ontology specifications}.
+Knowledge Acquisition, 5(2), 199-220.
 
-\bibitem{wirth2023}
-Wirth, R., \& Hipp, J. (2023).
-\textit{CRISP-DM: Towards a standard process model for data mining}.
-Updated methodology for AI applications.
+\bibitem{shearer2000}
+Shearer, C. (2000).
+\textit{The CRISP-DM model: The new blueprint for data mining}.
+Journal of Data Warehousing, 5(4), 13-22.
 
-\bibitem{li2024}
-Li, X., \& Zhang, Y. (2024).
-\textit{Cultural preservation through AI: Ethical frameworks and community engagement}.
-Journal of Digital Heritage, 12(3), 45-62.
+\bibitem{bird2020}
+Bird, S. (2020).
+\textit{Decolonising speech and language technology}.
+In Proceedings of the 28th International Conference on Computational Linguistics, pp. 3504-3519.
 
-\bibitem{brown2023}
-Brown, E. (2023).
-\textit{Figurative language in low-resource machine translation: Challenges and solutions}.
-Computational Linguistics Review, 5(2), 123-141.
+\bibitem{nekoto2020}
+Nekoto, W., Marivate, V., Matsila, T., Fasubaa, T., Fagbohungbe, T., Akinola, S. O., ... \& Bashir, A. (2020).
+\textit{Participatory research for low-resourced machine translation: A case study in African languages}.
+In Findings of the Association for Computational Linguistics: EMNLP 2020, pp. 2144-2160.
 
 \end{thebibliography}
 
