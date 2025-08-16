@@ -46,3 +46,4 @@
 2025-08-09 08:28:39|refactorfix citations issue in SoTA literature review Latex doc:
 2025-08-09 23:59:07|featadd cohere sdk to requirements.txt: Cohere SDK
 2025-08-14 00:25:39|featupdate bib file with verified references and update tex file with simpler language and seminal OGRAG paper citations:
+2025-08-15 09:03:15|docs(core): update documentation with latest information
