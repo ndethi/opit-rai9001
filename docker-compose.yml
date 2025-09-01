@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Neo4j Graph Database - Core knowledge graph for OG-RAG
   neo4j:
