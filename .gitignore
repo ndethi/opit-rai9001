@@ -60,11 +60,17 @@ ENV/
 .env.local
 .env.*.local
 
-# Docker volumes and data
-src/neo4j/database/databases/
-src/neo4j/database/transactions/
-src/neo4j/database/dbms/
-src/neo4j/backups/*.dump
+# Docker volumes and data - Neo4j runtime directories
+src/neo4j/data/
+src/neo4j/database/
+src/neo4j/logs/
+src/neo4j/backups/
+src/neo4j/imports/*.csv
+src/neo4j/imports/*.json
+src/neo4j/imports/*.txt
+# Keep README files and sample imports
+!src/neo4j/*/README.md
+!src/neo4j/imports/sample-data/
 
 # Data directories
 data/raw/*
