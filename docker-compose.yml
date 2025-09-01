@@ -15,17 +15,15 @@ services:
       - NEO4J_dbms_memory_heap_initial__size=1G
       - NEO4J_dbms_memory_heap_max__size=2G
       - NEO4J_dbms_memory_pagecache_size=1G
-      - NEO4J_dbms_query_cache_size=1000
-      - NEO4J_dbms_logs_query_enabled=true
+      - NEO4J_dbms_logs_query_enabled=INFO
       - NEO4J_dbms_logs_query_threshold=1s
-      - NEO4J_dbms_default__database=kikuyu_kg
+      - NEO4J_dbms_default__database=kikuyu-kg
       - NEO4J_dbms_allow__upgrade=true
     volumes:
       - ./src/neo4j/database:/data
       - ./src/neo4j/logs:/logs
       - ./src/neo4j/imports:/var/lib/neo4j/import
       - ./src/neo4j/plugins:/plugins
-      - ./src/neo4j/config/neo4j.conf:/var/lib/neo4j/conf/neo4j.conf:ro
       - ./src/neo4j/backups:/backups
     networks:
       - og-rag-network
