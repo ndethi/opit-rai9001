@@ -68,6 +68,8 @@ src/neo4j/backups/
 src/neo4j/imports/*.csv
 src/neo4j/imports/*.json
 src/neo4j/imports/*.txt
+# Neo4j plugins - exclude large JAR files
+src/neo4j/plugins/*.jar
 # Keep README files and sample imports
 !src/neo4j/*/README.md
 !src/neo4j/imports/sample-data/

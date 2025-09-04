@@ -14,6 +14,7 @@ src/neo4j/
 ├── migrations/            # Database migration scripts
 ├── imports/               # Data import files (CSV, JSON, etc.)
 ├── backups/               # Database backup files
+├── plugins/               # Neo4j plugins (GDS, APOC) - see plugins/README.md
 └── config/                # Neo4j configuration files
 ```
 
@@ -38,9 +39,10 @@ This Neo4j implementation supports the research on Ontology-Grounded RAG systems
 ## Getting Started
 
 1. **Install Neo4j** - Follow installation instructions in `config/`
-2. **Load Schema** - Apply schema definitions from `schemas/`
-3. **Import Data** - Use scripts in `imports/` to load initial data
-4. **Run Queries** - Execute Cypher queries from `cypher/` directory
+2. **Install Required Plugins** - See instructions in `plugins/README.md`
+3. **Load Schema** - Apply schema definitions from `schemas/`
+4. **Import Data** - Use scripts in `imports/` to load initial data
+5. **Run Queries** - Execute Cypher queries from `cypher/` directory
 
 ## Research Integration
 
