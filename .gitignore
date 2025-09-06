@@ -92,6 +92,10 @@ results/
 temp/
 *.tmp
 
+# Log files - now organized in logs/ directory
+logs/*.log
+*.log
+
 # IDE files
 .vscode/
 .idea/
@@ -103,5 +107,6 @@ temp/
 .AppleDouble
 .LSOverride
 
-# Shell scripts logs
-*.log
+# Automation script outputs (keep scripts but ignore generated outputs)
+scripts/automation/*.log
+scripts/setup/*.log
