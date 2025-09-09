@@ -1,32 +1,76 @@
 #!/usr/bin/env python3
-"""Dynamic Proverb Loader for Kikuyu OG-RAG System.
+"""Complete Integrated Kikuyu Proverb Ontology for thiLLMo Cultural Translation System.
 
-This module loads and processes Kikuyu proverbs from external data files
-with configurable domain themes and validation rules.
+This module provides a comprehensive ontological framework for Kikuyu proverbs
+with sophisticated linguistic structures, cultural concept modeling, and dynamic 
+data loading capabilities optimized for Ontology-Grounded RAG systems.
 
-Features:
-- Environment-driven configuration
-- Minimal hard-coded test data
-- PEP-compliant code structure
-- Type-safe implementation
-- Comprehensive error handling
+The ontology supports the thiLLMo mission of culturally faithful translation by:
+- Preserving deep cultural meanings and metaphorical structures
+- Providing rich linguistic analysis and morphological patterns  
+- Enabling semantic relationship modeling for cultural concepts
+- Supporting domain-specific filtering (wealth/entrepreneurship focus)
+- Optimizing knowledge graph structures for RAG retrieval
 
-Author: OG-RAG System Designer
-Date: September 2025
+Core Features:
+    - Rich ontological structures for cultural knowledge representation
+    - Environment-driven configuration with .env integration
+    - Dynamic proverb loading with comprehensive validation
+    - Neo4j knowledge graph creation with OG-RAG optimization
+    - Full-text search indexes and semantic relationship mapping
+    - Cultural concept modeling with translation quality frameworks
+    - Provenance tracking and source authority management
+
+Examples:
+    Basic ontology setup:
+    
+    >>> ontology = IntegratedKikuyuOntology()
+    >>> ontology.setup_complete_ontology()
+    >>> stats = ontology.verify_integrated_setup()
+    
+    Custom configuration:
+    
+    >>> ontology = IntegratedKikuyuOntology(config_file=".env")
+    >>> ontology.clear_database()
+    >>> ontology.create_comprehensive_constraints()
+    >>> ontology.load_dynamic_proverbs()
+
+Technical Architecture:
+    - Dataclass-based type-safe proverb representations
+    - Neo4j graph database with comprehensive indexing
+    - Configurable domain themes and Kikuyu terminology
+    - Cultural concept taxonomy with usage context modeling
+    - Translation quality assessment frameworks
+    - OG-RAG optimized query patterns and retrieval paths
+
+Author: ndethi <ndethi@example.com>
+Project: thiLLMo - OPIT RAI9001 Research Project  
+Institution: Oxford Postgraduate Institute of Technology
+Created: September 2025
+License: MIT (see project root for full license)
+Version: 2.0.0
+
+Note:
+    This integrated ontology combines sophisticated linguistic modeling with 
+    practical data loading capabilities to support culturally faithful Kikuyu 
+    proverb translation using Ontology-Grounded RAG architecture.
 """
 
 import csv
 import json
 import logging
-import os
-import re
-from dataclasses import asdict, dataclass, field
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
 
-import pandas as pd
 from decouple import Config, RepositoryEnv
+from neo4j import GraphDatabase
+import pandas as pd
+
+# Add src to path for local imports within thiLLMo project structure
+sys.path.append(str(Path(__file__).parent.parent))
+from data_loading.proverb_loader import WealthEntrepreneurshipProverbLoader, ProverbData
 
 # Configure logging
 logging.basicConfig(

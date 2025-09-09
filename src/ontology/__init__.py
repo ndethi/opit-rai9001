@@ -9,12 +9,14 @@ Components:
     - Cultural knowledge structures and relationships
     - Neo4j integration for knowledge graph operations
 
-Author: ndethi - thiLLMo Project
-Institution: Oxford Postgraduate Institute of Technology
+Project: thiLLMo - OPIT RAI9001 Research Project
+Institution: Open Institute of Technology (OPIT)
+Authors: See AUTHORS.md in project root
+Contributing: See CONTRIBUTING.md in project root
 """
 
 from .kikuyu_proverb_ontology import *
 
 __version__ = "1.0.0"
-__author__ = "ndethi"
+__author__ = "Watson Ndethi"
 __project__ = "thiLLMo - OPIT RAI9001"

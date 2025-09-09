@@ -33,17 +33,22 @@ Examples:
     >>> proverbs = loader.load_and_process_proverbs("data/proverbs/full_dataset.csv")
     >>> neo4j_data = loader.get_proverbs_for_neo4j()
 
-Author: ndethi <ndethi@example.com>
 Project: thiLLMo - OPIT RAI9001 Research Project
-Institution: Oxford Postgraduate Institute of Technology
+Institution: Open Institute of Technology (OPIT)
 Created: September 2025
-License: MIT (see project root for full license)
+License: MIT (see LICENSE file in project root)
 Version: 1.0.0
+Authors: See AUTHORS.md in project root
+Contributing: See CONTRIBUTING.md for contribution guidelines
 
 Note:
     This module is part of the thiLLMo research project focusing on 
     culturally faithful Kikuyu proverb translation using Ontology-Grounded
     Retrieval Augmented Generation (OG-RAG).
+    
+    For authorship details, supervision information, and contribution 
+    guidelines, please refer to AUTHORS.md and CONTRIBUTING.md in the 
+    project root directory.
 """
 
 import csv
