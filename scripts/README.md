@@ -42,6 +42,45 @@ Contains installation and configuration scripts:
 - `install-and-setup.sh` - Main installation and setup script
 - `setup-smart-commit.sh` - Setup smart commit functionality
 
+## Python Scripts
+
+### thiLLMo System Scripts
+
+**`thiLLMo_setup.py`** - Complete thiLLMo System Orchestration
+- Comprehensive setup and deployment script for the thiLLMo OG-RAG system
+- Features:
+  - Environment validation and configuration
+  - Neo4j database connection testing
+  - Cultural ontology creation and validation
+  - Kikuyu proverb data loading with cultural sensitivity
+  - System verification and health checks
+- Usage: `python scripts/thiLLMo_setup.py`
+- Dependencies: Requires `.env` file configuration and Docker services running
+
+**`test_thiLLMo_system.py`** - System Verification and Testing
+- Comprehensive testing suite for thiLLMo system validation
+- Features:
+  - Cultural data integrity testing
+  - Search functionality validation
+  - Sample query execution and response verification
+  - Performance benchmarking
+  - Cultural sensitivity compliance checking
+- Usage: `python scripts/test_thiLLMo_system.py`
+- Dependencies: Requires completed thiLLMo setup via `thiLLMo_setup.py`
+
+### Quick Start for thiLLMo
+
+```bash
+# 1. Ensure Docker services are running
+docker-compose up -d
+
+# 2. Run complete system setup
+python scripts/thiLLMo_setup.py
+
+# 3. Verify system functionality
+python scripts/test_thiLLMo_system.py
+```
+
 ## Usage
 
 To run any script, use:
