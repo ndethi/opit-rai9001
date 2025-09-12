@@ -23,6 +23,7 @@ import re
 import json
 import csv
 import sys
+import argparse
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 from dataclasses import dataclass, asdict
@@ -87,8 +88,13 @@ class ExtractedKikuyuProverb:
 class ThiLLMoPDFProverbExtractor:
     """Extract and process Kikuyu proverbs from PDF documents for thiLLMo OG-RAG system."""
     
-    def __init__(self):
-        """Initialize with thiLLMo project configuration."""
+    def __init__(self, source_directory: Optional[str] = None):
+        """Initialize with thiLLMo project configuration and source directory.
+        
+        Args:
+            source_directory: Path to directory containing PDF files. 
+                            Defaults to project's data/sources/ directory.
+        """
         # Load configuration from project .env file
         env_path = Path(__file__).parent.parent / ".env"
         if env_path.exists():
@@ -99,13 +105,26 @@ class ThiLLMoPDFProverbExtractor:
         # thiLLMo project paths
         self.project_root = Path(__file__).parent.parent
         self.data_dir = self.project_root / "data"
-        self.sources_dir = self.data_dir / "sources"
+        
+        # Set source directory - either provided or default to data/sources/
+        if source_directory:
+            self.sources_dir = Path(source_directory).resolve()
+            if not self.sources_dir.exists():
+                raise FileNotFoundError(f"Source directory not found: {self.sources_dir}")
+        else:
+            self.sources_dir = self.data_dir / "sources"
+        
+        # Output directories
         self.proverbs_dir = self.data_dir / "proverbs"
         self.processed_dir = self.data_dir / "processed"
         
-        # Ensure directories exist
-        for directory in [self.data_dir, self.sources_dir, self.proverbs_dir, self.processed_dir]:
+        # Ensure output directories exist
+        for directory in [self.data_dir, self.proverbs_dir, self.processed_dir]:
             directory.mkdir(exist_ok=True)
+        
+        # Create sources directory if using default and it doesn't exist
+        if not source_directory:
+            self.sources_dir.mkdir(exist_ok=True)
         
         # thiLLMo domain terms for wealth/entrepreneurship classification
         self.wealth_entrepreneurship_terms = {
@@ -159,7 +178,7 @@ class ThiLLMoPDFProverbExtractor:
         
         self.extracted_proverbs: List[ExtractedKikuyuProverb] = []
         
-        logger.info("thiLLMo PDF Proverb Extractor initialized")
+        logger.info(f"thiLLMo PDF Proverb Extractor initialized - Source: {self.sources_dir}")
     
     def extract_text_from_pdf(self, pdf_path: str, method: str = "pdfplumber") -> List[Dict[str, Any]]:
         """Extract text from PDF with multiple fallback methods optimized for Kikuyu text."""
@@ -864,8 +883,15 @@ pip install pandas openpyxl python-decouple
 echo "thiLLMo PDF processing setup complete!"
 echo "You can now extract Kikuyu proverbs from PDF documents."
 echo ""
-echo "Usage:"
+echo "Usage examples:"
+echo "  # Use default data/sources/ directory"
 echo "  python scripts/extract_proverbs_from_pdf.py"
+echo ""
+echo "  # Use custom source directory"
+echo "  python scripts/extract_proverbs_from_pdf.py --source-dir /path/to/pdfs"
+echo ""
+echo "  # Process specific PDF file"
+echo "  python scripts/extract_proverbs_from_pdf.py --pdf kikuyu_proverbs.pdf"
 """
     
     script_path = Path(__file__).parent / 'install_thiLLMo_pdf_tools.sh'
@@ -877,7 +903,62 @@ echo "  python scripts/extract_proverbs_from_pdf.py"
     print("Run: ./scripts/install_thiLLMo_pdf_tools.sh")
 
 def main():
-    """Main function for thiLLMo PDF proverb extraction."""
+    """Main function for thiLLMo PDF proverb extraction with command-line arguments."""
+    
+    # Set up argument parser
+    parser = argparse.ArgumentParser(
+        description="Extract Kikuyu proverbs from PDF documents for thiLLMo OG-RAG system",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Use default data/sources/ directory
+  python scripts/extract_proverbs_from_pdf.py
+  
+  # Specify custom source directory
+  python scripts/extract_proverbs_from_pdf.py --source-dir /path/to/pdfs
+  
+  # Process specific PDF file
+  python scripts/extract_proverbs_from_pdf.py --source-dir /path/to/pdfs --pdf kikuyu_proverbs.pdf
+  
+Data Organization:
+  data/sources/     - Raw PDF source documents (default source directory)
+  data/proverbs/    - Extracted and processed proverb data
+  data/processed/   - Expert review materials and intermediate files
+        """
+    )
+    
+    parser.add_argument(
+        '--source-dir', '-s',
+        type=str,
+        default=None,
+        help='Directory containing PDF files (default: data/sources/)'
+    )
+    
+    parser.add_argument(
+        '--pdf', '-p',
+        type=str,
+        default=None,
+        help='Specific PDF file to process (default: process all PDFs in source directory)'
+    )
+    
+    parser.add_argument(
+        '--output-dir', '-o',
+        type=str,
+        default=None,
+        help='Custom output directory (default: data/processed/expert_review/)'
+    )
+    
+    parser.add_argument(
+        '--verbose', '-v',
+        action='store_true',
+        help='Enable verbose logging'
+    )
+    
+    args = parser.parse_args()
+    
+    # Set logging level
+    if args.verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
     
     # Check dependencies
     try:
@@ -889,43 +970,90 @@ def main():
         install_thiLLMo_pdf_dependencies()
         return
     
-    # Initialize thiLLMo extractor
-    extractor = ThiLLMoPDFProverbExtractor()
-    
-    # Check for PDF in sources directory
-    sources_dir = extractor.sources_dir
-    pdf_files = list(sources_dir.glob("*.pdf"))
-    
-    if not pdf_files:
-        print(f"No PDF files found in: {sources_dir}")
-        print("Please place your Kikuyu proverb PDF files in the sources directory.")
-        print("\nExample usage:")
-        print("  extractor = ThiLLMoPDFProverbExtractor()")
-        print("  results = extractor.extract_and_prepare_for_thiLLMo('path/to/kikuyu_proverbs.pdf')")
+    # Initialize thiLLMo extractor with custom source directory if provided
+    try:
+        extractor = ThiLLMoPDFProverbExtractor(source_directory=args.source_dir)
+        logger.info(f"Using source directory: {extractor.sources_dir}")
+    except FileNotFoundError as e:
+        print(f"❌ Error: {e}")
+        print("Please ensure the source directory exists and contains PDF files.")
         return
     
-    # Process first PDF found
-    pdf_path = pdf_files[0]
-    logger.info(f"Processing: {pdf_path.name}")
+    # Determine which PDFs to process
+    if args.pdf:
+        # Process specific PDF file
+        pdf_path = extractor.sources_dir / args.pdf
+        if not pdf_path.exists():
+            print(f"❌ PDF file not found: {pdf_path}")
+            return
+        pdf_files = [pdf_path]
+    else:
+        # Process all PDFs in source directory
+        pdf_files = list(extractor.sources_dir.glob("*.pdf"))
     
-    try:
-        results = extractor.extract_and_prepare_for_thiLLMo(str(pdf_path))
+    if not pdf_files:
+        print(f"❌ No PDF files found in: {extractor.sources_dir}")
+        print("\nPlease place your Kikuyu proverb PDF files in the source directory.")
+        print(f"Source directory: {extractor.sources_dir}")
+        print("\nExample usage:")
+        print("  python scripts/extract_proverbs_from_pdf.py --source-dir /path/to/pdfs")
+        return
+    
+    print(f"📚 Found {len(pdf_files)} PDF file(s) to process:")
+    for pdf_file in pdf_files:
+        print(f"  - {pdf_file.name}")
+    
+    # Process each PDF file
+    all_results = []
+    total_extracted = 0
+    total_domain_relevant = 0
+    
+    for pdf_path in pdf_files:
+        print(f"\n{'='*60}")
+        print(f"Processing: {pdf_path.name}")
+        print('='*60)
         
-        print("\n" + "="*60)
-        print("thiLLMo Kikuyu Proverb Extraction Results")
-        print("="*60)
-        print(f"📚 Source PDF: {pdf_path.name}")
-        print(f"🔍 Total proverbs extracted: {results['total_extracted']}")
-        print(f"✅ High confidence extractions: {results['high_confidence']}")
-        print(f"💰 Wealth/entrepreneurship relevant: {results['domain_relevant']}")
-        print(f"📄 Ontology file: {Path(results['ontology_file']).name}")
-        print(f"👥 Expert review files: {len(results['expert_review_files'])} files prepared")
-        print(f"🎯 Project: {results['project_context']}")
+        try:
+            results = extractor.extract_and_prepare_for_thiLLMo(str(pdf_path))
+            all_results.append({
+                'pdf_file': pdf_path.name,
+                'results': results
+            })
+            
+            total_extracted += results['total_extracted']
+            total_domain_relevant += results['domain_relevant']
+            
+            print(f"✅ {pdf_path.name}: {results['total_extracted']} proverbs extracted")
+            print(f"   - High confidence: {results['high_confidence']}")
+            print(f"   - Domain relevant: {results['domain_relevant']}")
+            
+        except Exception as e:
+            logger.error(f"Failed to process {pdf_path.name}: {e}")
+            print(f"❌ Failed to process {pdf_path.name}: {e}")
+            continue
+    
+    # Print overall summary
+    if all_results:
+        print(f"\n{'='*60}")
+        print("thiLLMo PDF Extraction Summary")
+        print('='*60)
+        print(f"📚 Processed PDFs: {len(all_results)}")
+        print(f"🔍 Total proverbs extracted: {total_extracted}")
+        print(f"💰 Total domain relevant: {total_domain_relevant}")
+        print(f"📁 Source directory: {extractor.sources_dir}")
+        print(f"📄 Output directory: {extractor.processed_dir}")
+        print(f"🎯 Project: thiLLMo OG-RAG - Culturally Faithful Kikuyu Translation")
         print("\n✨ Ready for expert cultural validation and thiLLMo OG-RAG integration!")
-        
-    except Exception as e:
-        logger.error(f"thiLLMo extraction failed: {e}")
-        print(f"❌ Extraction failed: {e}")
+        print("\nNext steps:")
+        print(f"1. Review expert validation materials in: {extractor.processed_dir}/expert_review/")
+        print("2. Complete cultural expert review process")
+        print("3. Run thiLLMo system setup: python scripts/thiLLMo_setup.py")
+    else:
+        print("❌ No PDFs were successfully processed.")
+
+def parse_arguments():
+    """Parse command line arguments (kept for backwards compatibility)."""
+    return main()
 
 if __name__ == "__main__":
     main()
