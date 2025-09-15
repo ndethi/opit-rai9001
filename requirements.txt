@@ -45,6 +45,12 @@ beautifulsoup4>=4.12.0        # Web scraping for additional proverb sources
 requests>=2.31.0              # HTTP requests for data collection
 # scrapy>=2.8.0               # Heavy web scraping (if needed for extensive data)
 
+# PDF Processing for Proverb Extraction
+PyPDF2>=3.0.0                 # PDF text extraction
+pdfplumber>=0.9.0             # Advanced PDF processing with layout preservation
+pymupdf>=1.23.0               # Alternative PDF processing (fitz)
+pdfminer.six>=20221105        # Low-level PDF parsing
+
 # Visualization & Analysis (Research Communication)
 matplotlib>=3.7.0             # Basic plotting for results
 seaborn>=0.12.0               # Statistical visualizations
