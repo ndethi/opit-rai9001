@@ -1,8 +1,8 @@
 # Authors
 
-## Student Researcher & Primary Developer
+## Project Lead & Principal Investigator
 **Watson Ndethi** <charleswatsonndeth.k@students.opit.com>
-- *Student Researcher, thiLLMo Project*
+- *Principal Investigator, thiLLMo Project*
 - *Open Institute of Technology (OPIT)*
 - *RAI9001 Research Project*
 
@@ -16,7 +16,7 @@
 - Dynamic data loading and validation systems
 
 ## Academic Supervision
-**Marzieh Bakhshandeh**
+**Dr. Marzieh Bakhshandeh**
 - *Project Supervisor*
 - *Open Institute of Technology (OPIT)*
 

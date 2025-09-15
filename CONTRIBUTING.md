@@ -8,7 +8,7 @@ thiLLMo is an academic research project focused on preserving and translating Ki
 
 ## Current Status
 
-**This is an active academic research project** (RAI9001) at the Open Institute of Technology (OPIT), supervised by Marzieh Bakhshandeh.
+**This is an active academic research project** (RAI9001) at the Open Institute of Technology (OPIT), supervised by Dr. Marzieh Bakhshandeh.
 
 ## Types of Contributions
 
@@ -33,7 +33,7 @@ thiLLMo is an academic research project focused on preserving and translating Ki
 ## How to Contribute
 
 ### For Academic Researchers
-1. Contact the student researcher: Watson Ndethi <charleswatsonndeth.k@students.opit.com>
+1. Contact the principal investigator: Watson Ndethi <charleswatsonndeth.k@students.opit.com>
 2. Provide your research background and area of expertise
 3. Discuss potential collaboration opportunities
 4. Follow OPIT academic collaboration protocols
@@ -86,11 +86,11 @@ This project adheres to strict ethical guidelines:
 
 ### Primary Contact
 **Watson Ndethi**  
-Student Researcher & Primary Developer  
+Principal Investigator  
 Email: charleswatsonndeth.k@students.opit.com
 
 ### Academic Supervision
-**Marzieh Bakhshandeh**  
+**Dr. Marzieh Bakhshandeh**  
 Project Supervisor  
 Open Institute of Technology (OPIT)
 
