@@ -79,9 +79,35 @@ Traditional machine translation fails catastrophically when dealing with proverb
 │   ├── ontology/            # Ontology development and management
 │   └── rag-system/          # OG-RAG implementation
 ├── data/
-│   └── proverbs/           # Kikuyu proverb datasets and annotations
+│   ├── proverbs/           # Kikuyu proverb datasets and annotations
+│   └── processed/          # Expert review and validation materials
+├── scripts/
+│   ├── extract_proverbs_from_pdf.py    # PDF extraction pipeline
+│   └── prepare_expert_review.py        # Expert validation system
 └── README.md
 ```
+
+## 📋 Expert Review System
+
+The project includes a comprehensive cultural expert validation system for ensuring authenticity and accuracy of extracted proverbs.
+
+### Key Features
+- **Automated Filtering**: Removes non-proverb content from extractions
+- **Comprehensive Review Spreadsheet**: Multi-sheet Excel file for expert validation
+- **Cultural Guidelines**: Detailed instructions preserving Kikuyu cultural integrity
+- **Quality Assurance**: Built-in validation fields and rating systems
+
+### Quick Usage
+```bash
+# Generate expert review materials
+python scripts/prepare_expert_review.py
+```
+
+**Output**: Excel spreadsheet, expert instructions, and validation reports in `data/processed/`
+
+**Current Status**: 96 authentic proverbs prepared for expert review (filtered from 372 original extractions)
+
+For detailed information, see [Expert Review Documentation](data/processed/README.md).
 
 ## Getting Started
 

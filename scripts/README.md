@@ -1,6 +1,43 @@
 # Scripts Directory
 
-This directory contains organized automation and setup scripts for the OG-RAG project.
+This directory contains automation scripts, data processing tools, and project utilities for the thiLLMo OG-RAG project.
+
+## Core Data Processing Scripts
+
+### `extract_proverbs_from_pdf.py`
+Extracts Kikuyu proverbs from PDF documents for the thiLLMo ontology system.
+
+**Purpose**: Initial proverb extraction from research documents  
+**Output**: CSV file with extracted proverb data  
+**Location**: `data/proverbs/extracted_proverbs.csv`
+
+**Usage**:
+```bash
+python scripts/extract_proverbs_from_pdf.py
+```
+
+### `prepare_expert_review.py` 
+Prepares comprehensive expert validation materials from extracted proverbs.
+
+**Purpose**: Generate expert review spreadsheets and documentation  
+**Input**: `data/proverbs/extracted_proverbs.csv`  
+**Output**: Expert validation materials in `data/processed/`
+
+**Key Features**:
+- Filters authentic proverbs from extractions (372 → 96 proverbs)
+- Generates multi-sheet Excel validation spreadsheet
+- Creates detailed expert instructions with cultural guidelines
+- Produces validation preparation reports
+
+**Usage**:
+```bash
+python scripts/prepare_expert_review.py
+```
+
+**Generated Files**:
+- `proverb_expert_validation.xlsx` - Main review spreadsheet
+- `expert_validation_instructions.md` - Cultural expert guidelines  
+- `validation_preparation_report.md` - Process summary
 
 ## Directory Structure
 
