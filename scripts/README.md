@@ -39,6 +39,207 @@ python scripts/prepare_expert_review.py
 - `expert_validation_instructions.md` - Cultural expert guidelines  
 - `validation_preparation_report.md` - Process summary
 
+### `create_expert_tracking_template.py`
+Generates comprehensive Excel tracking template for expert session management.
+
+**Purpose**: Create structured tracking system for expert recruitment and progress  
+**Output**: Multi-sheet Excel workbook with expert tracking capabilities  
+**Location**: `data/processed/expert_review/expert_tracking_template.xlsx`
+
+**Usage**:
+```bash
+python scripts/create_expert_tracking_template.py
+```
+
+**Generated Sheets**:
+- Expert_Tracking - Main expert information and recruitment status
+- Communication_Log - Complete interaction history with experts
+- Review_Progress - Session-by-session progress tracking
+- Instructions - Status codes and workflow guidelines
+- Summary - Real-time project statistics
+
+### `track_expert_progress.py`
+Command-line interface for managing expert review sessions and progress tracking.
+
+**Purpose**: Comprehensive expert session management and progress monitoring  
+**Features**:
+- Add and manage expert contacts
+- Track recruitment status with workflow validation
+- Monitor review progress and session details
+- Generate status reports and overdue notifications
+- Log all communications and interactions
+
+## Command-Line Interface
+
+### Adding New Experts
+```bash
+# Basic expert addition
+python scripts/track_expert_progress.py --action add \
+  --name "Dr. Jane Wanjiku" \
+  --email "j.wanjiku@uonbi.ac.ke" \
+  --expertise "Kikuyu Cultural Studies"
+
+# Add expert with full details
+python scripts/track_expert_progress.py --action add \
+  --name "Prof. John Kariuki" \
+  --email "j.kariuki@university.edu" \
+  --expertise "Traditional Business Wisdom" \
+  --title "Professor of African Studies" \
+  --institution "University of Nairobi" \
+  --phone "+254-XXX-XXXXXX"
+```
+
+### Updating Expert Status
+```bash
+# Update status with notes
+python scripts/track_expert_progress.py --action update \
+  --name "Dr. Jane Wanjiku" \
+  --status "Contacted" \
+  --notes "Initial recruitment email sent via university portal"
+
+# Valid status transitions
+python scripts/track_expert_progress.py --action update \
+  --name "Dr. Jane Wanjiku" \
+  --status "Interested" \
+  --notes "Responded positively, scheduled introductory call"
+
+python scripts/track_expert_progress.py --action update \
+  --name "Dr. Jane Wanjiku" \
+  --status "Confirmed" \
+  --notes "Agreed to participate, materials package sent"
+
+python scripts/track_expert_progress.py --action update \
+  --name "Dr. Jane Wanjiku" \
+  --status "In Progress" \
+  --notes "Started reviewing proverbs, first session completed"
+
+python scripts/track_expert_progress.py --action update \
+  --name "Dr. Jane Wanjiku" \
+  --status "Completed" \
+  --notes "All 96 proverbs reviewed with excellent quality"
+```
+
+### Recording Review Progress
+```bash
+# Record session progress
+python scripts/track_expert_progress.py --action progress \
+  --name "Dr. Jane Wanjiku" \
+  --proverbs 25 \
+  --duration "2.5 hours" \
+  --notes "Completed cultural meaning section, excellent insights"
+
+# Update progress without session details
+python scripts/track_expert_progress.py --action progress \
+  --name "Dr. Jane Wanjiku" \
+  --proverbs 50
+
+# Record progress with issues encountered
+python scripts/track_expert_progress.py --action progress \
+  --name "Dr. Jane Wanjiku" \
+  --proverbs 75 \
+  --duration "3 hours" \
+  --notes "Expert requested clarification on business relevance ratings"
+```
+
+### Generating Reports and Monitoring
+```bash
+# Generate comprehensive status report
+python scripts/track_expert_progress.py --action report
+
+# Check for overdue experts
+python scripts/track_expert_progress.py --action overdue
+
+# Use custom tracking file
+python scripts/track_expert_progress.py --action report \
+  --tracking-file "data/processed/expert_review/custom_tracking.xlsx"
+```
+
+### Command-Line Options
+
+#### Required Parameters
+- `--action`: Action to perform (`add`, `update`, `progress`, `report`, `overdue`)
+
+#### Expert Management Options
+- `--name`: Expert full name (required for add, update, progress actions)
+- `--email`: Expert email address (required for add action)
+- `--expertise`: Expert expertise area (required for add action)
+- `--title`: Expert professional title (optional for add action)
+- `--institution`: Expert institution or community affiliation (optional)
+- `--phone`: Expert phone number (optional)
+
+#### Status Update Options
+- `--status`: New recruitment status (required for update action)
+- `--notes`: Additional notes or comments (optional)
+
+#### Progress Tracking Options
+- `--proverbs`: Number of proverbs completed (required for progress action)
+- `--duration`: Session duration (e.g., "2.5 hours", "3h 30m") (optional)
+
+#### System Options
+- `--tracking-file`: Path to Excel tracking file (default: auto-detected)
+
+**Expert Status Workflow**:
+```
+Identified → Contacted → Interested → Confirmed → In Progress → Completed
+                ↓           ↓           ↓           ↓
+            No Response  Declined    Declined    Declined
+```
+
+### Complete Workflow Example
+```bash
+# 1. Add new expert
+python scripts/track_expert_progress.py --action add \
+  --name "Dr. Mary Muthoni" \
+  --email "m.muthoni@ics.ac.ke" \
+  --expertise "Cultural Anthropology & Proverb Studies"
+
+# 2. Contact expert
+python scripts/track_expert_progress.py --action update \
+  --name "Dr. Mary Muthoni" \
+  --status "Contacted" \
+  --notes "Sent recruitment email using professional template"
+
+# 3. Expert responds positively
+python scripts/track_expert_progress.py --action update \
+  --name "Dr. Mary Muthoni" \
+  --status "Interested" \
+  --notes "Responded within 24 hours, very enthusiastic about project"
+
+# 4. Confirm participation
+python scripts/track_expert_progress.py --action update \
+  --name "Dr. Mary Muthoni" \
+  --status "Confirmed" \
+  --notes "Signed agreement, sent validation materials package"
+
+# 5. Track review sessions
+python scripts/track_expert_progress.py --action progress \
+  --name "Dr. Mary Muthoni" \
+  --proverbs 30 \
+  --duration "3 hours" \
+  --notes "First session: excellent cultural insights on traditional themes"
+
+python scripts/track_expert_progress.py --action progress \
+  --name "Dr. Mary Muthoni" \
+  --proverbs 65 \
+  --duration "2.5 hours" \
+  --notes "Second session: focused on business relevance assessments"
+
+python scripts/track_expert_progress.py --action progress \
+  --name "Dr. Mary Muthoni" \
+  --proverbs 96 \
+  --duration "2 hours" \
+  --notes "Final session: completed all reviews with high quality"
+
+# 6. Mark as completed
+python scripts/track_expert_progress.py --action update \
+  --name "Dr. Mary Muthoni" \
+  --status "Completed" \
+  --notes "Excellent work, provided comprehensive cultural validation"
+
+# 7. Generate final report
+python scripts/track_expert_progress.py --action report
+```
+
 ## Directory Structure
 
 ### `/automation/`
