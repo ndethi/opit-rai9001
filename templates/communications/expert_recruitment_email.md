@@ -1,53 +1,59 @@
 # Expert Recruitment Email Template
 
-**Subject:** Request for Cultural Expertise - Kikuyu Proverb Research Project
+**Subject:** Request for Cultural Expertise - AI Translation Research Evaluation
 
 ---
 
 Dear [Expert Name],
 
-I hope this message finds you well. I am writing to request your invaluable cultural expertise for an academic research project focused on creating culturally-faithful English translations of Kikuyu proverbs, specifically those related to wealth, business, and entrepreneurship.
+I hope this message finds you well. I am writing to request your invaluable cultural expertise for an academic research project evaluating AI translation quality for Kikuyu proverbs related to wealth, business, and entrepreneurship.
 
-## Project Overview
+## Research Project Overview
 
-**Research Title:** Traditional Kikuyu Proverbs for Modern Wealth and Entrepreneurship  
+**Research Title:** Evaluating AI Translation Quality: Ontology-Grounded vs Raw Systems  
 **Institution:** Open Institute of Technology (OPIT)  
 **Program:** MSc in Responsible AI - Capstone Project (RAI9001)  
 **Principal Researcher:** Charles Watson Ndethi Kibaki  
 
 This research aims to:
-- Preserve and digitize traditional Kikuyu wisdom for future generations
-- Create culturally-authentic translations that maintain deep cultural meaning
-- Bridge traditional wisdom with modern business and entrepreneurship applications
-- Develop a knowledge base that respects and honors Kikuyu cultural heritage
+- **Measure whether AI systems with cultural knowledge translate better** than basic AI
+- **Create gold standard evaluation benchmarks** for cultural translation assessment
+- **Demonstrate the value of cultural knowledge** in AI translation systems
+- **Advance research in culturally-aware AI** for African languages
 
-## Your Expert Role
+## Your Expert Role: Creating Evaluation Standards
 
-We are seeking your expertise to:
-- **Review approximately 96 carefully selected Kikuyu proverbs** related to wealth and business
-- **Provide expert translations** that preserve cultural meaning over literal interpretation
-- **Validate cultural authenticity** and significance of each proverb
-- **Document traditional usage contexts** and modern applications
-- **Rate business relevance** for contemporary entrepreneurship
+We are seeking your expertise to **create authoritative evaluation benchmarks** that will be used to measure AI translation quality:
+
+- **Provide gold standard translations** (the best possible English versions)
+- **Establish cultural quality criteria** for evaluating AI performance
+- **Predict common AI translation errors** to watch for
+- **Create reference standards** for measuring translation success
+- **Define cultural concepts** that good AI translation must preserve
+
+**Your expert assessments will serve as the benchmark** against which we compare:
+- AI systems with cultural knowledge (Ontology-Grounded RAG)
+- Basic AI systems without cultural context
+- Statistical analysis of which approach works better
 
 **Estimated Time Commitment:** 8-12 hours total (can be completed over 2-3 weeks)
-- Initial review: 5-7 hours
-- Follow-up clarifications: 2-3 hours
+- Creating evaluation standards: 5-7 hours
+- Review and clarifications: 2-3 hours
 - Optional consultation call: 1 hour
 
 ## Materials We Will Provide
 
-1. **Comprehensive Expert Instructions Document**
-   - Detailed guidelines preserving cultural integrity
-   - Clear rating scales and validation criteria
-   - Examples of quality cultural interpretation
+1. **Evaluation Benchmark Creation Instructions**
+   - Guidelines for creating AI translation quality standards
+   - Clear criteria for establishing reference baselines
+   - Framework for predicting AI system challenges
 
-2. **Professional Excel Validation Spreadsheet**
-   - User-friendly interface for review
-   - Multiple sheets for different validation aspects
-   - Pre-populated with extracted proverb data
+2. **Professional Excel Evaluation Template**
+   - User-friendly interface for creating benchmarks
+   - Multiple sheets for different evaluation aspects
+   - Pre-populated with 96 carefully selected proverbs
 
-3. **Research Context Documentation**
+3. **Research Methodology Documentation**
    - Project goals and academic objectives
    - Cultural preservation methodology
    - Expected impact and applications

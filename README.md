@@ -82,8 +82,10 @@ Traditional machine translation fails catastrophically when dealing with proverb
 │   ├── proverbs/           # Kikuyu proverb datasets and annotations
 │   └── processed/          # Expert review and validation materials
 ├── scripts/
-│   ├── extract_proverbs_from_pdf.py    # PDF extraction pipeline
-│   └── prepare_expert_review.py        # Expert validation system
+│   ├── extract_proverbs_from_pdf.py        # PDF extraction pipeline
+│   ├── prepare_expert_review.py            # Expert validation system
+│   ├── create_expert_tracking_template.py  # Expert tracking template generator
+│   └── track_expert_progress.py            # Expert session management
 └── README.md
 ```
 
@@ -94,18 +96,32 @@ The project includes a comprehensive cultural expert validation system for ensur
 ### Key Features
 - **Automated Filtering**: Removes non-proverb content from extractions
 - **Comprehensive Review Spreadsheet**: Multi-sheet Excel file for expert validation
-- **Cultural Guidelines**: Detailed instructions preserving Kikuyu cultural integrity
+- **Expert Session Management**: Complete tracking system for recruitment and progress
+- **Communication Templates**: Professional email templates for expert engagement
+- **Progress Monitoring**: Real-time tracking of review sessions and completion
 - **Quality Assurance**: Built-in validation fields and rating systems
 
 ### Quick Usage
 ```bash
 # Generate expert review materials
 python scripts/prepare_expert_review.py
+
+# Create expert tracking system
+python scripts/create_expert_tracking_template.py
+
+# Manage expert sessions
+python scripts/track_expert_progress.py --action report
 ```
 
-**Output**: Excel spreadsheet, expert instructions, and validation reports in `data/processed/`
+**Output**: 
+- Expert validation spreadsheets and instructions in `data/processed/`
+- Expert tracking and communication logs in `data/processed/expert_review/`
+- Professional communication templates in `templates/communications/`
 
-**Current Status**: 96 authentic proverbs prepared for expert review (filtered from 372 original extractions)
+**Current Status**: 
+- 96 authentic proverbs prepared for expert review (filtered from 372 original extractions)
+- Complete expert recruitment and tracking workflow established
+- Multi-sheet Excel system for comprehensive session management
 
 For detailed information, see [Expert Review Documentation](data/processed/README.md).
 

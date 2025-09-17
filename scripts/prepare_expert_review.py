@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare expert review materials from extracted proverbs CSV."""
+"""Prepare expert review materials for creating AI translation evaluation benchmark."""
 
 import pandas as pd
 import json
@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class ExpertReviewPreparator:
-    """Prepare materials for cultural expert validation."""
+    """Prepare materials for creating gold standard AI translation evaluation benchmark."""
     
     def __init__(self, csv_file: str):
         """Load extracted proverbs from CSV."""
@@ -57,8 +57,8 @@ class ExpertReviewPreparator:
         
         return filtered_df[mask]
     
-    def create_expert_review_spreadsheet(self, output_file: str = "data/processed/proverb_expert_validation.xlsx"):
-        """Create comprehensive expert review spreadsheet."""
+    def create_expert_review_spreadsheet(self, output_file: str = "data/processed/expert_evaluation_benchmark.xlsx"):
+        """Create expert review spreadsheet for AI translation evaluation benchmark creation."""
         
         # Ensure output directory exists
         output_path = Path(output_file)
@@ -78,75 +78,70 @@ class ExpertReviewPreparator:
                 kikuyu_text = re.sub(r'\([^)]*\)\s*[A-Z]*\s*$', '', kikuyu_text).strip()
             
             review_row = {
-                # Original extracted data
+                # Original extracted data (for AI system reference)
                 'Proverb_ID': row.get('id', f'prov_{idx:03d}'),
                 'Kikuyu_Text': kikuyu_text,
-                'Auto_Literal_Translation': row.get('literal_translation', '[NEEDS TRANSLATION]'),
-                'Auto_Cultural_Meaning': row.get('cultural_meaning', '[NEEDS CULTURAL ANALYSIS]'),
+                'Auto_Literal_Translation': row.get('literal_translation', '[AI SYSTEM WILL TRANSLATE]'),
+                'Auto_Cultural_Meaning': row.get('cultural_meaning', '[AI SYSTEM WILL INTERPRET]'),
                 'Suggested_Themes': row.get('themes', ''),
                 'Domain_Relevance': row.get('domain_relevance', ''),
                 'Complexity_Level': row.get('complexity_level', 'unknown'),
                 'Source_Notes': row.get('usage_notes', ''),
                 'Extraction_Confidence': self._extract_confidence(row.get('usage_notes', '')),
                 
-                # Expert validation fields (empty for experts to fill)
-                'Expert_Translation': '',
-                'Expert_Cultural_Meaning': '',
-                'Expert_Usage_Context': '',
-                'Expert_Themes': '',
-                'Business_Relevance_Rating': '',  # 1-5 scale
-                'Cultural_Authenticity_Rating': '',  # 1-5 scale
-                'Translation_Difficulty': '',  # Easy/Medium/Hard
-                'Regional_Variants': '',
-                'Similar_English_Proverbs': '',
-                'Modern_Business_Application': '',
-                'Expert_Comments': '',
-                'Validation_Status': 'Pending Review'
+                # GOLD STANDARD BENCHMARK FIELDS (for AI comparison evaluation)
+                'Gold_Standard_Translation': '',  # Expert reference translation for comparison
+                'Gold_Standard_Cultural_Meaning': '',  # Expert cultural interpretation baseline
+                'Traditional_Usage_Context': '',  # Authentic usage context for evaluation
+                'Cultural_Concepts_To_Preserve': '',  # Key concepts AI must maintain
+                'Translation_Quality_Criteria': '',  # What makes translation good/bad
+                'Business_Relevance_Score': '',  # 1-5 scale for domain evaluation
+                'Cultural_Authenticity_Score': '',  # 1-5 scale for cultural accuracy
+                'Translation_Difficulty_Level': '',  # Easy/Medium/Hard for AI systems
+                'Common_AI_Translation_Errors': '',  # Typical mistakes to watch for
+                'Evaluation_Notes': '',  # Additional assessment criteria
+                'Benchmark_Status': 'Pending Expert Evaluation'
             }
             review_data.append(review_row)
         
         # Create DataFrame and save to Excel
         review_df = pd.DataFrame(review_data)
         
-        # Create multiple sheets for different aspects
+        # Create multiple sheets for evaluation benchmark
         with pd.ExcelWriter(output_file, engine='openpyxl') as writer:
-            # Main review sheet
-            review_df.to_excel(writer, sheet_name='Proverb_Review', index=False)
+            # Main evaluation benchmark sheet
+            review_df.to_excel(writer, sheet_name='Evaluation_Benchmark', index=False)
             
-            # Instructions sheet
+            # Instructions for creating evaluation benchmark
             instructions_df = pd.DataFrame([
-                {'Section': 'Overview', 'Instructions': 'Please review each proverb for cultural accuracy and provide expert translations'},
-                {'Section': 'Expert_Translation', 'Instructions': 'Provide accurate English translation preserving cultural meaning'},
-                {'Section': 'Expert_Cultural_Meaning', 'Instructions': 'Explain the deeper cultural significance and wisdom'},
-                {'Section': 'Expert_Usage_Context', 'Instructions': 'Describe when/how this proverb is traditionally used'},
-                {'Section': 'Expert_Themes', 'Instructions': 'List relevant themes (e.g., business_wisdom, work_ethic, wealth_management)'},
-                {'Section': 'Business_Relevance_Rating', 'Instructions': '1-5 scale: How relevant to wealth/entrepreneurship?'},
-                {'Section': 'Cultural_Authenticity_Rating', 'Instructions': '1-5 scale: How authentic is this proverb?'},
-                {'Section': 'Translation_Difficulty', 'Instructions': 'Easy/Medium/Hard - complexity of translating to English'},
-                {'Section': 'Modern_Business_Application', 'Instructions': 'How can this proverb be applied in modern business contexts?'},
+                {'Section': 'RESEARCH PURPOSE', 'Instructions': 'Create gold standard evaluation benchmark to compare AI translation systems'},
+                {'Section': 'PROJECT GOAL', 'Instructions': 'We will test: Does cultural knowledge (ontology) improve AI translation quality?'},
+                {'Section': 'YOUR ROLE', 'Instructions': 'Provide reference standards to evaluate AI system performance against'},
+                {'Section': 'Gold_Standard_Translation', 'Instructions': 'THE BEST possible English translation - our reference baseline'},
+                {'Section': 'Gold_Standard_Cultural_Meaning', 'Instructions': 'Authoritative cultural interpretation - what AI systems should achieve'},
+                {'Section': 'Cultural_Concepts_To_Preserve', 'Instructions': 'Key cultural elements that good AI translation MUST maintain'},
+                {'Section': 'Translation_Quality_Criteria', 'Instructions': 'What makes a translation excellent vs poor for this proverb?'},
+                {'Section': 'Business_Relevance_Score', 'Instructions': '1-5 scale: Relevance to wealth/entrepreneurship domain'},
+                {'Section': 'Cultural_Authenticity_Score', 'Instructions': '1-5 scale: How culturally authentic is this proverb?'},
+                {'Section': 'Translation_Difficulty_Level', 'Instructions': 'Easy/Medium/Hard - how challenging for AI systems?'},
+                {'Section': 'Common_AI_Translation_Errors', 'Instructions': 'What mistakes do you expect AI systems to make?'},
+                {'Section': 'EVALUATION FOCUS', 'Instructions': 'Focus on creating standards to measure AI translation quality'},
             ])
-            instructions_df.to_excel(writer, sheet_name='Instructions', index=False)
+            instructions_df.to_excel(writer, sheet_name='Evaluation_Instructions', index=False)
             
-            # Summary statistics
+            # Benchmark summary statistics
             summary_df = pd.DataFrame([
-                {'Metric': 'Total Proverbs for Review', 'Value': len(review_df)},
+                {'Metric': 'Total Proverbs in Benchmark', 'Value': len(review_df)},
                 {'Metric': 'High Domain Relevance', 'Value': len(review_df[review_df['Domain_Relevance'].str.contains('High', na=False)])},
                 {'Metric': 'Medium Domain Relevance', 'Value': len(review_df[review_df['Domain_Relevance'].str.contains('Medium', na=False)])},
-                {'Metric': 'Complex Proverbs', 'Value': len(review_df[review_df['Complexity_Level'] == 'complex'])},
+                {'Metric': 'Complex Translation Cases', 'Value': len(review_df[review_df['Complexity_Level'] == 'complex'])},
                 {'Metric': 'High Confidence Extractions', 'Value': len(review_df[review_df['Extraction_Confidence'] > 0.7])},
+                {'Metric': 'Research Purpose', 'Value': 'AI Translation Quality Evaluation'},
+                {'Metric': 'Comparison Method', 'Value': 'Ontology-Grounded RAG vs Raw LLM vs Expert Gold Standard'},
             ])
-            summary_df.to_excel(writer, sheet_name='Summary', index=False)
-            
-            # Theme analysis sheet
-            all_themes = review_df['Suggested_Themes'].str.split(',').explode().str.strip()
-            theme_counts = all_themes.value_counts()
-            theme_df = pd.DataFrame({
-                'Theme': theme_counts.index,
-                'Count': theme_counts.values
-            })
-            theme_df.to_excel(writer, sheet_name='Theme_Analysis', index=False)
+            summary_df.to_excel(writer, sheet_name='Benchmark_Summary', index=False)
         
-        logger.info(f"Created expert review spreadsheet: {output_file}")
+        logger.info(f"Created AI translation evaluation benchmark: {output_file}")
         return output_file
     
     def _extract_confidence(self, usage_notes: str) -> float:

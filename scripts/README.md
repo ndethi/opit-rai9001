@@ -17,17 +17,17 @@ python scripts/extract_proverbs_from_pdf.py
 ```
 
 ### `prepare_expert_review.py` 
-Prepares comprehensive expert validation materials from extracted proverbs.
+Prepares expert evaluation materials for creating AI translation quality benchmarks.
 
-**Purpose**: Generate expert review spreadsheets and documentation  
+**Purpose**: Generate expert evaluation spreadsheets for creating gold standard AI translation benchmarks  
 **Input**: `data/proverbs/extracted_proverbs.csv`  
-**Output**: Expert validation materials in `data/processed/`
+**Output**: Expert evaluation materials in `data/processed/`
 
 **Key Features**:
 - Filters authentic proverbs from extractions (372 → 96 proverbs)
-- Generates multi-sheet Excel validation spreadsheet
-- Creates detailed expert instructions with cultural guidelines
-- Produces validation preparation reports
+- Generates multi-sheet Excel evaluation benchmark spreadsheet
+- Creates detailed expert instructions for AI evaluation standard creation
+- Produces evaluation benchmark preparation reports
 
 **Usage**:
 ```bash
@@ -35,8 +35,8 @@ python scripts/prepare_expert_review.py
 ```
 
 **Generated Files**:
-- `proverb_expert_validation.xlsx` - Main review spreadsheet
-- `expert_validation_instructions.md` - Cultural expert guidelines  
+- `expert_evaluation_benchmark.xlsx` - Main evaluation benchmark spreadsheet
+- `expert_validation_instructions.md` - AI evaluation benchmark creation guidelines  
 - `validation_preparation_report.md` - Process summary
 
 ### `create_expert_tracking_template.py`

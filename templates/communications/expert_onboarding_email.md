@@ -1,31 +1,31 @@
 # Expert Onboarding Email Template
 
-**Subject:** Welcome to the Kikuyu Proverb Research Project - Materials Attached
+**Subject:** Welcome to AI Translation Research Project - Evaluation Materials Attached
 
 ---
 
 Dear [Expert Name],
 
-Thank you so much for agreeing to participate in our Kikuyu proverb research project! Your cultural expertise will be invaluable in preserving and translating traditional wisdom for modern applications.
+Thank you so much for agreeing to participate in our AI translation evaluation research! Your cultural expertise will be invaluable in creating standards to measure AI translation quality for Kikuyu proverbs.
 
 ## Getting Started
 
 ### Materials Attached:
-1. **`expert_validation_instructions.md`** - Comprehensive guidelines for the review process
-2. **`proverb_expert_validation.xlsx`** - Main review spreadsheet with 96 proverbs
-3. **`validation_preparation_report.md`** - Project context and statistics
+1. **`expert_validation_instructions.md`** - Guidelines for creating evaluation benchmarks
+2. **`expert_evaluation_benchmark.xlsx`** - Main evaluation spreadsheet with 96 proverbs
+3. **`validation_preparation_report.md`** - Research context and methodology
 
-### Review Process Overview:
-1. **Read the instructions document first** - This contains important cultural guidelines
-2. **Open the Excel spreadsheet** - Your main working document
-3. **Complete reviews at your own pace** - We recommend 2-3 hour sessions
+### Evaluation Process Overview:
+1. **Read the instructions document first** - This explains the evaluation benchmark approach
+2. **Open the Excel spreadsheet** - Your main working document for creating standards
+3. **Create evaluation standards at your own pace** - We recommend 2-3 hour sessions
 4. **Save your progress regularly** - Excel will auto-save your work
 
 ## Timeline and Expectations
 
 **Estimated Timeline:** 2-3 weeks  
 **Total Time Commitment:** 8-12 hours  
-**Recommended Approach:** 3-4 review sessions of 2-3 hours each
+**Recommended Approach:** 3-4 evaluation sessions of 2-3 hours each
 
 **Key Deliverables:**
 - Completed Excel validation spreadsheet
