@@ -48,6 +48,96 @@ python scripts/process_expert_feedback.py \
 - `expert_translation_accuracy`: Score 1-5
 - `expert_business_relevance`: Score 1-5
 - `expert_overall_fluency`: Score 1-5
+
+### Step 2: LLM as a Judge Evaluation
+
+The evaluation framework includes automated LLM-based assessment for scalable evaluation:
+
+#### Configuration Setup
+
+Configure LLM providers in `.env` file:
+
+```bash
+# LLM as a Judge Configuration
+LLM_JUDGE_PRIMARY_PROVIDER=cohere
+LLM_JUDGE_FALLBACK_PROVIDERS=openai,anthropic
+LLM_JUDGE_COHERE_MODEL=command-r-plus
+LLM_JUDGE_OPENAI_MODEL=gpt-4-turbo
+LLM_JUDGE_ANTHROPIC_MODEL=claude-3-opus-20240229
+LLM_JUDGE_TEMPERATURE=0.3
+LLM_JUDGE_MAX_TOKENS=1500
+
+# Evaluation Framework Configuration
+EVALUATION_MODE=comprehensive
+CULTURAL_EVAL_WEIGHT=0.4
+TRANSLATION_EVAL_WEIGHT=0.3
+BUSINESS_EVAL_WEIGHT=0.2
+FLUENCY_EVAL_WEIGHT=0.1
+ENABLE_ENSEMBLE_EVALUATION=true
+ENSEMBLE_MODEL_COUNT=3
+```
+
+#### Running LLM Evaluations
+
+```bash
+# Test configuration
+python scripts/run_llm_evaluation.py --mode config --show-summary
+
+# Single translation evaluation
+python scripts/run_llm_evaluation.py --mode single \
+    --kikuyu "Mũndũ mũgeni nĩ kĩara kĩa kũingĩrwo nĩ maĩ" \
+    --translation "A visitor is like a vessel that should be filled with water" \
+    --system og_rag
+
+# Comparative evaluation
+python scripts/run_llm_evaluation.py --mode comparative \
+    --benchmark-file data/evaluation/benchmark/translation_evaluation_benchmark.csv \
+    --sample-size 50 --enable-ensemble
+
+# Full pipeline evaluation
+python scripts/run_llm_evaluation.py --mode pipeline \
+    --benchmark-file data/evaluation/benchmark/translation_evaluation_benchmark.csv \
+    --output-dir outputs/evaluation/full_run
+```
+
+#### LLM Judge Features
+
+**Cultural Evaluation Specialization**:
+- Culturally-aware prompts for Kikuyu proverb assessment
+- Traditional wisdom preservation evaluation
+- Cross-cultural understanding validation
+
+**Multi-Model Ensemble**:
+- Primary Cohere model with OpenAI/Anthropic fallbacks
+- Ensemble evaluation for robust assessment
+- Inter-model agreement analysis
+
+**Comprehensive Scoring**:
+- Cultural Faithfulness (40%)
+- Translation Accuracy (30%)
+- Business Relevance (20%)
+- Overall Fluency (10%)
+
+#### Integration with Expert Evaluation
+
+```python
+# Analyze correlation between LLM and expert assessments
+from src.evaluation.comparative_pipeline import ComparativeEvaluationPipeline
+
+pipeline = ComparativeEvaluationPipeline(
+    benchmark_file="data/evaluation/benchmark/translation_evaluation_benchmark.csv"
+)
+
+# Run comprehensive evaluation with expert correlation
+results = await pipeline.run_comparative_evaluation(
+    sample_size=100,
+    enable_ensemble=True
+)
+
+# Extract correlation analysis
+expert_correlation = results['expert_correlation']
+print(f"Overall correlation: {expert_correlation.get('overall_correlation', 'N/A')}")
+```
 - `expert_evaluator_id`: Expert identifier
 - `evaluation_date`: Assessment timestamp
 

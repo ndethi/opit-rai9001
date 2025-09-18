@@ -21,6 +21,12 @@ cohere>=5.0.0                 # Cohere Command models - production key with $100
 langchain>=0.1.0              # RAG pipeline framework
 langchain-community>=0.0.20   # Additional integrations
 
+# LLM as a Judge Evaluation Framework
+asyncio-compat>=0.7.0         # Async support for concurrent evaluations
+matplotlib>=3.7.0             # Visualization for evaluation results
+seaborn>=0.12.0               # Statistical visualization
+scipy>=1.11.0                 # Statistical analysis and significance testing
+
 # Data & Analysis (Essential for Research)
 pandas>=2.0.0                 # Proverb data processing and analysis
 numpy>=1.24.0                 # Numerical computations

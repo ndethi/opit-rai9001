@@ -746,6 +746,70 @@ The script generates:
 
 ### Other Scripts
 
+## 🤖 LLM as a Judge Evaluation Framework
+
+### `run_llm_evaluation.py`
+Comprehensive LLM-based evaluation system for Kikuyu proverb translation quality assessment.
+
+**Purpose**: Automated evaluation of translation quality using culturally-specialized LLM judges  
+**Features**: Multi-provider support, ensemble evaluation, statistical analysis, expert correlation
+
+**Core Capabilities**:
+- **Dynamic Provider Configuration**: Environment-based LLM setup (Cohere, OpenAI, Anthropic)
+- **Cultural Evaluation Specialization**: Prompts designed for Kikuyu cultural context
+- **Multi-Model Ensemble**: Robust assessment using multiple LLM judges
+- **Comprehensive Scoring**: 4-dimensional quality assessment
+- **Statistical Validation**: Significance testing and correlation analysis
+
+**Configuration Setup**:
+```bash
+# Configure LLM providers in .env file
+cp .env.example .env
+# Edit with your API keys: COHERE_API_KEY, OPENAI_API_KEY, ANTHROPIC_API_KEY
+```
+
+**Usage Examples**:
+```bash
+# Test configuration
+python scripts/run_llm_evaluation.py --mode config --show-summary
+
+# Single translation evaluation
+python scripts/run_llm_evaluation.py --mode single \
+    --kikuyu "Mũndũ mũgeni nĩ kĩara kĩa kũingĩrwo nĩ maĩ" \
+    --translation "A visitor is like a vessel that should be filled with water" \
+    --system og_rag
+
+# Comparative evaluation (OG-RAG vs Raw LLM)
+python scripts/run_llm_evaluation.py --mode comparative \
+    --benchmark-file data/evaluation/benchmark/translation_evaluation_benchmark.csv \
+    --sample-size 50 --enable-ensemble
+
+# Full pipeline evaluation
+python scripts/run_llm_evaluation.py --mode pipeline \
+    --benchmark-file data/evaluation/benchmark/translation_evaluation_benchmark.csv \
+    --output-dir outputs/evaluation/full_run
+```
+
+**Evaluation Modes**:
+- `config`: Test and display LLM configuration
+- `single`: Evaluate a single translation
+- `comparative`: Compare OG-RAG vs Raw LLM systems
+- `pipeline`: Full evaluation pipeline with analysis
+
+**Key Features**:
+- **Cultural Faithfulness Assessment** (40% weight): Traditional wisdom preservation
+- **Translation Accuracy Evaluation** (30% weight): Linguistic correctness
+- **Business Relevance Analysis** (20% weight): Modern professional applicability
+- **Overall Fluency Assessment** (10% weight): Natural English expression
+- **Ensemble Evaluation**: Multi-model consensus for robust assessment
+- **Expert Correlation**: Validation against human expert assessments
+
+**Output**:
+- Detailed evaluation scores and feedback
+- Statistical analysis with significance testing
+- Visualization charts and reports
+- CSV/JSON exports for further analysis
+
 To run any script, use:
 ```bash
 # From the project root

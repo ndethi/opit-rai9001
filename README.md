@@ -60,6 +60,7 @@ Traditional machine translation fails catastrophically when dealing with proverb
 2. **Ontology Development**: Create formal Kikuyu proverb ontology capturing cultural depth
 3. **System Implementation**: Develop OG-RAG system integrating ontology with LLM
 4. **Evaluation Framework**: Establish culturally-aware metrics for translation assessment
+5. **LLM as a Judge**: Implement automated evaluation using culturally-specialized LLM assessment
 
 ## Expected Impact
 
@@ -67,6 +68,9 @@ Traditional machine translation fails catastrophically when dealing with proverb
 - **Cross-Cultural Understanding**: Bridge communication gaps between communities
 - **Technical Advancement**: Pioneer culturally sensitive NLP for low-resource languages
 - **Reusable Framework**: Methodology applicable to other cultural translation challenges
+- **Scalable Evaluation**: Automated assessment framework for cultural translation quality
+
+## Repository Structure
 
 ## Repository Structure
 
@@ -77,17 +81,50 @@ Traditional machine translation fails catastrophically when dealing with proverb
 │   └── thesis/              # Thesis documentation and writing
 ├── src/
 │   ├── ontology/            # Ontology development and management
-│   └── rag-system/          # OG-RAG implementation
+│   ├── evaluation/          # LLM as a Judge evaluation framework
+│   └── og-rag-system/       # OG-RAG implementation
 ├── data/
 │   ├── proverbs/           # Kikuyu proverb datasets and annotations
-│   └── processed/          # Expert review and validation materials
+│   └── evaluation/         # Evaluation benchmarks and results
 ├── scripts/
-│   ├── extract_proverbs_from_pdf.py        # PDF extraction pipeline
-│   ├── prepare_expert_review.py            # Expert validation system
-│   ├── create_expert_tracking_template.py  # Expert tracking template generator
-│   └── track_expert_progress.py            # Expert session management
+│   ├── run_llm_evaluation.py  # LLM as a Judge evaluation interface
+│   └── create_evaluation_benchmark.py  # Evaluation framework setup
 └── README.md
 ```
+
+## 🤖 LLM as a Judge Evaluation Framework
+
+### Quick Start
+
+```bash
+# 1. Configure environment
+cp .env.example .env
+# Edit .env with your API keys (Cohere, OpenAI, Anthropic)
+
+# 2. Test configuration
+python scripts/run_llm_evaluation.py --mode config --show-summary
+
+# 3. Run single evaluation
+python scripts/run_llm_evaluation.py --mode single \
+    --kikuyu "Mũndũ mũgeni nĩ kĩara kĩa kũingĩrwo nĩ maĩ" \
+    --translation "A visitor is like a vessel that should be filled with water" \
+    --system og_rag
+
+# 4. Run comparative evaluation
+python scripts/run_llm_evaluation.py --mode comparative \
+    --benchmark-file data/evaluation/benchmark/translation_evaluation_benchmark.csv \
+    --enable-ensemble
+```
+
+### Key Features
+
+- **Dynamic Provider Configuration**: Environment-based LLM provider setup with Cohere primary and OpenAI/Anthropic fallbacks
+- **Cultural Evaluation Specialization**: Culturally-aware prompts for Kikuyu proverb assessment
+- **Multi-Model Ensemble**: Robust evaluation using multiple LLM judges with agreement analysis
+- **Comprehensive Scoring**: 4-dimensional quality assessment (Cultural Faithfulness 40%, Translation Accuracy 30%, Business Relevance 20%, Overall Fluency 10%)
+- **Expert Correlation**: Validation against human expert assessments
+- **Statistical Analysis**: Significance testing and effect size calculation
+- **Visualization**: Automated generation of evaluation charts and reports
 
 ## 📋 Expert Review System
 
