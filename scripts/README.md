@@ -1,6 +1,6 @@
 # Scripts Directory
 
-This directory contains automation scripts, data processing tools, and project utilities for the thiLLMo OG-RAG project.
+This directory contains automation scripts, data processing tools, and comprehensive ontology construction utilities for the thiLLMo OG-RAG project.
 
 ## Core Data Processing Scripts
 
@@ -38,6 +38,157 @@ python scripts/prepare_expert_review.py
 - `expert_evaluation_benchmark.xlsx` - Main evaluation benchmark spreadsheet
 - `expert_validation_instructions.md` - AI evaluation benchmark creation guidelines  
 - `validation_preparation_report.md` - Process summary
+
+## 🏗️ Comprehensive Ontology Construction System
+
+### `ontology_builder.py`
+Sophisticated ontology construction framework for creating culturally-aware knowledge graphs from expert validation data.
+
+**Purpose**: Transform expert validation data into rich Neo4j knowledge graphs for OG-RAG systems  
+**Features**: 434 lines of advanced cultural semantic analysis and relationship modeling
+
+**Core Capabilities**:
+- **Cultural Concept Extraction**: Advanced Kikuyu semantic pattern recognition
+- **Business Domain Mapping**: Modern business application relevance assessment
+- **Relationship Modeling**: Multi-layered semantic connections and cultural authenticity preservation
+- **Quality Assurance**: Expert validation integration and cultural authenticity scoring
+
+**Usage**:
+```bash
+# Basic ontology construction
+python scripts/ontology_builder.py \
+    --csv-file data/processed/expert_validation.csv \
+    --neo4j-uri bolt://localhost:7687 \
+    --username neo4j \
+    --password kikuyu_proverbs_2024
+
+# Advanced construction with comprehensive analysis
+python scripts/ontology_builder.py \
+    --csv-file data/processed/expert_validation.csv \
+    --cultural-analysis-depth advanced \
+    --business-mapping comprehensive \
+    --relationship-strength-threshold 0.6 \
+    --min-expert-score 3.0
+```
+
+**Advanced Options**:
+- `--cultural-analysis-depth`: `basic|intermediate|advanced` (default: intermediate)
+- `--business-mapping`: `minimal|standard|comprehensive` (default: standard)
+- `--relationship-strength-threshold`: Minimum relationship strength (0.0-1.0)
+- `--min-expert-score`: Minimum expert validation score (1.0-5.0)
+- `--cultural-authenticity-threshold`: Minimum cultural authenticity score
+
+**Output**:
+- Rich Neo4j knowledge graph with 6 node types and 6 relationship types
+- Cultural concept network with semantic relationships
+- Business application mapping with relevance scoring
+- Expert validation integration and quality metrics
+
+### `ontology_querier.py`
+Advanced query interface for OG-RAG retrieval with cultural context awareness.
+
+**Purpose**: Sophisticated querying system for culturally-grounded retrieval augmented generation  
+**Features**: 600+ lines of advanced query strategies and cultural context integration
+
+**Query Types**:
+
+**Cultural Similarity Search**:
+```bash
+python scripts/ontology_querier.py \
+    --query-type cultural_similarity \
+    --input "Mwanake mutari gitonga ni kirume" \
+    --limit 5 \
+    --cultural-weight 0.8
+```
+
+**Business Application Search**:
+```bash
+python scripts/ontology_querier.py \
+    --query-type business_application \
+    --domain leadership \
+    --context modern_workplace \
+    --limit 10 \
+    --min-relevance 0.7
+```
+
+**Advanced Semantic Search**:
+```bash
+python scripts/ontology_querier.py \
+    --query-type semantic_search \
+    --concepts "work_ethics,responsibility,community" \
+    --cultural-weight 0.8 \
+    --business-weight 0.6 \
+    --relationship-depth 2
+```
+
+**Expert Validation Search**:
+```bash
+python scripts/ontology_querier.py \
+    --query-type expert_validated \
+    --min-expert-score 4.0 \
+    --min-cultural-authenticity 4.0 \
+    --domains "leadership,entrepreneurship"
+```
+
+**Contextual Retrieval for OG-RAG**:
+```bash
+python scripts/ontology_querier.py \
+    --query-type contextual_subgraph \
+    --input-proverb "Gutiri utuku utakira" \
+    --context-radius 2 \
+    --include-business-applications \
+    --include-cultural-contexts
+```
+
+**Advanced Features**:
+- Multi-modal semantic similarity algorithms
+- Cultural context-aware retrieval strategies
+- Business application ranking and filtering
+- Expert validation score integration
+- Relationship strength-based traversal
+- Subgraph extraction for OG-RAG context
+
+### `ontology_validator.py`
+Comprehensive validation and quality assurance framework for ontology construction.
+
+**Purpose**: Extensive validation suite ensuring ontology quality for OG-RAG deployment  
+**Features**: Complete quality assessment across structural, semantic, and cultural dimensions
+
+**Validation Suite**:
+```bash
+# Complete validation with detailed reporting
+python scripts/ontology_validator.py \
+    --save-results \
+    --output-dir reports/validation
+
+# Performance and quality assessment
+python scripts/ontology_validator.py \
+    --uri bolt://localhost:7687 \
+    --username neo4j \
+    --password kikuyu_proverbs_2024 \
+    --database neo4j
+```
+
+**Validation Dimensions**:
+- **Structural Validation**: Node counts, relationship integrity, constraint validation
+- **Data Quality**: Completeness analysis, consistency checks, field validation
+- **Semantic Consistency**: Relationship validation, concept clustering, network analysis
+- **Cultural Authenticity**: Expert validation analysis, cultural coverage assessment
+- **Performance Metrics**: Query performance, index utilization, OG-RAG optimization
+- **Coverage Analysis**: Concept coverage, business application mapping, domain distribution
+
+**Quality Scoring**:
+- Individual dimension scores (0.0-1.0)
+- Overall quality grade (A+ to F)
+- Criteria assessment against predefined thresholds
+- Detailed recommendations for improvement
+
+**Output Reports**:
+- `ontology_validation_comprehensive_YYYYMMDD_HHMMSS.json` - Complete validation results
+- `ontology_validation_summary_YYYYMMDD_HHMMSS.json` - Executive summary
+- Console logging with quality scores and recommendations
+
+## Expert Session Management System
 
 ### `create_expert_tracking_template.py`
 Generates comprehensive Excel tracking template for expert session management.
