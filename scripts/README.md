@@ -746,6 +746,120 @@ The script generates:
 
 ### Other Scripts
 
+## 🔄 Translation Comparison System
+
+### `enhanced_translation_comparison.py`
+Comprehensive translation comparison system integrating OG-RAG and Raw LLM translations with LLM as a Judge evaluation.
+
+**Purpose**: End-to-end translation quality comparison combining ontology-grounded and baseline approaches  
+**Features**: Integrated LLM judge evaluation, cultural context analysis, statistical validation
+
+**Core Capabilities**:
+- **OG-RAG Translation Generation**: Context-aware translations using cultural ontology
+- **Raw LLM Baseline**: Direct LLM translations without cultural enhancement
+- **LLM Judge Integration**: Automated quality assessment using cultural evaluation framework
+- **Comparative Analysis**: Statistical comparison with expert correlation
+- **Cultural Context Preparation**: Specialized metadata for LLM judge evaluation
+
+**System Architecture**:
+```python
+# Initialize comparison system with LLM Judge integration
+comparison_system = EnhancedTranslationComparisonSystem(config_file=".env")
+
+# Run complete comparison pipeline
+summary = await comparison_system.run_complete_comparison_pipeline(
+    benchmark_file="data/evaluation/benchmark/translation_evaluation_benchmark.csv"
+)
+```
+
+**Usage Examples**:
+
+**Complete Pipeline Execution**:
+```bash
+# Run full comparison with LLM judge evaluation
+python scripts/enhanced_translation_comparison.py
+```
+
+**Individual Component Testing**:
+```bash
+# Test OG-RAG translation generation only
+python scripts/enhanced_translation_comparison.py --mode og-rag-only
+
+# Test Raw LLM translation generation only  
+python scripts/enhanced_translation_comparison.py --mode raw-llm-only
+
+# Run comparison without LLM judge evaluation
+python scripts/enhanced_translation_comparison.py --skip-llm-judge
+```
+
+**Configuration Options**:
+- Dynamic LLM provider selection via environment variables
+- Cultural context depth configuration
+- Business relevance analysis level
+- Evaluation priority calculation
+- Output format customization
+
+**Generated Outputs**:
+```
+data/evaluation/translations/
+├── enhanced_og_rag_translations.csv          # OG-RAG results with metadata
+├── raw_llm_translations.csv                  # Baseline LLM translations
+├── comprehensive_translation_comparison.csv   # Combined comparison dataset
+├── llm_judge_evaluation_results.json         # LLM judge assessment
+└── pipeline_summary_YYYYMMDD_HHMMSS.json    # Execution summary
+```
+
+**Key Features**:
+- **Cultural Metadata**: Rich cultural context for LLM judge evaluation
+- **Business Relevance**: Entrepreneurship application analysis
+- **Priority Scoring**: Intelligent evaluation prioritization
+- **Multi-Provider Support**: Cohere, OpenAI, Anthropic integration
+- **Async Processing**: Efficient batch translation generation
+- **Quality Tracking**: Confidence scoring and metadata collection
+
+### `run_translation_comparison_demo.py`
+Interactive demonstration of the translation comparison system with sample Kikuyu proverbs.
+
+**Purpose**: Quick demonstration and testing of the complete translation comparison pipeline  
+**Features**: Sample data generation, full pipeline execution, comprehensive reporting
+
+**Demo Components**:
+- **Sample Data Creation**: 10 authentic Kikuyu proverbs with expert translations
+- **Pipeline Demonstration**: Complete workflow execution
+- **Results Visualization**: Summary reporting and analysis
+- **Configuration Testing**: Environment setup validation
+
+**Usage**:
+```bash
+# Run interactive demo
+python scripts/run_translation_comparison_demo.py
+
+# Verbose output for debugging
+python scripts/run_translation_comparison_demo.py --verbose
+```
+
+**Sample Proverbs Include**:
+- Cultural wisdom: "Mũndũ akua na ũkĩa" (A person dies from overeating)
+- Business applications: "Mũgũnda ũtarĩmwo ndũciaraga" (An untilled field bears nothing)
+- Community values: "Mũndũ akĩrĩra ndagĩaga na marĩa" (When eating, one is not alone with food)
+
+**Demo Output**:
+```
+🎯 ENHANCED TRANSLATION COMPARISON DEMO RESULTS
+📊 Total proverbs processed: 10
+🔄 OG-RAG translations: 10
+🤖 Raw LLM translations: 10
+📋 Comparison pairs created: 10
+🎯 High priority evaluations: 3
+🤖 LLM Judge Evaluation: ✅ Completed
+```
+
+**Next Steps Guidance**:
+- API key configuration instructions
+- Dataset scaling recommendations
+- Neo4j ontology integration steps
+- Production deployment guidelines
+
 ## 🤖 LLM as a Judge Evaluation Framework
 
 ### `run_llm_evaluation.py`
