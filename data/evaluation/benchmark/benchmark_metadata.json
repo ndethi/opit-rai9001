@@ -1,0 +1,111 @@
+{
+  "benchmark_info": {
+    "version": "1.0",
+    "creation_date": "2025-09-18T08:55:45.770357",
+    "total_evaluation_cases": 372,
+    "data_source": "data/proverbs/extracted_proverbs.csv",
+    "benchmark_file": "data/evaluation/benchmark/translation_evaluation_benchmark.csv"
+  },
+  "evaluation_framework": {
+    "evaluation_methodology": {
+      "approach": "comparative_analysis",
+      "systems": [
+        "og_rag",
+        "raw_llm",
+        "expert_gold_standard"
+      ],
+      "evaluation_type": "human_expert_assessment"
+    },
+    "quality_dimensions": {
+      "cultural_faithfulness": {
+        "description": "Preservation of cultural meaning and context",
+        "scale": "1-5 (1=Poor, 5=Excellent)",
+        "weight": 0.4,
+        "criteria": [
+          "Cultural concepts preserved",
+          "Traditional context maintained",
+          "Metaphorical meaning captured",
+          "Cultural authenticity"
+        ]
+      },
+      "translation_accuracy": {
+        "description": "Linguistic accuracy and semantic correctness",
+        "scale": "1-5 (1=Poor, 5=Excellent)",
+        "weight": 0.3,
+        "criteria": [
+          "Semantic equivalence",
+          "Grammatical correctness",
+          "Vocabulary appropriateness",
+          "Idiomatic naturalness"
+        ]
+      },
+      "business_relevance": {
+        "description": "Modern business application appropriateness",
+        "scale": "1-5 (1=Poor, 5=Excellent)",
+        "weight": 0.2,
+        "criteria": [
+          "Modern context applicability",
+          "Business scenario relevance",
+          "Professional appropriateness",
+          "Practical utility"
+        ]
+      },
+      "overall_fluency": {
+        "description": "Natural English expression and readability",
+        "scale": "1-5 (1=Poor, 5=Excellent)",
+        "weight": 0.1,
+        "criteria": [
+          "Natural expression",
+          "Readability",
+          "Flow and coherence",
+          "Target audience appropriateness"
+        ]
+      }
+    },
+    "expert_qualifications": {
+      "required": [
+        "Native or near-native Kikuyu speaker",
+        "Academic background in African studies, linguistics, or related field",
+        "Familiarity with traditional Kikuyu culture and proverbs"
+      ],
+      "preferred": [
+        "PhD in relevant field",
+        "Published research on Kikuyu culture or language",
+        "Experience with translation or cultural preservation"
+      ]
+    },
+    "evaluation_process": {
+      "blind_evaluation": true,
+      "randomized_order": true,
+      "multiple_evaluators": true,
+      "inter_rater_reliability": true,
+      "evaluation_sessions": {
+        "max_proverbs_per_session": 10,
+        "break_duration": "15 minutes",
+        "max_daily_sessions": 3
+      }
+    }
+  },
+  "data_statistics": {
+    "proverbs_with_kikuyu_text": 372,
+    "proverbs_with_initial_translation": 0,
+    "proverbs_with_cultural_meaning": 372,
+    "average_kikuyu_text_length": 63.895161290322584,
+    "average_translation_length": 3.0
+  },
+  "quality_targets": {
+    "minimum_expert_score": 4.0,
+    "target_cultural_faithfulness": 4.2,
+    "target_translation_accuracy": 4.0,
+    "target_overall_quality": 4.0,
+    "minimum_inter_rater_agreement": 0.7
+  },
+  "evaluation_status": {
+    "benchmark_created": true,
+    "templates_created": true,
+    "expert_recruitment": "pending",
+    "evaluation_sessions": "pending",
+    "data_collection": "pending",
+    "analysis": "pending"
+  }
+}

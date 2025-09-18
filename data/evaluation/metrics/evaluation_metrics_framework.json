@@ -1,0 +1,61 @@
+{
+  "primary_metrics": {
+    "cultural_faithfulness_score": {
+      "description": "Average cultural faithfulness across all evaluations",
+      "calculation": "mean(expert_cultural_faithfulness)",
+      "range": [
+        1,
+        5
+      ],
+      "target": "≥ 4.0"
+    },
+    "translation_accuracy_score": {
+      "description": "Average translation accuracy across all evaluations",
+      "calculation": "mean(expert_translation_accuracy)",
+      "range": [
+        1,
+        5
+      ],
+      "target": "≥ 4.0"
+    },
+    "overall_quality_score": {
+      "description": "Weighted average of all quality dimensions",
+      "calculation": "0.4*cultural_faithfulness + 0.3*translation_accuracy + 0.2*business_relevance + 0.1*fluency",
+      "range": [
+        1,
+        5
+      ],
+      "target": "≥ 4.0"
+    }
+  },
+  "comparative_metrics": {
+    "og_rag_vs_raw_llm": {
+      "preference_rate": "% of cases where OG-RAG preferred",
+      "quality_difference": "mean(og_rag_scores) - mean(raw_llm_scores)",
+      "cultural_advantage": "cultural_faithfulness difference",
+      "accuracy_advantage": "translation_accuracy difference"
+    }
+  },
+  "reliability_metrics": {
+    "inter_rater_agreement": {
+      "description": "Agreement between multiple experts",
+      "calculation": "Krippendorff's alpha or ICC",
+      "target": "≥ 0.7"
+    },
+    "internal_consistency": {
+      "description": "Consistency within expert evaluations",
+      "calculation": "Cronbach's alpha",
+      "target": "≥ 0.8"
+    }
+  },
+  "efficiency_metrics": {
+    "evaluation_time": {
+      "description": "Average time per evaluation",
+      "target": "≤ 5 minutes per proverb"
+    },
+    "expert_fatigue": {
+      "description": "Quality degradation over session",
+      "measurement": "Score variance by session position"
+    }
+  }
+}
