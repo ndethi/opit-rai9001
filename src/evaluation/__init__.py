@@ -1,9 +1,92 @@
 """
-thiLLMo LLM as a Judge Evaluation Framework
+Enhanced evaluation framework for thiLLMo OG-RAG system.
 
-Comprehensive evaluation system for Kikuyu proverb translation quality assessment
-using culturally-specialized LLM judges and automated metrics.
+This module provides comprehensive evaluation capabilities including:
+- LLM as a Judge evaluation with cultural specialization
+- Cultural translation metrics for authenticity assessment
+- Statistical analysis framework for research validation
+- Comparative evaluation pipeline for system assessment
+- Dynamic LLM configuration with multi-provider support
 """
+
+from .llm_config import (
+    DynamicLLMConfigurator,
+    LLMProvider,
+    LLMModelConfig,
+    EvaluationConfig
+)
+
+from .llm_judge import (
+    LLMJudgeEvaluator,
+    CulturalEvaluationPrompts,
+    EvaluationResult,
+    EvaluationDimension
+)
+
+from .comparative_pipeline import (
+    ComparativeEvaluationPipeline,
+    ComparisonResult,
+    StatisticalAnalysis
+)
+
+from .cultural_metrics import (
+    CulturalTranslationMetrics,
+    CulturalQualityAssessment,
+    TranslationFidelityMetrics
+)
+
+from .statistical_analysis import (
+    EnhancedTranslationStatisticalAnalysis,
+    StatisticalConfig
+)
+
+__version__ = "1.0.0"
+
+# Core evaluation components
+__all__ = [
+    # LLM Configuration
+    "DynamicLLMConfigurator",
+    "LLMProvider", 
+    "LLMModelConfig",
+    "EvaluationConfig",
+    
+    # LLM as a Judge Evaluation
+    "LLMJudgeEvaluator",
+    "CulturalEvaluationPrompts",
+    "EvaluationResult",
+    "EvaluationDimension",
+    
+    # Comparative Analysis
+    "ComparativeEvaluationPipeline",
+    "ComparisonResult",
+    "StatisticalAnalysis",
+    
+    # Cultural Metrics
+    "CulturalTranslationMetrics", 
+    "CulturalQualityAssessment",
+    "TranslationFidelityMetrics",
+    
+    # Statistical Analysis
+    "EnhancedTranslationStatisticalAnalysis",
+    "StatisticalConfig"
+]
+
+# Framework metadata
+FRAMEWORK_INFO = {
+    "name": "thiLLMo Enhanced Evaluation Framework",
+    "version": __version__,
+    "description": "Comprehensive evaluation framework for cultural translation systems",
+    "capabilities": [
+        "LLM as a Judge evaluation with cultural specialization",
+        "Multi-provider LLM configuration (Cohere, OpenAI, Anthropic)",
+        "Cultural authenticity and translation fidelity metrics",
+        "Statistical analysis with academic research validation",
+        "Comparative evaluation pipeline with ensemble assessment",
+        "Expert correlation analysis and reliability validation"
+    ],
+    "target_languages": ["Kikuyu", "English"],
+    "evaluation_domains": ["Cultural Translation", "Business Relevance", "Traditional Wisdom"]
+}
 
 from .llm_config import DynamicLLMConfigurator, LLMProvider, LLMModelConfig, EvaluationConfig
 from .llm_judge import LLMJudgeEvaluator, CulturalEvaluationPrompts
