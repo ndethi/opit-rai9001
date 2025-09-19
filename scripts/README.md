@@ -860,6 +860,152 @@ python scripts/run_translation_comparison_demo.py --verbose
 - Neo4j ontology integration steps
 - Production deployment guidelines
 
+## 📊 Cultural Translation Evaluation Metrics
+
+### `src/evaluation/cultural_metrics.py`
+Comprehensive cultural translation evaluation metrics specifically designed for Kikuyu proverb translation quality assessment.
+
+**Purpose**: Academic-quality evaluation metrics integrating cultural authenticity, linguistic fidelity, and business relevance  
+**Features**: Kikuyu-specific cultural pattern analysis, automated quality scoring, expert correlation
+
+**Core Capabilities**:
+- **Cultural Authenticity Assessment**: Semantic similarity, cultural context preservation, Kikuyu-specific concept analysis
+- **Translation Fidelity Metrics**: ROUGE scores, semantic similarity, structural analysis, word overlap
+- **Business Relevance Evaluation**: Entrepreneurship application assessment, modern context integration
+- **Expert Alignment Scoring**: Correlation with expert evaluations, weighted quality assessment
+- **Kikuyu Cultural Patterns**: Specialized pattern recognition for traditional concepts and values
+
+**Metric Categories**:
+
+**Cultural Authenticity (40% weight)**:
+```python
+# Cultural concept preservation analysis
+cultural_metrics = CulturalTranslationMetrics()
+authenticity_score = cultural_metrics.calculate_cultural_authenticity_score(
+    translation="Hard work leads to success",
+    expert_translation="Diligent effort brings prosperity", 
+    cultural_context="Traditional Kikuyu work ethic values",
+    og_rag_context="Community-based achievement principles"
+)
+```
+
+**Translation Fidelity (35% weight)**:
+- ROUGE-1, ROUGE-2, ROUGE-L scores for lexical overlap
+- Semantic similarity using sentence transformers
+- Length ratio analysis and structural similarity
+- Word overlap and token-level comparison
+
+**Business Relevance (15% weight)**:
+- Entrepreneurship concept matching
+- Modern business application scoring
+- Resource management principle assessment
+- Collaborative business approach evaluation
+
+**Expert Alignment (10% weight)**:
+- Correlation with expert cultural faithfulness scores
+- Translation accuracy alignment
+- Business relevance consistency
+- Overall fluency correlation
+
+**Configuration Options**:
+```python
+config = CulturalMetricsConfig(
+    cultural_weight=0.45,              # Emphasize cultural authenticity
+    fidelity_weight=0.30,              # Translation accuracy
+    business_weight=0.15,              # Business relevance  
+    expert_weight=0.10,                # Expert alignment
+    min_cultural_threshold=0.65,       # Quality thresholds
+    enable_kikuyu_specific=True        # Kikuyu pattern analysis
+)
+```
+
+**Kikuyu Cultural Pattern Analysis**:
+- **Community Values**: Ubuntu, togetherness, cooperation, harambee
+- **Traditional Wisdom**: Elder teachings, ancestral knowledge, customs
+- **Agricultural Metaphors**: Harvest, cultivation, seasonal wisdom
+- **Animal Symbolism**: Traditional animal representations and meanings
+- **Social Hierarchy**: Respect, authority, age-based wisdom structures
+- **Moral Values**: Honesty, perseverance, humility, generosity
+
+**Usage Examples**:
+
+**Single Translation Evaluation**:
+```python
+metrics = CulturalTranslationMetrics()
+quality_scores = metrics.calculate_overall_quality_score(
+    translation="Unity brings strength to the community",
+    expert_translation="Together we achieve communal strength",
+    cultural_context="Kikuyu harambee principle of collective effort",
+    business_application="Teamwork drives business success"
+)
+```
+
+**Batch Evaluation**:
+```python
+# Evaluate dataset of translations
+results = metrics.evaluate_translation_batch(
+    translations_df=comparison_dataset,
+    save_results=True,
+    output_dir="data/evaluation/cultural_metrics"
+)
+```
+
+**Output Metrics**:
+- Individual quality scores (0.0-1.0 scale)
+- Quality grades (A+ to F classification)
+- Detailed metric breakdowns
+- Improvement recommendations
+- Cultural concept analysis
+- Statistical summaries
+
+### `scripts/run_integrated_cultural_evaluation.py`
+Complete integration pipeline combining translation comparison with cultural metrics evaluation.
+
+**Purpose**: End-to-end cultural evaluation integrating OG-RAG comparison with automated metrics  
+**Features**: Full pipeline automation, statistical analysis, comprehensive reporting
+
+**Pipeline Components**:
+1. **Translation Generation**: OG-RAG vs Raw LLM comparison
+2. **Cultural Metrics Application**: Automated quality assessment
+3. **Statistical Analysis**: System performance comparison
+4. **Integration Analysis**: LLM judge correlation with cultural metrics
+5. **Comprehensive Reporting**: Executive summaries and detailed results
+
+**Usage**:
+```bash
+# Run complete integrated evaluation
+python scripts/run_integrated_cultural_evaluation.py
+
+# With custom benchmark
+python scripts/run_integrated_cultural_evaluation.py --benchmark-file data/custom_proverbs.csv
+```
+
+**Generated Analysis**:
+- **System Performance**: OG-RAG vs Raw LLM statistical comparison
+- **Cultural Preservation**: Distribution analysis and preservation rates
+- **Business Relevance**: Entrepreneurship application effectiveness
+- **Quality Distribution**: Grade distribution and excellence rates
+- **Comparative Advantage**: Quantified improvements and effect sizes
+- **Recommendations**: System-specific improvement guidance
+
+**Output Structure**:
+```
+data/evaluation/integrated_analysis/
+├── integrated_cultural_analysis_YYYYMMDD_HHMMSS.json
+├── executive_summary_YYYYMMDD_HHMMSS.json
+└── cultural_metrics/
+    ├── cultural_evaluation_results_YYYYMMDD_HHMMSS.json
+    └── cultural_evaluation_summary_YYYYMMDD_HHMMSS.csv
+```
+
+**Key Features**:
+- **Multi-System Evaluation**: Simultaneous assessment of multiple translation approaches
+- **Cultural Specialization**: Kikuyu-specific pattern recognition and analysis
+- **Academic Rigor**: Comprehensive statistical validation and significance testing
+- **Business Integration**: Entrepreneurship application assessment
+- **Expert Correlation**: Alignment with expert evaluation standards
+- **Automated Reporting**: Executive summaries and detailed technical analysis
+
 ## 🤖 LLM as a Judge Evaluation Framework
 
 ### `run_llm_evaluation.py`

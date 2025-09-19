@@ -40,6 +40,9 @@ sacrebleu>=2.3.0              # Standard MT evaluation
 bleu>=0.3                     # Basic BLEU implementation
 # nltk already included above   # Contains METEOR implementation
 
+# Cultural Translation Metrics
+sentence-transformers>=2.2.0  # Already included above for semantic embeddings
+
 # Vector Databases (Supporting Traditional RAG Baselines)
 faiss-cpu>=1.7.4              # Efficient similarity search for baseline RAG
 # chromadb>=0.4.0             # Optional: vector DB for experiments
