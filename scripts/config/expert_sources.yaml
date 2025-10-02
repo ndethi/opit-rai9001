@@ -1,0 +1,109 @@
+# Expert Source Configuration
+# This file defines metadata for expert-curated proverb collections
+# Add new expert sources here without modifying code
+
+sources:
+  ireri:
+    # Margaret Wambere Ireri's collection
+    author: "Margaret Wambere Ireri"
+    year: 2014
+    title: "A Collection of 100 Proverbs and Wise Sayings of the Gikuyu (Kenya) About Money and Wealth"
+    language: "kikuyu"
+    language_code: "ki"
+    domain: "wealth_prosperity"
+    total_proverbs: 100
+    
+    # Extraction configuration
+    extraction:
+      pattern_type: "numbered"  # Format: "1. Proverb text..."
+      number_range: [1, 100]
+      start_page: 7
+      end_page: 150
+    
+    # Quality thresholds
+    quality:
+      min_proverbs: 90  # Minimum proverbs to extract
+      max_empty_texts: 10  # Maximum allowed empty text fields
+      expected_authenticity: 5.0  # Expert validation level (1.0-5.0)
+    
+    # File naming templates
+    output:
+      raw_csv: "ireri_expert_proverbs.csv"
+      gold_standard_csv: "gold_standard_ireri.csv"
+      metadata_json: "gold_standard_ireri_metadata.json"
+      report_md: "ireri_gold_standard_report.md"
+    
+    # Citation information
+    citation:
+      format: "APA7"
+      text: |
+        Ireri, M. W. (2014). A Collection of 100 Proverbs and Wise Sayings 
+        of the Gikuyu (Kenya) About Money and Wealth. African Proverbs 
+        Working Group, Nairobi, Kenya.
+
+  # Template for future expert sources
+  # new_expert:
+  #   author: "Full Name"
+  #   year: 2025
+  #   title: "Collection Title"
+  #   language: "swahili"
+  #   language_code: "sw"
+  #   domain: "general"
+  #   total_proverbs: 150
+  #   
+  #   extraction:
+  #     pattern_type: "custom"  # or "numbered", "bullet", "paragraph"
+  #     start_page: 1
+  #     end_page: 100
+  #   
+  #   quality:
+  #     min_proverbs: 130
+  #     max_empty_texts: 20
+  #     expected_authenticity: 4.5
+  #   
+  #   output:
+  #     raw_csv: "new_expert_proverbs.csv"
+  #     gold_standard_csv: "gold_standard_new_expert.csv"
+  #     metadata_json: "gold_standard_new_expert_metadata.json"
+  #     report_md: "new_expert_gold_standard_report.md"
+  #   
+  #   citation:
+  #     format: "APA7"
+  #     text: "Full citation text here"
+
+# Default configuration for all sources
+defaults:
+  output_directories:
+    raw: "data/raw"
+    evaluation: "data/evaluation"
+    sources: "data/sources"
+  
+  # Default column names for gold standard format
+  gold_standard_columns:
+    - proverb_id
+    - kikuyu_text
+    - expert_translation
+    - expert_cultural_meaning
+    - literal_meaning
+    - contextual_usage
+    - thematic_category
+    - business_context
+    - cultural_authenticity
+    - source
+    - page_number
+    - collection_date
+    - validation_status
+    - notes
+    - wealth_theme_primary
+    - wealth_theme_secondary
+  
+  # Thematic categories (extensible per source)
+  thematic_categories:
+    - wealth_acquisition
+    - wealth_management
+    - poverty_hardship
+    - business_wisdom
+    - generosity_sharing
+    - patience_wisdom
+    - community_relations
+    - work_diligence

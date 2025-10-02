@@ -1,111 +1,104 @@
-# Margaret Ireri 100 Proverbs - Gold Standard Report
+# Expert Proverb Gold Standard Report
 
-**Generated**: 2025-10-01 23:56:44
+**Source**: IRERI  
+**Generation Date**: 2025-10-02 07:31:58
 
 ## Source Information
 
 - **Author**: Margaret Wambere Ireri
 - **Title**: A Collection of 100 Proverbs and Wise Sayings of the Gikuyu (Kenya) About Money and Wealth
-- **Publication**: August 2014, Nairobi, Kenya
-- **Organization**: African Proverbs Working Group
+- **Year**: 2014
+- **Language**: Kikuyu (ki)
+- **Domain**: Wealth Prosperity
 
 ## Extraction Summary
 
-### Raw Extraction
-- **Total proverbs extracted**: 197
-- **PDF source**: OPIT_RAI9001_Proverbs_Wealth_Prosperity_v1.pdf
-- **Output file**: ireri_100_wealth_prosperity_proverbs.csv
+- **Source PDF**: `OPIT_RAI9001_Proverbs_Wealth_Prosperity_v1.pdf`
+- **Extraction time**: 13.6s
+- **Proverbs extracted**: 197
+- **Output file**: `ireri_expert_proverbs.csv`
 
-### Content Completeness
-- Kikuyu texts: 197 (100.0%)
-- English translations: 191 (97.0%)
-- Kiswahili translations: 97 (49.2%)
-- Cultural interpretations: 98 (49.7%)
-- Teaching messages: 99 (50.3%)
-- Biblical parallels: 97 (49.2%)
+## Gold Standard Conversion
 
-## Gold Standard Dataset
-
-### Statistics
-- **Total entries**: 197
-- **Proverb ID range**: MP_001 to MP_100
-- **Cultural authenticity score**: 5.0/5.0
+- **Conversion time**: 0.1s
+- **Gold standard entries**: 197
+- **Unique proverb IDs**: 100
 - **Validation status**: Expert validated by Margaret Wambere Ireri
 
-### Quality Metrics
-- Expert translations: 191 (97.0%)
-- Cultural meanings: 98 (49.7%)
-- Business relevance: 197 (100.0%)
+## Quality Metrics
 
-### Thematic Distribution
-| thematic_category   |   count |
-|:--------------------|--------:|
-| wealth_acquisition  |     109 |
-| business_wisdom     |      34 |
-| poverty_hardship    |      28 |
-| wealth_management   |      15 |
-| generosity_sharing  |       5 |
-| patience_wisdom     |       3 |
-| community_relations |       2 |
-| work_diligence      |       1 |
+- **Kikuyu texts**: 100.0%
+- **Expert translations**: 97.0%
+- **Cultural meanings**: 49.7%
+- **Business contexts**: 100.0%
+- **Average cultural authenticity**: 5.0/5.0
 
-## Files Generated
+## Thematic Distribution
 
-1. **Raw Extraction**: `data/raw/ireri_100_wealth_prosperity_proverbs.csv`
-   - Complete extraction with all PDF fields preserved
-   - Suitable for reference and validation
+- **Wealth Acquisition**: 109
+- **Business Wisdom**: 46
+- **Poverty Hardship**: 28
+- **Generosity Sharing**: 5
+- **Patience Wisdom**: 3
+- **Wealth Management**: 3
+- **Community Relations**: 2
+- **Work Diligence**: 1
 
-2. **Gold Standard**: `data/evaluation/gold_standard_ireri_100.csv`
-   - Evaluation-ready format
-   - Standardized fields for comparative analysis
-   - Expert-validated translations and cultural meanings
 
-3. **Metadata**: `data/evaluation/gold_standard_ireri_100_metadata.json`
-   - Dataset documentation
-   - Quality assurance information
-   - Usage guidelines
+## Output Files
+
+1. **Raw Extraction**: `data/raw/ireri_expert_proverbs.csv`
+   - 197 proverbs with full context
+   - Source: PDF pages 7-150
+
+2. **Gold Standard**: `data/evaluation/gold_standard_ireri.csv`
+   - 197 evaluation-ready entries
+   - Standardized 16-column format
+   - Expert translations as baseline
+
+3. **Metadata**: `data/evaluation/gold_standard_ireri_metadata.json`
+   - Dataset statistics and provenance
+   - Quality metrics and citation
 
 ## Usage Instructions
 
-### For Evaluation Framework
+### For Evaluation
 
 ```python
-# Load gold standard
 import pandas as pd
-gold_standard = pd.read_csv('data/evaluation/gold_standard_ireri_100.csv')
 
-# Use for translation evaluation
-for _, proverb in gold_standard.iterrows():
-    kikuyu_text = proverb['kikuyu_text']
-    expert_translation = proverb['expert_translation']
-    
-    # Generate your translation
-    your_translation = your_translation_system(kikuyu_text)
-    
-    # Compare against expert translation
-    quality_score = evaluate_translation(
-        your_translation,
-        expert_translation,
-        cultural_context=proverb['expert_cultural_meaning']
-    )
+# Load gold standard
+gold_standard = pd.read_csv('data/evaluation/gold_standard_ireri.csv')
+
+# Each entry contains:
+# - kikuyu_text: Original proverb
+# - expert_translation: Human expert baseline
+# - expert_cultural_meaning: Cultural context
+# - thematic_category: Classification
 ```
 
-### For OG-RAG vs Raw LLM Comparison
+### For Translation Comparison
 
-This gold standard enables:
-- Baseline comparison against expert translations
-- Cultural faithfulness assessment
-- Business relevance evaluation
-- Translation accuracy measurement
+1. Generate translations using your system (OG-RAG, Raw LLM, etc.)
+2. Compare against `expert_translation` column
+3. Evaluate cultural faithfulness using `expert_cultural_meaning`
+4. Assess business relevance against `expert_business_relevance`
+
+## Citation
+
+Ireri, M. W. (2014). A Collection of 100 Proverbs and Wise Sayings 
+of the Gikuyu (Kenya) About Money and Wealth. African Proverbs 
+Working Group, Nairobi, Kenya.
+
 
 ## Next Steps
 
-1. ✅ Review gold standard for quality
-2. ⏩ Generate OG-RAG translations
-3. ⏩ Generate Raw LLM translations
-4. ⏩ Run comparative evaluation
-5. ⏩ Analyze cultural preservation effectiveness
+- [ ] Review gold standard entries for completeness
+- [ ] Generate OG-RAG translations
+- [ ] Generate Raw LLM translations
+- [ ] Run comparative evaluation
+- [ ] Analyze cultural faithfulness metrics
 
 ---
 
-*Generated by thiLLMo Gold Standard Pipeline*
+*Generated by Expert Proverb Gold Standard Pipeline v2.0*

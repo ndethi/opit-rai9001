@@ -2,129 +2,258 @@
 
 This directory contains automation scripts, data processing tools, and comprehensive ontology construction utilities for the thiLLMo OG-RAG project.
 
-## 🌟 Margaret Ireri Gold Standard Pipeline (NEW)
+## 🌟 Expert Proverb Gold Standard Framework (v2.0)
 
-### Complete Pipeline for 100 Expert-Curated Proverbs
+### Generic Pipeline for Multi-LRL Expert-Curated Collections
 
-A comprehensive, production-ready pipeline for extracting and converting Margaret Wambere Ireri's expertly curated collection of 100 Kikuyu proverbs about money and wealth into evaluation-ready gold standard datasets.
+A production-ready, configuration-driven framework for extracting and converting expert-curated proverb collections from multiple low-resource languages (LRLs) into evaluation-ready gold standard datasets.
 
-#### `ireri_gold_standard_pipeline.py` 
+**Framework Features**:
+- **Multi-source support**: Configure any expert collection via YAML
+- **Zero code changes**: Add new sources through configuration only
+- **Automated quality validation**: Configurable thresholds per source
+- **Standardized output format**: Consistent evaluation framework
+- **Comprehensive documentation**: Auto-generated reports and metadata
+
+**Current Sources**:
+- **Kikuyu** (Kenya): Margaret Wambere Ireri's 100 proverbs on wealth (2014) ✅
+
+### Quick Start
+
+```bash
+# Run complete pipeline for Ireri's Kikuyu collection (default)
+python3 scripts/gold_standard_pipeline.py --source ireri
+
+# Extract only
+python3 scripts/extract_expert_proverbs.py --source ireri --pdf path/to/pdf
+
+# Convert only
+python3 scripts/convert_to_gold_standard.py --source ireri
+
+# Force re-extraction
+python3 scripts/gold_standard_pipeline.py --source ireri --force
+```
+
+---
+
+### Core Scripts
+
+#### `gold_standard_pipeline.py` ⭐
 **Master orchestration script** - Complete end-to-end pipeline from PDF to gold standard
 
-**Features**:
-- Automated PDF extraction with quality validation
-- Gold standard format conversion
-- Metadata generation and documentation
-- Comprehensive quality checks and reporting
-- Integration-ready output for evaluation frameworks
+**Purpose**: Orchestrate extraction, validation, conversion, and reporting in one command  
+**Method**: 5-stage pipeline with quality checks at each step
+
+**Pipeline Stages**:
+1. **Extract**: PDF → Raw CSV (with source-specific patterns)
+2. **Validate**: Quality checks (configurable thresholds)
+3. **Convert**: Raw → Gold Standard format
+4. **Quality Check**: Final completeness metrics
+5. **Report**: Auto-generate markdown documentation
 
 **Usage**:
 ```bash
-# Run complete pipeline
-python3 scripts/ireri_gold_standard_pipeline.py
+# Basic usage (uses 'ireri' source)
+python3 scripts/gold_standard_pipeline.py
 
-# Force re-extraction from PDF
-python3 scripts/ireri_gold_standard_pipeline.py --force
+# Specify source
+python3 scripts/gold_standard_pipeline.py --source ireri
 
 # Custom PDF path
-python3 scripts/ireri_gold_standard_pipeline.py --pdf path/to/pdf
+python3 scripts/gold_standard_pipeline.py --source ireri --pdf path/to/pdf
+
+# Force re-extraction
+python3 scripts/gold_standard_pipeline.py --source ireri --force
 ```
 
-**Output Files**:
-- `data/raw/ireri_100_wealth_prosperity_proverbs.csv` - Raw extraction (197 entries)
-- `data/evaluation/gold_standard_ireri_100.csv` - Gold standard format (197 entries)
-- `data/evaluation/gold_standard_ireri_100_metadata.json` - Dataset metadata
-- `data/evaluation/ireri_gold_standard_report.md` - Comprehensive report
+**Output Structure** (auto-generated paths):
+```
+data/raw/
+  └── {source}_expert_proverbs.csv          # Raw extraction
 
-#### `extract_ireri_100_proverbs.py`
-**PDF extraction module** - Specialized extractor for Ireri's numbered proverb collection
+data/evaluation/
+  ├── gold_standard_{source}.csv            # Gold standard format
+  ├── gold_standard_{source}_metadata.json  # Dataset metadata
+  └── {source}_gold_standard_report.md      # Summary report
+```
 
-**Purpose**: Extract structured proverb data from Margaret Ireri's PDF with high fidelity  
-**Method**: Pattern-based extraction using numbered proverb markers (1-100)
+---
+
+#### `extract_expert_proverbs.py`
+**PDF extraction module** - Extract proverbs from expert PDF collections
+
+**Purpose**: Parse PDF documents to extract structured proverb data  
+**Method**: Configuration-driven pattern matching (numbered, bullet, custom)
 
 **Features**:
-- Extracts Kikuyu text, English/Kiswahili translations
-- Captures cultural interpretations and teaching messages
-- Preserves biblical parallels and source references
-- Tracks page numbers and proverb categories
-- Validates extraction completeness
+- Source-specific extraction patterns (from config)
+- Configurable page ranges
+- Multi-field extraction (original text, translations, meanings, references)
+- Automatic quality validation
+- Progress tracking and logging
 
 **Usage**:
 ```bash
-python3 scripts/extract_ireri_100_proverbs.py \
-    --pdf data/sources/OPIT_RAI9001_Proverbs_Wealth_Prosperity_v1.pdf \
-    --output data/raw/ireri_100_wealth_prosperity_proverbs.csv
+# Extract with auto-detected paths
+python3 scripts/extract_expert_proverbs.py --source ireri
+
+# Custom paths
+python3 scripts/extract_expert_proverbs.py \
+    --source ireri \
+    --pdf data/sources/expert_collection.pdf \
+    --output data/raw/my_extraction.csv
 ```
 
-**Extraction Summary**:
-- Total entries: 197 (includes variations)
-- Kikuyu texts: 100% coverage
-- English translations: 97% coverage
-- Cultural interpretations: ~50% coverage
-- Biblical parallels: ~50% coverage
+**Configuration** (`scripts/config/expert_sources.yaml`):
+```yaml
+sources:
+  ireri:
+    author: "Margaret Wambere Ireri"
+    language: "kikuyu"
+    extraction:
+      pattern_type: "numbered"  # 1. 2. 3. format
+      start_page: 7
+      end_page: 150
+```
 
-#### `convert_ireri_to_gold_standard.py`
-**Gold standard converter** - Transforms raw extractions into evaluation-ready format
+---
 
-**Purpose**: Convert Ireri's proverbs to standardized format for AI translation evaluation  
-**Output**: Evaluation-ready dataset with expert translations as baseline
+#### `convert_to_gold_standard.py`
+**Gold standard converter** - Transform raw extractions into evaluation-ready format
+
+**Purpose**: Standardize diverse expert collections into unified evaluation format  
+**Method**: Source-aware conversion with automated categorization
 
 **Features**:
-- Standardized field mapping for evaluation frameworks
-- Thematic categorization (8 themes: wealth acquisition, business wisdom, etc.)
-- Cultural authenticity scoring (5.0/5.0 - expert validated)
-- Business relevance context extraction
+- 16-column standardized format
+- Automated thematic categorization (8 themes)
+- Cultural authenticity scoring (from config)
+- Business/domain relevance extraction
 - Comprehensive metadata generation
+- JSON export for programmatic access
 
 **Usage**:
 ```bash
-python3 scripts/convert_ireri_to_gold_standard.py \
-    --input data/raw/ireri_100_wealth_prosperity_proverbs.csv \
-    --output data/evaluation/gold_standard_ireri_100.csv \
-    --metadata data/evaluation/gold_standard_ireri_100_metadata.json
+# Convert with auto-detected paths
+python3 scripts/convert_to_gold_standard.py --source ireri
+
+# Custom paths
+python3 scripts/convert_to_gold_standard.py \
+    --source ireri \
+    --input data/raw/my_extraction.csv \
+    --output data/evaluation/my_gold_standard.csv
 ```
 
 **Gold Standard Fields**:
-- `proverb_id`: Unique identifier (MP_001 to MP_100)
-- `kikuyu_text`: Original Kikuyu proverb
-- `expert_translation`: Ireri's English translation (baseline)
-- `expert_cultural_meaning`: Cultural interpretation
-- `expert_business_relevance`: Wealth/prosperity context
-- `thematic_category`: Automated theme classification
-- `cultural_authenticity`: Expert validation score (5.0)
-- Plus: teaching, biblical context, source references
+- `proverb_id`: Unique identifier (e.g., MW_001)
+- `kikuyu_text` / `{language}_text`: Original text
+- `expert_translation`: Expert English baseline
+- `expert_cultural_meaning`: Cultural context
+- `expert_business_relevance`: Domain-specific context
+- `thematic_category`: Automated classification
+- `cultural_authenticity`: Expert validation score
+- Plus: teaching, references, page numbers, dates
 
-**Thematic Distribution**:
-- Wealth acquisition: 109 entries
-- Business wisdom: 34 entries
-- Poverty & hardship: 28 entries
-- Wealth management: 15 entries
-- Other themes: 11 entries
+---
 
-#### Quick Start Example
+### Adding New Expert Sources
+
+1. **Add configuration** to `scripts/config/expert_sources.yaml`:
+
+```yaml
+sources:
+  new_expert:
+    author: "Dr. Jane Doe"
+    year: 2025
+    title: "Swahili Proverbs Collection"
+    language: "swahili"
+    language_code: "sw"
+    domain: "general"
+    total_proverbs: 150
+    
+    extraction:
+      pattern_type: "numbered"  # or "bullet", "custom"
+      start_page: 1
+      end_page: 100
+    
+    quality:
+      min_proverbs: 130
+      max_empty_texts: 20
+      expected_authenticity: 4.5
+    
+    output:
+      raw_csv: "new_expert_proverbs.csv"
+      gold_standard_csv: "gold_standard_new_expert.csv"
+      metadata_json: "gold_standard_new_expert_metadata.json"
+      report_md: "new_expert_gold_standard_report.md"
+```
+
+2. **Run pipeline**:
+```bash
+python3 scripts/gold_standard_pipeline.py --source new_expert --pdf path/to/new_pdf
+```
+
+3. **No code changes required!** ✅
+
+---
+
+### Example: Using Gold Standard for Evaluation
 
 ```python
 import pandas as pd
+import json
 
-# Load gold standard
-gold = pd.read_csv('data/evaluation/gold_standard_ireri_100.csv')
+# Load gold standard (Ireri's Kikuyu proverbs)
+gold = pd.read_csv('data/evaluation/gold_standard_ireri.csv')
 
-# Use for translation evaluation
+# Load metadata
+with open('data/evaluation/gold_standard_ireri_metadata.json') as f:
+    metadata = json.load(f)
+
+print(f"Expert: {metadata['source']['author']}")
+print(f"Total proverbs: {len(gold)}")
+print(f"Cultural authenticity: {metadata['statistics']['average_cultural_authenticity']}/5.0")
+
+# Evaluate translations
 for _, proverb in gold.iterrows():
-    kikuyu = proverb['kikuyu_text']
-    expert_translation = proverb['expert_translation']
+    original = proverb['kikuyu_text']
+    expert_baseline = proverb['expert_translation']
     cultural_context = proverb['expert_cultural_meaning']
     
-    # Your translation system
-    og_rag_translation = your_og_rag_system(kikuyu, cultural_context)
-    raw_llm_translation = your_raw_llm(kikuyu)
+    # Your translation systems
+    og_rag_trans = your_og_rag_system(original, cultural_context)
+    raw_llm_trans = your_raw_llm(original)
     
-    # Evaluate against expert baseline
-    og_rag_score = evaluate(og_rag_translation, expert_translation)
-    raw_llm_score = evaluate(raw_llm_translation, expert_translation)
+    # Compare against expert baseline
+    og_rag_score = evaluate(og_rag_trans, expert_baseline)
+    raw_llm_score = evaluate(raw_llm_trans, expert_baseline)
     
-    print(f"OG-RAG: {og_rag_score:.2f} | Raw LLM: {raw_llm_score:.2f}")
+    print(f"{proverb['proverb_id']}: OG-RAG={og_rag_score:.2f}, Raw={raw_llm_score:.2f}")
 ```
+
+---
+
+### Example: Ireri Collection Results
+
+**Extraction Summary** (Kikuyu - Margaret Wambere Ireri, 2014):
+- Total entries: 197 (includes variations)
+- Unique proverbs: 100
+- Kikuyu texts: 100% coverage
+- English translations: 97% coverage
+- Cultural meanings: 50% coverage
+- Average authenticity: 5.0/5.0
+
+**Thematic Distribution**:
+- Wealth acquisition: 109
+- Business wisdom: 46
+- Poverty & hardship: 28
+- Other themes: 14
+
+**Output Files**:
+- Raw: `data/raw/ireri_expert_proverbs.csv`
+- Gold: `data/evaluation/gold_standard_ireri.csv`
+- Meta: `data/evaluation/gold_standard_ireri_metadata.json`
+- Report: `data/evaluation/ireri_gold_standard_report.md`
 
 ---
 
