@@ -42,7 +42,7 @@
 2. **`convert_ireri_to_gold_standard.py`** (363 lines)
    - Classes: `IreriGoldStandardConverter`
    - Methods: `prepare_ireri_gold_standard()`
-   - Default paths: `gold_standard_ireri_100.csv`, `gold_standard_ireri_100_metadata.json`
+   - Default paths: `gold_standard_ireri.csv`, `gold_standard_ireri_metadata.json` (v1.0 files removed)
    - **48 references** to "ireri"/"Ireri"
 
 3. **`ireri_gold_standard_pipeline.py`** (399 lines)
@@ -54,10 +54,12 @@
 **Total Code References**: **156 occurrences** across 1,208 lines
 
 #### Data Files (4 files)
-- `data/raw/ireri_100_wealth_prosperity_proverbs.csv` (93 KB, 197 entries)
-- `data/evaluation/gold_standard_ireri_100.csv` (121 KB, 197 entries)
-- `data/evaluation/gold_standard_ireri_100_metadata.json` (1.4 KB)
+- `data/raw/ireri_expert_proverbs.csv` (93 KB, 197 entries) [v2.0]
+- `data/evaluation/gold_standard_ireri.csv` (115 KB, 197 entries) [v2.0 CANONICAL]
+- `data/evaluation/gold_standard_ireri_metadata.json` (1.6 KB) [v2.0]
 - `data/evaluation/ireri_gold_standard_report.md` (3.1 KB)
+
+**Note**: v1.0 files (`gold_standard_ireri_100.*`) removed Oct 2025.
 
 #### Documentation Files (5 files)
 - `scripts/README.md` - Pipeline documentation

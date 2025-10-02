@@ -181,9 +181,12 @@ python3 scripts/extract_expert_proverbs.py --source new_expert \
 ## Related Files
 
 - **PDF Source**: `data/sources/OPIT_RAI9001_Proverbs_Wealth_Prosperity_v1.pdf`
-- **Gold Standard**: `data/evaluation/gold_standard_ireri_100.csv`
-- **Metadata**: `data/evaluation/gold_standard_ireri_100_metadata.json`
+- **Gold Standard**: `data/evaluation/gold_standard_ireri.csv` (v2.0 - CANONICAL)
+- **Metadata**: `data/evaluation/gold_standard_ireri_metadata.json` (v2.0)
+- **Comparison**: `data/evaluation/gold_standard_comparison_report.json` (v1.0 vs v2.0)
 - **Report**: `data/evaluation/ireri_gold_standard_report.md`
+
+**Note**: v1.0 files (`gold_standard_ireri_100.*`) were removed Oct 2025 for cleaner structure.
 
 ## Citation
 

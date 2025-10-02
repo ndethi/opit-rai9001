@@ -125,11 +125,13 @@ python3 scripts/convert_to_gold_standard.py --source ireri
 ## Breaking Changes
 
 ### File Naming
-| Old (v1.0) | New (v2.0) |
-|-----------|-----------|
-| `ireri_100_wealth_prosperity_proverbs.csv` | `ireri_expert_proverbs.csv` |
-| `gold_standard_ireri_100.csv` | `gold_standard_ireri.csv` |
-| `gold_standard_ireri_100_metadata.json` | `gold_standard_ireri_metadata.json` |
+| Old (v1.0) | New (v2.0) | Status |
+|-----------|-----------|---------|
+| `ireri_100_wealth_prosperity_proverbs.csv` | `ireri_expert_proverbs.csv` | v1.0 kept for reference |
+| `gold_standard_ireri_100.csv` | `gold_standard_ireri.csv` | **v1.0 DELETED Oct 2025** |
+| `gold_standard_ireri_100_metadata.json` | `gold_standard_ireri_metadata.json` | **v1.0 DELETED Oct 2025** |
+
+**Note**: v2.0 files are now the canonical gold standard. See `data/evaluation/gold_standard_comparison_report.json` for details.
 
 ### Script Names
 | Old (v1.0) | New (v2.0) | Location |
@@ -164,7 +166,8 @@ converter = GoldStandardConverter(source_name='ireri')
 
 ### For Users
 - **Old scripts preserved** in `scripts/DEPRECATED/` (temporary, 6 months)
-- **Old data files preserved** (e.g., `gold_standard_ireri_100.csv`)
+- **Old data files**: v1.0 gold standard files **removed Oct 2025** for cleaner structure
+- **Comparison report**: `data/evaluation/gold_standard_comparison_report.json` documents changes
 - **Migration guide** available: `docs/development/MIGRATION_GUIDE_V2.md`
 - **Rollback option**: Git tag `v1.0-ireri-specific`
 

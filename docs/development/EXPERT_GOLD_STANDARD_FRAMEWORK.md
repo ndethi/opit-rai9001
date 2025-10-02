@@ -91,11 +91,10 @@ data/
 │   ├── ireri_expert_proverbs.csv               # Ireri raw data (v2.0)
 │   └── ireri_100_wealth_prosperity_proverbs.csv # Legacy (v1.0)
 ├── evaluation/
-│   ├── gold_standard_ireri.csv                  # Ireri gold standard (v2.0)
+│   ├── gold_standard_ireri.csv                  # Ireri gold standard (v2.0) - CANONICAL
 │   ├── gold_standard_ireri_metadata.json        # Metadata
-│   ├── ireri_gold_standard_report.md            # Quality report
-│   ├── gold_standard_ireri_100.csv             # Legacy (v1.0)
-│   └── gold_standard_ireri_100_metadata.json   # Legacy
+│   ├── gold_standard_comparison_report.json     # v1.0 vs v2.0 comparison
+│   └── ireri_gold_standard_report.md            # Quality report
 └── sources/
     └── OPIT_RAI9001_Proverbs_Wealth_Prosperity_v1.pdf
 
@@ -291,9 +290,12 @@ The gold standard is now ready for:
 3. `scripts/ireri_gold_standard_pipeline.py` - Master pipeline (399 lines)
 
 ### Data Files
-1. `data/raw/ireri_100_wealth_prosperity_proverbs.csv` - Raw extraction (197 entries)
-2. `data/evaluation/gold_standard_ireri_100.csv` - Gold standard (197 entries)
-3. `data/evaluation/gold_standard_ireri_100_metadata.json` - Metadata
+1. `data/raw/ireri_expert_proverbs.csv` - Raw extraction (197 entries) [v2.0]
+2. `data/evaluation/gold_standard_ireri.csv` - Gold standard (197 entries, MW_001-MW_100) [v2.0 CANONICAL]
+3. `data/evaluation/gold_standard_ireri_metadata.json` - Metadata [v2.0]
+4. `data/evaluation/gold_standard_comparison_report.json` - v1.0 vs v2.0 comparison
+
+**Note**: v1.0 files (`*_ireri_100.*`) were removed Oct 2025 for cleaner structure.
 
 ### Documentation
 1. `data/raw/README.md` - Raw data documentation

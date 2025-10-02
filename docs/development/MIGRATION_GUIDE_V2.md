@@ -62,7 +62,7 @@ python3 scripts/extract_ireri_100_proverbs.py \
 # Convert only
 python3 scripts/convert_ireri_to_gold_standard.py \
     --input data/raw/ireri_100_wealth_prosperity_proverbs.csv \
-    --output data/evaluation/gold_standard_ireri_100.csv
+    --output data/evaluation/gold_standard_ireri.csv
 ```
 
 **New Way**:
@@ -148,11 +148,11 @@ python3 scripts/gold_standard_pipeline.py --source new_expert --pdf path/to/pdf
 | v1.0 | v2.0 | Notes |
 |------|------|-------|
 | `ireri_100_wealth_prosperity_proverbs.csv` | `ireri_expert_proverbs.csv` | Simpler naming |
-| `gold_standard_ireri_100.csv` | `gold_standard_ireri.csv` | Removed redundant "_100" |
-| `gold_standard_ireri_100_metadata.json` | `gold_standard_ireri_metadata.json` | Consistent naming |
+| `gold_standard_ireri_100.csv` | `gold_standard_ireri.csv` | **Removed redundant "_100"** (v1.0 files deleted as of Oct 2025) |
+| `gold_standard_ireri_100_metadata.json` | `gold_standard_ireri_metadata.json` | **Consistent naming** (v1.0 files deleted as of Oct 2025) |
 | `ireri_gold_standard_report.md` | `ireri_gold_standard_report.md` | Unchanged |
 
-**Note**: Old files (`*_ireri_100.*`) remain for backward compatibility. New runs use new naming.
+**Note**: v2.0 files are now the canonical version. Old v1.0 files (`*_ireri_100.*`) have been removed for cleaner structure.
 
 ---
 
@@ -197,14 +197,14 @@ gold_df = converter.prepare_gold_standard(
 
 **Pipeline**:
 ```python
-# Old
+# Old (DEPRECATED - files removed)
 pipeline = IreriGoldStandardPipeline(
     pdf_path=pdf,
     raw_output='data/raw/ireri_100_wealth_prosperity_proverbs.csv',
-    gold_standard_output='data/evaluation/gold_standard_ireri_100.csv'
+    gold_standard_output='data/evaluation/gold_standard_ireri.csv'  # Updated path
 )
 
-# New
+# New (CURRENT)
 pipeline = GoldStandardPipeline(
     pdf_path=pdf,
     source_name='ireri',
@@ -283,14 +283,14 @@ gold_path = get_output_path('ireri', 'gold_standard_csv')
 - Stage 5 (Report): Generated
 
 ✅ **Output Comparison**:
-- Old: `gold_standard_ireri_100.csv` (197 entries, MP_001 - MP_100)
-- New: `gold_standard_ireri.csv` (197 entries, MW_001 - MW_100)
+- Old: `gold_standard_ireri_100.csv` (197 entries, MP_001 - MP_100) - **DELETED Oct 2025**
+- Current: `gold_standard_ireri.csv` (197 entries, MW_001 - MW_100)
 - Same data quality, updated IDs (Margaret Wambere initials)
 
-✅ **Backward Compatibility**:
-- Old files preserved in `scripts/DEPRECATED/`
-- Old data files (`*_ireri_100.*`) remain accessible
-- Can run old scripts if absolutely necessary
+✅ **File Management**:
+- Old v1.0 scripts preserved in `scripts/DEPRECATED/`
+- Old v1.0 data files (`*_ireri_100.*`) have been **removed** for cleaner structure
+- Use v2.0 files (`gold_standard_ireri.csv`) as the canonical gold standard
 
 ---
 
@@ -379,13 +379,13 @@ git checkout <commit-hash>
 ## FAQ
 
 **Q: Will my existing gold standard files still work?**  
-A: Yes! Old files (`gold_standard_ireri_100.csv`, etc.) remain valid and accessible. New pipeline runs create new files (`gold_standard_ireri.csv`) but don't delete old ones.
+A: **UPDATE (Oct 2025)**: Old v1.0 files (`gold_standard_ireri_100.csv`, etc.) have been **removed**. Only v2.0 files (`gold_standard_ireri.csv`) remain. Use the comparison report at `data/evaluation/gold_standard_comparison_report.json` to see what changed.
 
 **Q: Do I need to re-extract my data?**  
-A: No. You can continue using existing extractions. New naming is for new runs only.
+A: No. The v2.0 gold standard files contain all the same proverbs as v1.0, just with cleaner formatting and updated IDs.
 
 **Q: Can I still use the old scripts?**  
-A: Yes, temporarily. They're in `scripts/DEPRECATED/`. But please migrate to v2.0 - old scripts will be removed in 6 months.
+A: Yes, temporarily. They're in `scripts/DEPRECATED/`. But they now output to v2.0 paths. Please migrate to v2.0 pipeline - old scripts will be removed in 6 months.
 
 **Q: What if I have custom code importing old classes?**  
 A: Update your imports per the "For Developers" section above. Most changes are simple renames + adding `source_name` parameter.

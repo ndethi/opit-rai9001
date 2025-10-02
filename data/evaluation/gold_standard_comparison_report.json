@@ -1,0 +1,62 @@
+{
+  "comparison_date": "2025-10-02",
+  "files_compared": {
+    "file1": {
+      "name": "gold_standard_ireri.csv",
+      "rows": 197,
+      "id_prefix": "MW",
+      "version": "2.0",
+      "date": "2025-10-02"
+    },
+    "file2": {
+      "name": "gold_standard_ireri_100.csv",
+      "rows": 197,
+      "id_prefix": "MP",
+      "version": "1.0",
+      "date": "2025-10-01"
+    }
+  },
+  "summary": {
+    "total_rows": 197,
+    "identical_core_content_rows": 161,
+    "rows_with_differences": 36,
+    "difference_types": {
+      "proverb_id": 197,
+      "extraction_date": 197,
+      "expert_notes_format": 197,
+      "thematic_category": 12,
+      "business_relevance": 32
+    }
+  },
+  "key_findings": [
+    "Both files contain the same 100 Kikuyu proverbs with 197 total rows (including variations)",
+    "161 rows (81.7%) have identical core content",
+    "Main differences are in ID naming (MW vs MP), dates, and formatting",
+    "32 rows have simplified business relevance labels in newer file",
+    "12 rows have refined thematic categories",
+    "All expert_notes simplified in newer file (removed redundant legend text)",
+    "No critical proverb content, translations, or teachings are lost",
+    "v1.0 files have been removed from the repository as of October 2, 2025",
+    "Use gold_standard_ireri.csv (v2.0) as the canonical gold standard"
+  ],
+  "file_status": {
+    "v1_files_deleted": true,
+    "deletion_date": "2025-10-02",
+    "canonical_files": {
+      "gold_standard": "gold_standard_ireri.csv",
+      "metadata": "gold_standard_ireri_metadata.json",
+      "version": "2.0",
+      "id_prefix": "MW"
+    },
+    "deleted_files": [
+      "gold_standard_ireri_100.csv",
+      "gold_standard_ireri_100_metadata.json"
+    ]
+  },
+  "recommendation": {
+    "action": "Use v2.0 files only",
+    "reason": "Cleaner structure, standardized naming, no data loss",
+    "canonical_file": "data/evaluation/gold_standard_ireri.csv",
+    "backup_info": "Previous versions available in git history if needed"
+  }
+}
