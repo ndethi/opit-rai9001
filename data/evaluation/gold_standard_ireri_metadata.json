@@ -1,0 +1,51 @@
+{
+  "dataset_name": "Margaret Wambere Ireri Kikuyu Proverbs - Gold Standard",
+  "version": "2.0",
+  "creation_date": "2025-10-02T07:31:58.728695",
+  "source": {
+    "author": "Margaret Wambere Ireri",
+    "title": "A Collection of 100 Proverbs and Wise Sayings of the Gikuyu (Kenya) About Money and Wealth",
+    "year": 2014,
+    "language": "kikuyu",
+    "language_code": "ki",
+    "domain": "wealth_prosperity"
+  },
+  "statistics": {
+    "total_proverbs": 197,
+    "proverbs_with_english": 191,
+    "proverbs_with_cultural_meaning": 98,
+    "proverbs_with_business_context": 197,
+    "proverbs_with_biblical_context": 97,
+    "theme_distribution": {
+      "wealth_acquisition": 109,
+      "business_wisdom": 46,
+      "poverty_hardship": 28,
+      "generosity_sharing": 5,
+      "patience_wisdom": 3,
+      "wealth_management": 3,
+      "community_relations": 2,
+      "work_diligence": 1
+    },
+    "average_cultural_authenticity": 5.0
+  },
+  "quality_assurance": {
+    "expert_validated": true,
+    "native_speaker_authored": true,
+    "cultural_authenticity_score": 5.0,
+    "validation_method": "Expert curation by Margaret Wambere Ireri"
+  },
+  "usage": {
+    "intended_use": "Gold standard for AI translation evaluation",
+    "evaluation_dimensions": [
+      "Cultural faithfulness",
+      "Translation accuracy",
+      "Business relevance",
+      "Overall fluency"
+    ],
+    "comparison_baseline": "Expert human translation"
+  },
+  "citation": {
+    "format": "APA7",
+    "text": "Ireri, M. W. (2014). A Collection of 100 Proverbs and Wise Sayings \nof the Gikuyu (Kenya) About Money and Wealth. African Proverbs \nWorking Group, Nairobi, Kenya.\n"
+  }
+}
