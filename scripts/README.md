@@ -2,6 +2,338 @@
 
 This directory contains automation scripts, data processing tools, and comprehensive ontology construction utilities for the thiLLMo OG-RAG project.
 
+## Table of Contents
+
+1. [🌟 Expert Proverb Gold Standard Framework](#-expert-proverb-gold-standard-framework-v20)
+2. [🔬 Baseline Translation Generation System](#-baseline-translation-generation-system)
+3. [Ontology Construction Scripts](#ontology-construction-scripts)
+4. [Evaluation Scripts](#evaluation-scripts)
+
+---
+
+## 🔬 Baseline Translation Generation System
+
+### Purpose: Scientific Validation of OG-RAG Approach
+
+The baseline translation generation system enables rigorous evaluation of the thiLLMo OG-RAG approach by generating translations across multiple systems for comparison.
+
+**Why Baseline Translations?**
+- **Scientific Validity**: Proves OG-RAG performs better than alternatives
+- **Academic Standards**: Required for thesis defense and publication
+- **Gap Analysis**: Identifies where cultural ontology adds value
+- **Industry Comparison**: Benchmarks against commercial systems
+
+**Translation Systems Compared**:
+1. **OG-RAG** (Your System): Ontology-enhanced RAG with cultural knowledge
+2. **Raw LLM**: Direct LLM translation without cultural enhancement
+   - **Cohere Aya-23**: Multilingual model optimized for 100+ languages (✅ Active)
+   - **OpenAI GPT-4**: Industry gold standard (⚠️ Requires credits)
+3. **Google Translate**: Commercial machine translation baseline (⚠️ Limited Kikuyu support)
+
+### ⚠️ Current Status: Provisional Baselines
+
+**As of October 2025**: Initial baseline generation uses **Cohere Aya-23 only**. This is a **provisional dataset** for identifying cultural gaps.
+
+**For complete thesis-quality comparison**, you will need:
+- ✅ Cohere Aya-23 (multilingual, low-resource language optimized)
+- ❌ OpenAI GPT-4 (add $5-10 credits at https://platform.openai.com/account/billing)
+- ❌ OG-RAG Enhanced (under development)
+
+See [`data/results/baseline_translations/README_PROVISIONAL.md`](../data/results/baseline_translations/README_PROVISIONAL.md) for details.
+
+### Quick Start
+
+```bash
+# Generate baseline translations for all proverbs
+python scripts/generate_baseline_translations.py
+
+# Test with limited proverbs (recommended for first run)
+python scripts/generate_baseline_translations.py --max-proverbs 10
+
+# Custom output file
+python scripts/generate_baseline_translations.py --output my_comparison.csv
+```
+
+### Setup Requirements
+
+**1. Environment Variables**:
+```bash
+# Required for OG-RAG and Raw LLM
+export OPENAI_API_KEY="sk-..."
+
+# Optional: Alternative LLM provider
+export GOOGLE_API_KEY="..."
+```
+
+**2. Install Dependencies**:
+```bash
+# Google Translate baseline
+pip install googletrans==4.0.0-rc1
+
+# Or install all requirements
+pip install -r requirements.txt
+```
+
+### Script: `generate_baseline_translations.py`
+
+**Purpose**: Generate translations across all baseline systems for evaluation  
+**Input**: Gold standard CSV (`data/evaluation/gold_standard_ireri.csv`)  
+**Output**: Comprehensive comparison dataset with metadata
+
+**Features**:
+- Parallel translation generation from 3 systems
+- Comprehensive metadata (confidence scores, generation time, reasoning)
+- Incremental saving (every 10 proverbs to prevent data loss)
+- Automatic summary statistics generation
+- Error handling and retry logic
+
+**Command Line Options**:
+```bash
+python scripts/generate_baseline_translations.py --help
+
+Options:
+  --input PATH            Gold standard file (default: data/evaluation/gold_standard_ireri.csv)
+  --output FILENAME       Custom output filename (default: auto-generated with timestamp)
+  --max-proverbs N        Limit processing to N proverbs (useful for testing)
+  --config PATH           Path to configuration file
+```
+
+**Example Usage Scenarios**:
+
+```bash
+# 1. Initial testing (10 proverbs)
+python scripts/generate_baseline_translations.py --max-proverbs 10
+
+# 2. Process specific subset
+python scripts/generate_baseline_translations.py \
+    --input data/evaluation/gold_standard_subset.csv \
+    --max-proverbs 50
+
+# 3. Full production run
+python scripts/generate_baseline_translations.py
+
+# 4. Custom configuration
+python scripts/generate_baseline_translations.py \
+    --config config/translation_config.json \
+    --output full_comparison_2025.csv
+```
+
+### Output Files
+
+All outputs are saved to `data/results/baseline_translations/`:
+
+1. **Main Dataset**: `translation_comparison_all_systems_TIMESTAMP.csv`
+   - Complete translations from all 3 systems
+   - Expert translations for comparison
+   - Cultural meanings and business relevance
+   - Confidence scores and generation times
+
+2. **Summary Report**: `translation_comparison_all_systems_TIMESTAMP_summary.txt`
+   - Processing statistics
+   - Average generation times
+   - Confidence score distributions
+   - Next steps recommendations
+
+3. **Incremental Backups**: `translation_comparison_incremental.csv`
+   - Saved every 10 proverbs
+   - Prevents data loss during long runs
+
+### Dataset Schema
+
+**Columns in Output CSV**:
+```csv
+proverb_id                    # Unique identifier (e.g., MW_001)
+kikuyu_text                   # Original Kikuyu proverb
+expert_translation            # Expert baseline for comparison
+
+# OG-RAG System Results
+og_rag_translation            # Translation with ontology enhancement
+og_rag_cultural_meaning       # Cultural context from knowledge graph
+og_rag_business_relevance     # Business application insights
+og_rag_confidence             # System confidence score (0.0-1.0)
+og_rag_time                   # Generation time in seconds
+
+# Raw LLM Results
+raw_llm_translation           # Direct LLM translation
+raw_llm_reasoning             # LLM's reasoning for translation
+raw_llm_confidence            # Confidence score (0.0-1.0)
+raw_llm_time                  # Generation time in seconds
+
+# Google Translate Results
+google_translation            # Commercial MT baseline
+google_time                   # Generation time in seconds
+
+# Metadata
+generation_timestamp          # ISO format timestamp
+processing_order              # Order in batch processing
+```
+
+### Integration with Evaluation Pipeline
+
+**After generating baselines, proceed with**:
+
+1. **Quantitative Metrics** (`run_integrated_statistical_analysis.py`):
+   - BLEU, ROUGE, METEOR scores
+   - Statistical significance testing
+   - Effect size analysis
+
+2. **Cultural Metrics** (`test_cultural_metrics.py`):
+   - Cultural authenticity assessment
+   - Business relevance scoring
+   - Traditional wisdom preservation
+
+3. **LLM-as-a-Judge** (`run_llm_evaluation.py`):
+   - Expert-level qualitative assessment
+   - Multi-dimensional scoring
+   - Comparative ranking
+
+### Module: `src/evaluation/baseline_translation_system.py`
+
+**Core Classes**:
+
+#### `BaselineTranslationSystem`
+Central system managing all translation approaches.
+
+```python
+from src.evaluation.baseline_translation_system import BaselineTranslationSystem
+
+# Initialize system
+system = BaselineTranslationSystem(config_file="config.json")
+
+# Generate single translation across all systems
+results = system.generate_all_translations(
+    kikuyu_text="Andu ni indo.",
+    proverb_id="MW_002"
+)
+
+# Access individual results
+og_rag_result = results['og_rag']
+raw_llm_result = results['raw_llm']
+google_result = results['google']
+```
+
+**Methods**:
+- `translate_og_rag()`: Generate OG-RAG enhanced translation
+- `translate_raw_llm()`: Generate direct LLM translation
+- `translate_google()`: Generate Google Translate baseline
+- `generate_all_translations()`: Generate from all systems
+
+#### `TranslationComparator`
+Manages batch comparison and dataset generation.
+
+```python
+from src.evaluation.baseline_translation_system import TranslationComparator
+
+# Initialize comparator
+comparator = TranslationComparator(translation_system)
+
+# Generate comparison dataset
+results_df = comparator.compare_on_gold_standard(
+    gold_standard_file="data/evaluation/gold_standard_ireri.csv",
+    output_file="my_comparison.csv",
+    max_proverbs=100
+)
+```
+
+**Methods**:
+- `compare_on_gold_standard()`: Batch process gold standard dataset
+- `_save_incremental_results()`: Periodic backup mechanism
+- `_generate_summary_report()`: Statistics and next steps
+
+### Customization and Extension
+
+**Adding New Translation Systems**:
+
+```python
+# In src/evaluation/baseline_translation_system.py
+
+class BaselineTranslationSystem:
+    
+    def translate_custom_system(self, kikuyu_text: str) -> TranslationResult:
+        """Add your custom translation system here."""
+        # Your implementation
+        return TranslationResult(...)
+    
+    def generate_all_translations(self, kikuyu_text: str, proverb_id: str = ""):
+        results = {}
+        # Add your system to the comparison
+        results['custom'] = self.translate_custom_system(kikuyu_text)
+        return results
+```
+
+### Troubleshooting
+
+**Common Issues**:
+
+1. **"OpenAI API key not set"**
+   ```bash
+   export OPENAI_API_KEY="your-key-here"
+   ```
+
+2. **"googletrans not installed"**
+   ```bash
+   pip install googletrans==4.0.0-rc1
+   ```
+
+3. **Rate limiting errors**
+   - Add delays between API calls
+   - Use `max_proverbs` for testing
+   - Consider batch processing with checkpoints
+
+4. **Memory issues with large datasets**
+   - Process in smaller batches
+   - Use incremental saving feature
+   - Clear results between batches
+
+### Performance Optimization
+
+**Tips for large-scale generation**:
+
+```python
+# Process in batches of 50
+for i in range(0, total_proverbs, 50):
+    results = comparator.compare_on_gold_standard(
+        gold_standard_file="data.csv",
+        output_file=f"batch_{i}.csv",
+        max_proverbs=50
+    )
+    time.sleep(60)  # Rate limit protection
+```
+
+### Research Workflow Integration
+
+```mermaid
+graph TD
+    A[Gold Standard Data] --> B[Generate Baseline Translations]
+    B --> C[OG-RAG Translation]
+    B --> D[Raw LLM Translation]
+    B --> E[Google Translate]
+    C --> F[Comparison Dataset]
+    D --> F
+    E --> F
+    F --> G[Quantitative Metrics]
+    F --> H[Cultural Assessment]
+    F --> I[LLM-as-a-Judge]
+    G --> J[Thesis Results]
+    H --> J
+    I --> J
+```
+
+### Citation and Documentation
+
+If you use this baseline generation system in your research:
+
+```bibtex
+@software{thillmo_baseline_2025,
+  author = {Your Name},
+  title = {thiLLMo Baseline Translation Generation System},
+  year = {2025},
+  url = {https://github.com/yourusername/opit-rai9001}
+}
+```
+
+---
+
 ## 🌟 Expert Proverb Gold Standard Framework (v2.0)
 
 ### Generic Pipeline for Multi-LRL Expert-Curated Collections

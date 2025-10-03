@@ -19,15 +19,16 @@ from .llm_config import (
 from .llm_judge import (
     LLMJudgeEvaluator,
     CulturalEvaluationPrompts,
-    EvaluationResult,
-    EvaluationDimension
+    TranslationEvaluation,
+    EvaluationCriteria
 )
 
-from .comparative_pipeline import (
-    ComparativeEvaluationPipeline,
-    ComparisonResult,
-    StatisticalAnalysis
-)
+try:
+    from .comparative_pipeline import (
+        ComparativeEvaluationPipeline
+    )
+except ImportError:
+    ComparativeEvaluationPipeline = None
 
 from .cultural_metrics import (
     CulturalTranslationMetrics,
@@ -53,13 +54,11 @@ __all__ = [
     # LLM as a Judge Evaluation
     "LLMJudgeEvaluator",
     "CulturalEvaluationPrompts",
-    "EvaluationResult",
-    "EvaluationDimension",
+    "TranslationEvaluation",
+    "EvaluationCriteria",
     
     # Comparative Analysis
     "ComparativeEvaluationPipeline",
-    "ComparisonResult",
-    "StatisticalAnalysis",
     
     # Cultural Metrics
     "CulturalTranslationMetrics", 
