@@ -1,10 +1,152 @@
 # thiLLMo Evaluation Framework
 
-Comprehensive LLM as a Judge evaluation system for Kikuyu proverb translation quality assessment with cultural authenticity, translation accuracy, business relevance, and fluency evaluation.
+Comprehensive evaluation system for Kikuyu proverb translation quality assessment with baseline comparison, cultural authenticity metrics, and LLM-as-a-Judge evaluation.
 
 ## Overview
 
-The evaluation framework provides automated assessment of translation quality using culturally-specialized Large Language Models (LLMs) as judges. It supports multiple providers, ensemble evaluation, statistical analysis, and correlation with expert human assessments.
+The evaluation framework provides end-to-end assessment of translation quality, from baseline generation through quantitative metrics to qualitative LLM evaluation. It enables scientific validation of the OG-RAG approach against commercial and academic baselines.
+
+## Table of Contents
+
+1. [Baseline Translation System](#baseline-translation-system)
+2. [LLM as a Judge Evaluation](#llm-as-a-judge-evaluation)
+3. [Statistical Analysis](#statistical-analysis)
+4. [Cultural Metrics](#cultural-metrics)
+5. [Integration Workflow](#integration-workflow)
+
+---
+
+## Baseline Translation System
+
+### Purpose
+Generate translations across multiple systems to enable rigorous comparative evaluation of the OG-RAG approach.
+
+### Module: `baseline_translation_system.py`
+
+**Core Classes**:
+
+#### `BaselineTranslationSystem`
+Manages translation generation across three systems:
+1. **OG-RAG**: Ontology-enhanced RAG with cultural knowledge
+2. **Raw LLM**: Direct LLM translation without enhancement
+3. **Google Translate**: Commercial baseline
+
+```python
+from src.evaluation.baseline_translation_system import BaselineTranslationSystem
+
+# Initialize system
+system = BaselineTranslationSystem(config_file="config.json")
+
+# Generate translations from all systems
+results = system.generate_all_translations(
+    kikuyu_text="Andu ni indo.",
+    proverb_id="MW_002"
+)
+
+# Access individual results
+print(results['og_rag'].translation)
+print(results['raw_llm'].translation)
+print(results['google'].translation)
+```
+
+**Key Methods**:
+- `translate_og_rag()`: OG-RAG enhanced translation with cultural context
+- `translate_raw_llm()`: Direct LLM without RAG or ontology
+- `translate_google()`: Google Translate commercial baseline
+- `generate_all_translations()`: Parallel generation from all systems
+
+#### `TranslationComparator`
+Batch processes gold standard datasets and generates comparison datasets.
+
+```python
+from src.evaluation.baseline_translation_system import (
+    BaselineTranslationSystem,
+    TranslationComparator
+)
+
+# Setup
+system = BaselineTranslationSystem()
+comparator = TranslationComparator(system)
+
+# Generate comparison dataset
+results_df = comparator.compare_on_gold_standard(
+    gold_standard_file="data/evaluation/gold_standard_ireri.csv",
+    output_file="baseline_comparison.csv",
+    max_proverbs=100  # Optional limit
+)
+```
+
+**Features**:
+- Incremental saving (every 10 proverbs)
+- Comprehensive metadata collection
+- Generation time tracking
+- Confidence score recording
+- Automatic summary report generation
+
+### Data Structures
+
+#### `TranslationResult`
+Single translation result from any system:
+```python
+@dataclass
+class TranslationResult:
+    proverb_id: str
+    kikuyu_text: str
+    translation: str
+    system_name: str
+    cultural_meaning: Optional[str]
+    business_relevance: Optional[str]
+    confidence_score: Optional[float]
+    generation_time: Optional[float]
+    timestamp: Optional[str]
+    metadata: Optional[Dict[str, Any]]
+```
+
+#### `ComparisonResult`
+Complete comparison across all systems:
+```python
+@dataclass
+class ComparisonResult:
+    proverb_id: str
+    kikuyu_text: str
+    expert_translation: str
+    expert_cultural_meaning: str
+    og_rag_translation: str
+    og_rag_cultural_meaning: str
+    og_rag_business_relevance: str
+    raw_llm_translation: str
+    raw_llm_reasoning: str
+    google_translation: str
+    generation_timestamp: str
+    og_rag_time: float
+    raw_llm_time: float
+    google_time: float
+```
+
+### Integration Points
+
+**Input**: Gold standard CSV with expert translations
+```csv
+proverb_id,kikuyu_text,expert_translation,expert_cultural_meaning,...
+MW_001,Andu ni indo.,People are wealth.,"Wealth comes from people...",...
+```
+
+**Output**: Comprehensive comparison dataset
+```csv
+proverb_id,kikuyu_text,expert_translation,
+og_rag_translation,og_rag_cultural_meaning,og_rag_confidence,
+raw_llm_translation,raw_llm_reasoning,raw_llm_confidence,
+google_translation,generation_timestamp,...
+```
+
+### Usage Script
+
+See `scripts/generate_baseline_translations.py` for full implementation:
+```bash
+python scripts/generate_baseline_translations.py --max-proverbs 10
+```
+
+---
 
 ## Key Components
 
