@@ -18,6 +18,7 @@ openai>=1.0.0                 # GPT-4 for baseline comparisons
 google-generativeai>=0.3.0    # Gemini 2.0 - mentioned in proposal
 anthropic>=0.3.0              # Claude for alternative evaluation
 cohere>=5.0.0                 # Cohere Command models - production key with $1000 USD Catalyst grant credits
+huggingface_hub>=0.20.0       # Hugging Face Inference API for NLLB-200 (native Kikuyu MT)
 langchain>=0.1.0              # RAG pipeline framework
 langchain-community>=0.0.20   # Additional integrations
 

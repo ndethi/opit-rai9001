@@ -32,8 +32,8 @@ except ImportError:
 
 from .cultural_metrics import (
     CulturalTranslationMetrics,
-    CulturalQualityAssessment,
-    TranslationFidelityMetrics
+    CulturalEvaluationResult,
+    CulturalMetricsConfig
 )
 
 from .statistical_analysis import (

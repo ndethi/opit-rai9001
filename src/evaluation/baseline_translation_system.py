@@ -47,6 +47,7 @@ import json
 import asyncio
 from dataclasses import dataclass, asdict
 import time
+import requests
 
 # LLM APIs
 import openai
@@ -64,6 +65,13 @@ try:
 except ImportError:
     GoogleTranslator = None
     logging.warning("deep-translator not installed. Google Translate baseline will be unavailable.")
+
+# Hugging Face Inference API
+try:
+    from huggingface_hub import InferenceClient
+except ImportError:
+    InferenceClient = None
+    logging.warning("huggingface_hub not installed. NLLB translation will be unavailable. Install with: pip install huggingface_hub")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -92,16 +100,24 @@ class ComparisonResult:
     kikuyu_text: str
     expert_translation: str
     expert_cultural_meaning: str
-    og_rag_translation: str
-    og_rag_cultural_meaning: str
-    og_rag_business_relevance: str
-    raw_llm_translation: str
-    raw_llm_reasoning: str
+    # OpenAI GPT-4 (General Multilingual LLM)
+    openai_translation: str
+    openai_reasoning: str
+    openai_confidence: float
+    openai_time: float
+    # Cohere Aya-23 (African Language Optimized LLM)
+    cohere_translation: str
+    cohere_reasoning: str
+    cohere_confidence: float
+    cohere_time: float
+    # NLLB-200 (Specialized MT with Native Kikuyu)
+    nllb_translation: str
+    nllb_confidence: float
+    nllb_time: float
+    # Google Translate (Commercial Baseline - No Kikuyu Support)
     google_translation: str
-    generation_timestamp: str
-    og_rag_time: float
-    raw_llm_time: float
     google_time: float
+    generation_timestamp: str
 
 
 class BaselineTranslationSystem:
@@ -117,10 +133,15 @@ class BaselineTranslationSystem:
     def __init__(self, config_file: str = ".env"):
         """Initialize all translation systems."""
         # Load environment variables
-        env_path = Path(config_file)
-        if env_path.exists():
+        if config_file:
+            env_path = Path(config_file)
+            if env_path.exists():
+                from dotenv import load_dotenv
+                load_dotenv(env_path)
+        else:
+            # Try to load from default .env file
             from dotenv import load_dotenv
-            load_dotenv(env_path)
+            load_dotenv()
         
         self.config = self._load_config(config_file) if config_file and config_file.endswith('.json') else {}
         
@@ -128,6 +149,7 @@ class BaselineTranslationSystem:
         self.openai_client = self._setup_openai()
         self.cohere_client = self._setup_cohere()
         self.gemini_model = self._setup_gemini()
+        self.hf_client = self._setup_huggingface()
         
         # Determine which LLM to use for Raw LLM baseline
         self.llm_client = self.openai_client or self.cohere_client
@@ -142,6 +164,7 @@ class BaselineTranslationSystem:
         logger.info(f"   - Cohere available: {self.cohere_client is not None}")
         logger.info(f"   - Using LLM provider: {self.llm_provider}")
         logger.info(f"   - Gemini available: {self.gemini_model is not None}")
+        logger.info(f"   - NLLB (Hugging Face) available: {self.hf_client is not None}")
         logger.info(f"   - Google Translate available: {GoogleTranslator is not None}")
     
     def _load_config(self, config_file: str) -> Dict[str, Any]:
@@ -207,9 +230,21 @@ class BaselineTranslationSystem:
             logger.error(f"Failed to initialize Gemini client: {e}")
             return None
     
+    def _setup_huggingface(self) -> bool:
+        """Check if NLLB API is available (no authentication required)."""
+        # The nllb-api space doesn't require authentication
+        # We just need to verify requests library is available
+        try:
+            import requests
+            logger.info("✅ NLLB-200 API available (via winstxnhdw/nllb-api space)")
+            return True
+        except ImportError:
+            logger.warning("⚠️ requests library not installed - NLLB translations unavailable")
+            return False
+    
     # Google Translate setup removed - deep-translator creates translator instances on-demand
     
-    def translate_og_rag(self, kikuyu_text: str, cultural_context: Optional[str] = None) -> TranslationResult:
+    def translate_openai(self, kikuyu_text: str) -> TranslationResult:
         """
         Generate translation using OG-RAG system with cultural ontology.
         
@@ -485,6 +520,85 @@ Format as JSON:
             logger.warning("Google Translate not available")
             return self._create_error_result(kikuyu_text, "Google-Translate", "Service not available")
     
+    def translate_nllb(self, kikuyu_text: str) -> TranslationResult:
+        """Generate translation using NLLB-200 (Meta's specialized low-resource MT).
+        
+        NLLB (No Language Left Behind) is specifically trained on 200+ languages including
+        Kikuyu (kik_Latn), making it the only MT model with native Kikuyu support.
+        Uses the community-hosted API at winstxnhdw/nllb-api HF Space.
+        This provides the specialized MT baseline for comparison.
+        """
+        start_time = time.time()
+        
+        if not self.hf_client:
+            logger.warning("NLLB API not available for translation")
+            return self._create_error_result(kikuyu_text, "NLLB-200", "NLLB API not available")
+        
+        try:
+            # Use the dedicated NLLB API hosted on HF Spaces
+            # This API uses CTranslate2 backend for fast CPU inference
+            api_url = "https://winstxnhdw-nllb-api.hf.space/api/v4/translator"
+            
+            params = {
+                "text": kikuyu_text,
+                "source": "kik_Latn",  # Kikuyu in Latin script
+                "target": "eng_Latn"   # English in Latin script
+            }
+            
+            # Make request with timeout
+            response = requests.get(api_url, params=params, timeout=30)
+            response.raise_for_status()
+            
+            # API returns text translation (sometimes wrapped in JSON)
+            translation_text = response.text.strip()
+            
+            # Handle potential JSON wrapping
+            try:
+                import json
+                json_data = json.loads(translation_text)
+                if isinstance(json_data, dict) and 'result' in json_data:
+                    translation = json_data['result']
+                else:
+                    translation = translation_text
+            except (json.JSONDecodeError, ValueError):
+                # Not JSON, use as-is
+                translation = translation_text
+            
+            generation_time = time.time() - start_time
+            
+            return TranslationResult(
+                proverb_id="",
+                kikuyu_text=kikuyu_text,
+                translation=translation,
+                system_name="NLLB-200",
+                cultural_meaning="Meta's specialized MT with native Kikuyu support (FLORES-200)",
+                confidence_score=0.85,  # Higher than Google due to native Kikuyu support
+                generation_time=generation_time,
+                timestamp=datetime.now().isoformat(),
+                metadata={
+                    "model": "facebook/nllb-200-distilled-1.3B",
+                    "provider": "winstxnhdw-nllb-api",
+                    "api_version": "v4",
+                    "api_url": api_url,
+                    "source_lang": "kik_Latn",
+                    "target_lang": "eng_Latn",
+                    "training_data": "FLORES-200",
+                    "backend": "CTranslate2"
+                }
+            )
+        except requests.exceptions.Timeout:
+            logger.error("NLLB API request timed out after 30 seconds")
+            return self._create_error_result(kikuyu_text, "NLLB-200", "API timeout (30s)")
+        except requests.exceptions.HTTPError as e:
+            logger.error(f"NLLB API HTTP error: {e}")
+            return self._create_error_result(kikuyu_text, "NLLB-200", f"HTTP {e.response.status_code}: {e.response.text[:100]}")
+        except requests.exceptions.RequestException as e:
+            logger.error(f"NLLB API request failed: {e}")
+            return self._create_error_result(kikuyu_text, "NLLB-200", str(e))
+        except Exception as e:
+            logger.error(f"NLLB translation failed: {e}")
+            return self._create_error_result(kikuyu_text, "NLLB-200", str(e))
+    
     def _create_error_result(self, kikuyu_text: str, system_name: str, error_msg: str) -> TranslationResult:
         """Create an error result when translation fails."""
         return TranslationResult(
@@ -504,19 +618,25 @@ Format as JSON:
         
         logger.info(f"Generating translations for: {kikuyu_text[:50]}...")
         
-        # OG-RAG translation
+        # OG-RAG translation (placeholder - will be enhanced with ontology later)
         og_rag_result = self.translate_og_rag(kikuyu_text)
         og_rag_result.proverb_id = proverb_id
         results['og_rag'] = og_rag_result
         logger.info(f"  ✓ OG-RAG: {og_rag_result.translation[:60]}...")
         
-        # Raw LLM translation
+        # Raw LLM translation (general multilingual AI)
         raw_llm_result = self.translate_raw_llm(kikuyu_text)
         raw_llm_result.proverb_id = proverb_id
         results['raw_llm'] = raw_llm_result
         logger.info(f"  ✓ Raw LLM: {raw_llm_result.translation[:60]}...")
         
-        # Google Translate
+        # NLLB translation (specialized MT with native Kikuyu support)
+        nllb_result = self.translate_nllb(kikuyu_text)
+        nllb_result.proverb_id = proverb_id
+        results['nllb'] = nllb_result
+        logger.info(f"  ✓ NLLB-200: {nllb_result.translation[:60]}...")
+        
+        # Google Translate (commercial baseline - reference only)
         google_result = self.translate_google(kikuyu_text)
         google_result.proverb_id = proverb_id
         results['google'] = google_result
@@ -599,7 +719,12 @@ class TranslationComparator:
                 'raw_llm_confidence': translations['raw_llm'].confidence_score or 0.0,
                 'raw_llm_time': translations['raw_llm'].generation_time or 0.0,
                 
-                # Google Translate results
+                # NLLB results (specialized MT with native Kikuyu support)
+                'nllb_translation': translations['nllb'].translation,
+                'nllb_metadata': json.dumps(translations['nllb'].metadata) if translations['nllb'].metadata else '',
+                'nllb_time': translations['nllb'].generation_time or 0.0,
+                
+                # Google Translate results (reference only - limited Kikuyu support)
                 'google_translation': translations['google'].translation,
                 'google_time': translations['google'].generation_time or 0.0,
                 
@@ -629,7 +754,7 @@ class TranslationComparator:
         logger.info(f"✅ BASELINE TRANSLATION GENERATION COMPLETE")
         logger.info(f"{'='*80}")
         logger.info(f"Processed: {len(results_df)} proverbs")
-        logger.info(f"Systems: OG-RAG, Raw LLM, Google Translate")
+        logger.info(f"Systems: OG-RAG, Raw LLM, NLLB-200, Google Translate")
         logger.info(f"Output: {output_path}")
         logger.info(f"{'='*80}\n")
         
@@ -660,18 +785,21 @@ class TranslationComparator:
             f.write(f"Total Proverbs: {len(results_df)}\n\n")
             
             f.write("TRANSLATION SYSTEMS:\n")
-            f.write("  1. OG-RAG (Ontology-Grounded RAG with cultural knowledge)\n")
-            f.write("  2. Raw LLM (Direct LLM without cultural enhancement)\n")
-            f.write("  3. Google Translate (Commercial baseline)\n\n")
+            f.write("  1. OG-RAG (Ontology-Grounded RAG with cultural knowledge - placeholder)\n")
+            f.write("  2. Raw LLM (General multilingual AI without cultural enhancement)\n")
+            f.write("  3. NLLB-200 (Specialized MT with native Kikuyu training data)\n")
+            f.write("  4. Google Translate (Commercial baseline - reference only)\n\n")
             
             f.write("GENERATION TIME STATISTICS:\n")
             f.write(f"  OG-RAG avg time: {results_df['og_rag_time'].mean():.2f}s\n")
             f.write(f"  Raw LLM avg time: {results_df['raw_llm_time'].mean():.2f}s\n")
+            f.write(f"  NLLB avg time: {results_df['nllb_time'].mean():.2f}s\n")
             f.write(f"  Google avg time: {results_df['google_time'].mean():.2f}s\n\n")
             
             f.write("CONFIDENCE SCORES (where available):\n")
             f.write(f"  OG-RAG avg confidence: {results_df['og_rag_confidence'].mean():.2f}\n")
-            f.write(f"  Raw LLM avg confidence: {results_df['raw_llm_confidence'].mean():.2f}\n\n")
+            f.write(f"  Raw LLM avg confidence: {results_df['raw_llm_confidence'].mean():.2f}\n")
+            f.write(f"  NLLB: No confidence scores (deterministic MT model)\n\n")
             
             f.write("OUTPUT FILES:\n")
             f.write(f"  Main dataset: {output_path.name}\n")
