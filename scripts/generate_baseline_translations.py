@@ -36,6 +36,10 @@ from datetime import datetime
 from typing import Dict, Optional
 from dataclasses import dataclass
 
+# Load environment variables from .env file if it exists
+from dotenv import load_dotenv
+load_dotenv()
+
 # Add src to path
 sys.path.append(str(Path(__file__).parent.parent))
 
@@ -46,32 +50,36 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class CleanTranslationResult:
-    """Clean structure with ONE translation per system."""
+    """Clean structure with BOTH literal and proverb translations per system."""
     # Proverb Info
     proverb_id: str
     kikuyu_text: str
     expert_translation: str
     expert_cultural_meaning: str
     
-    # OpenAI GPT-4
-    openai_translation: str
+    # OpenAI GPT-4 (provides both literal + proverb)
+    openai_literal: str
+    openai_proverb: str
     openai_reasoning: str
     openai_confidence: float
     openai_time: float
     
-    # Cohere Aya-23
-    cohere_translation: str
+    # Cohere Aya-23 (provides both literal + proverb)
+    cohere_literal: str
+    cohere_proverb: str
     cohere_reasoning: str
     cohere_confidence: float
     cohere_time: float
     
-    # NLLB-200
-    nllb_translation: str
+    # NLLB-200 (direct MT - same output for both)
+    nllb_literal: str
+    nllb_proverb: str
     nllb_confidence: float
     nllb_time: float
     
-    # Google Translate
-    google_translation: str
+    # Google Translate (direct MT - same output for both)
+    google_literal: str
+    google_proverb: str
     google_time: float
     
     # Metadata
@@ -122,14 +130,16 @@ class CleanBaselineGenerator:
             return None
     
     def _setup_cohere(self):
-        """Setup Cohere client."""
+        """Setup Cohere client with shorter timeout."""
         api_key = os.getenv('COHERE_API_KEY')
         if not api_key:
             logger.warning("⚠️  COHERE_API_KEY not set")
             return None
         try:
             import cohere
-            client = cohere.Client(api_key)
+            # Use 20-second timeout to fail faster if API is slow/unavailable
+            client = cohere.Client(api_key, timeout=20)
+            logger.info("⚠️  Cohere client initialized with 20s timeout (API may be slow)")
             return client
         except Exception as e:
             logger.error(f"Cohere setup failed: {e}")
@@ -152,25 +162,28 @@ class CleanBaselineGenerator:
             return False
     
     def translate_openai(self, kikuyu_text: str) -> Dict:
-        """Translate using OpenAI GPT-4."""
+        """Translate using OpenAI GPT-4 - provides BOTH literal and proverb-level translations."""
         if not self.openai_client:
-            return {"translation": "[OpenAI unavailable]", "reasoning": "", "confidence": 0.0, "time": 0.0}
+            return {"literal": "[OpenAI unavailable]", "proverb": "[OpenAI unavailable]", 
+                    "reasoning": "", "confidence": 0.0, "time": 0.0}
         
         start_time = time.time()
         
-        prompt = f"""Translate this Kikuyu proverb to English:
+        prompt = f"""Translate this Kikuyu proverb to English in TWO ways:
 
 Kikuyu: {kikuyu_text}
 
 Provide:
-1. Your best English translation
-2. Your reasoning for this translation
-3. Your confidence level (0.0-1.0)
+1. LITERAL translation: Word-by-word or phrase-by-phrase translation preserving the original structure and imagery (for linguistic/ontology analysis)
+2. PROVERB translation: Natural English equivalent that captures the full cultural meaning and idiomatic expression (for end-user communication)
+3. Your reasoning explaining the cultural/metaphorical transformation
+4. Your confidence level (0.0-1.0)
 
 Format as JSON:
 {{
-    "translation": "English translation",
-    "reasoning": "Why you translated it this way",
+    "literal": "Word-by-word translation preserving original imagery",
+    "proverb": "Natural idiomatic English equivalent",
+    "reasoning": "Explanation of cultural transformation and translation choices",
     "confidence": 0.0-1.0
 }}"""
         
@@ -194,10 +207,11 @@ Format as JSON:
                 if json_match:
                     result_data = json.loads(json_match.group(1))
                 else:
-                    result_data = {"translation": result_text, "reasoning": "", "confidence": 0.7}
+                    result_data = {"literal": result_text, "proverb": result_text, "reasoning": "", "confidence": 0.7}
             
             return {
-                "translation": result_data.get("translation", result_text),
+                "literal": result_data.get("literal", result_text),
+                "proverb": result_data.get("proverb", result_text),
                 "reasoning": result_data.get("reasoning", ""),
                 "confidence": result_data.get("confidence", 0.7),
                 "time": time.time() - start_time
@@ -207,64 +221,87 @@ Format as JSON:
             return {"translation": f"[ERROR: {str(e)}]", "reasoning": "", "confidence": 0.0, "time": time.time() - start_time}
     
     def translate_cohere(self, kikuyu_text: str) -> Dict:
-        """Translate using Cohere Aya-23 (African language optimized)."""
+        """Translate using Cohere Aya-23 (African language optimized) - provides BOTH literal and proverb-level translations."""
         if not self.cohere_client:
-            return {"translation": "[Cohere unavailable]", "reasoning": "", "confidence": 0.0, "time": 0.0}
+            return {"literal": "[Cohere unavailable]", "proverb": "[Cohere unavailable]", 
+                    "reasoning": "", "confidence": 0.0, "time": 0.0}
         
         start_time = time.time()
         
-        prompt = f"""Translate this Kikuyu proverb to English:
+        prompt = f"""Translate this Kikuyu proverb to English in TWO ways:
 
 Kikuyu: {kikuyu_text}
 
 Provide:
-1. Your best English translation
-2. Your reasoning for this translation  
-3. Your confidence level (0.0-1.0)
+1. LITERAL translation: Word-by-word or phrase-by-phrase translation preserving the original structure and imagery (for linguistic/ontology analysis)
+2. PROVERB translation: Natural English equivalent that captures the full cultural meaning and idiomatic expression (for end-user communication)
+3. Your reasoning explaining the cultural/metaphorical transformation
+4. Your confidence level (0.0-1.0)
 
 Format as JSON:
 {{
-    "translation": "English translation",
-    "reasoning": "Why you translated it this way",
+    "literal": "Word-by-word translation preserving original imagery",
+    "proverb": "Natural idiomatic English equivalent",
+    "reasoning": "Explanation of cultural transformation and translation choices",
     "confidence": 0.0-1.0
 }}"""
         
-        try:
-            model = os.getenv('COHERE_MODEL', 'c4ai-aya-23')
-            response = self.cohere_client.chat(
-                model=model,
-                message=prompt,
-                temperature=0.3
-            )
-            
-            result_text = response.text
-            
-            # Parse JSON
+        # Try twice with shorter timeout (20s each = 40s max)
+        max_attempts = 2
+        for attempt in range(max_attempts):
             try:
-                result_data = json.loads(result_text)
-            except:
-                # Try extracting from markdown
-                import re
-                json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', result_text, re.DOTALL)
-                if json_match:
-                    result_data = json.loads(json_match.group(1))
+                if attempt > 0:
+                    logger.info(f"  ⟳ Cohere retry attempt {attempt + 1}/{max_attempts}")
+                    time.sleep(2)  # Brief pause before retry
+                
+                model = os.getenv('COHERE_MODEL', 'c4ai-aya-23')
+                response = self.cohere_client.chat(
+                    model=model,
+                    message=prompt,
+                    temperature=0.3
+                )
+                
+                result_text = response.text
+                
+                # Parse JSON
+                try:
+                    result_data = json.loads(result_text)
+                except:
+                    # Try extracting from markdown
+                    import re
+                    json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', result_text, re.DOTALL)
+                    if json_match:
+                        result_data = json.loads(json_match.group(1))
+                    else:
+                        result_data = {"literal": result_text, "proverb": result_text, "reasoning": "", "confidence": 0.7}
+                
+                return {
+                    "literal": result_data.get("literal", result_text),
+                    "proverb": result_data.get("proverb", result_text),
+                    "reasoning": result_data.get("reasoning", ""),
+                    "confidence": result_data.get("confidence", 0.7),
+                    "time": time.time() - start_time
+                }
+            except Exception as e:
+                error_msg = str(e)
+                if "timeout" in error_msg.lower() or "timed out" in error_msg.lower():
+                    logger.warning(f"  ⏱️  Cohere timeout on attempt {attempt + 1}/{max_attempts}")
+                    if attempt == max_attempts - 1:
+                        logger.error(f"Cohere failed after {max_attempts} attempts (timeouts)")
+                        return {"literal": "[Cohere timeout - API slow/unavailable]", 
+                                "proverb": "[Cohere timeout - API slow/unavailable]",
+                                "reasoning": "Connection timed out after retries", 
+                                "confidence": 0.0, "time": time.time() - start_time}
                 else:
-                    result_data = {"translation": result_text, "reasoning": "", "confidence": 0.7}
-            
-            return {
-                "translation": result_data.get("translation", result_text),
-                "reasoning": result_data.get("reasoning", ""),
-                "confidence": result_data.get("confidence", 0.7),
-                "time": time.time() - start_time
-            }
-        except Exception as e:
-            logger.error(f"Cohere translation failed: {e}")
-            return {"translation": f"[ERROR: {str(e)}]", "reasoning": "", "confidence": 0.0, "time": time.time() - start_time}
+                    logger.error(f"Cohere translation error: {e}")
+                    return {"literal": f"[ERROR: {error_msg}]", "proverb": f"[ERROR: {error_msg}]", "reasoning": "", 
+                            "confidence": 0.0, "time": time.time() - start_time}
     
     def translate_nllb(self, kikuyu_text: str) -> Dict:
-        """Translate using NLLB-200 API."""
+        """Translate using NLLB-200 API - provides direct MT output (same for literal and proverb)."""
         if not self.nllb_available:
-            return {"translation": "[NLLB unavailable]", "confidence": 0.0, "time": 0.0}
+            return {"literal": "[NLLB unavailable]", "proverb": "[NLLB unavailable]", 
+                    "confidence": 0.0, "time": 0.0}
         
         start_time = time.time()
         
@@ -292,19 +329,23 @@ Format as JSON:
             except:
                 translation = translation_text
             
+            # NLLB is direct MT - doesn't distinguish literal vs proverb
+            # Use same output for both (tends to be more literal)
             return {
-                "translation": translation,
+                "literal": translation,
+                "proverb": translation,
                 "confidence": 0.85,
                 "time": time.time() - start_time
             }
         except Exception as e:
             logger.error(f"NLLB translation failed: {e}")
-            return {"translation": f"[ERROR: {str(e)}]", "confidence": 0.0, "time": time.time() - start_time}
+            return {"literal": f"[ERROR: {str(e)}]", "proverb": f"[ERROR: {str(e)}]", 
+                    "confidence": 0.0, "time": time.time() - start_time}
     
     def translate_google(self, kikuyu_text: str) -> Dict:
-        """Translate using Google Translate (no Kikuyu support - auto-detect)."""
+        """Translate using Google Translate (no Kikuyu support - auto-detect) - same output for literal and proverb."""
         if not self.google_available:
-            return {"translation": "[Google unavailable]", "time": 0.0}
+            return {"literal": "[Google unavailable]", "proverb": "[Google unavailable]", "time": 0.0}
         
         start_time = time.time()
         
@@ -313,13 +354,17 @@ Format as JSON:
             translator = GoogleTranslator(source='auto', target='en')
             translation = translator.translate(kikuyu_text)
             
+            # Google Translate is direct MT - doesn't distinguish literal vs proverb
+            # Use same output for both (tends to be more literal)
             return {
-                "translation": translation,
+                "literal": translation,
+                "proverb": translation,
                 "time": time.time() - start_time
             }
         except Exception as e:
             logger.error(f"Google Translate failed: {e}")
-            return {"translation": f"[ERROR: {str(e)}]", "time": time.time() - start_time}
+            return {"literal": f"[ERROR: {str(e)}]", "proverb": f"[ERROR: {str(e)}]", 
+                    "time": time.time() - start_time}
     
     def generate_clean_baseline(self, gold_standard_file: str, max_proverbs: int = None, output_file: str = None):
         """Generate clean baseline with ONE row per proverb."""
@@ -347,35 +392,41 @@ Format as JSON:
             
             # Translate with ALL systems (no mixing!)
             openai_result = self.translate_openai(kikuyu_text)
-            logger.info(f"  ✓ OpenAI: {openai_result['translation'][:50]}...")
+            logger.info(f"  ✓ OpenAI Literal: {openai_result['literal'][:40]}...")
+            logger.info(f"  ✓ OpenAI Proverb: {openai_result['proverb'][:40]}...")
             
             cohere_result = self.translate_cohere(kikuyu_text)
-            logger.info(f"  ✓ Cohere: {cohere_result['translation'][:50]}...")
+            logger.info(f"  ✓ Cohere Literal: {cohere_result['literal'][:40]}...")
+            logger.info(f"  ✓ Cohere Proverb: {cohere_result['proverb'][:40]}...")
             
             nllb_result = self.translate_nllb(kikuyu_text)
-            logger.info(f"  ✓ NLLB: {nllb_result['translation'][:50]}...")
+            logger.info(f"  ✓ NLLB: {nllb_result['literal'][:50]}...")
             
             google_result = self.translate_google(kikuyu_text)
-            logger.info(f"  ✓ Google: {google_result['translation'][:50]}...")
+            logger.info(f"  ✓ Google: {google_result['literal'][:50]}...")
             
-            # Create ONE clean record
+            # Create ONE clean record with BOTH literal and proverb translations
             clean_record = CleanTranslationResult(
                 proverb_id=proverb_id,
                 kikuyu_text=kikuyu_text,
                 expert_translation=expert_translation,
                 expert_cultural_meaning=expert_cultural_meaning,
-                openai_translation=openai_result['translation'],
+                openai_literal=openai_result['literal'],
+                openai_proverb=openai_result['proverb'],
                 openai_reasoning=openai_result['reasoning'],
                 openai_confidence=openai_result['confidence'],
                 openai_time=openai_result['time'],
-                cohere_translation=cohere_result['translation'],
+                cohere_literal=cohere_result['literal'],
+                cohere_proverb=cohere_result['proverb'],
                 cohere_reasoning=cohere_result['reasoning'],
                 cohere_confidence=cohere_result['confidence'],
                 cohere_time=cohere_result['time'],
-                nllb_translation=nllb_result['translation'],
+                nllb_literal=nllb_result['literal'],
+                nllb_proverb=nllb_result['proverb'],
                 nllb_confidence=nllb_result['confidence'],
                 nllb_time=nllb_result['time'],
-                google_translation=google_result['translation'],
+                google_literal=google_result['literal'],
+                google_proverb=google_result['proverb'],
                 google_time=google_result['time'],
                 timestamp=datetime.now().isoformat()
             )
