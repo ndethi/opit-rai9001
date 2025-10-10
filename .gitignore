@@ -86,6 +86,9 @@ data/external/*
 models/
 outputs/
 results/
+# Exception: Keep baseline translations as research milestone artifacts
+!data/results/baseline_translations/baseline_literal_proverb_100proverbs_deduped.csv
+!data/results/baseline_translations/baseline_translations_clean_50proverbs_deduped.csv
 
 # Temporary files
 .tmp/
