@@ -1,0 +1,30 @@
+{
+  "total_proverbs_processed": 5,
+  "total_entities_extracted": 11,
+  "total_actions_extracted": 3,
+  "total_cultural_concepts_extracted": 8,
+  "total_metaphors_identified": 3,
+  "unique_kikuyu_entities": 7,
+  "unique_cultural_concepts": 8,
+  "average_extraction_confidence": 0.92,
+  "top_kikuyu_entities": [
+    "ngui",
+    "indo",
+    "bururi",
+    "cia kionje",
+    "mbia",
+    "muoyo/gitanakua",
+    "andu"
+  ],
+  "top_cultural_concepts": [
+    "political stability",
+    "poverty",
+    "wealth_acquisition",
+    "integrity",
+    "careful planning",
+    "greed",
+    "community",
+    "wealth acquisition"
+  ],
+  "generated_at": "2025-10-10T23:34:37.019584"
+}

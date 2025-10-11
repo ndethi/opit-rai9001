@@ -1,0 +1,262 @@
+[
+  {
+    "proverb_id": "MW_001",
+    "kikuyu_text": "Aikaragia mbia ta njuu ngigi.",
+    "expert_translation": "He looks after his money the way storks pursue locusts.",
+    "expert_cultural_meaning": "Whoever has much always wants more.",
+    "expert_teaching": "It teaches that lack of satisfaction with what one has, leads to greed and hunger for more money. It also creates mistrust, such that the person becomes possessive.",
+    "thematic_category": "wealth_acquisition",
+    "entities": [
+      {
+        "kikuyu_term": "mbia",
+        "english_translation": "money/wealth/valuables",
+        "category": "object",
+        "cultural_significance": "Central to wealth discussions in Kikuyu culture",
+        "example_usage": "Used in proverb to represent material wealth"
+      }
+    ],
+    "actions": [
+      {
+        "kikuyu_verb": "aikaragia",
+        "english_translation": "guards/pursues/protects",
+        "action_type": "physical",
+        "cultural_context": "Implies active protection or pursuit"
+      }
+    ],
+    "cultural_concepts": [
+      {
+        "concept_name": "greed",
+        "kikuyu_expressions": [
+          "kuona kwingi",
+          "gutaka kwingi"
+        ],
+        "cultural_explanation": "Insatiable desire for more, culturally viewed negatively",
+        "moral_dimension": "negative"
+      }
+    ],
+    "metaphor": {
+      "vehicle": "storks pursuing locusts",
+      "tenor": "relentless pursuit of wealth",
+      "mapping_explanation": "Storks relentlessly chase locusts for food, mapped to endless pursuit of money",
+      "cultural_resonance": "Kikuyu agricultural society understands bird behavior metaphors"
+    },
+    "extraction_confidence": 0.9,
+    "extraction_notes": "Clear metaphorical structure with explicit cultural teaching",
+    "extracted_at": "2025-10-10T23:34:14.582065"
+  },
+  {
+    "proverb_id": "MW_002",
+    "kikuyu_text": "Andu ni indo.",
+    "expert_translation": "People are wealth.",
+    "expert_cultural_meaning": NaN,
+    "expert_teaching": "It teaches that wealth emanates from people. Good insights, ideas and opportunities that bring someone prosperity of different kinds, are derived from communicating and working together with people. Bible parallel Proverbs 27:17 “As iron sharpens iron, so one person sharpens another.”",
+    "thematic_category": "wealth_acquisition",
+    "entities": [
+      {
+        "kikuyu_term": "andu",
+        "english_translation": "people",
+        "category": "abstract_concept",
+        "cultural_significance": "Central to community and social wealth in Kikuyu culture",
+        "example_usage": "Used in proverb to represent the source of wealth and prosperity"
+      },
+      {
+        "kikuyu_term": "indo",
+        "english_translation": "wealth",
+        "category": "abstract_concept",
+        "cultural_significance": "Represents prosperity and success, often derived from social interactions",
+        "example_usage": "Used in proverb to signify the outcome of social cooperation"
+      }
+    ],
+    "actions": [],
+    "cultural_concepts": [
+      {
+        "concept_name": "community",
+        "kikuyu_expressions": [
+          "andu",
+          "mucii"
+        ],
+        "cultural_explanation": "The idea that people and their interactions are the foundation of prosperity",
+        "moral_dimension": "positive"
+      },
+      {
+        "concept_name": "wealth_acquisition",
+        "kikuyu_expressions": [
+          "indo"
+        ],
+        "cultural_explanation": "Wealth is not just material but also includes social and intellectual capital",
+        "moral_dimension": "contextual"
+      }
+    ],
+    "metaphor": {
+      "vehicle": "people",
+      "tenor": "wealth",
+      "mapping_explanation": "People are seen as the source of wealth, similar to how resources are derived from the community",
+      "cultural_resonance": "Emphasizes the importance of social bonds and cooperation in achieving prosperity"
+    },
+    "extraction_confidence": 0.95,
+    "extraction_notes": "The proverb explicitly links people to wealth, highlighting the cultural value of community and cooperation.",
+    "extracted_at": "2025-10-10T23:34:19.335769"
+  },
+  {
+    "proverb_id": "MW_003",
+    "kikuyu_text": "Bururi uri ngui ndungiciarikira indo.",
+    "expert_translation": "In an unstable country one cannot become wealthy",
+    "expert_cultural_meaning": NaN,
+    "expert_teaching": "This proverb shows that one can spend money for purposes which are not really important. It teaches that carefully planned usage is necessary in order for it to last.",
+    "thematic_category": "wealth_acquisition",
+    "entities": [
+      {
+        "kikuyu_term": "bururi",
+        "english_translation": "country",
+        "category": "place",
+        "cultural_significance": "Represents the state or stability of a nation, important in discussions of prosperity",
+        "example_usage": "Used in proverb to denote the environment affecting wealth"
+      },
+      {
+        "kikuyu_term": "ngui",
+        "english_translation": "unstable",
+        "category": "abstract_concept",
+        "cultural_significance": "Symbolizes instability or chaos, impacting prosperity",
+        "example_usage": "Used in proverb to describe the condition of the country"
+      },
+      {
+        "kikuyu_term": "indo",
+        "english_translation": "wealth",
+        "category": "object",
+        "cultural_significance": "Central to discussions of prosperity and success in Kikuyu culture",
+        "example_usage": "Used in proverb to represent material wealth"
+      }
+    ],
+    "actions": [],
+    "cultural_concepts": [
+      {
+        "concept_name": "wealth acquisition",
+        "kikuyu_expressions": [],
+        "cultural_explanation": "The process of gaining wealth, which is influenced by external stability",
+        "moral_dimension": "contextual"
+      },
+      {
+        "concept_name": "careful planning",
+        "kikuyu_expressions": [],
+        "cultural_explanation": "Emphasizes the importance of strategic use of resources",
+        "moral_dimension": "positive"
+      }
+    ],
+    "metaphor": null,
+    "extraction_confidence": 0.85,
+    "extraction_notes": "The proverb lacks explicit metaphorical structure but implies the importance of stability for wealth acquisition.",
+    "extracted_at": "2025-10-10T23:34:25.391825"
+  },
+  {
+    "proverb_id": "MW_004",
+    "kikuyu_text": "Bururi uri ngui ndungiciarikira indo.",
+    "expert_translation": "In an unstable country one cannot become wealthy.",
+    "expert_cultural_meaning": "Political stability facilitates wealth.",
+    "expert_teaching": "This proverb teaches that a person can only invest successfully in an environment that is stable, socially, economically and politically. One should therefore, choose well in order to prosper.",
+    "thematic_category": "wealth_acquisition",
+    "entities": [
+      {
+        "kikuyu_term": "bururi",
+        "english_translation": "country",
+        "category": "place",
+        "cultural_significance": "Represents the broader socio-political environment in Kikuyu culture",
+        "example_usage": "Used in the proverb to denote the environment affecting wealth acquisition"
+      },
+      {
+        "kikuyu_term": "ngui",
+        "english_translation": "unstable",
+        "category": "abstract_concept",
+        "cultural_significance": "Conveys the idea of instability, which is detrimental to prosperity",
+        "example_usage": "Describes the state of the country in the proverb"
+      },
+      {
+        "kikuyu_term": "indo",
+        "english_translation": "wealth",
+        "category": "object",
+        "cultural_significance": "Central to discussions of prosperity and success in Kikuyu culture",
+        "example_usage": "Represents material wealth in the proverb"
+      }
+    ],
+    "actions": [
+      {
+        "kikuyu_verb": "ciarikira",
+        "english_translation": "become wealthy",
+        "action_type": "economic",
+        "cultural_context": "Implies the process of acquiring wealth, which is dependent on stability"
+      }
+    ],
+    "cultural_concepts": [
+      {
+        "concept_name": "political stability",
+        "kikuyu_expressions": [
+          "bururi uri na thirikari"
+        ],
+        "cultural_explanation": "A stable government is seen as essential for economic prosperity",
+        "moral_dimension": "positive"
+      }
+    ],
+    "metaphor": {
+      "vehicle": "unstable country",
+      "tenor": "environment not conducive to wealth",
+      "mapping_explanation": "An unstable country is likened to an environment where wealth cannot flourish",
+      "cultural_resonance": "Reflects the importance of stability in Kikuyu society for prosperity"
+    },
+    "extraction_confidence": 0.95,
+    "extraction_notes": "Proverb explicitly ties stability to wealth acquisition, with clear cultural implications",
+    "extracted_at": "2025-10-10T23:34:31.079491"
+  },
+  {
+    "proverb_id": "MW_005",
+    "kikuyu_text": "Cia kionje itigayagwo kiri muoyo/gitanakua.",
+    "expert_translation": "The property of an invalid are not distributed while the person is still alive.",
+    "expert_cultural_meaning": "A poor man is unable to obtain any more than he possesses.",
+    "expert_teaching": "It teaches against grabbing/acquiring fraudulently, the property of a poor or disabled person because they cannot fight back. Acquire property through the correct methods.",
+    "thematic_category": "poverty_hardship",
+    "entities": [
+      {
+        "kikuyu_term": "cia kionje",
+        "english_translation": "property of an invalid",
+        "category": "object",
+        "cultural_significance": "Represents the possessions of those who are vulnerable in society",
+        "example_usage": "Used in the proverb to highlight the possessions of a disadvantaged person"
+      },
+      {
+        "kikuyu_term": "muoyo/gitanakua",
+        "english_translation": "alive",
+        "category": "abstract_concept",
+        "cultural_significance": "Represents the state of being that is respected and protected",
+        "example_usage": "Used in the proverb to emphasize the importance of respecting the living"
+      }
+    ],
+    "actions": [
+      {
+        "kikuyu_verb": "itigayagwo",
+        "english_translation": "are not distributed",
+        "action_type": "social",
+        "cultural_context": "Refers to the cultural practice of inheritance and distribution of property only after death"
+      }
+    ],
+    "cultural_concepts": [
+      {
+        "concept_name": "poverty",
+        "kikuyu_expressions": [
+          "kionje"
+        ],
+        "cultural_explanation": "Represents the state of lacking material wealth and power, often associated with vulnerability",
+        "moral_dimension": "contextual"
+      },
+      {
+        "concept_name": "integrity",
+        "kikuyu_expressions": [
+          "gutiga mbia cia kionje"
+        ],
+        "cultural_explanation": "Emphasizes the importance of acquiring wealth through honest means",
+        "moral_dimension": "positive"
+      }
+    ],
+    "metaphor": null,
+    "extraction_confidence": 0.95,
+    "extraction_notes": "The proverb lacks a direct metaphor but strongly conveys cultural values related to property and integrity.",
+    "extracted_at": "2025-10-10T23:34:37.017882"
+  }
+]
