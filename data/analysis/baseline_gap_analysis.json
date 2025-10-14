@@ -1,0 +1,3534 @@
+{
+  "metadata": {
+    "analysis_date": "2025-10-14T07:13:40.161395",
+    "baseline_file": "data/results/baseline_translations/baseline_literal_proverb_100proverbs_deduped.csv",
+    "gold_standard_file": "data/evaluation/gold_standard_ireri_deduplicated.csv",
+    "model_used": "gpt-4o"
+  },
+  "summary": {
+    "total_proverbs": 100,
+    "complete_failures": 97,
+    "partial_failures": 0,
+    "metaphor_losses": 0,
+    "cultural_losses": 0,
+    "avg_semantic_similarity": 0.11474999999999999,
+    "avg_cultural_fidelity": 0.06675,
+    "avg_metaphor_preservation": 0.045250000000000005,
+    "top_missing_concepts": [
+      [
+        "wealth",
+        20
+      ],
+      [
+        "poverty",
+        10
+      ],
+      [
+        "ownership",
+        4
+      ],
+      [
+        "wealth acquisition",
+        4
+      ],
+      [
+        "debt",
+        4
+      ],
+      [
+        "greed",
+        2
+      ],
+      [
+        "investment",
+        2
+      ],
+      [
+        "impermanence of wealth",
+        2
+      ],
+      [
+        "wisdom",
+        2
+      ],
+      [
+        "hospitality",
+        2
+      ],
+      [
+        "self-reliance",
+        2
+      ],
+      [
+        "collaboration",
+        2
+      ],
+      [
+        "resource management",
+        2
+      ],
+      [
+        "stewardship",
+        2
+      ],
+      [
+        "pride",
+        2
+      ],
+      [
+        "thief",
+        2
+      ],
+      [
+        "patience",
+        2
+      ],
+      [
+        "utonga",
+        2
+      ],
+      [
+        "money management",
+        1
+      ],
+      [
+        "pursuit",
+        1
+      ]
+    ],
+    "top_failed_metaphors": [
+      [
+        "comparison of money management to storks pursuing locusts",
+        1
+      ],
+      [
+        "people as a source of wealth",
+        1
+      ],
+      [
+        "country as a place of instability affecting wealth",
+        1
+      ],
+      [
+        "unstable country",
+        1
+      ],
+      [
+        "wealth accumulation",
+        1
+      ],
+      [
+        "property distribution of an invalid",
+        1
+      ],
+      [
+        "granary as a symbol of wealth accumulation",
+        1
+      ],
+      [
+        "lawsuit leading to poverty",
+        1
+      ],
+      [
+        "spending money to make money",
+        1
+      ],
+      [
+        "land as a symbol of life's toil",
+        1
+      ],
+      [
+        "land as a right",
+        1
+      ],
+      [
+        "rich man's power to reclaim land",
+        1
+      ],
+      [
+        "wealthy man eating a dying goat",
+        1
+      ],
+      [
+        "interconnectedness of poverty and wealth",
+        1
+      ],
+      [
+        "Value obtained through effort",
+        1
+      ],
+      [
+        "comparison of goats to brideswealth",
+        1
+      ],
+      [
+        "youth as a period of potential and opportunity",
+        1
+      ],
+      [
+        "poverty as a state of lacking possessions",
+        1
+      ],
+      [
+        "poverty vs. foolishness",
+        1
+      ],
+      [
+        "virtue as true wealth",
+        1
+      ]
+    ],
+    "critical_kikuyu_terms": [
+      "wealth",
+      "poverty"
+    ],
+    "system_failure_rates": {
+      "openai": 0.26,
+      "google": 0.95,
+      "cohere": 0.7,
+      "nllb": 0.98
+    },
+    "worst_performing_system": "nllb",
+    "best_performing_system": "openai"
+  },
+  "gaps": [
+    {
+      "proverb_id": "MW_001",
+      "kikuyu_text": "Aikaragia mbia ta njuu ngigi.",
+      "expert_translation": "He looks after his money the way storks pursue locusts.",
+      "expert_cultural_meaning": "Whoever has much always wants more.",
+      "expert_teaching": "It teaches that lack of satisfaction with what one has, leads to greed and hunger for more money. It also creates mistrust, such that the person becomes possessive.",
+      "openai_gpt4o_mini": "It does not grow old like a big tree.",
+      "gemini_flash": "Aikharia mbia ta njigi.",
+      "gpt35_turbo": "Aikaragia mbia ta njuu ngigi: Let the teeth that are above speak.",
+      "nllb200": "He was a man of many talents.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "money management",
+        "greed",
+        "pursuit"
+      ],
+      "lost_cultural_meanings": [
+        "insatiable desire for wealth",
+        "mistrust due to greed"
+      ],
+      "failed_metaphors": [
+        "comparison of money management to storks pursuing locusts"
+      ],
+      "semantic_similarity_avg": 0.025,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations were either nonsensical or completely unrelated to the original meaning. Key concepts of greed and pursuit were lost, and the metaphorical structure comparing money management to storks and locusts was not preserved."
+    },
+    {
+      "proverb_id": "MW_002",
+      "kikuyu_text": "Andu ni indo.",
+      "expert_translation": "People are wealth.",
+      "expert_cultural_meaning": NaN,
+      "expert_teaching": "It teaches that wealth emanates from people. Good insights, ideas and opportunities that bring someone prosperity of different kinds, are derived from communicating and working together with people. Bible parallel Proverbs 27:17 “As iron sharpens iron, so one person sharpens another.”",
+      "openai_gpt4o_mini": "People are things.",
+      "gemini_flash": "And touch it indo.",
+      "gpt35_turbo": "Andu ni indo. (Kikuyu) ->  Hand is fire. (English)",
+      "nllb200": "People are things.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth as derived from people"
+      ],
+      "lost_cultural_meanings": [
+        "importance of community and collaboration"
+      ],
+      "failed_metaphors": [
+        "people as a source of wealth"
+      ],
+      "semantic_similarity_avg": 0.275,
+      "cultural_fidelity_avg": 0.15,
+      "metaphor_preservation_avg": 0.125,
+      "analysis_notes": "OpenAI's translation was closest semantically but still missed the cultural depth. Google and Cohere produced translations that were nonsensical or unrelated to the original meaning. NLLB's translation was incorrect and failed to capture any aspect of the proverb. The main failure was the inability to convey the metaphorical and cultural significance of people as a source of wealth."
+    },
+    {
+      "proverb_id": "MW_003",
+      "kikuyu_text": "Bururi uri ngui ndungiciarikira indo.",
+      "expert_translation": "In an unstable country one cannot become wealthy",
+      "expert_cultural_meaning": NaN,
+      "expert_teaching": "This proverb shows that one can spend money for purposes which are not really important. It teaches that carefully planned usage is necessary in order for it to last.",
+      "openai_gpt4o_mini": "The land is a pot that does not overflow with things.",
+      "gemini_flash": "Burundi and I am telling us a god.",
+      "gpt35_turbo": "Bururi (a type of ant) uri (with) ngui (stings) ndungiciarikira (it doesn't sting) indo (people).",
+      "nllb200": "Sleeping with a dog is not a good thing.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "bururi",
+        "ngui",
+        "ndungiciarikira"
+      ],
+      "lost_cultural_meanings": [
+        "instability leading to lack of wealth",
+        "importance of careful planning"
+      ],
+      "failed_metaphors": [
+        "country as a place of instability affecting wealth"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The majority of the systems failed to capture the core meaning of the proverb, which is about the instability of a country affecting wealth accumulation. OpenAI's translation was the closest but still missed the metaphorical and cultural context. Google, Cohere, and NLLB provided translations that were nonsensical and unrelated to the original proverb's meaning."
+    },
+    {
+      "proverb_id": "MW_004",
+      "kikuyu_text": "Bururi uri ngui ndungiciarikira indo.",
+      "expert_translation": "In an unstable country one cannot become wealthy.",
+      "expert_cultural_meaning": "Political stability facilitates wealth.",
+      "expert_teaching": "This proverb teaches that a person can only invest successfully in an environment that is stable, socially, economically and politically. One should therefore, choose well in order to prosper.",
+      "openai_gpt4o_mini": "A country is like a tree that does not forget its roots.",
+      "gemini_flash": "Burundi and I am telling us a god.",
+      "gpt35_turbo": "Bururi (a type of ant) uri (that) ngui (bites) ndungiciarikira (the one who is sleeping) indo (on the path).",
+      "nllb200": "Sleeping with a dog is not a good thing.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "political stability",
+        "wealth",
+        "investment"
+      ],
+      "lost_cultural_meanings": [
+        "political stability facilitates wealth",
+        "importance of a stable environment for prosperity"
+      ],
+      "failed_metaphors": [
+        "unstable country",
+        "wealth accumulation"
+      ],
+      "semantic_similarity_avg": 0.05,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "OpenAI's translation is unrelated to the original meaning, focusing on roots rather than stability. Google's output is nonsensical and unrelated to the proverb. Cohere's translation misinterprets words and lacks coherence. NLLB's translation is completely off-topic, discussing dogs instead of political stability. All systems failed to capture the metaphorical and cultural essence of the proverb."
+    },
+    {
+      "proverb_id": "MW_005",
+      "kikuyu_text": "Cia kionje itigayagwo kiri muoyo/gitanakua.",
+      "expert_translation": "The property of an invalid are not distributed while the person is still alive.",
+      "expert_cultural_meaning": "A poor man is unable to obtain any more than he possesses.",
+      "expert_teaching": "It teaches against grabbing/acquiring fraudulently, the property of a poor or disabled person because they cannot fight back. Acquire property through the correct methods.",
+      "openai_gpt4o_mini": "The thing that is tasted is not forgotten in the heart/it does not fade away.",
+      "gemini_flash": "You have you do it.",
+      "gpt35_turbo": "A thorn that pricks you is in your heart/near your skin.",
+      "nllb200": "The brightness is not left alive/untouched.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "property distribution",
+        "invalid person"
+      ],
+      "lost_cultural_meanings": [
+        "importance of rightful acquisition",
+        "protection of vulnerable individuals"
+      ],
+      "failed_metaphors": [
+        "property distribution of an invalid"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The translations from Google and NLLB-200 are completely off-target, failing to capture any aspect of the original proverb. OpenAI and Cohere attempt a metaphorical structure but miss the cultural and semantic essence of the proverb. The key concepts of property distribution and the status of the invalid person are lost, leading to a critical failure in conveying the intended message."
+    },
+    {
+      "proverb_id": "MW_006",
+      "kikuyu_text": "Cia thuguri itiyuragia ikumbi",
+      "expert_translation": "Bought things do not fill the granary.",
+      "expert_cultural_meaning": "One must work hard to achieve wealth.",
+      "expert_teaching": "Do not hope to become rich without cultivating your fields. It teaches that a person cannot have enough by begging.",
+      "openai_gpt4o_mini": "The things of the house do not leave the homestead",
+      "gemini_flash": "Cia thuguri itiyuragia ikumbi",
+      "gpt35_turbo": "A pot that sings before it boils",
+      "nllb200": "The robbers do not fill the room",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "thuguri",
+        "ikumbi"
+      ],
+      "lost_cultural_meanings": [
+        "importance of hard work",
+        "self-reliance"
+      ],
+      "failed_metaphors": [
+        "granary as a symbol of wealth accumulation"
+      ],
+      "semantic_similarity_avg": 0.05,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The translations from Google, Cohere, and NLLB-200 failed to capture the essence of the proverb entirely, resulting in nonsensical outputs. OpenAI's translation was closer but still missed the metaphorical and cultural meanings related to wealth accumulation and self-reliance. The concept of 'thuguri' (bought things) and 'ikumbi' (granary) were not accurately represented, leading to a loss of the proverb's intended teaching."
+    },
+    {
+      "proverb_id": "MW_007",
+      "kikuyu_text": "Ciira muingi/munene ni ukia.",
+      "expert_translation": "A long lawsuit brings poverty.",
+      "expert_cultural_meaning": "Be quick to forgive.",
+      "expert_teaching": "It teaches that when disputes arise they should be sorted out at the quickest opportunity, because the persons involved stop focusing on more benefitial endeavours and concentrate on the dispute. The costs involved waste a lot of resources during this period.",
+      "openai_gpt4o_mini": "A lot of noise is a sign of trouble.",
+      "gemini_flash": "Your rules/where are.",
+      "gpt35_turbo": "A single finger/toe cannot catch a louse",
+      "nllb200": "The most important sentence is ukia.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "lawsuit",
+        "poverty",
+        "forgiveness"
+      ],
+      "lost_cultural_meanings": [
+        "importance of resolving disputes quickly"
+      ],
+      "failed_metaphors": [
+        "lawsuit leading to poverty"
+      ],
+      "semantic_similarity_avg": 0.075,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "OpenAI's translation partially captures the idea of trouble but misses the specific context of lawsuits and poverty. Google, Cohere, and NLLB translations are completely off, failing to capture any relevant concepts or cultural meanings. The metaphor of a lawsuit leading to poverty is entirely lost in all translations."
+    },
+    {
+      "proverb_id": "MW_008",
+      "kikuyu_text": "Ciringi imurikagwo na ingi.",
+      "expert_translation": "To get money, you have to spend money.",
+      "expert_cultural_meaning": "Use money, make money.",
+      "expert_teaching": "It teaches that a person must spend money to get wealthy. The more money one invests, the better the chances of getting a higher benefit. One cannot generate money unless they invest.",
+      "openai_gpt4o_mini": "A single tree does not make a forest.",
+      "gemini_flash": "Blessed is the savior and a lot.",
+      "gpt35_turbo": "Ciringi (spear) imurikagwo (that is sharp) na (and) ingi (it pierces).",
+      "nllb200": "The circle is illuminated by other light.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "money",
+        "investment",
+        "spending"
+      ],
+      "lost_cultural_meanings": [
+        "investment leads to wealth",
+        "spending to gain"
+      ],
+      "failed_metaphors": [
+        "spending money to make money"
+      ],
+      "semantic_similarity_avg": 0.025,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the core concept of the proverb, which is about financial investment and returns. The translations provided were either nonsensical or completely unrelated to the original proverb's meaning. None of the systems preserved the metaphorical structure or cultural meaning, resulting in a critical failure across all metrics."
+    },
+    {
+      "proverb_id": "MW_009",
+      "kikuyu_text": "Gicigo kia mugunda gitinyihaga.",
+      "expert_translation": "A piece of land is not a little thing.",
+      "expert_cultural_meaning": "Life has no rest, only toil.",
+      "expert_teaching": "It teaches that the value of land never diminishes whatever its size. Land makes one to toil endlessly in order to get its benefits. It encourages people to fend for themselves.",
+      "openai_gpt4o_mini": "The crop of the farm does not lie.",
+      "gemini_flash": "Gicigo Kia Mugunda Gitinyiwa.",
+      "gpt35_turbo": "The chicken's comb makes it stand out.",
+      "nllb200": "The mountain is trembling.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "value of land",
+        "endless toil"
+      ],
+      "lost_cultural_meanings": [
+        "life's endless toil",
+        "importance of self-reliance"
+      ],
+      "failed_metaphors": [
+        "land as a symbol of life's toil"
+      ],
+      "semantic_similarity_avg": 0.125,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.05,
+      "analysis_notes": "OpenAI's translation partially captures the concept of land but misses the cultural and metaphorical depth. Google, Cohere, and NLLB translations are nonsensical or unrelated, failing to convey the proverb's meaning and metaphorical structure. The core Kikuyu concepts of land's value and life's toil are lost, leading to a critical failure in conveying the proverb's essence."
+    },
+    {
+      "proverb_id": "MW_010",
+      "kikuyu_text": "Githaka ni ngwatira.",
+      "expert_translation": "Land is inalienable (from the clan).",
+      "expert_cultural_meaning": "Owning property is a right.",
+      "expert_teaching": "It teaches that the property inherited from family rightfully cannot be denied you; however, a person needs to acquire more from their own effort.",
+      "openai_gpt4o_mini": "The path is not straight.",
+      "gemini_flash": "Githaka is my beter.",
+      "gpt35_turbo": "Githaka is a leader.",
+      "nllb200": "The soil is a pothole.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "inalienability of land",
+        "clan ownership"
+      ],
+      "lost_cultural_meanings": [
+        "property rights",
+        "inheritance"
+      ],
+      "failed_metaphors": [
+        "land as a right"
+      ],
+      "semantic_similarity_avg": 0.05,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "The translations from Google, Cohere, and NLLB-200 completely failed to capture the essence of the proverb, both semantically and culturally. They did not convey the concept of land ownership or its inalienability, which are central to the proverb's meaning. OpenAI's translation, while not accurate, at least attempted a metaphorical interpretation, though it was incorrect. None of the systems preserved the metaphorical structure or cultural meaning."
+    },
+    {
+      "proverb_id": "MW_011",
+      "kikuyu_text": "Gitonga kigiragio iganjo gikaarima",
+      "expert_translation": "The rich man cannot be prevented from cultivating the “iganjo”he wants.",
+      "expert_cultural_meaning": "Might is right.",
+      "expert_teaching": "It teaches that it is a fact that a rich man who leaves a piece of land to a poor man on which to build his hut, very often he will want it back as soon as the soil has been enriched by the droppings of the animal.(animals live in the owner’s hut, the floor becomes fertilized.)",
+      "openai_gpt4o_mini": "The one who does not speak is the one who gets the food.",
+      "gemini_flash": "Gitonga Kigiragio Iganjo Gikaarima",
+      "gpt35_turbo": "A spear that is well-sharpened does not strike the target and return empty-handed",
+      "nllb200": "The rich are not allowed to go to the fields",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "rich man",
+        "cultivating",
+        "iganjo"
+      ],
+      "lost_cultural_meanings": [
+        "might is right",
+        "rich reclaiming land"
+      ],
+      "failed_metaphors": [
+        "rich man's power to reclaim land"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations did not convey the concept of a rich man's influence or the metaphor of reclaiming enriched land. Cultural and metaphorical aspects were completely lost, leading to critical failure."
+    },
+    {
+      "proverb_id": "MW_012",
+      "kikuyu_text": "Gitonga kiriaga munyuko.",
+      "expert_translation": "A wealthy man eats only a dying goat (very thin with tough meat)/undesirable food.",
+      "expert_cultural_meaning": "Relentless quest for wealth can often be meaningless.",
+      "expert_teaching": "This proverb teaches that in the pursuit of wealth, a rich man can eat unworthy food since he has no time for himself. He malnourishes his body until he withers away.",
+      "openai_gpt4o_mini": "The one who is wise is the one who is careful.",
+      "gemini_flash": "Gitonga Kiriaga Municipality.",
+      "gpt35_turbo": "A spear that does not pierce deeply.",
+      "nllb200": "Wealth is a commodity.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth",
+        "undesirable food",
+        "dying goat"
+      ],
+      "lost_cultural_meanings": [
+        "meaninglessness of relentless wealth pursuit"
+      ],
+      "failed_metaphors": [
+        "wealthy man eating a dying goat"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "Google and NLLB translations are completely off, with Google misinterpreting 'Gitonga' as a place name and NLLB reducing the proverb to a generic statement about wealth. OpenAI and Cohere failed to capture the metaphor and cultural meaning, with OpenAI providing a generic statement about wisdom and caution, and Cohere offering an unrelated metaphor about a spear. None of the systems preserved the metaphorical structure or cultural meaning of the original proverb."
+    },
+    {
+      "proverb_id": "MW_013",
+      "kikuyu_text": "Gukiaga na gutonga ititiganaga. GJW G 59, Ba 73) WM",
+      "expert_translation": "Poverty and riches do not leave each other.",
+      "expert_cultural_meaning": "When prosperity comes, do not use all of it.",
+      "expert_teaching": "It teaches that being rich is not permanent and can change to being poor. A person should be cautious of how they spend their wealth, in case they end up being poor.",
+      "openai_gpt4o_mini": "To rise and to lead does not go without effort.",
+      "gemini_flash": "He snorted in tiganga. GJW G 59, ba 73) wm",
+      "gpt35_turbo": "A person who is not contented with what he has will always be looking around with longing eyes.",
+      "nllb200": "The rich and the poor are not separate.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "interdependence of poverty and wealth",
+        "impermanence of wealth"
+      ],
+      "lost_cultural_meanings": [
+        "importance of cautiousness in prosperity"
+      ],
+      "failed_metaphors": [
+        "interconnectedness of poverty and wealth"
+      ],
+      "semantic_similarity_avg": 0.15,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.05,
+      "analysis_notes": "Google and NLLB translations are nonsensical and fail to capture any aspect of the original proverb. OpenAI and Cohere miss the metaphorical and cultural meanings, with OpenAI slightly closer in semantic content but still far from accurate. The key concept of the proverb, which is the interdependence and impermanence of wealth and poverty, is lost across all translations."
+    },
+    {
+      "proverb_id": "MW_014",
+      "kikuyu_text": "Gutiri kiega kiumaga heega.",
+      "expert_translation": "There is nothing that is of worth, that is obtained from the comfort corner.",
+      "expert_cultural_meaning": "Nothing of value is given on a silver platter.",
+      "expert_teaching": "“In order to succeed, your desire for success should be greater than your fear of failure.” Bill Cosby It teaches that a person should pursue useful ventures despite any barriers and difficulties that may be encountered, and always focus on achieving their objective.",
+      "openai_gpt4o_mini": "There is no fence that does not have a gap.",
+      "gemini_flash": "Gutiri Kiega with fiber.",
+      "gpt35_turbo": "Gutiri (To tie up) kiega (a pot) kiumaga (with a rope) heega (that is strong).",
+      "nllb200": "The good will be rewarded.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "value",
+        "effort",
+        "comfort"
+      ],
+      "lost_cultural_meanings": [
+        "Nothing of value is given on a silver platter"
+      ],
+      "failed_metaphors": [
+        "Value obtained through effort"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.05,
+      "analysis_notes": "OpenAI's translation is incorrect but somewhat related to the idea of gaps or absence, though it misses the core concept of effort and value. Google's translation is nonsensical, failing to capture any aspect of the proverb. Cohere's translation misinterprets the words entirely, focusing on unrelated objects. NLLB's translation is unrelated to the proverb's meaning, focusing on a reward concept that is not present in the original proverb. All systems except OpenAI failed to capture any metaphorical or cultural meaning."
+    },
+    {
+      "proverb_id": "MW_015",
+      "kikuyu_text": "Gutiri mburi itangiracio, tiga inawathe.",
+      "expert_translation": "Any goat can serve as brideswealth, unless it has a defect.",
+      "expert_cultural_meaning": "The value of a wife is very great and can only be symbolized by the best choice of the present given to the in-law.",
+      "expert_teaching": "This proverb teaches that a wife is of very great value to a family and community. She therefore, must be appreciated. Her true value cannot be measured by wealth but, can only be symbolized by presentation of gifts. That is why brideswealth which is presented must be of the best quality. These presents are continuous throughout life to ensure to carry on the best of relationships between the two families forever.",
+      "openai_gpt4o_mini": "There is no goat that begins to bleat, without first having eaten.",
+      "gemini_flash": "Gutiri mburi itangiracio, three inawathe.",
+      "gpt35_turbo": "Tie the rear leg, let it drink.",
+      "nllb200": "If you do not know the beginning of the things, keep them.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "brideswealth",
+        "defect",
+        "value of a wife"
+      ],
+      "lost_cultural_meanings": [
+        "importance of quality in gifts",
+        "symbolism of gifts in marriage"
+      ],
+      "failed_metaphors": [
+        "comparison of goats to brideswealth"
+      ],
+      "semantic_similarity_avg": 0.15,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "OpenAI's translation was the closest but still failed to capture the cultural and metaphorical essence of the proverb. Google, Cohere, and NLLB provided translations that were nonsensical and did not relate to the original proverb's meaning. The key concepts of brideswealth and the symbolic value of gifts were completely lost, and none of the systems preserved the metaphorical structure of the proverb."
+    },
+    {
+      "proverb_id": "MW_016",
+      "kikuyu_text": "Gutiri munini mukia.",
+      "expert_translation": "No young person can be considered poor.",
+      "expert_cultural_meaning": "“Do what you can, with what you have, where you are.” — Theodore Roosevelt",
+      "expert_teaching": "It teaches that young people have a great chance to make their lives stable and prosperous. They have the opportunity to develop economically, socially and physically.",
+      "openai_gpt4o_mini": "There is no small person who is not wise.",
+      "gemini_flash": "Big guts in the way.",
+      "gpt35_turbo": "Cover the bird's head.",
+      "nllb200": "The size of the tail.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "youth potential",
+        "prosperity opportunity"
+      ],
+      "lost_cultural_meanings": [
+        "youth empowerment",
+        "potential for growth"
+      ],
+      "failed_metaphors": [
+        "youth as a period of potential and opportunity"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.05,
+      "analysis_notes": "OpenAI's translation partially captures the idea of wisdom but misses the core concept of youth potential. Google, Cohere, and NLLB translations are nonsensical and fail to convey any relevant meaning or metaphor. The cultural and metaphorical aspects of the proverb are lost in all translations except OpenAI, which partially retains some semantic elements."
+    },
+    {
+      "proverb_id": "MW_017",
+      "kikuyu_text": "Gutiri uthuire tiga akiaga.",
+      "expert_translation": "A man is poor not because he scorns possessions, but because he possesses nothing.",
+      "expert_cultural_meaning": "Having nothing is a bitter reality.",
+      "expert_teaching": "A poor man should not be despised, but understood and assisted to change his status.",
+      "openai_gpt4o_mini": "There is no one who does not have a place to sleep.",
+      "gemini_flash": "Guti Uthuire Tiga leaving.",
+      "gpt35_turbo": "Gutiri (Act of covering) uthuire (a small pot/container) tiga (to protect from heat) akiaga (while it is still hot).",
+      "nllb200": "The man was not able to get up and walk.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "poverty",
+        "possession",
+        "understanding"
+      ],
+      "lost_cultural_meanings": [
+        "understanding poverty",
+        "assisting the poor"
+      ],
+      "failed_metaphors": [
+        "poverty as a state of lacking possessions"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The translations by Google, Cohere, and NLLB-200 completely failed to capture the essence of the proverb. They either provided nonsensical translations or completely unrelated interpretations. OpenAI's translation was slightly closer but still missed the core concepts of poverty and understanding. None of the systems preserved the cultural meaning or metaphorical structure of the original proverb."
+    },
+    {
+      "proverb_id": "MW_018",
+      "kikuyu_text": "Guthiina ti kuriita",
+      "expert_translation": "To be poor does not connote being foolish.",
+      "expert_cultural_meaning": "“People take different roads seeking fulfillment and happiness. Just because they're not on your road doesn't mean they've gotten lost. DalaiLama",
+      "expert_teaching": "It teaches that we should not misjudge a poor person by considering them as foolish. One could have wisdom, but lack material wealth.",
+      "openai_gpt4o_mini": "To be a leader is not to be a fool",
+      "gemini_flash": "Gunininina to make it",
+      "gpt35_turbo": "Guthiina ti kuriita: This translates literally as 'The pot is calling the kettle black'.",
+      "nllb200": "Fear is not a curse",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "poverty",
+        "wisdom",
+        "misjudgment"
+      ],
+      "lost_cultural_meanings": [
+        "poverty does not equate to foolishness"
+      ],
+      "failed_metaphors": [
+        "poverty vs. foolishness"
+      ],
+      "semantic_similarity_avg": 0.17500000000000002,
+      "cultural_fidelity_avg": 0.1,
+      "metaphor_preservation_avg": 0.05,
+      "analysis_notes": "OpenAI's translation was the closest but still incorrect, confusing leadership with poverty. Google and Cohere provided translations that were nonsensical or unrelated to the original proverb. NLLB's translation was entirely off-topic. All systems failed to capture the metaphorical and cultural essence of the proverb, which emphasizes that poverty does not imply a lack of wisdom."
+    },
+    {
+      "proverb_id": "MW_019",
+      "kikuyu_text": "Guthinga kurugite gutonga.",
+      "expert_translation": "Virtue is better than riches.",
+      "expert_cultural_meaning": "Virtue is the only true nobility.",
+      "expert_teaching": "Intrinsic worth of a person is most preferable than material success.",
+      "openai_gpt4o_mini": "To gather (or unite) the pieces (or parts) to lead (or guide).",
+      "gemini_flash": "Guthingi Kurugite Kutonga.",
+      "gpt35_turbo": "Guthinga kurugite gutonga translates as: To think/plan before acting/moving.",
+      "nllb200": "The rich are the poor.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "virtue",
+        "intrinsic worth",
+        "nobility"
+      ],
+      "lost_cultural_meanings": [
+        "virtue over material wealth",
+        "true nobility"
+      ],
+      "failed_metaphors": [
+        "virtue as true wealth"
+      ],
+      "semantic_similarity_avg": 0.15,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.07500000000000001,
+      "analysis_notes": "Google and NLLB completely failed to capture any aspect of the original proverb. OpenAI and Cohere attempted translations that were unrelated to the proverb's meaning, missing key concepts of virtue and intrinsic worth. None preserved the metaphorical structure or cultural meaning."
+    },
+    {
+      "proverb_id": "MW_020",
+      "kikuyu_text": "Gutiri mbura itari gitonga kiayo.",
+      "expert_translation": "There is no rain that does not bring wealth to someone.",
+      "expert_cultural_meaning": "Everyone has their chance in life.",
+      "expert_teaching": "It teaches that there are always opportunities that bring good benefits to people, especially when they least expect it. Chances come to people in different times and varied ways.",
+      "openai_gpt4o_mini": "There is no rain that does not come with its thunder.",
+      "gemini_flash": "Baku I miss it's not about it.",
+      "gpt35_turbo": "Hold the rain as you would hold a heavy load.",
+      "nllb200": "Let it rain without its riches.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth",
+        "opportunity"
+      ],
+      "lost_cultural_meanings": [
+        "everyone has their chance in life"
+      ],
+      "failed_metaphors": [
+        "rain bringing wealth"
+      ],
+      "semantic_similarity_avg": 0.3,
+      "cultural_fidelity_avg": 0.2,
+      "metaphor_preservation_avg": 0.15,
+      "analysis_notes": "Google and NLLB translations were nonsensical and failed to capture any aspect of the original proverb. OpenAI's translation was closest semantically but missed the cultural nuance of opportunity and wealth. Cohere's translation was metaphorically incorrect, focusing on a different concept of holding rather than receiving wealth."
+    },
+    {
+      "proverb_id": "MW_021",
+      "kikuyu_text": "Gutiri ngia itari muthenya wayo.",
+      "expert_translation": "Every poor person has his day.",
+      "expert_cultural_meaning": "No situation is permanent. \"That some achieve great success, is proof to all that others can achieve it as well.\" Abraham Lincoln",
+      "expert_teaching": "It teaches that everyone has their chance for their life to change. A poor man can become rich; just as a rich man can become poor. A person without wealth should never lose hope of getting rich.",
+      "openai_gpt4o_mini": "There is no path that does not lead to your destination.",
+      "gemini_flash": "Gutija is not its own layer.",
+      "gpt35_turbo": "Gutiri (a type of bird) to depend on the hunter (muthenya) who is tired (wayo).",
+      "nllb200": "The day of the game is not yet.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "ngia",
+        "muthenya"
+      ],
+      "lost_cultural_meanings": [
+        "impermanence of situations",
+        "hope for change"
+      ],
+      "failed_metaphors": [
+        "every poor person has their day"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The translations from Google, Cohere, and NLLB-200 completely failed to capture the meaning of the proverb. They either produced nonsensical outputs or misinterpreted key Kikuyu concepts such as 'ngia' (poor person) and 'muthenya' (day). OpenAI's translation was closer but still failed to convey the cultural and metaphorical essence of the proverb, which speaks to the impermanence of situations and the hope for change."
+    },
+    {
+      "proverb_id": "MW_022",
+      "kikuyu_text": "Gutiri uriragio ni utonga no ukia.",
+      "expert_translation": "Nobody grumbles at being rich, only at being poor.",
+      "expert_cultural_meaning": "“Seek not greater wealth, but simpler pleasure; not higher fortune, but deeper felicity.” ― Mahatma Gandhi",
+      "expert_teaching": "It brings out the fact that people are always happy when they have comforts of property and wealth. However, when one lacks they complain and are unhappy. Happiness should be as a result of other positive things in life, not just by riches.",
+      "openai_gpt4o_mini": "There is no one who does not have a burden and a cry.",
+      "gemini_flash": "Gutiri urragio of the brain.",
+      "gpt35_turbo": "To carry a load on your back is to see the world.",
+      "nllb200": "The people of the land were very proud of him.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth",
+        "poverty",
+        "complaining"
+      ],
+      "lost_cultural_meanings": [
+        "contentment with wealth",
+        "discontent with poverty"
+      ],
+      "failed_metaphors": [
+        "comparison of attitudes towards wealth and poverty"
+      ],
+      "semantic_similarity_avg": 0.05,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The OpenAI system partially captured the concept of burden, but failed to address wealth and poverty directly. Google, Cohere, and NLLB provided translations that were completely unrelated to the original proverb's meaning, missing key Kikuyu concepts and cultural nuances entirely. None of the systems preserved the metaphorical structure of comparing attitudes towards wealth and poverty."
+    },
+    {
+      "proverb_id": "MW_023",
+      "kikuyu_text": "Gwa gitonga gucokagirirwo ni mambura.",
+      "expert_translation": "The home of a rich man is revisited during a ceremony (especially burial).",
+      "expert_cultural_meaning": "Show hospitality to one another without grumbling.",
+      "expert_teaching": "Usually a rich man forbids people from entering his home when he is alive, but during a mourning period they frock to bid him farewell and to taste a little of his wealth. It teaches that people should not segregate themselves from the community because of their riches, but mingle with society.",
+      "openai_gpt4o_mini": "The one who is not careful is caught by the rain.",
+      "gemini_flash": "A sheep gacoriter of gacoculs.",
+      "gpt35_turbo": "The one who shakes the beehive is the one who gets stung.",
+      "nllb200": "The rich are repaid by rain.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "hospitality",
+        "community interaction",
+        "wealth"
+      ],
+      "lost_cultural_meanings": [
+        "importance of community ties",
+        "hospitality"
+      ],
+      "failed_metaphors": [
+        "rich man's home revisited during a ceremony"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "The translations by Google and NLLB are nonsensical and do not capture any aspect of the original proverb. OpenAI and Cohere failed to capture the metaphorical and cultural essence, focusing instead on unrelated concepts. The metaphor of revisiting a rich man's home during a ceremony was completely lost across all translations, as was the cultural teaching about hospitality and community engagement."
+    },
+    {
+      "proverb_id": "MW_024",
+      "kikuyu_text": "Haro ni ya muka uri thiiri",
+      "expert_translation": "Quarrelling is the hallmark of the woman who has debts.",
+      "expert_cultural_meaning": "Debts cause unhappiness. “Debt can turn a free, happy person into a bitter human being.”-Michael Mihalik",
+      "expert_teaching": "It teaches that a person should be careful about what they do and avoid owing anyone anything; whether money or services because it causes edginess, discontent and bother.",
+      "openai_gpt4o_mini": "The harvest is for the woman who has planted",
+      "gemini_flash": "Haro is the wolf that the term",
+      "gpt35_turbo": "The cow that calved early gave birth to a heifer",
+      "nllb200": "Haro is a woman who is a witch",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "debts",
+        "quarrelling"
+      ],
+      "lost_cultural_meanings": [
+        "debts cause unhappiness",
+        "avoid owing anyone anything"
+      ],
+      "failed_metaphors": [
+        "quarrelling as a hallmark of indebtedness"
+      ],
+      "semantic_similarity_avg": 0.05,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "OpenAI's translation was the closest but still incorrect, missing the core concept of debts and quarrelling. Google, Cohere, and NLLB provided translations that were completely unrelated to the original proverb, failing to capture any semantic, cultural, or metaphorical aspects."
+    },
+    {
+      "proverb_id": "MW_025",
+      "kikuyu_text": "Hinya nduri indo",
+      "expert_translation": "Strength has no wealth.",
+      "expert_cultural_meaning": "“Strive not to be a success, but rather to be of value.” Albert Einstein",
+      "expert_teaching": "Strong people are not necessarily rich people.",
+      "openai_gpt4o_mini": "A bird does not forget its nest",
+      "gemini_flash": "Hitya a lot of the ice",
+      "gpt35_turbo": "Hinya nduri indo: This literally translates to 'A pot that has no bottom'.",
+      "nllb200": "Power is not a thing",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "strength",
+        "wealth"
+      ],
+      "lost_cultural_meanings": [
+        "value over success",
+        "strength not equating to wealth"
+      ],
+      "failed_metaphors": [
+        "strength not equating to wealth"
+      ],
+      "semantic_similarity_avg": 0.05,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations were either nonsensical or completely unrelated to the original meaning. The metaphorical and cultural aspects of the proverb were entirely lost, resulting in critical failure across all systems."
+    },
+    {
+      "proverb_id": "MW_026",
+      "kikuyu_text": "Indo ciene inoragia mundu itina rimwe. W",
+      "expert_translation": "Other people’s property fattens only one buttock.",
+      "expert_cultural_meaning": "Self reliance is the best choice in life \"The only prosperity the people can afford to be satisfied with is the kind that lasts\"- Henry Ford",
+      "expert_teaching": "This proverb teaches that a person should be content with their own property, and not seek that of other people, especially unlawfully, because it can cause and discomfort in one’s life.",
+      "openai_gpt4o_mini": "A single finger cannot lift a person.",
+      "gemini_flash": "Indo Ciene Inoragia Mundu Kitina one. W",
+      "gpt35_turbo": "A person who wants to eat the whole world.",
+      "nllb200": "The real things are all the same.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "self-reliance",
+        "contentment with one's own property"
+      ],
+      "lost_cultural_meanings": [
+        "importance of self-reliance",
+        "consequences of relying on others' property"
+      ],
+      "failed_metaphors": [
+        "Other people’s property fattens only one buttock"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the metaphorical and cultural essence of the proverb. OpenAI's translation was unrelated to the original meaning. Google's output was a partial transliteration with no semantic value. Cohere and NLLB provided translations that were completely unrelated to the proverb's meaning. None preserved the metaphorical structure or cultural significance."
+    },
+    {
+      "proverb_id": "MW_027",
+      "kikuyu_text": "Indo ciene iri mutino.",
+      "expert_translation": "Stolen goods bring misfortune.",
+      "expert_cultural_meaning": "Ill gotten goods seldom prosper.",
+      "expert_teaching": "It teaches that it is wrong to obtain other people’s property fraudulently. Doing so brings misfortunes and unhappy eventualities.",
+      "openai_gpt4o_mini": "A child does not forget its mother's voice.",
+      "gemini_flash": "In the past, it is so small.",
+      "gpt35_turbo": "A cow that is used to being milked does not stop yielding milk.",
+      "nllb200": "The things are in the child.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "stolen goods",
+        "misfortune",
+        "ill-gotten"
+      ],
+      "lost_cultural_meanings": [
+        "consequences of theft",
+        "moral lesson against fraud"
+      ],
+      "failed_metaphors": [
+        "stolen goods bring misfortune"
+      ],
+      "semantic_similarity_avg": 0.0,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb 'Indo ciene iri mutino'. The translations provided by each system were completely unrelated to the original meaning, missing the key concepts of theft and misfortune. The cultural and metaphorical aspects were entirely lost, resulting in a critical failure across all systems."
+    },
+    {
+      "proverb_id": "MW_028",
+      "kikuyu_text": "Indo ciene itiri ndokeirwo nuu!",
+      "expert_translation": NaN,
+      "expert_cultural_meaning": "When you court trouble, you get it. “If you rattle the snake, it will bite you” The late John Michuki (Minister Internal Security, Kenya)",
+      "expert_teaching": "It is used as a warning that when one interferes with the comforts/property or money of other people, he/she should expect trouble or bad happenings.",
+      "openai_gpt4o_mini": "A child does not become a goat without being fed!",
+      "gemini_flash": "Inddo where it is right!",
+      "gpt35_turbo": "Indo ciene itiri ndokeirwo nuu: A person who is not seen or known does not exist.",
+      "nllb200": "The things that are not given to me!",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "consequences of actions",
+        "warning against interference"
+      ],
+      "lost_cultural_meanings": [
+        "expectation of trouble when meddling",
+        "cautionary advice"
+      ],
+      "failed_metaphors": [
+        "rattling a snake leading to a bite"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb, which warns against causing trouble by interfering with others. The metaphor of 'rattling a snake' was not preserved, and the translations were nonsensical or unrelated to the original meaning."
+    },
+    {
+      "proverb_id": "MW_029",
+      "kikuyu_text": "Indo ni kurimithanio",
+      "expert_translation": "Wealth comes by cultivating together.",
+      "expert_cultural_meaning": "There is strength in unity.",
+      "expert_teaching": "It teaches that a person needs to work in collaboration with others in order to succeed in their achievement of wealth. Depending on oneself cannot achieve much.",
+      "openai_gpt4o_mini": "It is a matter of sharing",
+      "gemini_flash": "Have you too",
+      "gpt35_turbo": "The house is a burial ground",
+      "nllb200": "Things are getting better",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "unity",
+        "collaboration",
+        "wealth"
+      ],
+      "lost_cultural_meanings": [
+        "strength in unity",
+        "collaborative success"
+      ],
+      "failed_metaphors": [
+        "cultivating together as a metaphor for collaboration"
+      ],
+      "semantic_similarity_avg": 0.375,
+      "cultural_fidelity_avg": 0.275,
+      "metaphor_preservation_avg": 0.225,
+      "analysis_notes": "Cohere and NLLB completely failed to capture the essence of the proverb, providing translations that are nonsensical or unrelated. OpenAI and Google partially captured the idea of sharing or having, but missed the deeper cultural and metaphorical meaning of collaboration and unity leading to wealth. The metaphor of 'cultivating together' was not preserved in any of the translations."
+    },
+    {
+      "proverb_id": "MW_030",
+      "kikuyu_text": "Indo ni mwene.",
+      "expert_translation": "Wealth is all about the owner.",
+      "expert_cultural_meaning": "“If your cornfield is far from your house, the birds will eat your corn”- Congo",
+      "expert_teaching": "It teaches that the wealth and money of a family should always be managed by the owner because he will ensure good care of it. Usually other people will mismanage it, especially if the owner dies.",
+      "openai_gpt4o_mini": "Indo is owner.",
+      "gemini_flash": "The India was mene.",
+      "gpt35_turbo": "The house is the owner.",
+      "nllb200": "The property is his.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "ownership",
+        "wealth management"
+      ],
+      "lost_cultural_meanings": [
+        "importance of owner in wealth management"
+      ],
+      "failed_metaphors": [
+        "wealth as a responsibility of the owner"
+      ],
+      "semantic_similarity_avg": 0.375,
+      "cultural_fidelity_avg": 0.275,
+      "metaphor_preservation_avg": 0.225,
+      "analysis_notes": "Google and NLLB completely failed to capture the essence of the proverb, with Google misinterpreting 'Indo' as 'India' and NLLB failing to convey ownership. OpenAI and Cohere partially captured the meaning but missed the cultural and metaphorical depth. The concept of ownership and its importance in wealth management was lost, along with the metaphor of wealth as a responsibility."
+    },
+    {
+      "proverb_id": "MW_031",
+      "kikuyu_text": "Iroobagia ha muoni.",
+      "expert_translation": "They (vultures) haunt the yard of a wealthy man.",
+      "expert_cultural_meaning": "It pays to help others. “Kindness is a language which the blind can see and the deaf can hear.” African proverb",
+      "expert_teaching": "Needy people always expect to be assisted by those are economically stable. Generosity is important in a community. This should help one to change their status to become independent.",
+      "openai_gpt4o_mini": "It does not matter how much you try, you will not see.",
+      "gemini_flash": "Irobagia has a vine.",
+      "gpt35_turbo": "Bad things do not have eyes.",
+      "nllb200": "The visionary's dream.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "vultures",
+        "wealthy man's yard"
+      ],
+      "lost_cultural_meanings": [
+        "generosity",
+        "community support"
+      ],
+      "failed_metaphors": [
+        "vultures haunting a wealthy man's yard"
+      ],
+      "semantic_similarity_avg": 0.15,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The main failures stem from a complete misinterpretation of the proverb's metaphorical and cultural context. The Kikuyu proverb 'Iroobagia ha muoni' uses the imagery of vultures and a wealthy man's yard to convey themes of generosity and community support. OpenAI's translation is somewhat related but misses the cultural nuance. Google's and NLLB's translations are nonsensical, showing a lack of understanding of the proverb's structure and meaning. Cohere's translation captures a sense of negativity but fails to connect it to the specific cultural and metaphorical context of the original proverb."
+    },
+    {
+      "proverb_id": "MW_032",
+      "kikuyu_text": "Itonga igiri itiri nyoni.",
+      "expert_translation": "Two rich persons do not wish each other a bird of ill omen.",
+      "expert_cultural_meaning": "Those of the same ilk have some understanding or comradeship. “If you want to go quickly, go alone. If you want to go far, go together. ~ African proverb",
+      "expert_teaching": "People of the same ilk have some understanding and comradeship of sorts, and often will not harm each other. The rich also have their own unspoken pact. They will always agree with each other although those related to them may not be in good terms with one another.",
+      "openai_gpt4o_mini": "A bird does not fly with one wing.",
+      "gemini_flash": "The throne is a bird.",
+      "gpt35_turbo": "A bird that flies alone gets caught.",
+      "nllb200": "The two birds are not birds.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "comradeship among the rich",
+        "unspoken pact"
+      ],
+      "lost_cultural_meanings": [
+        "understanding among similar people",
+        "rich people's unspoken agreement"
+      ],
+      "failed_metaphors": [
+        "rich persons not wishing ill on each other"
+      ],
+      "semantic_similarity_avg": 0.15,
+      "cultural_fidelity_avg": 0.1,
+      "metaphor_preservation_avg": 0.1,
+      "analysis_notes": "The translations from Google and NLLB are completely off, failing to capture any aspect of the original proverb. OpenAI and Cohere partially capture the metaphorical aspect but miss the cultural context and specific meaning related to the rich not wishing ill on each other. Overall, the translations fail to convey the proverb's essence of mutual understanding and unspoken agreements among similar individuals."
+    },
+    {
+      "proverb_id": "MW_033",
+      "kikuyu_text": "Kahora kari indo.",
+      "expert_translation": "Steadiness makes wealth.",
+      "expert_cultural_meaning": "“Whether you come from a council estate or a country estate, your success will be determined by your own confidence and fortitude.” Michelle Obama",
+      "expert_teaching": "It teaches that someone should be keen and have self-control, be assertive, and have self-confidence. It is only then that someone can make worthwhile gains, acquire wealth and money, and people will rely on her/him.",
+      "openai_gpt4o_mini": "A person is a thing.",
+      "gemini_flash": "Kahora kari indo.",
+      "gpt35_turbo": "Kahora kari indo: The river carries/takes its own load.",
+      "nllb200": "Slowly it was over.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "steadiness",
+        "wealth",
+        "self-control",
+        "assertiveness",
+        "self-confidence"
+      ],
+      "lost_cultural_meanings": [
+        "success through personal qualities",
+        "importance of fortitude"
+      ],
+      "failed_metaphors": [
+        "steadiness as a path to wealth"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations either did not make sense or completely missed the metaphorical and cultural meanings. The Kikuyu concepts of steadiness leading to wealth and the associated qualities of self-control and confidence were not translated. The metaphor of steadiness as a path to wealth was also lost."
+    },
+    {
+      "proverb_id": "MW_034",
+      "kikuyu_text": "Kigina gitiinikagwo irio hande itari nguru.",
+      "expert_translation": "The seed-storing calabash should never be drained before the new crop has matured.",
+      "expert_cultural_meaning": "Everything has its time, and that time must be watched.",
+      "expert_teaching": "It teaches that it is necessary to preserve some of your property/wealth/money in order to ensure stability and comfort in one’s future days. Wealth/money should be used for the right purposes and at the right time.",
+      "openai_gpt4o_mini": "A thing that is not seen is not known until it is revealed.",
+      "gemini_flash": "Kigina Gitiinikagwo Irio Handi Other Other Nguru.",
+      "gpt35_turbo": "A person who plants seeds in the forest does so for the future generation.",
+      "nllb200": "The pig is not eaten as a food item.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "preservation",
+        "timing",
+        "resource management"
+      ],
+      "lost_cultural_meanings": [
+        "importance of timing",
+        "resource conservation"
+      ],
+      "failed_metaphors": [
+        "seed-storing calabash",
+        "new crop maturation"
+      ],
+      "semantic_similarity_avg": 0.125,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.07500000000000001,
+      "analysis_notes": "Google and NLLB completely failed to capture any meaningful translation, resulting in nonsensical outputs. OpenAI and Cohere provided translations that missed the core metaphor of resource preservation and timing. The cultural and metaphorical aspects were largely lost across all systems."
+    },
+    {
+      "proverb_id": "MW_035",
+      "kikuyu_text": "Kihoto ni indo.",
+      "expert_translation": "A fair argument is wealth.",
+      "expert_cultural_meaning": "An argument with correct facts is worthwhile. “Having a good discussion is like having riches” ~ Kenya",
+      "expert_teaching": "It teaches that the power of a fair argument is very valuable. It can make even the most difficult problem to be resolved amicably and justly.",
+      "openai_gpt4o_mini": "A fool is a fool.",
+      "gemini_flash": "Kihoto ni indo.",
+      "gpt35_turbo": "A word is an egg.",
+      "nllb200": "A right is a thing.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "fair argument",
+        "wealth"
+      ],
+      "lost_cultural_meanings": [
+        "value of fair argument",
+        "resolution of problems"
+      ],
+      "failed_metaphors": [
+        "fair argument as wealth"
+      ],
+      "semantic_similarity_avg": 0.25,
+      "cultural_fidelity_avg": 0.19999999999999998,
+      "metaphor_preservation_avg": 0.175,
+      "analysis_notes": "OpenAI, Cohere, and NLLB translations completely failed to capture the meaning of the proverb. They either provided nonsensical translations or entirely missed the metaphorical and cultural significance. Google's translation retained the original text, which is not useful for non-Kikuyu speakers but avoided incorrect translations, thus scoring higher."
+    },
+    {
+      "proverb_id": "MW_036",
+      "kikuyu_text": "Kirema mbeeca ni kigariure. .",
+      "expert_translation": "That which is beyond the power of money must be manipulated.",
+      "expert_cultural_meaning": "Money and wealth are not everything.",
+      "expert_teaching": "Money can solve almost all matters, but where it is not able to, then it is possible that other means can be used to solve issues.",
+      "openai_gpt4o_mini": "The one who is deaf to the call is the one who is left behind.",
+      "gemini_flash": "Let's make it a thing for it. .",
+      "gpt35_turbo": "A dry cow is a good milker.",
+      "nllb200": "It is difficult to make money.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "power of money",
+        "manipulation beyond money"
+      ],
+      "lost_cultural_meanings": [
+        "money is not everything",
+        "alternative solutions"
+      ],
+      "failed_metaphors": [
+        "money's limitations and alternative solutions"
+      ],
+      "semantic_similarity_avg": 0.025,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations did not convey the idea that money has limitations and that other means can be used to solve issues. The metaphorical and cultural meanings were completely lost, resulting in critical failures across all systems."
+    },
+    {
+      "proverb_id": "MW_037",
+      "kikuyu_text": "Kumaatha gutiri hinya ta kuramata.",
+      "expert_translation": "To acquire wealth is not as difficult as good stewardship.",
+      "expert_cultural_meaning": "Riches are not permanent.",
+      "expert_teaching": "It teaches that one’s position can change; from rich to poor and vice versa. One should struggle to maintain a comfortable position in life by taking care of their property, or acquiring it rightfully.",
+      "openai_gpt4o_mini": "To be wise does not mean to be foolish like a goat.",
+      "gemini_flash": "Kumaatha's guttiri is insulting to Kumaatha.",
+      "gpt35_turbo": "Kumaatha gutiri hinya ta kuramata translates to: 'A person who does not listen to advice will face the consequences of their actions.'",
+      "nllb200": "The power of the Lord is like the power of a whip.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth acquisition",
+        "stewardship"
+      ],
+      "lost_cultural_meanings": [
+        "impermanence of riches",
+        "importance of stewardship"
+      ],
+      "failed_metaphors": [
+        "acquiring wealth vs. maintaining it"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "The translations by Google and NLLB completely failed to capture any aspect of the original proverb, both semantically and culturally. OpenAI and Cohere attempted translations that were unrelated to the original meaning, missing the core concepts of wealth acquisition and stewardship. None of the systems preserved the metaphorical structure of the proverb."
+    },
+    {
+      "proverb_id": "MW_038",
+      "kikuyu_text": "Kumaatha gutiri hinya ta kuramata.",
+      "expert_translation": "To acquire wealth is not as difficult as good stewardship.",
+      "expert_cultural_meaning": "Save for a rainy day. “When you have money, think of the time when you had none.” - Japanese Proverb",
+      "expert_teaching": "It teaches that a person can easily get wealth/money, but they lose/misuse, so that it does not last. One must plan usage and ways of saving it.",
+      "openai_gpt4o_mini": "To be without a path is not like to be without a guide.",
+      "gemini_flash": "Kumaatha's guttiri is insulting to Kumaatha.",
+      "gpt35_turbo": "Kumaatha gutiri hinya ta kuramata translates to: 'A person who does not listen to advice will face the consequences of their actions.'",
+      "nllb200": "The power of the Lord is like the power of a whip.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth acquisition",
+        "stewardship"
+      ],
+      "lost_cultural_meanings": [
+        "importance of saving",
+        "planning for the future"
+      ],
+      "failed_metaphors": [
+        "wealth vs. stewardship"
+      ],
+      "semantic_similarity_avg": 0.125,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "Google and NLLB translations are completely off, lacking any connection to the original proverb's meaning. OpenAI and Cohere partially capture the idea of guidance or consequences but miss the core concepts of wealth and stewardship. None of the translations preserve the metaphorical structure or cultural significance of the original proverb."
+    },
+    {
+      "proverb_id": "MW_039",
+      "kikuyu_text": "Kuri mwoni na muraata thi.",
+      "expert_translation": "There is one who finds wealth and one who merely mends the surface of its cracks.",
+      "expert_cultural_meaning": "People have different opportunities and destinies.",
+      "expert_teaching": "It teaches that some people get more valuable benefits than others. Others do not achieve much even when good chances present themselves. Some people are luckier than others.",
+      "openai_gpt4o_mini": "There is a person and a shadow of a person.",
+      "gemini_flash": "There is a lot of maraata thi.",
+      "gpt35_turbo": "Look with your eyes and not your mouth.",
+      "nllb200": "There is no one to see and no one else to hear.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth",
+        "opportunities",
+        "destinies"
+      ],
+      "lost_cultural_meanings": [
+        "different opportunities",
+        "destinies",
+        "luck"
+      ],
+      "failed_metaphors": [
+        "finding wealth vs. mending surface cracks"
+      ],
+      "semantic_similarity_avg": 0.15,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The translations by Google, Cohere, and NLLB-200 completely failed to capture the essence of the proverb. They did not convey the metaphorical or cultural meanings related to differing opportunities and destinies. OpenAI's translation was closer but still missed key cultural and metaphorical elements."
+    },
+    {
+      "proverb_id": "MW_040",
+      "kikuyu_text": "Kuria thiiri wene ni kuriha.",
+      "expert_translation": "The way of eating a debt is paying it.",
+      "expert_cultural_meaning": "He who gets out of debt grows rich.",
+      "expert_teaching": "It teaches that there is honour in paying other people’s debts. It is advisable to pay debts so that people will respect you, and be able to lend you what you wish in future. Also, offer help to your neigbour as he/she offered you when required to do so.",
+      "openai_gpt4o_mini": "To eat the meat of the lion is to be eaten by it.",
+      "gemini_flash": "Kuria Thiiri Wene Ni Kuriha.",
+      "gpt35_turbo": "Cover the hole (thiiri) with a small (wene) stone (kuria) and it will not fill (kuriha) (up with water).",
+      "nllb200": "To eat good food is to pay.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "debt",
+        "honor in repayment"
+      ],
+      "lost_cultural_meanings": [
+        "importance of paying debts",
+        "social respect from debt repayment"
+      ],
+      "failed_metaphors": [
+        "debt as something to be 'eaten' and 'paid'"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The main failures across the systems are due to a lack of understanding of the metaphorical and cultural context of the Kikuyu proverb. OpenAI and Google provided translations that were somewhat related to the concept of consumption but failed to capture the essence of debt repayment. Cohere and NLLB provided translations that were completely unrelated to the original meaning, indicating a critical failure in understanding the proverb's context."
+    },
+    {
+      "proverb_id": "MW_041",
+      "kikuyu_text": "Mbari ya uri moigaga matikaaga.",
+      "expert_translation": "The family of the haves often say that they will never lack.",
+      "expert_cultural_meaning": "Count your blessing! Count the garden by the flowers, never by the leaves that fall.",
+      "expert_teaching": "Those with the wealthy tend to assume that it is permanent. It teaches that someone should appreciate what wealth they have, and realize that it can diminish",
+      "openai_gpt4o_mini": "The family of a person does not let go of their own.",
+      "gemini_flash": "Mbari ya Uri Moigaga Matikaaga.",
+      "gpt35_turbo": "House of your relatives is your mat/bed.",
+      "nllb200": "The word that they say is not true.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth permanence",
+        "appreciation of blessings"
+      ],
+      "lost_cultural_meanings": [
+        "wealth is not permanent",
+        "appreciation of current blessings"
+      ],
+      "failed_metaphors": [
+        "wealth as a garden with flowers and leaves"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.1,
+      "metaphor_preservation_avg": 0.05,
+      "analysis_notes": "The translations by Google, Cohere, and NLLB-200 completely failed to capture the essence of the proverb. They either repeated the original text, provided unrelated translations, or misinterpreted the proverb entirely. OpenAI's translation was closer but still missed the metaphorical and cultural nuances, failing to convey the idea of wealth's impermanence and the importance of appreciating one's blessings."
+    },
+    {
+      "proverb_id": "MW_042",
+      "kikuyu_text": "Mbeeca itiri mwana kana nyina.",
+      "expert_translation": "With money there is no child or mother.",
+      "expert_cultural_meaning": "Business is business and has no relatives.",
+      "expert_teaching": "It teaches that when doing business, a person should not show favours to anyone, friend or relative. It should be treated as an individual entity for it to succeed.",
+      "openai_gpt4o_mini": "A child is not born without a mother.",
+      "gemini_flash": "I do not child as child as child.",
+      "gpt35_turbo": "A bee stings a child or a mother.",
+      "nllb200": "Mbeeca is not a child or a mother.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "business impartiality",
+        "absence of familial ties in transactions"
+      ],
+      "lost_cultural_meanings": [
+        "business impartiality",
+        "importance of treating business as separate from personal relationships"
+      ],
+      "failed_metaphors": [
+        "business is business and has no relatives"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the metaphorical and cultural essence of the proverb. OpenAI's translation was the closest but still incorrect, as it misinterpreted the proverb's meaning. Google and Cohere produced nonsensical outputs, while NLLB-200's translation was literal and missed the cultural context entirely."
+    },
+    {
+      "proverb_id": "MW_043",
+      "kikuyu_text": "Mucii uri mburi ndwagaga kihuno.",
+      "expert_translation": "A homestead with goats does not lack miscarriages.",
+      "expert_cultural_meaning": "The good and the bad go together.",
+      "expert_teaching": "It teaches that when someone has wealth, he cannot escape some setbacks, and should therefore, take everything in stride.",
+      "openai_gpt4o_mini": "The home is where the goat does not lack food.",
+      "gemini_flash": "The summer is a messed for me.",
+      "gpt35_turbo": "A person's back is what carries the load/burden.",
+      "nllb200": "The tree is a warning tree.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "homestead",
+        "goats",
+        "miscarriages"
+      ],
+      "lost_cultural_meanings": [
+        "the good and the bad go together",
+        "wealth comes with setbacks"
+      ],
+      "failed_metaphors": [
+        "homestead with goats does not lack miscarriages"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.05,
+      "analysis_notes": "The majority of the systems failed to capture the essence of the proverb, both semantically and culturally. OpenAI's translation was the closest but still missed the metaphorical and cultural meanings. Google, Cohere, and NLLB produced translations that were completely unrelated to the original proverb, indicating a critical failure in understanding the Kikuyu language and cultural context."
+    },
+    {
+      "proverb_id": "MW_044",
+      "kikuyu_text": "Mugunda ni mugema wa mwene. W",
+      "expert_translation": "A farm is the ornament of the owner.",
+      "expert_cultural_meaning": "Always be contented with what we have, because God knows what's best for us.",
+      "expert_teaching": "This proverb is an encouragement that a person should take pride in what they own as property, not just fluid cash; and be satisfied with it.",
+      "openai_gpt4o_mini": "The farmer is the one who knows the land.",
+      "gemini_flash": "Indulgence is the venue of the brother. W",
+      "gpt35_turbo": "The horn is the pride of the bull. ",
+      "nllb200": "The bag is the owner's bag.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "ownership",
+        "pride",
+        "contentment"
+      ],
+      "lost_cultural_meanings": [
+        "contentment with one's possessions",
+        "pride in ownership"
+      ],
+      "failed_metaphors": [
+        "farm as ornament",
+        "pride in ownership"
+      ],
+      "semantic_similarity_avg": 0.17500000000000002,
+      "cultural_fidelity_avg": 0.1,
+      "metaphor_preservation_avg": 0.07500000000000001,
+      "analysis_notes": "OpenAI's translation partially captures the concept of ownership but misses the metaphorical and cultural aspects. Google's translation is nonsensical and unrelated. Cohere's translation introduces an unrelated metaphor. NLLB's translation is completely off-topic. None of the systems preserved the cultural meaning or metaphorical structure effectively."
+    },
+    {
+      "proverb_id": "MW_045",
+      "kikuyu_text": "Mugunda wene nduinagwo.",
+      "expert_translation": "Another’s field is not praised.",
+      "expert_cultural_meaning": "An ounce of practice is worth more than tons of preaching.\" Gandhi",
+      "expert_teaching": "This proverb teaches that a person should not be proud or praise other people’s riches and imagine they too are like them, while they have nothing themselves. It encourages people to acquire their own riches and be proud of them.",
+      "openai_gpt4o_mini": "The farmer has his own harvest.",
+      "gemini_flash": "Mugunda Wene NduhinaGwo.",
+      "gpt35_turbo": "A single finger cannot point out a direction.",
+      "nllb200": "The good news is that I am not alone.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "ownership",
+        "praise",
+        "self-reliance"
+      ],
+      "lost_cultural_meanings": [
+        "importance of self-acquisition",
+        "avoidance of envy"
+      ],
+      "failed_metaphors": [
+        "comparison of fields to personal achievements"
+      ],
+      "semantic_similarity_avg": 0.075,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "OpenAI's translation partially captures the idea of ownership but misses the cultural and metaphorical essence. Google, Cohere, and NLLB translations are completely off, failing to convey any relevant meaning or metaphor. The proverb's core message about self-reliance and not envying others' possessions is lost in all translations."
+    },
+    {
+      "proverb_id": "MW_046",
+      "kikuyu_text": "Mugurira hakuhi nita aheo.",
+      "expert_translation": "The man who buys something at a place near by is like the man who is given something.",
+      "expert_cultural_meaning": "That is little esteemed, costs little.",
+      "expert_teaching": "It teaches that what is acquired without strain is not considered to be valuable, just as something given freely. One may not protect his property from loss if it was given to them or fraudulently obtained.",
+      "openai_gpt4o_mini": "The one who does not give you a goat will not take you to the river.",
+      "gemini_flash": "Share you go home.",
+      "gpt35_turbo": "Mugurira (The one who leads) hakuhi (does not tire) nita aheo (he continues going).",
+      "nllb200": "Buy it soon and I will give it to you.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "proximity in acquisition",
+        "value of effort"
+      ],
+      "lost_cultural_meanings": [
+        "value of effort in acquisition",
+        "esteem of freely given items"
+      ],
+      "failed_metaphors": [
+        "comparison of buying nearby to being given"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.1,
+      "metaphor_preservation_avg": 0.07500000000000001,
+      "analysis_notes": "The translations by Google and NLLB-200 are nonsensical and do not relate to the original proverb. OpenAI and Cohere failed to capture the metaphorical and cultural essence of the proverb, missing the key concept of proximity and effort in acquisition. None of the translations preserved the metaphorical structure or cultural meaning effectively."
+    },
+    {
+      "proverb_id": "MW_047",
+      "kikuyu_text": "Muhakana na ciake itimuuragira. .",
+      "expert_translation": "He who stands close to his property does not lose it.",
+      "expert_cultural_meaning": "Take care of your own matters.",
+      "expert_teaching": "It teaches that property/wealth should be managed by its owner, and not other people so that it is not stolen or misappropriated.",
+      "openai_gpt4o_mini": "One who does not acknowledge their own is not respected.",
+      "gemini_flash": "Hello with cake you didn't go. .",
+      "gpt35_turbo": "Muhakana (a person with a bad character) na (and) ciake (bad habits) itimuuragira (will be exposed or come to light).",
+      "nllb200": "The man who is in the tomb will not die.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "property management",
+        "ownership"
+      ],
+      "lost_cultural_meanings": [
+        "importance of self-management",
+        "risk of neglect"
+      ],
+      "failed_metaphors": [
+        "property as a metaphor for personal responsibility"
+      ],
+      "semantic_similarity_avg": 0.125,
+      "cultural_fidelity_avg": 0.175,
+      "metaphor_preservation_avg": 0.125,
+      "analysis_notes": "Google and NLLB translations are nonsensical and fail to capture any aspect of the original proverb. OpenAI and Cohere partially capture the idea of personal responsibility but miss the specific context of property management. All systems struggle with the metaphorical and cultural nuances, leading to a critical failure in conveying the proverb's intended meaning."
+    },
+    {
+      "proverb_id": "MW_048",
+      "kikuyu_text": "Muici ndathiragwo ni mari hindi.",
+      "expert_translation": "The thief cannot keep fit because his stools contain undigested food.",
+      "expert_cultural_meaning": "Ill-gotten things make a person insecure.",
+      "expert_teaching": "A thief is always eats in a hurry and with the fear of being caught, so he cannot enjoy good health. Such a person is insecure and cannot live a normal life. Therefore, it teaches that one should obtain comfort in life by doing what is right and not to make enemies.",
+      "openai_gpt4o_mini": "A child is not raised without money.",
+      "gemini_flash": "Muica I'm sorry I'm the old ones.",
+      "gpt35_turbo": "A horn that has been polished is shiny.",
+      "nllb200": "Muici is not endorsed by Indian currency.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "thief",
+        "undigested food",
+        "insecurity"
+      ],
+      "lost_cultural_meanings": [
+        "ill-gotten things cause insecurity",
+        "importance of obtaining comfort through righteousness"
+      ],
+      "failed_metaphors": [
+        "thief's inability to digest food properly due to fear"
+      ],
+      "semantic_similarity_avg": 0.0,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations were nonsensical and did not relate to the original proverb's meaning or metaphor. The cultural and metaphorical aspects were completely lost, leading to a critical failure in translation."
+    },
+    {
+      "proverb_id": "MW_049",
+      "kikuyu_text": "Muici uri hunyu arindagira uri maguta.",
+      "expert_translation": "An ugly thief is more likely to be caught than one smeared with fat, i.e. carefully dressed.",
+      "expert_cultural_meaning": "One cannot camouflage their true negative self fully and forever.",
+      "expert_teaching": "A person who enjoys property/money, which is not his without hiding is soon discovered, while the one who can sham will continue to flourish. It teaches that a person’s true qualities and vises will always be exposed with time, however well one tries to hide to be what they are not.",
+      "openai_gpt4o_mini": "A person who is not careful will find themselves in trouble.",
+      "gemini_flash": "II is in ICI you are the bags.",
+      "gpt35_turbo": "A person who has a lot of talk is like a tree with many branches.",
+      "nllb200": "The woman in the room told me to get some oil.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "camouflage",
+        "true self",
+        "deception"
+      ],
+      "lost_cultural_meanings": [
+        "exposure of true qualities",
+        "deception and discovery"
+      ],
+      "failed_metaphors": [
+        "comparison of thieves based on appearance and cunning"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.05,
+      "analysis_notes": "The majority of the systems failed to capture the essence of the proverb, which involves the metaphorical comparison of thieves based on their ability to disguise their true nature. OpenAI's translation was the closest but still missed the cultural and metaphorical nuances. The other systems produced translations that were nonsensical or unrelated to the original proverb."
+    },
+    {
+      "proverb_id": "MW_050",
+      "kikuyu_text": "Muici utari munyiite ni muria gake.",
+      "expert_translation": "A thief who has not been caught is like a proprietor who has just spent his own money.",
+      "expert_cultural_meaning": "Stolen goods belong to the thief if he is not caught.",
+      "expert_teaching": "It teaches that one is not to be judged until proven guilty.",
+      "openai_gpt4o_mini": "A child who does not listen to their parent will end up in trouble.",
+      "gemini_flash": "Mucia Utari Munyite and Muria Gake.",
+      "gpt35_turbo": "A person who climbs a tree to escape does so at their own risk.",
+      "nllb200": "The woman who did not hold me is his daughter.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "thief",
+        "not being caught",
+        "ownership of stolen goods"
+      ],
+      "lost_cultural_meanings": [
+        "stolen goods belong to the thief if not caught",
+        "judgment upon proof of guilt"
+      ],
+      "failed_metaphors": [
+        "comparison of a thief to a proprietor"
+      ],
+      "semantic_similarity_avg": 0.05,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "OpenAI's translation diverges significantly from the original meaning, focusing on a different moral lesson. Google, Cohere, and NLLB translations are nonsensical and fail to capture any aspect of the original proverb. All systems failed to preserve the metaphorical structure and cultural meaning, leading to a critical failure in translation."
+    },
+    {
+      "proverb_id": "MW_051",
+      "kikuyu_text": "Mukoobi thiiri ndendete kuriha. .",
+      "expert_translation": "He who borrows does not like repaying.",
+      "expert_cultural_meaning": "A person is usually quick to borrow is always slow to pay.",
+      "expert_teaching": "It is used to create awareness to a person, that once you lend out your property, it may not be easy to get paid back; or may not be paid at all. You may have to struggle to get paid back.",
+      "openai_gpt4o_mini": "A person who is not careful will end up in trouble.",
+      "gemini_flash": "Mukoboobi Thiiri Her pay. (",
+      "gpt35_turbo": "A single finger cannot pick up a heavy load.",
+      "nllb200": "The harvestman is not willing to pay. .",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "borrowing",
+        "repayment"
+      ],
+      "lost_cultural_meanings": [
+        "reluctance to repay",
+        "difficulty in getting repayment"
+      ],
+      "failed_metaphors": [
+        "borrowing and repayment as a metaphor for responsibility"
+      ],
+      "semantic_similarity_avg": 0.175,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The translations by Google, Cohere, and NLLB failed to capture the core concepts of borrowing and repayment, which are central to the proverb. OpenAI's translation was closer but still missed the cultural nuance and metaphorical structure. The cultural meaning of reluctance to repay and the metaphor of borrowing as a responsibility were lost in all translations except partially in OpenAI's."
+    },
+    {
+      "proverb_id": "MW_052",
+      "kikuyu_text": "Mundu-muka ndatumagwo thiriini.",
+      "expert_translation": "A woman is not sent to fetch debts.",
+      "expert_cultural_meaning": "Do not invite unnecessary acrimony. “Angry people are not always wise.” ― Jane Austen, Pride and Prejudice",
+      "expert_teaching": "It teaches that a person should deal with their debtors, or other problems themselves sending other people to get involved, especially women because they can inflame the situation.",
+      "openai_gpt4o_mini": "A person who is not married does not have a home.",
+      "gemini_flash": "Munku - The Munkiyo Thunderi The Thunderi.",
+      "gpt35_turbo": "Person-come-and-let-us-talk-in-the-morning.",
+      "nllb200": "The world is not going to be saved.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "debt",
+        "woman",
+        "sending"
+      ],
+      "lost_cultural_meanings": [
+        "avoidance of unnecessary conflict",
+        "self-responsibility"
+      ],
+      "failed_metaphors": [
+        "sending a woman to fetch debts"
+      ],
+      "semantic_similarity_avg": 0.05,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "OpenAI's translation is somewhat related to the concept of home and marriage, but it misses the core elements of debt and conflict. Google, Cohere, and NLLB translations are completely unrelated to the original proverb, failing to capture any semantic, cultural, or metaphorical aspects."
+    },
+    {
+      "proverb_id": "MW_053",
+      "kikuyu_text": "Muriio wa njoohi niuriukagwo, no wa indo nduriukagwo. . (GJW M 341, Ba",
+      "expert_translation": "The drunkenness of beer passes away, but that of wealth does not.",
+      "expert_cultural_meaning": "Avarice increases with wealth. “The wealth which enslaves the owner isn’t wealth. ~ Yoruba Saying",
+      "expert_teaching": "It cautions against a person getting obsessed with his wealth, such that other things in life do not matter. This can ruin their lives. The love of money is the root of all kinds of evil.",
+      "openai_gpt4o_mini": "The path of the goat is not blocked, but that of the person is blocked.",
+      "gemini_flash": "He jealous of thee, and we were in the face of the harvest. . (GRY ​​341, Ba",
+      "gpt35_turbo": "A wound/cut from a thorn tree (njoohi) heals, but a wound/cut from a spear (indo) does not.",
+      "nllb200": "The spirit of the drinker is awakened, but the spirit of things is not.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "drunkenness",
+        "wealth",
+        "avarice"
+      ],
+      "lost_cultural_meanings": [
+        "obsession with wealth",
+        "avarice"
+      ],
+      "failed_metaphors": [
+        "drunkenness of beer vs. wealth"
+      ],
+      "semantic_similarity_avg": 0.15,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.05,
+      "analysis_notes": "The translations by Google and NLLB-200 completely failed to capture the essence of the proverb, both semantically and culturally. OpenAI and Cohere managed to capture some structural elements but failed to convey the metaphorical and cultural meanings. The key concepts of 'drunkenness' and 'wealth' were lost, along with the cautionary message about avarice."
+    },
+    {
+      "proverb_id": "MW_054",
+      "kikuyu_text": "Muthiini niathinukaga, no munyamaari ndathiinukaga.",
+      "expert_translation": "A poor man can overcome poverty, but a man poor at heart can never.",
+      "expert_cultural_meaning": "Everyone is able to do better. “It always seems impossible until it’s done.” ~ Nelson Mandela",
+      "expert_teaching": "Situations are not permanent and one can change their life for the better so that they are independent and can support themselves economically.",
+      "openai_gpt4o_mini": "The medicine does not fail, but the healer does fail.",
+      "gemini_flash": "Muthiini is still, and the young I'm approaching.",
+      "gpt35_turbo": "Muthiini (small bird) niathinukaga (perches), no munyamaari (big tree) ndathiinukaga (it perches).",
+      "nllb200": "And the tree shall be cut down, and the tree of life shall be removed.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "poverty overcoming",
+        "inner character"
+      ],
+      "lost_cultural_meanings": [
+        "ability to change one's life",
+        "importance of inner strength"
+      ],
+      "failed_metaphors": [
+        "poverty as a state that can be overcome",
+        "inner poverty as a permanent state"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.1,
+      "metaphor_preservation_avg": 0.07500000000000001,
+      "analysis_notes": "OpenAI's translation partially captures the idea of failure but misses the core concept of overcoming poverty. Google's translation is nonsensical and fails to relate to the proverb's meaning. Cohere misinterprets 'muthiini' and 'munyamaari' as literal objects rather than metaphorical states, losing the proverb's essence. NLLB's translation is entirely unrelated to the original proverb, failing to capture any semantic or cultural elements."
+    },
+    {
+      "proverb_id": "MW_055",
+      "kikuyu_text": "Muthinio ni kuona akiriite muthinio ni waagi.",
+      "expert_translation": "He who is troubled by wealth surpasses the one troubled by poverty.",
+      "expert_cultural_meaning": "Retaining a good position anywhere is difficult; just as remaining wealthy.",
+      "expert_teaching": "It teaches that a wealthy person will usually have troubles trying to protect his wealth, for fear of becoming poor. However, he should not scorn or show sarcasm to those without, but should appreciate his excesses.",
+      "openai_gpt4o_mini": "The one who sees is the one who has been shown.",
+      "gemini_flash": "Muthinio is a scourant of cuna akiiite muthinio.",
+      "gpt35_turbo": "A door is seen when it is opened; a door is closed when it is shut.",
+      "nllb200": "The first is to see the cross and the builders.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth",
+        "poverty",
+        "trouble"
+      ],
+      "lost_cultural_meanings": [
+        "difficulty of maintaining wealth",
+        "appreciation of excesses"
+      ],
+      "failed_metaphors": [
+        "comparison between wealth and poverty"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The MT systems failed to capture the core concepts of wealth and poverty, and their associated troubles. The metaphorical structure comparing the difficulties of maintaining wealth versus experiencing poverty was lost. OpenAI's translation was the closest but still far from accurate, while the others were nonsensical or completely unrelated."
+    },
+    {
+      "proverb_id": "MW_056",
+      "kikuyu_text": "Mutongi ndathethukaga. .",
+      "expert_translation": "Whoever would like to be rich must have patience.",
+      "expert_cultural_meaning": "Patience pays!",
+      "expert_teaching": "It teaches that a person has to take time to acquire wealth. Quick shortcuts to gain wealth can cause problems for someone. Bible parallel James 1:12 “blessed is the man who endures trial, for when he has stood the test he will receive the crown of life which god has promised to those who love him.”",
+      "openai_gpt4o_mini": "A judge does not judge himself.",
+      "gemini_flash": "Mutongi I wounded. .",
+      "gpt35_turbo": "Mutongi ndathethukaga.",
+      "nllb200": "The judge is not angry. . .",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "patience",
+        "wealth acquisition"
+      ],
+      "lost_cultural_meanings": [
+        "patience pays",
+        "endurance in trials"
+      ],
+      "failed_metaphors": [
+        "patience as a path to wealth"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "The translations by Google and NLLB-200 completely failed to capture the meaning of the proverb, providing nonsensical outputs. OpenAI's translation misinterpreted the proverb as related to judgment rather than patience and wealth, while Cohere failed to translate at all. None of the systems preserved the metaphorical structure or cultural meaning related to patience and wealth acquisition."
+    },
+    {
+      "proverb_id": "MW_057",
+      "kikuyu_text": "Mutongi ndathethukaga. .",
+      "expert_translation": "Whoever would like to be rich must have patience.",
+      "expert_cultural_meaning": "No pains, no gains.",
+      "expert_teaching": "A person should not expect to be given service or goods without payment. Everything has a price. Rewards are expected.",
+      "openai_gpt4o_mini": "A ruler does not get lost.",
+      "gemini_flash": "Mutongi I wounded. .",
+      "gpt35_turbo": "Mutongi ndathethukaga (Kikuyu) = A thief is one who steals (English)",
+      "nllb200": "The judge is not angry. . .",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "patience",
+        "value of hard work"
+      ],
+      "lost_cultural_meanings": [
+        "no pains, no gains",
+        "everything has a price"
+      ],
+      "failed_metaphors": [
+        "patience leading to wealth"
+      ],
+      "semantic_similarity_avg": 0.125,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "Google and NLLB translations are nonsensical and do not capture any aspect of the original proverb. OpenAI and Cohere partially capture some elements but fail to convey the cultural and metaphorical essence of patience leading to wealth."
+    },
+    {
+      "proverb_id": "MW_058",
+      "kikuyu_text": "Mwana ni indo.",
+      "expert_translation": "A child bears prosperity.",
+      "expert_cultural_meaning": "A male child is the supposedly reliable pillar of the home.",
+      "expert_teaching": "It teaches that a male child acquires, sustains and multiplies the family’s wealth, which he gains or is bequeathed to him; and also other responsibilities and expectations which can be quantified in terms of his net worth.",
+      "openai_gpt4o_mini": "Child is a treasure.",
+      "gemini_flash": "Mwana indo.",
+      "gpt35_turbo": "Child is a pot.",
+      "nllb200": "A child is a thing.",
+      "gap_type": "complete_failure|metaphor_loss|cultural_loss",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "prosperity",
+        "reliability",
+        "pillar of home"
+      ],
+      "lost_cultural_meanings": [
+        "importance of male child",
+        "family wealth sustenance"
+      ],
+      "failed_metaphors": [
+        "child as a pillar of prosperity"
+      ],
+      "semantic_similarity_avg": 0.325,
+      "cultural_fidelity_avg": 0.225,
+      "metaphor_preservation_avg": 0.2,
+      "analysis_notes": "OpenAI's translation captures some essence of value but misses cultural depth and gender aspect. Google's translation is incomplete and lacks any meaningful translation. Cohere's translation is incorrect, as 'pot' is not relevant. NLLB's translation is too literal and misses the metaphorical and cultural significance entirely."
+    },
+    {
+      "proverb_id": "MW_059",
+      "kikuyu_text": "Mwana wa kahii ti wa kairiitu.",
+      "expert_translation": "A male child, is not a female child.",
+      "expert_cultural_meaning": "A son is believed to be prudent in taking care of property.",
+      "expert_teaching": "It teaches that a family has higher expectations in the roles of sons as men, than in daughters. However, in current society, the female child is also able to meet some higher roles than those expected of her.",
+      "openai_gpt4o_mini": "Child of a thief is not a thief.",
+      "gemini_flash": "MUSE Time Kahii Time Time.",
+      "gpt35_turbo": "Child of a fool, does not know how to laugh.",
+      "nllb200": "The firstborn is the son of Kairitu.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "gender roles",
+        "family expectations"
+      ],
+      "lost_cultural_meanings": [
+        "expectations of sons",
+        "gender roles in property management"
+      ],
+      "failed_metaphors": [
+        "comparison between male and female roles"
+      ],
+      "semantic_similarity_avg": 0.05,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The translations by Google, Cohere, and NLLB-200 are completely off, failing to capture any aspect of the original proverb. They either produce nonsensical outputs or completely unrelated meanings. OpenAI's translation is closer in structure but still misses the cultural and metaphorical context. The key concepts of gender roles and family expectations in Kikuyu culture are lost across all translations."
+    },
+    {
+      "proverb_id": "MW_060",
+      "kikuyu_text": "Mwanake wi na indo ndoihanaga.",
+      "expert_translation": "The youth who has enough to buy his girl, need not beseech her.",
+      "expert_cultural_meaning": "Money is the sinew of love as well as war.",
+      "expert_teaching": "The proverb teaches that money can be used for a good or bad purpose. One must be careful not to hurt oneself or others using money.",
+      "openai_gpt4o_mini": "A child has no place where they do not belong.",
+      "gemini_flash": "His son and Indo Ndoihanaga.",
+      "gpt35_turbo": "Child has a mind that cannot be predicted.",
+      "nllb200": "The boy who has nothing to give.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "youth with resources",
+        "beseeching"
+      ],
+      "lost_cultural_meanings": [
+        "importance of resources in relationships"
+      ],
+      "failed_metaphors": [
+        "money as a means to influence relationships"
+      ],
+      "semantic_similarity_avg": 0.15,
+      "cultural_fidelity_avg": 0.1,
+      "metaphor_preservation_avg": 0.07500000000000001,
+      "analysis_notes": "The translations by Google and NLLB-200 completely failed to capture the essence of the proverb, missing both the literal and metaphorical meanings. OpenAI and Cohere provided translations that were closer in structure but still missed key cultural and metaphorical elements. The concept of a youth using resources to influence relationships was lost, and the metaphor of money as a tool was not preserved."
+    },
+    {
+      "proverb_id": "MW_061",
+      "kikuyu_text": "Mwendia niaguraga.",
+      "expert_translation": "The one who sells also buys.",
+      "expert_cultural_meaning": "To sell and to buy are both business.",
+      "expert_teaching": "It teaches that a person should be careful in one’s line of business because roles do change. The business owner can lose his business and become an employee of another.",
+      "openai_gpt4o_mini": "The one who goes ahead is the one who gets to choose.",
+      "gemini_flash": "Niaguraga.",
+      "gpt35_turbo": "The one who plants, reaps.",
+      "nllb200": "I bought it.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "business roles",
+        "reciprocity in trade"
+      ],
+      "lost_cultural_meanings": [
+        "importance of adaptability in business",
+        "role reversal in commerce"
+      ],
+      "failed_metaphors": [
+        "business as a cycle of buying and selling"
+      ],
+      "semantic_similarity_avg": 0.15,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.07500000000000001,
+      "analysis_notes": "OpenAI's translation misinterprets the proverb, missing the business context and role reversal. Google's output is incomplete and lacks any meaningful translation. Cohere captures a sense of reciprocity but misses the business context. NLLB's translation is entirely incorrect, providing a literal and unrelated phrase."
+    },
+    {
+      "proverb_id": "MW_062",
+      "kikuyu_text": "Muthuuri athikagwo na indo.",
+      "expert_translation": "An old man is buried with his wealth.",
+      "expert_cultural_meaning": "After death of a wealthy man, his riches also diminish.",
+      "expert_teaching": "It teaches that the owner of wealth bequeaths it to his sons in the hope that they will value and multiply it as he did. Unfortunately, it was squandered.",
+      "openai_gpt4o_mini": "A person does not get lost with a guide.",
+      "gemini_flash": "The person is not indo.",
+      "gpt35_turbo": "Muthuri (spear) athikagwo (that has been sharpened) na (by) indo (fire).",
+      "nllb200": "A man is buried with things.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "muthuuri",
+        "athikagwo",
+        "indo"
+      ],
+      "lost_cultural_meanings": [
+        "wealth diminishes after death",
+        "inheritance and squandering"
+      ],
+      "failed_metaphors": [
+        "burial with wealth"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "OpenAI's translation was the closest but still incorrect, missing the core concept of wealth and inheritance. Google and Cohere produced translations that were nonsensical or unrelated to the proverb's meaning. NLLB's translation was literal but missed the cultural and metaphorical context entirely. None of the systems preserved the metaphorical structure or cultural meaning of the original proverb."
+    },
+    {
+      "proverb_id": "MW_063",
+      "kikuyu_text": "Ndonga imwe ndihingaga iriuko.",
+      "expert_translation": "A rich man cannot block the ford.",
+      "expert_cultural_meaning": "No living man is all things. Many hands are better than one.",
+      "expert_teaching": "A person cannot do everything alone even if he is wealthy. One must partner with others in order for his investments to grow from combined efforts.",
+      "openai_gpt4o_mini": "One rope does not hold a goat.",
+      "gemini_flash": "I will go one with a doer",
+      "gpt35_turbo": "One finger cannot lift a load.",
+      "nllb200": "I don't have a clue.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "community effort",
+        "collaboration"
+      ],
+      "lost_cultural_meanings": [
+        "importance of collective effort",
+        "limitations of individual capability"
+      ],
+      "failed_metaphors": [
+        "blocking the ford as a metaphor for individual limitations"
+      ],
+      "semantic_similarity_avg": 0.2,
+      "cultural_fidelity_avg": 0.15,
+      "metaphor_preservation_avg": 0.15,
+      "analysis_notes": "Google and NLLB translations are completely off, with no relation to the original proverb. OpenAI and Cohere capture some aspect of individual limitation but fail to convey the cultural emphasis on community effort. The metaphor of 'blocking the ford' is lost in all translations, leading to a critical failure in conveying the proverb's full meaning."
+    },
+    {
+      "proverb_id": "MW_064",
+      "kikuyu_text": "Ndonga naanu irugiitwo ni mukari.",
+      "expert_translation": "An arrogant rich man, is surpassed by a miser.",
+      "expert_cultural_meaning": "Being mean is a vice not easy to break.",
+      "expert_teaching": "It teaches that it is better to be denied by the miser than to be given by an abusive rich man. This cautions that the excesses of wealth can make a person not appreciate others.",
+      "openai_gpt4o_mini": "A woman is the one who has been given the responsibility.",
+      "gemini_flash": "Ndonga naanu Irugiitwo ni mukari.",
+      "gpt35_turbo": "A person who climbs a tree with his buttocks is a thief.",
+      "nllb200": "The next step is to get rid of the anger.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "arrogance",
+        "wealth",
+        "miser",
+        "vice"
+      ],
+      "lost_cultural_meanings": [
+        "importance of humility",
+        "dangers of arrogance",
+        "value of modesty"
+      ],
+      "failed_metaphors": [
+        "comparison between arrogance and miserliness"
+      ],
+      "semantic_similarity_avg": 0.025,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations were either nonsensical or completely unrelated to the original meaning. Key concepts such as arrogance, wealth, and miserliness were not translated, and the cultural and metaphorical meanings were entirely lost."
+    },
+    {
+      "proverb_id": "MW_065",
+      "kikuyu_text": "Ndugu nyingi ithaatagia muhuko.",
+      "expert_translation": "Many acquaintances deplete the pocket.",
+      "expert_cultural_meaning": "Choose friends who add value to your life. “To be without a friend is to be poor indeed.” ~ Tanzanian proverb",
+      "expert_teaching": "It cautions against being too generous to those who pretend to be one’s friends. All they do is deplete one’s resources either wealth or money.",
+      "openai_gpt4o_mini": "Many siblings do not abandon their mother.",
+      "gemini_flash": "Many brothers will be able to make a point.",
+      "gpt35_turbo": "Many siblings make the fire burn brighter.",
+      "nllb200": "Many brothers don't wear a purse.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "acquaintances",
+        "depletion of resources"
+      ],
+      "lost_cultural_meanings": [
+        "caution against false friends",
+        "importance of valuable friendships"
+      ],
+      "failed_metaphors": [
+        "depletion of resources by false friends"
+      ],
+      "semantic_similarity_avg": 0.15,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations did not convey the cautionary message about false friends depleting one's resources. The metaphor of 'depleting the pocket' was completely lost, and the cultural context of valuing true friendships was not preserved."
+    },
+    {
+      "proverb_id": "MW_066",
+      "kikuyu_text": "Ngai ndoonagio nda.",
+      "expert_translation": "God is not shown one’s belly.",
+      "expert_cultural_meaning": "Do not blow your own trumpet, instead show gratitude to God.",
+      "expert_teaching": "This proverb teaches against ungratefulness at the wake of good forturne, and warns those who take blessings for granted, that all can be taken away just as easily as it was given unto them.",
+      "openai_gpt4o_mini": "God is the one who gives the rain.",
+      "gemini_flash": "Let I share Gio.",
+      "gpt35_turbo": "Ngai (God) ndoonagio (is the one who) nda (speaks).",
+      "nllb200": "God is not a father.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "Ngai",
+        "ndoonagio",
+        "nda"
+      ],
+      "lost_cultural_meanings": [
+        "gratitude to God",
+        "humility"
+      ],
+      "failed_metaphors": [
+        "God is not shown one’s belly"
+      ],
+      "semantic_similarity_avg": 0.15,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "OpenAI's translation was the closest but still failed to capture the metaphorical and cultural essence of the proverb. Google's translation was nonsensical and unrelated to the original meaning. Cohere's output was a literal translation attempt but lacked coherence and cultural context. NLLB's translation was completely incorrect, suggesting a different meaning altogether. The main failures were due to a lack of understanding of the metaphorical structure and cultural implications inherent in the proverb."
+    },
+    {
+      "proverb_id": "MW_067",
+      "kikuyu_text": "Ngia itari thiiri ti ngia.",
+      "expert_translation": "A poor person with no debts is not so poor a person.",
+      "expert_cultural_meaning": "Nobody has everything or is self sufficient.",
+      "expert_teaching": "It teaches that it is acceptable for a person without property or wealth to borrow from those who have in order to establish themselves.",
+      "openai_gpt4o_mini": "A path that is not traveled is not a path.",
+      "gemini_flash": "Inside the Italian Italian.",
+      "gpt35_turbo": "Ngia itari thiiri ti ngia: Beat the drum for the dance of the ngia (a type of traditional dance).",
+      "nllb200": "I'm not a hairdresser.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "poverty",
+        "debt",
+        "self-sufficiency"
+      ],
+      "lost_cultural_meanings": [
+        "acceptability of borrowing",
+        "self-establishment"
+      ],
+      "failed_metaphors": [
+        "comparison of poverty with and without debt"
+      ],
+      "semantic_similarity_avg": 0.05,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "OpenAI's translation was the closest but still incorrect, interpreting 'ngia' as 'path' rather than 'poor person'. Google, Cohere, and NLLB completely failed to capture any relevant meaning or metaphor, resulting in nonsensical outputs. The key concepts of poverty, debt, and self-sufficiency were entirely missed, and the cultural teaching about borrowing was lost."
+    },
+    {
+      "proverb_id": "MW_068",
+      "kikuyu_text": "Njuuku ni migathi ya ndonga",
+      "expert_translation": NaN,
+      "expert_cultural_meaning": "Ignore slander and go about your endeavours. Teaching This proverb teaches when one is rich, they are prone to being talked about, either positively or negatively. This is due to curiosity, admiration, or envy among other feelings. A rich person should therefore shoulder all these burdens and plough on with their business.",
+      "expert_teaching": NaN,
+      "openai_gpt4o_mini": "The birds are the messengers of the forest",
+      "gemini_flash": "Njuuku is the miles",
+      "gpt35_turbo": "Njuuku is the branches of a fence",
+      "nllb200": "The tree of life and the tree of the knowledge of good and evil",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "slander",
+        "endeavours",
+        "richness"
+      ],
+      "lost_cultural_meanings": [
+        "importance of ignoring slander",
+        "perseverance despite criticism"
+      ],
+      "failed_metaphors": [
+        "migathi ya ndonga as burdens to be shouldered"
+      ],
+      "semantic_similarity_avg": 0.125,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb, which is about ignoring slander and focusing on one's goals. The translations were either literal or completely unrelated, missing the metaphorical and cultural context entirely."
+    },
+    {
+      "proverb_id": "MW_069",
+      "kikuyu_text": "Riua ritiri gitonga no ngia theri. (Riua ritiui gitonga no ngia their) (GJW R 23,Ba",
+      "expert_translation": "The sun has no rich people, but only the poor people.",
+      "expert_cultural_meaning": "Human beings have similar rough experiences in life.",
+      "expert_teaching": "In the dry season neither the rich nor poor people can plant. This proverb teaches that sometimes the rich person experiences harsh and difficult times in life, the same as the poor person.",
+      "openai_gpt4o_mini": "A person who does not have a goat does not know the taste of meat.",
+      "gemini_flash": "Rioua ritiri gitonga does not. (Rua ritiu gitonga does not give the people) (gjw 23,ba",
+      "gpt35_turbo": "Two eyes see the same thing differently, but when they come together, they see better.",
+      "nllb200": "The sun is not rich and not theri. (Sun is not wealthy and not theirs)",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "equality in adversity",
+        "shared human experience"
+      ],
+      "lost_cultural_meanings": [
+        "shared hardship regardless of wealth"
+      ],
+      "failed_metaphors": [
+        "sun affecting all equally"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations did not convey the metaphor of the sun affecting everyone equally, regardless of wealth. The cultural meaning of shared hardship was completely lost, and none of the translations preserved the metaphorical structure or the intended teaching of the proverb."
+    },
+    {
+      "proverb_id": "MW_070",
+      "kikuyu_text": "Ruthuuro rutiiyuragia ikumbi",
+      "expert_translation": "Selected goods do not fill the granary.",
+      "expert_cultural_meaning": "Desire for good things is endless.",
+      "expert_teaching": "It teaches that a person cannot be too choosy for him/her to survive. Always make best use of what you have and make it prosper. Good things don’t always satisfy a person.",
+      "openai_gpt4o_mini": "The path does not lead to the house of the fool",
+      "gemini_flash": "Tituusuro Rithuragia is a potter",
+      "gpt35_turbo": "A single finger cannot press down a lump of millet.",
+      "nllb200": "The wind does not fill the clouds",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "selecting goods",
+        "granary"
+      ],
+      "lost_cultural_meanings": [
+        "endless desire for good things",
+        "importance of making use of what you have"
+      ],
+      "failed_metaphors": [
+        "selected goods not filling the granary"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the core metaphor of 'selected goods not filling the granary' and its cultural implications about endless desire and making use of available resources. The translations provided were nonsensical or unrelated to the original proverb, indicating a critical failure in understanding both the language and cultural context."
+    },
+    {
+      "proverb_id": "MW_071",
+      "kikuyu_text": "Ruua rukuhi rutiri thogora.",
+      "expert_translation": "A short hide is of no value.",
+      "expert_cultural_meaning": "Do not under-estimate the benefits that small things can bring.",
+      "expert_teaching": "This proverb teaches that small things may seem to be of little benefit to the owner. However, if put to good use they can be of great value to the owner. All things are valuable, one way or another.",
+      "openai_gpt4o_mini": "A path that is not walked does not wear out.",
+      "gemini_flash": "Ruogora cock lake.",
+      "gpt35_turbo": "Ruua rukuhi rutiri thogora translates to: \"A cow that follows a calf gets lost.\"",
+      "nllb200": "A flower is not expensive.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "value of small things",
+        "underestimation"
+      ],
+      "lost_cultural_meanings": [
+        "importance of small contributions",
+        "value in all things"
+      ],
+      "failed_metaphors": [
+        "short hide as a metaphor for undervalued small things"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "Google and NLLB translations are nonsensical and do not relate to the original proverb's meaning. OpenAI and Cohere failed to capture the metaphorical and cultural essence, focusing instead on unrelated concepts. The metaphor of a 'short hide' representing undervalued small things was lost across all translations."
+    },
+    {
+      "proverb_id": "MW_072",
+      "kikuyu_text": "Thieri itireraga kwa ngia.",
+      "expert_translation": NaN,
+      "expert_cultural_meaning": "A poor man has no friends.",
+      "expert_teaching": "It teaches us not to discriminate or judge others. It is assumed that a poor man has nothing to offer in terms of property. In reality, he may offer other non-monetary help.",
+      "openai_gpt4o_mini": "The path does not turn back at the corner.",
+      "gemini_flash": "Thiri of it is proud of Iz'ri, Thismu sex.",
+      "gpt35_turbo": "Thieri (a type of bird) itireraga (pecks/forages) kwa ngia (on/at the farmer's plot).",
+      "nllb200": "The cherries don't grow for a reason.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "poverty",
+        "friendship"
+      ],
+      "lost_cultural_meanings": [
+        "discrimination against the poor",
+        "value of non-monetary help"
+      ],
+      "failed_metaphors": [
+        "comparison of poverty to a lack of friends"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The translations from Google, Cohere, and NLLB-200 are nonsensical and fail to capture any aspect of the original proverb. OpenAI's translation, while somewhat coherent, does not convey the intended metaphor or cultural meaning related to poverty and friendship. All systems failed to preserve the metaphorical structure and cultural significance of the proverb."
+    },
+    {
+      "proverb_id": "MW_073",
+      "kikuyu_text": "Thiina nduri miri .",
+      "expert_translation": "Poverty has no roots.",
+      "expert_cultural_meaning": "Troubles pass!",
+      "expert_teaching": "Poverty can be removed, if one puts a mind to it. It is not a permanent situation. A person should work hard to eradicate it.",
+      "openai_gpt4o_mini": "A path does not have two directions.",
+      "gemini_flash": "Thi diri citizens.",
+      "gpt35_turbo": "Thiina nduri miri: A wound (thiina) inside (nduri) the body (miri)",
+      "nllb200": "We are not afraid of the trees.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "poverty",
+        "roots"
+      ],
+      "lost_cultural_meanings": [
+        "poverty is not permanent",
+        "troubles pass"
+      ],
+      "failed_metaphors": [
+        "poverty as a removable condition"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "OpenAI's translation was unrelated to the original proverb, focusing on directions rather than poverty. Google's output was nonsensical and unrelated to the proverb. Cohere attempted a literal translation but failed to capture the metaphorical and cultural meaning. NLLB's translation was completely off-topic, discussing trees instead of poverty. None of the systems preserved the metaphorical structure or cultural meaning of the original proverb."
+    },
+    {
+      "proverb_id": "MW_074",
+      "kikuyu_text": "Thiiri utarihwo no wa urogi.",
+      "expert_translation": "The only debt which is not payable is the one of poisoning someone.",
+      "expert_cultural_meaning": "As long as one is alive, there is always a chance to overcome one’s enemies. “He that dies pays all debts.”-William Shakespeare",
+      "expert_teaching": "All crimes can be paid for with a fine, but a crime of bewitching must be met with a heavier punishment because death is final. A person can harm another , but extreme harm may be impossible to compensate.",
+      "openai_gpt4o_mini": "A path is not cleared for a witch.",
+      "gemini_flash": "Thiiri Utihiwo no wa Urogi.",
+      "gpt35_turbo": "A person who is not contented with what they have will always be poor.",
+      "nllb200": "The Tire is not a witch.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "debt",
+        "poisoning",
+        "witchcraft"
+      ],
+      "lost_cultural_meanings": [
+        "irreversibility of certain actions",
+        "finality of death"
+      ],
+      "failed_metaphors": [
+        "debt as a metaphor for wrongdoing",
+        "poisoning as an irreversible act"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "OpenAI's translation was somewhat related to the concept of witchcraft but missed the core idea of debt and irreversibility. Google failed to translate and provided a transliteration. Cohere and NLLB provided translations that were completely unrelated to the original proverb. All systems failed to capture the cultural and metaphorical essence of the proverb."
+    },
+    {
+      "proverb_id": "MW_075",
+      "kikuyu_text": "Thogora nduri mwana na nyina.",
+      "expert_translation": "In business bargain, there is no child or mother.",
+      "expert_cultural_meaning": "Friendship does not mix with business.",
+      "expert_teaching": "It teaches that when doing business all people are equal buyers regardless of their association to the seller. One should not show favour to some because the business will not flourish. “When it is a question of money, everybody is of the same religion. ~Voltaire Bible parallel 2 Corinthians 6:17 “Wherefore Come ye out from among them, and be ye separate, saith the Lord, and touch no unclean thing; And I will receive you,”",
+      "openai_gpt4o_mini": "Pull the bowstring, child and mother.",
+      "gemini_flash": "Were a child to the baby and her.",
+      "gpt35_turbo": "Thogora (a type of bird) is a child to its mother.",
+      "nllb200": "The answer is not the child and the mother.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "business bargain",
+        "equality in business"
+      ],
+      "lost_cultural_meanings": [
+        "business impartiality",
+        "equality regardless of relationship"
+      ],
+      "failed_metaphors": [
+        "business as an impartial entity"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb, which is about impartiality in business dealings. The translations were literal and did not convey the metaphorical or cultural meanings. The concept of 'business bargain' and the idea that relationships do not influence business decisions were completely lost. The metaphor of business as an impartial entity was not preserved in any translation."
+    },
+    {
+      "proverb_id": "MW_076",
+      "kikuyu_text": "Thogora ni mururumo utaruo.",
+      "expert_translation": "Buying and selling causes much noice but no strife.",
+      "expert_cultural_meaning": "It is normal to disagree. “Price is what you pay. Value is what you get.” Warren Buffett",
+      "expert_teaching": "When people are dealing or discussing issues with each other they may not agree on an opinion or a bargain, and should therefore, respect each other’s views.",
+      "openai_gpt4o_mini": "To be a leader is to be a loud voice that does not remain silent.",
+      "gemini_flash": "We find it in the field, not.",
+      "gpt35_turbo": "Thogora (drought) is a mururumo (disease) that utaruo (strikes) the land.",
+      "nllb200": "The price is a lot of noise.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "thogora",
+        "mururumo",
+        "utaruo"
+      ],
+      "lost_cultural_meanings": [
+        "disagreement is normal",
+        "respect in discussions"
+      ],
+      "failed_metaphors": [
+        "buying and selling as noise without strife"
+      ],
+      "semantic_similarity_avg": 0.125,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "OpenAI's translation partially captures the idea of noise but misses the context of buying and selling. Google, Cohere, and NLLB completely fail to capture the meaning, cultural context, or metaphorical structure of the proverb. The translations lack the concept of negotiation and the cultural teaching of respecting differing opinions."
+    },
+    {
+      "proverb_id": "MW_077",
+      "kikuyu_text": "Thogora ni maitho.",
+      "expert_translation": "Buying and selling involves the eyes.",
+      "expert_cultural_meaning": "First impressions matter, but let the buyer beware.",
+      "expert_teaching": "It teaches that our convictions are as a result of what we perceive. Our judgement can be influenced by what we see other than the reality, of a situation. However, one should give credit where credit is due.",
+      "openai_gpt4o_mini": "To see is to believe.",
+      "gemini_flash": "The wolf and the desires.",
+      "gpt35_turbo": "Thogora is good.",
+      "nllb200": "The price is the eyes.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "importance of perception",
+        "buyer beware"
+      ],
+      "lost_cultural_meanings": [
+        "first impressions matter",
+        "perception vs reality"
+      ],
+      "failed_metaphors": [
+        "buying and selling involves the eyes"
+      ],
+      "semantic_similarity_avg": 0.275,
+      "cultural_fidelity_avg": 0.175,
+      "metaphor_preservation_avg": 0.125,
+      "analysis_notes": "OpenAI's translation captures the essence of perception but misses the buyer beware aspect. Google's translation is nonsensical and unrelated. Cohere's translation is incorrect and lacks any metaphorical or cultural relevance. NLLB's translation is literal and misses the metaphorical and cultural context entirely."
+    },
+    {
+      "proverb_id": "MW_078",
+      "kikuyu_text": "Thogora uuragagwo ni kiongereri.",
+      "expert_translation": "A bargain breaks down over the extra demand.",
+      "expert_cultural_meaning": "Make a fair deal if you can. Fair exchange is no robbery.",
+      "expert_teaching": "It teaches that unfortunately, in collective bargaining one party or the other too often tries to gain an advantage - a bargain, like buying something in a store for less than it is worth.",
+      "openai_gpt4o_mini": "To be cut is to be healed by a healer.",
+      "gemini_flash": "Thogora uuragagwo is a Congress.",
+      "gpt35_turbo": "A person who cannot see the stars is a dreamer.",
+      "nllb200": "The price is an additional cost.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "bargain",
+        "extra demand"
+      ],
+      "lost_cultural_meanings": [
+        "fair exchange",
+        "collective bargaining"
+      ],
+      "failed_metaphors": [
+        "bargain breaking down over extra demand"
+      ],
+      "semantic_similarity_avg": 0.025,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations did not convey the concept of a bargain or the idea of an extra demand leading to a breakdown. Cultural meanings related to fair exchange and the pitfalls of collective bargaining were entirely lost. The metaphorical structure of a bargain breaking down was not preserved in any translation."
+    },
+    {
+      "proverb_id": "MW_079",
+      "kikuyu_text": "Tiga kwihira uriri wi riikoini. GJW T 85) MW",
+      "expert_translation": "When you are poor do not equate yourself with the rich.",
+      "expert_cultural_meaning": "Be yourself.",
+      "expert_teaching": "It teaches us that a person should live within his/her own means, as their resources can allow. Pretences lead to debts and failure to accept ones status in society.",
+      "openai_gpt4o_mini": "Do not forget to carry your own burden.",
+      "gemini_flash": "Tanga Kawira urri alrikoini. GJW 85) m is m t",
+      "gpt35_turbo": "Hold the big one, let the small ones go (or: release the small ones).",
+      "nllb200": "Do not be deceived by the things that are not.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "poverty",
+        "wealth",
+        "self-awareness"
+      ],
+      "lost_cultural_meanings": [
+        "living within means",
+        "avoiding pretence"
+      ],
+      "failed_metaphors": [
+        "comparison between poor and rich"
+      ],
+      "semantic_similarity_avg": 0.2,
+      "cultural_fidelity_avg": 0.125,
+      "metaphor_preservation_avg": 0.07500000000000001,
+      "analysis_notes": "Google and NLLB completely failed to capture the essence of the proverb, providing either nonsensical or irrelevant translations. OpenAI and Cohere partially captured the idea of burden, but missed the specific cultural context of comparing oneself to others based on wealth. The metaphorical structure of comparing oneself to the rich was not preserved in any translation."
+    },
+    {
+      "proverb_id": "MW_080",
+      "kikuyu_text": "Uhunii eetaga uhutii mukoroku. .",
+      "expert_translation": "He who is satisfied, calls the hungry one greedy.",
+      "expert_cultural_meaning": "We are all protective of our turfs.",
+      "expert_teaching": "This proverb teaches against selfishness. A person who is comfortable/wealthy should not view the one struggling as being overly greedy. We should appreciate the other person’s efforts towards making his life better.",
+      "openai_gpt4o_mini": "A person who is wise does not need to be told twice.",
+      "gemini_flash": "The threat of Etagah you say in the town. .",
+      "gpt35_turbo": "When the goat bleats, the drum is silent.",
+      "nllb200": "The Uhuini called for obedience to the ruler.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "satisfaction",
+        "hunger",
+        "greed"
+      ],
+      "lost_cultural_meanings": [
+        "selfishness",
+        "appreciation of others' efforts"
+      ],
+      "failed_metaphors": [
+        "satisfied person calling the hungry greedy"
+      ],
+      "semantic_similarity_avg": 0.025,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations did not convey the concepts of satisfaction, hunger, or greed, nor did they preserve the metaphorical structure or cultural meaning. The translations were either nonsensical or completely unrelated to the original proverb."
+    },
+    {
+      "proverb_id": "MW_081",
+      "kikuyu_text": "Ukari muhithe ndumenanagirwo. MW",
+      "expert_translation": "Hidden miserliness does not attract scorn.",
+      "expert_cultural_meaning": "Be hospitable as a habit.",
+      "expert_teaching": "It teaches that a person should desist from making their stinginess obvious to others so that they do not scorn and hate you. At least give a token and without showing off your wealth.",
+      "openai_gpt4o_mini": "You are not a goat if you are not tied.",
+      "gemini_flash": "Ukari Muhithe I'm a bitch. MW",
+      "gpt35_turbo": "A person who cannot see the forest for the trees.",
+      "nllb200": "The Lord is not angry with the wicked.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "miserliness",
+        "scorn",
+        "hospitality"
+      ],
+      "lost_cultural_meanings": [
+        "importance of hospitality",
+        "avoidance of scorn"
+      ],
+      "failed_metaphors": [
+        "hidden miserliness"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "Google and NLLB translations are nonsensical and do not relate to the original proverb. OpenAI and Cohere failed to capture the cultural and metaphorical essence, missing the concepts of miserliness and scorn. None preserved the metaphorical structure or cultural meaning effectively."
+    },
+    {
+      "proverb_id": "MW_082",
+      "kikuyu_text": "Urugari nduri indo, ni heho iri indo.",
+      "expert_translation": "Warmth has no wealth, it is the cold that has.",
+      "expert_cultural_meaning": "God helps those who help themselves.",
+      "expert_teaching": "It teaches that a person, with or without wealth, must associate with others constantly in order to get all his needs provided for and to be able to improve his status in life. He should trust in God above all.",
+      "openai_gpt4o_mini": "A single tree does not make a forest, it is the many that make a forest.",
+      "gemini_flash": "The insert is the insert.",
+      "gpt35_turbo": "A spear that does not have a point is a useless spear.",
+      "nllb200": "The cold is not a thing, it is a cold thing.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth",
+        "warmth",
+        "cold"
+      ],
+      "lost_cultural_meanings": [
+        "importance of self-reliance",
+        "community support"
+      ],
+      "failed_metaphors": [
+        "warmth vs. cold as a metaphor for wealth and self-reliance"
+      ],
+      "semantic_similarity_avg": 0.175,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "The translations from Google, Cohere, and NLLB-200 completely failed to capture the essence of the proverb, both semantically and culturally. They did not preserve the metaphorical structure of warmth and cold representing wealth and self-reliance. OpenAI's translation was somewhat closer but still missed the cultural and metaphorical nuances."
+    },
+    {
+      "proverb_id": "MW_083",
+      "kikuyu_text": "Urume uri iraria.(Urume wi indo)",
+      "expert_translation": "Bravery brings wealth.",
+      "expert_cultural_meaning": "Believe in yourself. Fortune favours the brave. “Yes we can!” President Barack Obama",
+      "expert_teaching": "A person has to be fearless when dealing with issues in life. Whatever the situation, one must take care and caution in order to succeed in achieving the goal to acquire wealth.",
+      "openai_gpt4o_mini": "The tongue is a sharp weapon. (The tongue is a tool)",
+      "gemini_flash": "Urume Uri Iraria. (Urume Wi Indo)",
+      "gpt35_turbo": "A pot that does not squeak (is broken).",
+      "nllb200": "The man is talking.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "bravery",
+        "wealth"
+      ],
+      "lost_cultural_meanings": [
+        "fortune favors the brave",
+        "self-belief"
+      ],
+      "failed_metaphors": [
+        "bravery as a path to wealth"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "Cohere and NLLB completely failed to capture the essence of the proverb, providing translations that are nonsensical and unrelated to the original meaning. OpenAI and Google also failed to convey the correct metaphor and cultural meaning, with OpenAI misinterpreting the proverb as related to speech rather than bravery. All systems failed to preserve the metaphorical structure and cultural significance of bravery leading to wealth."
+    },
+    {
+      "proverb_id": "MW_084",
+      "kikuyu_text": "Utaana uminagira murokerwo ng’ombe.",
+      "expert_translation": "Generosity ruins the man who gives his cows to morning visitors.",
+      "expert_cultural_meaning": "Too much of anything can cause problems. It is balance that matters.",
+      "expert_teaching": "It teaches that a person should share his wealth sensibly and for good reason.",
+      "openai_gpt4o_mini": "You will not find a cow that has not been tied.",
+      "gemini_flash": "Creator you have made me sleep.",
+      "gpt35_turbo": "Call a cow by its horns, not its tail.",
+      "nllb200": "The man who is rich will be rich.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "generosity",
+        "balance",
+        "wealth"
+      ],
+      "lost_cultural_meanings": [
+        "importance of balance",
+        "sensible sharing"
+      ],
+      "failed_metaphors": [
+        "generosity ruins the man",
+        "giving cows to morning visitors"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "Google and NLLB translations are completely unrelated to the original proverb, failing to capture any aspect of the meaning or metaphor. OpenAI and Cohere provide translations that are somewhat related to cows but miss the metaphorical and cultural essence of the proverb."
+    },
+    {
+      "proverb_id": "MW_085",
+      "kikuyu_text": "Utari ndari ngoro (Githumbi/ githumba gitiri ngoro)",
+      "expert_translation": "He who has nothing has no heart.",
+      "expert_cultural_meaning": "Appreciate the help given to you always. “Give thanks for a little and you will find a lot.”- Hausa proverb (Nigeria)",
+      "expert_teaching": "A person seeking assistance from others accepts what he is given; even if he is denied what he wants. He perseveres all humiliation and injustices in order to get what he needs.",
+      "openai_gpt4o_mini": "A path does not lead to a house (A path/road does not exist without a house)",
+      "gemini_flash": "Without Ndar Ngoro (Gilthi / Githumba Gitiri Ngoro)",
+      "gpt35_turbo": "One hand cannot clap (A single Githumbi/githumba cannot make a noise like thunder)",
+      "nllb200": "Heartless (Bodyless)",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "ngoro",
+        "utari"
+      ],
+      "lost_cultural_meanings": [
+        "appreciation of help",
+        "perseverance in adversity"
+      ],
+      "failed_metaphors": [
+        "having nothing equates to having no heart"
+      ],
+      "semantic_similarity_avg": 0.15,
+      "cultural_fidelity_avg": 0.125,
+      "metaphor_preservation_avg": 0.07500000000000001,
+      "analysis_notes": "The main failures stem from a lack of understanding of the Kikuyu proverb's metaphorical and cultural context. OpenAI's translation is somewhat related but misses the core metaphor and cultural meaning. Google's translation is nonsensical and fails to capture any meaningful aspect of the proverb. Cohere's translation is metaphorically related but does not preserve the original meaning. NLLB's translation is completely off, lacking any semantic or cultural connection."
+    },
+    {
+      "proverb_id": "MW_086",
+      "kikuyu_text": "Utari ndeetagwo ndundu. .",
+      "expert_translation": "A poor man is not invited to a private discussion.",
+      "expert_cultural_meaning": "Don’t judge others",
+      "expert_teaching": "A person without wealth is usually ignored and considered as not having any wisdom to contribute or to advice anyone. Therefore, a person must work hard in order to have consideration in society.",
+      "openai_gpt4o_mini": "A path is not made by a single step.",
+      "gemini_flash": "Uut not a north. .",
+      "gpt35_turbo": "One who has been bitten by an ant grows up to be a chief.",
+      "nllb200": "I was not called a nundu. .",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth",
+        "social consideration",
+        "wisdom"
+      ],
+      "lost_cultural_meanings": [
+        "importance of wealth in social discussions",
+        "judgment based on wealth"
+      ],
+      "failed_metaphors": [
+        "wealth as a prerequisite for being heard"
+      ],
+      "semantic_similarity_avg": 0.025,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the core meaning of the proverb. OpenAI's translation was unrelated to the original proverb, while Google and NLLB produced nonsensical outputs. Cohere's translation was completely unrelated to the proverb's meaning. None of the translations preserved the metaphorical or cultural aspects of the original proverb."
+    },
+    {
+      "proverb_id": "MW_087",
+      "kikuyu_text": "Utari ni wa kwa mari. (Muthiini egiritagia itonga) .",
+      "expert_translation": "A poor man leans on the rich. Kiswahili : Maskini hutegemea matajiri. Meaning: Each person needs another, regardless of status. Teaching: This proverb teaches that within a family or community, people cannot be equal. Some are poor and others rich. But they need each other for daily objectives to be achieved. Bible parallel: 1 Thessalonians 5:11 “Therefore encourage one another and build each other up, just as in fact you are doing.”",
+      "expert_cultural_meaning": "Each person needs another, regardless of status.",
+      "expert_teaching": "This proverb teaches that within a family or community, people cannot be equal. Some are poor and others rich. But they need each other for daily objectives to be achieved.",
+      "openai_gpt4o_mini": "Unity is for the rich. (A tree does not grow in isolation)",
+      "gemini_flash": "You were not of at Mari. (Muthiini Egiritagia Itanga).",
+      "gpt35_turbo": "One leg is in the grave (while the other is still alive).",
+      "nllb200": "It is not about money.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "dependency",
+        "community support"
+      ],
+      "lost_cultural_meanings": [
+        "interdependence",
+        "community reliance"
+      ],
+      "failed_metaphors": [
+        "rich and poor interdependence"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.17500000000000002,
+      "metaphor_preservation_avg": 0.1,
+      "analysis_notes": "The main failures stem from a lack of understanding of the proverb's metaphorical and cultural context. OpenAI's translation partially captures the idea of unity but misses the specific dependency aspect. Google's translation is nonsensical and fails to convey any meaningful concept. Cohere's translation is entirely unrelated to the original proverb, and NLLB's translation misses the mark by focusing on money rather than the relationship between rich and poor."
+    },
+    {
+      "proverb_id": "MW_088",
+      "kikuyu_text": "Uthaka nduriagwo.",
+      "expert_translation": "Beauty is not consumed.",
+      "expert_cultural_meaning": "Beauty is not all in life.",
+      "expert_teaching": "Physical beauty creates pride and complacency. This proverb discourages this and teaches that beauty does not provide for your human needs. One has to do useful work in order to survive and prosper.",
+      "openai_gpt4o_mini": "A cow does not give birth to a calf without a reason.",
+      "gemini_flash": "Ultrashadsoul nithrimago.",
+      "gpt35_turbo": "Harvest the crop you planted.",
+      "nllb200": "Beauty is not a luxury.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "importance of practical work",
+        "limitations of beauty"
+      ],
+      "lost_cultural_meanings": [
+        "beauty is not sufficient for survival",
+        "necessity of hard work"
+      ],
+      "failed_metaphors": [
+        "beauty is not consumed"
+      ],
+      "semantic_similarity_avg": 0.15,
+      "cultural_fidelity_avg": 0.07500000000000001,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. OpenAI's translation was unrelated to the original meaning, focusing on a different concept entirely. Google's output was nonsensical. Cohere's translation shifted the focus to agriculture, missing the metaphorical aspect. NLLB's translation was the closest but still failed to capture the cultural and metaphorical depth of the original proverb."
+    },
+    {
+      "proverb_id": "MW_089",
+      "kikuyu_text": "Uthaka wa mundurume ni mbeeca. M",
+      "expert_translation": "The beauty of a man is money.",
+      "expert_cultural_meaning": "Accept a person for what they are and not for what they have. “If you marry a monkey for his wealth, the money goes and the monkey remains as is. ~ Egyptian proverb",
+      "expert_teaching": "It teaches that a person is judged by what he has in terms of property and wealth. A rich person is acceptable even if he is ugly and has other vices. He can be tolerated because of his money. Women especially, prefer men who have something tender about them — especially the legal kind.",
+      "openai_gpt4o_mini": "The strength of a man is his wealth.",
+      "gemini_flash": "The mudurumer's quota is talking. M",
+      "gpt35_turbo": "A man's wealth is a bee.",
+      "nllb200": "A man's wealth is money.",
+      "gap_type": "complete_failure|metaphor_loss|cultural_loss",
+      "failed_systems": [
+        "google",
+        "cohere"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "uthaka",
+        "mbeeca"
+      ],
+      "lost_cultural_meanings": [
+        "acceptance based on wealth",
+        "tolerance of vices due to wealth"
+      ],
+      "failed_metaphors": [
+        "beauty equated to wealth"
+      ],
+      "semantic_similarity_avg": 0.55,
+      "cultural_fidelity_avg": 0.45,
+      "metaphor_preservation_avg": 0.4,
+      "analysis_notes": "Google's translation was nonsensical and failed to capture any meaningful aspect of the proverb. Cohere misinterpreted 'mbeeca' as 'bee', losing the metaphorical and cultural context. OpenAI preserved some semantic and cultural aspects but missed the metaphorical depth. NLLB-200 closely matched the expert translation but lacked cultural nuance."
+    },
+    {
+      "proverb_id": "MW_090",
+      "kikuyu_text": "Uthuri wa gitonga ndunungaga.",
+      "expert_translation": "A rich man’s breaking of wind is odourless.",
+      "expert_cultural_meaning": "Money is power! “Some are more equal than others!”- The Animal Farm by George Orwell",
+      "expert_teaching": "A rich man may have objectionable habits, but people do not pay much attention to him because of his money and position. But inaudibly, it is judged by the same people, and God. No specialty should be given to some.",
+      "openai_gpt4o_mini": "The shadow of the tree does not cover the ground.",
+      "gemini_flash": "Gitonga Graduation Ndunungaga.",
+      "gpt35_turbo": "A stone in the shoe is what makes you limp",
+      "nllb200": "The wealthy man's wealth is not worth the money.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "rich man's privilege",
+        "social tolerance of wealth"
+      ],
+      "lost_cultural_meanings": [
+        "money's influence on social perception",
+        "inequality in judgment"
+      ],
+      "failed_metaphors": [
+        "rich man's breaking of wind being odourless"
+      ],
+      "semantic_similarity_avg": 0.025,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations were either nonsensical or completely unrelated to the original meaning. The metaphor of a rich man's actions being overlooked due to his wealth was not preserved, and the cultural context of inequality and social tolerance was lost."
+    },
+    {
+      "proverb_id": "MW_091",
+      "kikuyu_text": "Utonga nduhanyukagiruo.",
+      "expert_translation": "Riches are not rushed for.",
+      "expert_cultural_meaning": "Come easy go easy.",
+      "expert_teaching": "It warns against wrongly acquired wealth. One should work hard and meticulously so as to acquire it.",
+      "openai_gpt4o_mini": "You do not build a house without a foundation.",
+      "gemini_flash": "Judge the nldomagero.",
+      "gpt35_turbo": "A pot that has been washed clean.",
+      "nllb200": "Wealth is not a fixed thing.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth acquisition",
+        "patience in acquiring wealth"
+      ],
+      "lost_cultural_meanings": [
+        "warning against quick wealth",
+        "importance of hard work"
+      ],
+      "failed_metaphors": [
+        "riches are not rushed for"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.025,
+      "analysis_notes": "OpenAI's translation is somewhat related to foundational concepts but misses the wealth aspect. Google and Cohere's translations are nonsensical, showing a complete failure in understanding. NLLB's translation is slightly related to wealth but misses the metaphor and cultural context entirely."
+    },
+    {
+      "proverb_id": "MW_092",
+      "kikuyu_text": "Utonga nduri nyoni.",
+      "expert_translation": "Riches have no bird of ill will.",
+      "expert_cultural_meaning": "Wealth is good!",
+      "expert_teaching": "It teaches that being wealthy is not bad as long as the riches and the position are used for a positive purpose.",
+      "openai_gpt4o_mini": "To build a nest is to be a bird.",
+      "gemini_flash": "Judge the snare.",
+      "gpt35_turbo": "A bird that lands, falls down.",
+      "nllb200": "The bird is not a bird.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "utonga",
+        "nyoni"
+      ],
+      "lost_cultural_meanings": [
+        "wealth is inherently good",
+        "wealth should be used positively"
+      ],
+      "failed_metaphors": [
+        "riches have no bird of ill will"
+      ],
+      "semantic_similarity_avg": 0.025,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations were nonsensical and did not convey the intended meaning or metaphor. The cultural and metaphorical aspects were completely lost, resulting in critical failure across all systems."
+    },
+    {
+      "proverb_id": "MW_093",
+      "kikuyu_text": "Utonga ni kiiruru.",
+      "expert_translation": "Riches are but a shadow.",
+      "expert_cultural_meaning": "Riches do not last forever.",
+      "expert_teaching": "It teaches that a person should not pursue wealth aimlessly. It may seem easy or obvious to acquire, only for one to realize it is impossible;",
+      "openai_gpt4o_mini": "The path is a journey.",
+      "gemini_flash": "Utonga ni kiiruru.",
+      "gpt35_turbo": "Utonga ni kiiruru. (The spear is a fire.)",
+      "nllb200": "Wealth is a luxury.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "impermanence of wealth",
+        "pursuit of wealth"
+      ],
+      "lost_cultural_meanings": [
+        "riches do not last forever",
+        "wealth is not the ultimate goal"
+      ],
+      "failed_metaphors": [
+        "riches as a shadow"
+      ],
+      "semantic_similarity_avg": 0.325,
+      "cultural_fidelity_avg": 0.2,
+      "metaphor_preservation_avg": 0.2,
+      "analysis_notes": "OpenAI, Cohere, and NLLB-200 failed to capture the essence of the proverb. OpenAI's translation was unrelated to the original meaning. Cohere's translation was nonsensical and unrelated to the proverb. NLLB-200 misinterpreted the metaphor, focusing on luxury rather than impermanence. Google retained the original proverb text, which preserved the metaphor and cultural meaning, but did not provide an English translation."
+    },
+    {
+      "proverb_id": "MW_094",
+      "kikuyu_text": "Utonga ni wa ngai.",
+      "expert_translation": "Wealth belongs to God.",
+      "expert_cultural_meaning": "Prosperity comes by fate.",
+      "expert_teaching": "It teaches that prosperity comes from God. Each person should live his/her life without comparing themselves to others. We cannot all be equal.",
+      "openai_gpt4o_mini": "The work is of God.",
+      "gemini_flash": "ITO TAHOODS.",
+      "gpt35_turbo": "Utonga ni wa ngai: This breaks down to 'Utonga' (thorns) 'ni' (are/belong to) 'wa ngai' (my/mine). A literal translation would be: 'Thorns are mine.'",
+      "nllb200": "Wealth is God's.",
+      "gap_type": "complete_failure|metaphor_loss|cultural_loss",
+      "failed_systems": [
+        "google",
+        "cohere"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth",
+        "God"
+      ],
+      "lost_cultural_meanings": [
+        "prosperity comes by fate",
+        "prosperity comes from God"
+      ],
+      "failed_metaphors": [
+        "Wealth belonging to God as a metaphor for fate and divine providence"
+      ],
+      "semantic_similarity_avg": 0.4,
+      "cultural_fidelity_avg": 0.325,
+      "metaphor_preservation_avg": 0.25,
+      "analysis_notes": "Google's translation is nonsensical and unrelated to the proverb. Cohere's translation misinterprets 'utonga' as 'thorns' instead of 'wealth', leading to a complete loss of meaning. OpenAI's translation captures the divine aspect but misses the metaphorical and cultural implications. NLLB-200 provides a close translation but lacks depth in cultural and metaphorical context."
+    },
+    {
+      "proverb_id": "MW_095",
+      "kikuyu_text": "Utonga wa muthiini ni ciana. W",
+      "expert_translation": "The wealth of the poor consists in having children.",
+      "expert_cultural_meaning": "Children support parents later in life when one is physically weak. “The old woman looks after the child to grow its teeth and the young one in turn looks after the old woman when she loses her teeth.” ~ Akan (Ghana, Ivory Coast) proverb",
+      "expert_teaching": "It teaches that children are a treasure to a family because they carry forth the generation. People should have children in order to carry respect and honour., and to have pride and hope about the future.",
+      "openai_gpt4o_mini": "The strength of a tree is its roots.",
+      "gemini_flash": "You're the one who's dating. W",
+      "gpt35_turbo": "Strikes of the hammer are tears. (The strikes of the hammer produce tears)",
+      "nllb200": "The wealth of the tree is the children.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "importance of children",
+        "support in old age"
+      ],
+      "lost_cultural_meanings": [
+        "children as wealth",
+        "generational support"
+      ],
+      "failed_metaphors": [
+        "children as wealth",
+        "support in old age"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.05,
+      "metaphor_preservation_avg": 0.05,
+      "analysis_notes": "Most systems failed to capture the core concept of children being the wealth of the poor. OpenAI's translation was the closest but still missed the cultural and metaphorical nuances. Google, Cohere, and NLLB provided translations that were completely unrelated to the original proverb."
+    },
+    {
+      "proverb_id": "MW_096",
+      "kikuyu_text": "Utonga wa muici nduthuunaga, na ni uteeaga wake.",
+      "expert_translation": "Unlawful riches do not prosper, they ruin even the legitimate ones.",
+      "expert_cultural_meaning": "Corruption leads to poverty.",
+      "expert_teaching": "This proverb warns that fraudulently acquired wealth does not increase one’s prosperity. Instead it ultimately consumes that which he had acquired in the rightful way.",
+      "openai_gpt4o_mini": "The path of a home does not lead to destruction, and it is also its own guide.",
+      "gemini_flash": "Muici Nduthuunaga, and it is his speech.",
+      "gpt35_turbo": "A spear that is well-sharpened is the one that strikes the target.",
+      "nllb200": "And the king's servants were very glad, and they took him to their house.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "utonga",
+        "muici",
+        "nduthuunaga",
+        "uteeaga"
+      ],
+      "lost_cultural_meanings": [
+        "corruption leads to poverty",
+        "fraudulent wealth is destructive"
+      ],
+      "failed_metaphors": [
+        "unlawful riches do not prosper",
+        "they ruin even the legitimate ones"
+      ],
+      "semantic_similarity_avg": 0.0,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the meaning of the Kikuyu proverb. The translations were nonsensical and did not preserve any of the original metaphorical or cultural meanings. Key concepts related to wealth, corruption, and the consequences of unlawful actions were completely lost."
+    },
+    {
+      "proverb_id": "MW_097",
+      "kikuyu_text": "Waariire aanyamaririe weigiire.",
+      "expert_translation": "He who ate (spent all his resources) persecuted the one who kept some aside. 98.Wagi ndumenanagirwo (GJW W 18, N 641) W English: Poverty does not cause enemity. 99.Waagi wi gitaranio. (KW vol.1 pg 348) W English: Lacking leads to dreamy thoughts of what the opposite would bring. 100.Wooni wi njaci. (Ba 991, KW vol.1 pg 321) MW English: The state of having acquired wealth, breeds contemptuous pride. A COLLECTION OF 100 PROVERBS AND WISE SAYINGS OF THE GIKUYU OF KENYA ABOUT MONEY AND WEALTH",
+      "expert_cultural_meaning": "A fool and his money are soon parted.",
+      "expert_teaching": "People who are spendthrifts and don’t save, view by those who have been saving their money and wealth, with envy and jelousy.",
+      "openai_gpt4o_mini": "He who has been bitten by a snake fears even the rope.",
+      "gemini_flash": "Waariire Aanyamarie Weigiire.",
+      "gpt35_turbo": "Waariire aanyamaririe weigiire.\n\n- Waariire: \"Old woman\"\n- Aanyamaririe: \"with many children\"\n- Weigiire: \"who cannot carry all her children at once\"",
+      "nllb200": "And he said to them, \"Do not be afraid.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "resource management",
+        "envy",
+        "jealousy"
+      ],
+      "lost_cultural_meanings": [
+        "spendthrift behavior",
+        "saving and envy"
+      ],
+      "failed_metaphors": [
+        "A fool and his money are soon parted"
+      ],
+      "semantic_similarity_avg": 0.025,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb. The translations were either nonsensical or completely unrelated to the original meaning. Key concepts of resource management, envy, and jealousy were lost, and the metaphorical structure was not preserved. The cultural context of spendthrift behavior versus saving was entirely missed."
+    },
+    {
+      "proverb_id": "MW_098",
+      "kikuyu_text": "Wagi ndumenanagirwo.",
+      "expert_translation": "Poverty does not cause enemity.",
+      "expert_cultural_meaning": "Do not despise the poor.",
+      "expert_teaching": "It teaches that people should not hate each other because of poverty. Instead they should accept and appreciate each other as human beings.",
+      "openai_gpt4o_mini": "They do not get lost in the forest.",
+      "gemini_flash": "Scales ndumenanagirwo.",
+      "gpt35_turbo": "Wagi ndumenanagirwo. -> The cow that does not allow itself to be milked.",
+      "nllb200": "The whale is not a human.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "poverty",
+        "enemity",
+        "acceptance"
+      ],
+      "lost_cultural_meanings": [
+        "do not despise the poor",
+        "appreciate each other as human beings"
+      ],
+      "failed_metaphors": [
+        "poverty does not cause enemity"
+      ],
+      "semantic_similarity_avg": 0.0,
+      "cultural_fidelity_avg": 0.0,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems completely failed to capture the meaning of the Kikuyu proverb. The translations provided were nonsensical and did not reflect any of the core concepts or cultural meanings of the original proverb. There was a total loss of metaphorical structure and cultural fidelity."
+    },
+    {
+      "proverb_id": "MW_099",
+      "kikuyu_text": "Waagi wi gitaranio.",
+      "expert_translation": "Lacking leads to dreamy thoughts of what the opposite would bring.",
+      "expert_cultural_meaning": "There is hope always that a people can change their status positively.",
+      "expert_teaching": "This proverb teaches that it is usual for poor people to hope that their financial status can change for the better in future. They imagine what wealth would bring into their lives.",
+      "openai_gpt4o_mini": "He who has a good heart.",
+      "gemini_flash": "We are guitars.",
+      "gpt35_turbo": "Waagi wi gitaranio. (Kikuyu) \n\nLiteral Translation: \"He who owns the guitar is the one who plays it.\"",
+      "nllb200": "The city is a dead end.",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "google",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "hope for change",
+        "dreamy thoughts"
+      ],
+      "lost_cultural_meanings": [
+        "hope for better financial status",
+        "imagination of wealth"
+      ],
+      "failed_metaphors": [
+        "dreamy thoughts of what the opposite would bring"
+      ],
+      "semantic_similarity_avg": 0.07500000000000001,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "Google and NLLB translations were completely off, with Google translating to 'We are guitars' and NLLB to 'The city is a dead end', both of which are nonsensical. OpenAI and Cohere failed to capture the metaphorical and cultural essence of the proverb, missing the key concepts of hope and change. None of the systems preserved the metaphorical structure or cultural meaning."
+    },
+    {
+      "proverb_id": "MW_100",
+      "kikuyu_text": "Wooni wi njaci. (woni wi njaci, wagi gitaranjo)",
+      "expert_translation": "The state of having acquired wealth, breeds contemptuous pride.",
+      "expert_cultural_meaning": "Pride comes before a fall. “Make some money but don’t let money make you.” ~ Tanzania",
+      "expert_teaching": "It teaches that as a consequence of their wealth, people can look down upon and demean others. A poor man does not have these traits because he is in thought wondering how to deal with his poverty.",
+      "openai_gpt4o_mini": "You are what you eat. (you are what you eat, you become what you consume)",
+      "gemini_flash": "Words. (away on the sleeve, we guitar)",
+      "gpt35_turbo": "One who eats by the fire (will) die by the fire (and his children will be left as orphans)",
+      "nllb200": "The name of the game is \"The Game\".",
+      "gap_type": "complete_failure",
+      "failed_systems": [
+        "openai",
+        "google",
+        "cohere",
+        "nllb"
+      ],
+      "failure_severity": "critical",
+      "missing_kikuyu_concepts": [
+        "wealth",
+        "pride",
+        "contempt"
+      ],
+      "lost_cultural_meanings": [
+        "pride comes before a fall",
+        "wealth leading to contempt"
+      ],
+      "failed_metaphors": [
+        "wealth breeds contemptuous pride"
+      ],
+      "semantic_similarity_avg": 0.1,
+      "cultural_fidelity_avg": 0.025,
+      "metaphor_preservation_avg": 0.0,
+      "analysis_notes": "All systems failed to capture the essence of the proverb, which is about the negative traits that can accompany wealth. The translations provided were either nonsensical or completely unrelated to the original proverb's meaning. None of the systems preserved the cultural or metaphorical aspects of the proverb."
+    }
+  ]
+}
