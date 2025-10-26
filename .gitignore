@@ -113,3 +113,6 @@ logs/*.log
 # Automation script outputs (keep scripts but ignore generated outputs)
 scripts/automation/*.log
 scripts/setup/*.log
+
+# Snyk Security Extension - AI Rules (auto-generated)
+.github/instructions/snyk_rules.instructions.md
