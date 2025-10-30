@@ -12,5 +12,11 @@ Components:
 """
 
 from .graph_retriever import GraphRetriever, RetrievedProverb
+from .context_builder import ContextBuilder, CulturalContext
 
-__all__ = ['GraphRetriever', 'RetrievedProverb']
+__all__ = [
+    'GraphRetriever', 
+    'RetrievedProverb',
+    'ContextBuilder',
+    'CulturalContext'
+]
