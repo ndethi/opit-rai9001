@@ -13,10 +13,13 @@ Components:
 
 from .graph_retriever import GraphRetriever, RetrievedProverb
 from .context_builder import ContextBuilder, CulturalContext
+from .ograg_translator import OGRAGTranslator, TranslationResult
 
 __all__ = [
     'GraphRetriever', 
     'RetrievedProverb',
     'ContextBuilder',
-    'CulturalContext'
+    'CulturalContext',
+    'OGRAGTranslator',
+    'TranslationResult'
 ]
