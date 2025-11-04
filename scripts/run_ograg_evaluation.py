@@ -28,10 +28,13 @@ import json
 from neo4j import GraphDatabase
 from decouple import config
 
-# Add src to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
+# Add paths for imports
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root / 'src'))
+sys.path.insert(0, str(project_root / 'src' / 'og-rag-system'))
 
-from og_rag_system import OGRAGTranslator, TranslationResult
+# Import from og-rag-system
+from ograg_translator import OGRAGTranslator, TranslationResult
 
 logging.basicConfig(
     level=logging.INFO,
