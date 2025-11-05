@@ -87,8 +87,13 @@ models/
 outputs/
 results/
 # Exception: Keep baseline translations as research milestone artifacts
+!data/results/
+!data/results/baseline_translations/
 !data/results/baseline_translations/baseline_literal_proverb_100proverbs_deduped.csv
 !data/results/baseline_translations/baseline_translations_clean_50proverbs_deduped.csv
+# Exception: Keep OG-RAG evaluation results as key research outcome
+!data/results/ograg_translations/
+!data/results/ograg_translations/ograg_evaluation_100proverbs.csv
 
 # Temporary files
 .tmp/
