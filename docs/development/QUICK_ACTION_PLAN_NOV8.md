@@ -9,17 +9,36 @@
 
 ### 🔴 CRITICAL - Must Complete Today
 
-#### 1. Run Metrics Calculation (30 min)
+#### 1. Run Comparative BLEU Calculation (30 min) ✅ COMPLETE
 ```bash
 cd /Users/tektonikarma/dev/opit/opit-rai9001-thiLLMo
-python scripts/calculate_metrics.py \
-  --evaluation-csv data/results/ograg_translations/ograg_evaluation_100proverbs.csv \
-  --output-dir data/results
+python scripts/comparative_bleu_calculator.py \
+  data/results/ograg_translations/ograg_evaluation_100proverbs.csv \
+  data/results
 ```
-**Expected Output:**
-- `data/results/ograg_metrics_per_proverb.csv`
-- `data/results/ograg_metrics_summary.csv`
-- `data/results/ograg_metrics_summary.json`
+**Output Generated:**
+- ✅ `data/results/comparative_bleu_scores.csv` (97 proverbs × 3 methods)
+- ✅ `data/results/comparative_bleu_summary.json` (aggregate stats)
+- ✅ `docs/development/COMPARATIVE_BLEU_FINDINGS.md` (comprehensive analysis)
+
+**Key Results:**
+- OG-RAG: 9.33 BLEU (17.4% improvement over Raw GPT-4)
+- Raw GPT-4: 7.95 BLEU (baseline)
+- Traditional RAG: 19.27 BLEU ⚠️ (data leakage suspected)
+
+**Commits:** 5d82265, 475650c
+
+#### 1b. Calculate Semantic Similarity (2 hours) 📋 NEXT
+**Purpose:** Measure meaning preservation beyond word overlap
+**Metric:** Cosine similarity of sentence embeddings
+**Expected:** Higher semantic similarity despite low BLEU
+
+#### 1c. Select Qualitative Examples (2 hours) 📋 PENDING
+**Purpose:** Show cultural equivalence cases
+**Selection criteria:**
+- High semantic sim, low BLEU (cultural equivalence)
+- High BLEU (literal preservation)
+- Low scores (failures to analyze)
 
 ---
 
