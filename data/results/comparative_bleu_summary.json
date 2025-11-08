@@ -1,0 +1,40 @@
+{
+  "total_proverbs_evaluated": 97,
+  "methods": [
+    {
+      "method": "Raw GPT-4",
+      "count": 97,
+      "average": 7.95,
+      "min": 0.0,
+      "max": 100.0,
+      "median": 4.54
+    },
+    {
+      "method": "Traditional RAG",
+      "count": 97,
+      "average": 19.27,
+      "min": 0.0,
+      "max": 100.0,
+      "median": 6.44
+    },
+    {
+      "method": "OG-RAG",
+      "count": 97,
+      "average": 9.33,
+      "min": 0.0,
+      "max": 68.04,
+      "median": 5.8
+    }
+  ],
+  "improvements": {
+    "ograg_vs_raw": {
+      "absolute": 1.38,
+      "percentage": 17.36
+    },
+    "ograg_vs_trad_rag": {
+      "absolute": -9.94,
+      "percentage": -51.58
+    }
+  },
+  "best_method": "Traditional RAG"
+}
