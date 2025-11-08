@@ -1,0 +1,98 @@
+proverb_id,kikuyu_text,expert_translation,ograg_translation,bleu_score
+MW_001,Aikaragia mbia ta njuu ngigi.,He looks after his money the way storks pursue locusts.,He guards his wealth as a stork chases locusts.,9.03
+MW_002,Andu ni indo.,People are wealth.,People are the true wealth.,22.96
+MW_003,Bururi uri ngui ndungiciarikira indo.,In an unstable country one cannot become wealthy,Wealth cannot sprout in a land of turmoil.,4.77
+MW_004,Bururi uri ngui ndungiciarikira indo.,In an unstable country one cannot become wealthy.,Wealth cannot thrive in a land of chaos.,5.67
+MW_005,Cia kionje itigayagwo kiri muoyo/gitanakua.,The property of an invalid are not distributed while the person is still alive.,The belongings of the weak are not divided while they still breathe.,7.49
+MW_006,Cia thuguri itiyuragia ikumbi,Bought things do not fill the granary.,Purchased goods do not fill the storehouse.,36.56
+MW_007,Ciira muingi/munene ni ukia.,A long lawsuit brings poverty.,A drawn-out conflict breeds destitution.,9.65
+MW_008,Ciringi imurikagwo na ingi.,"To get money, you have to spend money.","To make wealth, you must first part with some.",8.91
+MW_009,Gicigo kia mugunda gitinyihaga.,A piece of land is not a little thing.,No plot of land is too small to cultivate.,16.78
+MW_010,Githaka ni ngwatira.,Land is inalienable (from the clan).,Land is the clan's heart.,11.71
+MW_011,Gitonga kigiragio iganjo gikaarima,The rich man cannot be prevented from cultivating the “iganjo”he wants.,"Wealth is like a shadow, it grows with the day.",4.03
+MW_012,Gitonga kiriaga munyuko.,A wealthy man eats only a dying goat (very thin with tough meat)/undesirable food.,Wealth whispers to its owner.,0.93
+MW_013,"Gukiaga na gutonga ititiganaga. GJW G 59, Ba 73) WM",Poverty and riches do not leave each other.,Accumulating and maintaining wealth are two different battles.,5.67
+MW_014,Gutiri kiega kiumaga heega.,"There is nothing that is of worth, that is obtained from the comfort corner.",There is no feast that goes without preparation.,5.21
+MW_015,"Gutiri mburi itangiracio, tiga inawathe.","Any goat can serve as brideswealth, unless it has a defect.","There's no goat that starts by giving birth, don't rush wealth.",4.07
+MW_016,Gutiri munini mukia.,No young person can be considered poor.,There is no great morning.,5.82
+MW_017,Gutiri uthuire tiga akiaga.,"A man is poor not because he scorns possessions, but because he possesses nothing.",There is no wealth without toil.,2.16
+MW_018,Guthiina ti kuriita,To be poor does not connote being foolish.,Planting is not the same as harvesting.,5.8
+MW_019,Guthinga kurugite gutonga.,Virtue is better than riches.,To plant is to pave the path to wealth.,4.99
+MW_020,Gutiri mbura itari gitonga kiayo.,There is no rain that does not bring wealth to someone.,There is no rain without its own blessing.,22.61
+MW_021,Gutiri ngia itari muthenya wayo.,Every poor person has his day.,No beast roams without its skin.,6.57
+MW_022,Gutiri uriragio ni utonga no ukia.,"Nobody grumbles at being rich, only at being poor.",No wealth is complete without peace.,3.71
+MW_023,Gwa gitonga gucokagirirwo ni mambura.,The home of a rich man is revisited during a ceremony (especially burial).,The path to wealth is paved with diligence.,2.88
+MW_024,Haro ni ya muka uri thiiri,Quarrelling is the hallmark of the woman who has debts.,A mother's field is never barren.,4.41
+MW_025,Hinya nduri indo,Strength has no wealth.,Strength is not wealth.,23.64
+MW_026,Indo ciene inoragia mundu itina rimwe. W,Other people’s property fattens only one buttock.,"Wealth that is shared enriches the community, not just one person.",3.67
+MW_027,Indo ciene iri mutino.,Stolen goods bring misfortune.,Wealth in the morning is poverty by evening.,4.77
+MW_029,Indo ni kurimithanio,Wealth comes by cultivating together.,Wealth is a result of hard work.,6.57
+MW_030,Indo ni mwene.,Wealth is all about the owner.,Wealth belongs to its owner.,15.21
+MW_031,Iroobagia ha muoni.,They (vultures) haunt the yard of a wealthy man.,The one who is always asking does not go unnoticed.,3.42
+MW_032,Itonga igiri itiri nyoni.,Two rich persons do not wish each other a bird of ill omen.,Two riches do not make a song.,6.56
+MW_033,Kahora kari indo.,Steadiness makes wealth.,Every homestead has its own wealth.,13.13
+MW_034,Kigina gitiinikagwo irio hande itari nguru.,The seed-storing calabash should never be drained before the new crop has matured.,A tree that doesn't bear fruit cannot provide a wholesome meal.,2.87
+MW_035,Kihoto ni indo.,A fair argument is wealth.,The home is the source of wealth.,12.22
+MW_036,Kirema mbeeca ni kigariure. .,That which is beyond the power of money must be manipulated.,A borrowed cloak does not provide lasting warmth.,3.42
+MW_037,Kumaatha gutiri hinya ta kuramata.,To acquire wealth is not as difficult as good stewardship.,To possess is not as powerful as to acquire.,17.47
+MW_038,Kumaatha gutiri hinya ta kuramata.,To acquire wealth is not as difficult as good stewardship.,To consume without labor is not as satisfying as to consume from labor.,12.57
+MW_039,Kuri mwoni na muraata thi.,There is one who finds wealth and one who merely mends the surface of its cracks.,Even the poor man has his day in the sun.,2.58
+MW_040,Kuria thiiri wene ni kuriha.,The way of eating a debt is paying it.,To eat alone is to choke.,5.09
+MW_041,Mbari ya uri moigaga matikaaga.,The family of the haves often say that they will never lack.,A family that is united will prosper.,4.18
+MW_042,Mbeeca itiri mwana kana nyina.,With money there is no child or mother.,"Poverty doesn't spare the child, nor the mother.",9.29
+MW_043,Mucii uri mburi ndwagaga kihuno.,A homestead with goats does not lack miscarriages.,A home with goats does not lack a cooking pot.,38.16
+MW_044,Mugunda ni mugema wa mwene. W,A farm is the ornament of the owner.,The land is the host of its owner.,14.26
+MW_045,Mugunda wene nduinagwo.,Another’s field is not praised.,One does not inherit their own farm.,6.57
+MW_046,Mugurira hakuhi nita aheo.,The man who buys something at a place near by is like the man who is given something.,He who avoids work will not taste the fruit of wealth.,2.49
+MW_047,Muhakana na ciake itimuuragira. .,He who stands close to his property does not lose it.,One who quarrels with his own does not prosper.,8.64
+MW_048,Muici ndathiragwo ni mari hindi.,The thief cannot keep fit because his stools contain undigested food.,A poor man's plea is his wealth.,3.98
+MW_049,Muici uri hunyu arindagira uri maguta.,"An ugly thief is more likely to be caught than one smeared with fat, i.e. carefully dressed.",The one who is in the forest does not laugh at the one who is lost.,2.24
+MW_050,Muici utari munyiite ni muria gake.,A thief who has not been caught is like a proprietor who has just spent his own money.,A silent trader sells his own merchandise.,3.32
+MW_051,Mukoobi thiiri ndendete kuriha. .,He who borrows does not like repaying.,A persistent pauper cannot be denied a gift.,4.77
+MW_052,Mundu-muka ndatumagwo thiriini.,A woman is not sent to fetch debts.,A woman is not sold for thirty goats.,31.56
+MW_053,"Muriio wa njoohi niuriukagwo, no wa indo nduriukagwo. . (GJW M 341, Ba","The drunkenness of beer passes away, but that of wealth does not.","The poverty of a drunkard is seen, but the poverty of the wealthy is hidden.",6.02
+MW_054,"Muthiini niathinukaga, no munyamaari ndathiinukaga.","A poor man can overcome poverty, but a man poor at heart can never.","A poor man's goat gives birth, but a rich man's goat multiplies.",12.06
+MW_055,Muthinio ni kuona akiriite muthinio ni waagi.,He who is troubled by wealth surpasses the one troubled by poverty.,True wealth is seeing what you have; true poverty is lacking vision.,4.02
+MW_056,Mutongi ndathethukaga. .,Whoever would like to be rich must have patience.,The guest does not host himself.,4.28
+MW_057,Mutongi ndathethukaga. .,Whoever would like to be rich must have patience.,The guest does not overstay.,4.17
+MW_058,Mwana ni indo.,A child bears prosperity.,A child is wealth.,23.64
+MW_059,Mwana wa kahii ti wa kairiitu.,"A male child, is not a female child.",The child of a poor man is not the child of a rich man.,6.92
+MW_060,Mwanake wi na indo ndoihanaga.,"The youth who has enough to buy his girl, need not beseech her.",A man who has wealth does not go unnoticed.,6.05
+MW_061,Mwendia niaguraga.,The one who sells also buys.,"The one who loves, shares.",26.27
+MW_062,Muthuuri athikagwo na indo.,An old man is buried with his wealth.,A wanderer is not burdened by wealth.,10.79
+MW_063,Ndonga imwe ndihingaga iriuko.,A rich man cannot block the ford.,One finger cannot kill a louse.,6.77
+MW_064,Ndonga naanu irugiitwo ni mukari.,"An arrogant rich man, is surpassed by a miser.",A borrowed knife is returned by the handle.,5.02
+MW_065,Ndugu nyingi ithaatagia muhuko.,Many acquaintances deplete the pocket.,Many siblings do not lack a helper.,6.57
+MW_066,Ngai ndoonagio nda.,God is not shown one’s belly.,God does not despise the poor.,8.64
+MW_067,Ngia itari thiiri ti ngia.,A poor person with no debts is not so poor a person.,A cow without a calf is not a cow.,7.82
+MW_069,"Riua ritiri gitonga no ngia theri. (Riua ritiui gitonga no ngia their) (GJW R 23,Ba","The sun has no rich people, but only the poor people.",A river does not flow with wealth for the poor.,6.92
+MW_070,Ruthuuro rutiiyuragia ikumbi,Selected goods do not fill the granary.,Borrowed seeds do not fill the granary.,68.04
+MW_071,Ruua rukuhi rutiri thogora.,A short hide is of no value.,A borrowed hoe does not cultivate the homestead.,5.67
+MW_073,Thiina nduri miri .,Poverty has no roots.,The journey is longer when walked alone.,5.52
+MW_074,Thiiri utarihwo no wa urogi.,The only debt which is not payable is the one of poisoning someone.,A river is not cursed by those who drink from it.,6.34
+MW_075,Thogora nduri mwana na nyina.,"In business bargain, there is no child or mother.",A child is a garment that adorns both the mother and the father.,4.02
+MW_076,Thogora ni mururumo utaruo.,Buying and selling causes much noice but no strife.,A whisper is a roar to the attentive.,4.27
+MW_077,Thogora ni maitho.,Buying and selling involves the eyes.,Wisdom is in the eyes.,25.58
+MW_078,Thogora uuragagwo ni kiongereri.,A bargain breaks down over the extra demand.,The axe that fells the tree was sharpened by the whetstone.,4.03
+MW_079,Tiga kwihira uriri wi riikoini. GJW T 85) MW,When you are poor do not equate yourself with the rich.,Don't rush to count your harvest while it's still in the fields.,3.67
+MW_080,Uhunii eetaga uhutii mukoroku. .,"He who is satisfied, calls the hungry one greedy.",The one who desires honey must brave the bee sting.,5.3
+MW_081,Ukari muhithe ndumenanagirwo. MW,Hidden miserliness does not attract scorn.,The wealth of a miser is never celebrated.,4.77
+MW_082,"Urugari nduri indo, ni heho iri indo.","Warmth has no wealth, it is the cold that has.",A borrowed cloak does not provide the warmth of one's own.,4.03
+MW_083,Urume uri iraria.(Urume wi indo),Bravery brings wealth.,A borrower is a slave to the lender.,4.77
+MW_084,Utaana uminagira murokerwo ng’ombe.,Generosity ruins the man who gives his cows to morning visitors.,He who despises the small will lose the large.,4.52
+MW_085,Utari ndari ngoro (Githumbi/ githumba gitiri ngoro),He who has nothing has no heart.,A house without a heart is not a home.,4.99
+MW_086,Utari ndeetagwo ndundu. .,A poor man is not invited to a private discussion.,No one is burdened beyond their capacity.,4.51
+MW_087,Utari ni wa kwa mari. (Muthiini egiritagia itonga) .,"A poor man leans on the rich. Kiswahili : Maskini hutegemea matajiri. Meaning: Each person needs another, regardless of status. Teaching: This proverb teaches that within a family or community, people cannot be equal. Some are poor and others rich. But they need each other for daily objectives to be achieved. Bible parallel: 1 Thessalonians 5:11 “Therefore encourage one another and build each other up, just as in fact you are doing.”",He who lacks is not of the wealthy. (A poor man does not despise wealth).,0.25
+MW_088,Uthaka nduriagwo.,Beauty is not consumed.,Poverty is not chosen.,23.64
+MW_089,Uthaka wa mundurume ni mbeeca. M,The beauty of a man is money.,A man's wealth is his character.,6.77
+MW_090,Uthuri wa gitonga ndunungaga.,A rich man’s breaking of wind is odourless.,The path to wealth is not for the faint-hearted.,4.99
+MW_091,Utonga nduhanyukagiruo.,Riches are not rushed for.,Wealth is not stumbled upon.,9.65
+MW_092,Utonga nduri nyoni.,Riches have no bird of ill will.,Wealth is a bird that flies away.,6.57
+MW_093,Utonga ni kiiruru.,Riches are but a shadow.,Wealth is a whisper.,10.4
+MW_094,Utonga ni wa ngai.,Wealth belongs to God.,Wealth is a gift from God.,14.54
+MW_095,Utonga wa muthiini ni ciana. W,The wealth of the poor consists in having children.,The wealth of the impoverished lies in their offspring.,29.07
+MW_096,"Utonga wa muici nduthuunaga, na ni uteeaga wake.","Unlawful riches do not prosper, they ruin even the legitimate ones.","The wealth of a silent man grows, and it is his silence that nurtures it.",2.72
+MW_097,Waariire aanyamaririe weigiire.,"He who ate (spent all his resources) persecuted the one who kept some aside. 98.Wagi ndumenanagirwo (GJW W 18, N 641) W English: Poverty does not cause enemity. 99.Waagi wi gitaranio. (KW vol.1 pg 348) W English: Lacking leads to dreamy thoughts of what the opposite would bring. 100.Wooni wi njaci. (Ba 991, KW vol.1 pg 321) MW English: The state of having acquired wealth, breeds contemptuous pride. A COLLECTION OF 100 PROVERBS AND WISE SAYINGS OF THE GIKUYU OF KENYA ABOUT MONEY AND WEALTH",Those who have tasted wealth will not settle for less.,0.0
+MW_098,Wagi ndumenanagirwo.,Poverty does not cause enemity.,Borrowed clothes do not keep one warm.,6.57
+MW_099,Waagi wi gitaranio.,Lacking leads to dreamy thoughts of what the opposite would bring.,Borrowed feathers do not make a peacock.,3.35
+MW_100,"Wooni wi njaci. (woni wi njaci, wagi gitaranjo)","The state of having acquired wealth, breeds contemptuous pride.",The eyes of the poor are not blind.,5.02
