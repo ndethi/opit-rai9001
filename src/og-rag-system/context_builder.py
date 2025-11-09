@@ -268,6 +268,9 @@ class ContextBuilder:
         without the rich cultural context, concept definitions, or
         structured formatting that OG-RAG provides.
         
+        IMPORTANT: Does NOT include expert translations to avoid data leakage.
+        Shows only Kikuyu text examples to provide linguistic context.
+        
         Args:
             kikuyu_proverb: The proverb to translate
             retrieved_proverbs: Retrieved similar proverbs
@@ -283,12 +286,12 @@ class ContextBuilder:
         # Simple instruction
         prompt_parts.append(
             "Translate the following Kikuyu proverb into English. "
-            "Here are some similar proverbs for reference:\n\n"
+            "Here are some similar Kikuyu proverbs for linguistic context:\n\n"
         )
         
-        # Just list examples without cultural context
+        # Show only Kikuyu text to avoid data leakage (no expert translations)
         for i, proverb in enumerate(proverbs, 1):
-            prompt_parts.append(f"{i}. {proverb.kikuyu_text} → {proverb.expert_translation}\n")
+            prompt_parts.append(f"{i}. {proverb.kikuyu_text}\n")
         
         # Translation request
         prompt_parts.append(f"\nNow translate: {kikuyu_proverb}\n")
