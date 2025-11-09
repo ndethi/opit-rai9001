@@ -1,0 +1,22 @@
+proverb_id,kikuyu_text,expert_translation,expert_cultural_meaning,raw_llm_translation,raw_llm_reasoning,raw_llm_confidence,raw_llm_time,google_translation,google_time,generation_timestamp,processing_order,systems_included,og_rag_status
+MW_001,Aikaragia mbia ta njuu ngigi.,He looks after his money the way storks pursue locusts.,,"```json
+{
+    ""translation"": ""A patient person will always succeed."",
+    ""reasoning"": ""The Kikuyu proverb 'Aikaragia mbia ta njuu ngigi' literally translates to 'Patience bears fruits on top of the tree'. This proverb emphasizes the virtue of patience and the idea that those who are patient and persistent will eventually achieve their goals, just as one waits for fruits to ripen at the top of a tree."",
+    ""confidence"": 0.9
+}
+```",Direct translation without cultural context,0.5,5.742151975631714,Aikharia mbia ta njigi.,0.978377103805542,2025-10-03T23:37:32.199922,1,"raw_llm,google",pending_implementation
+MW_001,Aikaragia mbia ta njuu ngigi.,He looks after his money the way storks pursue locusts.,Whoever has much always wants more.,"```json
+{
+    ""translation"": ""A patient person will always succeed."",
+    ""reasoning"": ""The Kikuyu proverb 'Aikaragia mbia ta njuu ngigi' literally translates to 'Patience bears fruits on top of the tree'. This proverb emphasizes the virtue of patience and the idea that those who are patient and persistent will eventually achieve their goals, just as one waits for fruits to ripen at the top of a tree."",
+    ""confidence"": 0.9
+}
+```",Direct translation without cultural context,0.5,5.650470018386841,Aikharia mbia ta njigi.,3.6243371963500977,2025-10-03T23:37:41.475035,2,"raw_llm,google",pending_implementation
+MW_002,Andu ni indo.,People are wealth.,,"```json
+{
+    ""translation"": ""A pot is not a home."",
+    ""reasoning"": ""This proverb seems to be emphasizing that a mere possession or object (the pot) does not constitute a home or a sense of belonging. It suggests that a home is more than just physical items; it's about community, family, and emotional connections."",
+    ""confidence"": 0.85
+}
+```",Direct translation without cultural context,0.5,7.755395174026489,And touch it indo.,0.9756519794464111,2025-10-03T23:37:50.206355,3,"raw_llm,google",pending_implementation

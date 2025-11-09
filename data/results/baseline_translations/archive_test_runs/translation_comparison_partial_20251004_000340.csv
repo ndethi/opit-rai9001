@@ -1,0 +1,22 @@
+proverb_id,kikuyu_original,expert_translation,expert_cultural_meaning,cohere_aya_translation,cohere_aya_model,cohere_aya_reasoning,cohere_aya_confidence,cohere_aya_time_sec,cohere_aya_cultural_score,cohere_aya_missing_concepts,cohere_aya_ontology_gaps,openai_gpt_translation,openai_gpt_model,openai_gpt_reasoning,openai_gpt_confidence,openai_gpt_time_sec,openai_gpt_cultural_score,openai_gpt_missing_concepts,openai_gpt_ontology_gaps,google_translate,google_translate_status,google_time_sec,google_cultural_score,google_missing_concepts,google_ontology_gaps,primary_ontology_gaps,all_missing_concepts,all_ontology_recommendations,generation_timestamp,processing_order,raw_llm_provider_used,raw_llm_model_used
+MW_001,Aikaragia mbia ta njuu ngigi.,He looks after his money the way storks pursue locusts.,,"```json
+{
+    ""translation"": ""A bird in the hand is worth two in the bush."",
+    ""reasoning"": ""The Kikuyu proverb 'Aikaragia mbia ta njuu ngigi' directly corresponds to the English proverb 'A bird in the hand is worth two in the bush.' This proverb emphasizes the value of what one currently possesses over the potential but uncertain gain of something better. It encourages prudence and appreciation for present blessings rather than risking them for uncertain future gains."",
+    ""confidence"": 1.0
+}
+```",c4ai-aya-23,Direct translation without cultural context,0.5,4.493154048919678,0.5,,,,N/A,,0.0,0.0,0.0,,,Aikharia mbia ta njigi.,Available,0.9468700885772705,0.5,,,MODERATE: Significant cultural loss,,,2025-10-04T00:03:29.740341,1,cohere,c4ai-aya-23
+MW_001,Aikaragia mbia ta njuu ngigi.,He looks after his money the way storks pursue locusts.,Whoever has much always wants more.,"```json
+{
+    ""translation"": ""A patient person will always succeed."",
+    ""reasoning"": ""The Kikuyu proverb 'Aikaragia mbia ta njuu ngigi' literally translates to 'Patience bears fruit on top of the tree'. This proverb emphasizes the value of patience and perseverance. It suggests that those who are patient and willing to wait will eventually achieve their goals, much like how fruit takes time to ripen at the top of a tree."",
+    ""confidence"": 0.9
+}
+```",c4ai-aya-23,Direct translation without cultural context,0.5,4.187438726425171,0.5,,,,N/A,,0.0,0.0,0.0,,,Aikharia mbia ta njigi.,Available,0.9577999114990234,0.5,,,MODERATE: Significant cultural loss,,,2025-10-04T00:03:34.885972,2,cohere,c4ai-aya-23
+MW_002,Andu ni indo.,People are wealth.,,"```json
+{
+    ""translation"": ""A pot is not a home."",
+    ""reasoning"": ""This proverb seems to be emphasizing that a mere possession or object (the pot) does not constitute a home or a sense of belonging. It suggests that a home is more than just physical items; it's about community, family, and emotional connections. The Kikuyu people value communal living and strong family bonds, so this proverb likely underscores the importance of those relationships over material possessions."",
+    ""confidence"": 0.85
+}
+```",c4ai-aya-23,Direct translation without cultural context,0.5,4.727612018585205,0.5,prosperity,prosperity: Holistic understanding of wealth,,N/A,,0.0,0.0,0.0,,,And touch it indo.,Available,0.9278280735015869,0.0,community; prosperity,community: Ubuntu philosophy and collective identity; prosperity: Holistic understanding of wealth,MODERATE: Significant cultural loss | Missing: prosperity,community; prosperity,community: Ubuntu philosophy and collective identity; prosperity: Holistic understanding of wealth,2025-10-04T00:03:40.541776,3,cohere,c4ai-aya-23

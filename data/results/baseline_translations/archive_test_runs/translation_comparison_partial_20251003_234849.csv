@@ -1,0 +1,22 @@
+proverb_id,kikuyu_text,expert_translation,expert_cultural_meaning,raw_llm_translation,raw_llm_reasoning,raw_llm_confidence,raw_llm_time,google_translation,google_time,generation_timestamp,processing_order,systems_included,og_rag_status
+MW_001,Aikaragia mbia ta njuu ngigi.,He looks after his money the way storks pursue locusts.,,"```json
+{
+    ""translation"": ""A bird in the hand is worth two in the bush."",
+    ""reasoning"": ""The Kikuyu proverb 'Aikaragia mbia ta njuu ngigi' directly corresponds to the English proverb 'A bird in the hand is worth two in the bush.' This proverb emphasizes the value of what one currently possesses over the potential but uncertain gains of pursuing something else. It encourages prudence and appreciation for present blessings."",
+    ""confidence"": 1.0
+}
+```",Direct translation without cultural context,0.5,4.8377649784088135,Aikharia mbia ta njigi.,0.9849011898040771,2025-10-03T23:48:39.236803,1,"raw_llm,google",pending_implementation
+MW_001,Aikaragia mbia ta njuu ngigi.,He looks after his money the way storks pursue locusts.,Whoever has much always wants more.,"```json
+{
+    ""translation"": ""A bird in the hand is worth two in the bush."",
+    ""reasoning"": ""The Kikuyu proverb 'Aikaragia mbia ta njuu ngigi' directly corresponds to the English proverb 'A bird in the hand is worth two in the bush.' This proverb emphasizes the value of what one currently possesses over the potential but uncertain gains of pursuing something else. It encourages prudence and appreciation for present blessings."",
+    ""confidence"": 1.0
+}
+```",Direct translation without cultural context,0.5,4.309298038482666,Aikharia mbia ta njigi.,0.4121730327606201,2025-10-03T23:48:43.958740,2,"raw_llm,google",pending_implementation
+MW_002,Andu ni indo.,People are wealth.,,"```json
+{
+    ""translation"": ""A pot is not a home."",
+    ""reasoning"": ""This proverb seems to be emphasizing that a mere possession or object (the pot) does not constitute a home or a sense of belonging. It suggests that a home is more than just physical items; it's about community, family, and emotional connections."",
+    ""confidence"": 0.85
+}
+```",Direct translation without cultural context,0.5,4.122777938842773,And touch it indo.,0.9970269203186035,2025-10-03T23:48:49.078802,3,"raw_llm,google",pending_implementation

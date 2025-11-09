@@ -1,0 +1,58 @@
+================================================================================
+PARTIAL BASELINE TRANSLATION GENERATION SUMMARY
+================================================================================
+
+Generated: 2025-10-04 00:22:04
+Total Proverbs: 20
+Total Time: 116.1s (5.8s per proverb)
+
+TRANSLATION SYSTEMS STATUS:
+  ✅ Cohere Aya-23 - Multilingual model optimized for 100+ languages
+     🌍 Specifically designed for low-resource languages including African languages
+  ✅ OpenAI GPT - Industry standard for comparison
+  ❌ Google Translate - Kikuyu not supported
+
+SYSTEM NOT INCLUDED (Yet):
+  - OG-RAG: Pending implementation
+  - Will be added when ontology-enhanced RAG system is ready
+
+GENERATION TIME STATISTICS:
+  Raw LLM avg time: 4.49s
+  Google avg time: 1.31s
+
+CULTURAL PRESERVATION SCORES:
+  Cohere Aya avg: 0.50
+  Cohere Aya min: 0.50
+  Cohere Aya max: 0.50
+
+OUTPUT FILES:
+  Main dataset: translation_comparison_partial_20251004_002204.csv
+  Summary report: translation_comparison_partial_20251004_002204_summary.txt
+
+WHAT YOU CAN DO WITH THESE RESULTS:
+  1. ✅ Run statistical analysis (BLEU, ROUGE, METEOR)
+  2. ✅ Test cultural metrics evaluation
+  3. ✅ Run LLM-as-a-Judge evaluation
+  4. ✅ Identify cultural gaps and mistranslations
+  5. ✅ Document what OG-RAG needs to fix
+
+INSIGHTS TO GATHER:
+  - Where does Raw LLM fail culturally?
+  - What traditional wisdom gets lost?
+  - Which metaphors are mistranslated?
+  - What cultural context is missing?
+  - What should your ontology capture?
+
+NEXT STEPS:
+  1. Analyze these baseline results
+  2. Document cultural failures and gaps
+  3. Design OG-RAG requirements based on findings
+  4. Build OG-RAG to address identified gaps
+  5. Re-run with all 3 systems for full comparison
+
+TO ADD OG-RAG LATER:
+  When your OG-RAG system is ready, run:
+  python scripts/generate_baseline_translations.py
+  (This will generate translations from all 3 systems)
+
+================================================================================

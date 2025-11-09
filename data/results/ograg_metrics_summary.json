@@ -1,0 +1,22 @@
+{
+  "n_proverbs": 97,
+  "bleu_raw_mean": 7.946314232483015,
+  "bleu_raw_std": 14.00986019256259,
+  "bleu_trad_mean": 19.26587036715936,
+  "bleu_trad_std": 29.229010809323416,
+  "bleu_ograg_mean": 9.325130380035846,
+  "bleu_ograg_std": 9.844071136616682,
+  "cultural_raw_mean": 0.145,
+  "cultural_raw_std": 0.30170567742333537,
+  "cultural_trad_mean": 0.32,
+  "cultural_trad_std": 0.3349783967896877,
+  "cultural_ograg_mean": 0.26,
+  "cultural_ograg_std": 0.33623300191823435,
+  "failure_rate_raw": 0.0,
+  "failure_rate_trad": 0.0,
+  "failure_rate_ograg": 0.0,
+  "bleu_ttest_pvalue": 0.3661707620581729,
+  "bleu_cohens_d": -0.09218980161645222,
+  "cultural_ttest_pvalue": 0.03422653557233705,
+  "cultural_cohens_d": -0.5101507174662513
+}

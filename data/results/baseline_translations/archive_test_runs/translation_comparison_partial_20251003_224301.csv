@@ -1,0 +1,8 @@
+proverb_id,kikuyu_text,expert_translation,expert_cultural_meaning,raw_llm_translation,raw_llm_reasoning,raw_llm_confidence,raw_llm_time,google_translation,google_time,generation_timestamp,processing_order,systems_included,og_rag_status
+MW_001,Aikaragia mbia ta njuu ngigi.,He looks after his money the way storks pursue locusts.,,"```json
+{
+    ""translation"": ""A bird in the hand is worth more than two in the bush."",
+    ""reasoning"": ""The Kikuyu proverb 'Aikaragia mbia ta njuu ngigi' can be interpreted as emphasizing the value of what one already possesses or has within reach, rather than pursuing uncertain or distant gains. This aligns with the English proverb, which encourages prioritizing tangible, immediate benefits over potential, but uncertain, rewards."",
+    ""confidence"": 0.9
+}
+```",Direct translation without cultural context,0.5,3.931072950363159,Aikharia mbia ta njigi.,0.3538360595703125,2025-10-03T22:43:01.296731,1,"raw_llm,google",pending_implementation

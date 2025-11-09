@@ -1,0 +1,18 @@
+================================================================================
+PARTIAL BASELINE TRANSLATION GENERATION SUMMARY
+================================================================================
+
+Generated: 2025-10-04 00:02:47
+Total Proverbs: 3
+Total Time: 18.5s (6.2s per proverb)
+
+TRANSLATION SYSTEMS INCLUDED:
+  1. Raw LLM - Cohere Aya-23 (Multilingual model optimized for 100+ languages)
+     🌍 Specifically designed for low-resource languages including African languages
+  2. Google Translate (Commercial baseline - limited Kikuyu support)
+
+SYSTEM NOT INCLUDED (Yet):
+  - OG-RAG: Pending implementation
+  - Will be added when ontology-enhanced RAG system is ready
+
+GENERATION TIME STATISTICS:

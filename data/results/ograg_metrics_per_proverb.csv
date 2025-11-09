@@ -1,0 +1,98 @@
+proverb_id,kikuyu_text,expert_translation,bleu_raw,bleu_trad_rag,bleu_ograg,cultural_fidelity_raw,cultural_fidelity_trad_rag,cultural_fidelity_ograg,failed_raw,failed_trad_rag,failed_ograg
+MW_001,Aikaragia mbia ta njuu ngigi.,He looks after his money the way storks pursue locusts.,4.515183688171633,100.00000000000004,9.030367376343264,,,,False,False,False
+MW_002,Andu ni indo.,People are wealth.,100.00000000000004,100.00000000000004,22.957488466614326,1.0,1.0,1.0,False,False,False
+MW_003,Bururi uri ngui ndungiciarikira indo.,In an unstable country one cannot become wealthy,2.627961710408444,86.33400213704509,4.767707020457095,,,,False,False,False
+MW_004,Bururi uri ngui ndungiciarikira indo.,In an unstable country one cannot become wealthy.,3.377156414337854,100.00000000000004,5.669791110976001,,,,False,False,False
+MW_005,Cia kionje itigayagwo kiri muoyo/gitanakua.,The property of an invalid are not distributed while the person is still alive.,5.412989186545265,100.00000000000004,7.491281958423804,,,,False,False,False
+MW_006,Cia thuguri itiyuragia ikumbi,Bought things do not fill the granary.,3.7477767366779213,100.00000000000004,36.55552228545123,,,,False,False,False
+MW_007,Ciira muingi/munene ni ukia.,A long lawsuit brings poverty.,8.116697886877475,100.00000000000004,9.652434877402245,,,,False,False,False
+MW_008,Ciringi imurikagwo na ingi.,"To get money, you have to spend money.",4.196114906296549,100.00000000000004,8.913765521398126,0.0,1.0,0.9,False,False,False
+MW_009,Gicigo kia mugunda gitinyihaga.,A piece of land is not a little thing.,4.065425428798724,100.00000000000004,16.784459625186194,,,,False,False,False
+MW_010,Githaka ni ngwatira.,Land is inalienable (from the clan).,5.854497694024015,100.00000000000004,11.708995388048026,,,,False,False,False
+MW_011,Gitonga kigiragio iganjo gikaarima,The rich man cannot be prevented from cultivating the “iganjo”he wants.,4.02724819242185,3.42209762272661,4.02724819242185,0.0,0.4,0.0,False,False,False
+MW_012,Gitonga kiriaga munyuko.,A wealthy man eats only a dying goat (very thin with tough meat)/undesirable food.,1.4064939156282434,0.3756625385528342,0.9298395269585749,,,,False,False,False
+MW_013,"Gukiaga na gutonga ititiganaga. GJW G 59, Ba 73) WM",Poverty and riches do not leave each other.,11.59119922599073,9.980099403873663,5.669791110976001,,,,False,False,False
+MW_014,Gutiri kiega kiumaga heega.,"There is nothing that is of worth, that is obtained from the comfort corner.",5.771298850643905,4.848169255678505,5.209696906543444,,,,False,False,False
+MW_015,"Gutiri mburi itangiracio, tiga inawathe.","Any goat can serve as brideswealth, unless it has a defect.",2.627961710408444,3.657015913414383,4.065425428798724,,,,False,False,False
+MW_016,Gutiri munini mukia.,No young person can be considered poor.,5.815868174415823,5.815868174415823,5.815868174415823,,,,False,False,False
+MW_017,Gutiri uthuire tiga akiaga.,"A man is poor not because he scorns possessions, but because he possesses nothing.",2.41596535992123,2.1590567826234355,2.1590567826234355,,,,False,False,False
+MW_018,Guthiina ti kuriita,To be poor does not connote being foolish.,5.669791110976001,6.4790667469036025,5.795599612995366,,,,False,False,False
+MW_019,Guthinga kurugite gutonga.,Virtue is better than riches.,6.567274736060396,10.682175159905853,4.990049701936832,,,,False,False,False
+MW_020,Gutiri mbura itari gitonga kiayo.,There is no rain that does not bring wealth to someone.,22.613617379612148,22.613617379612148,22.613617379612148,,,,False,False,False
+MW_021,Gutiri ngia itari muthenya wayo.,Every poor person has his day.,4.196114906296549,3.7477767366779213,6.567274736060395,,,,False,False,False
+MW_022,Gutiri uriragio ni utonga no ukia.,"Nobody grumbles at being rich, only at being poor.",3.3864985683445354,3.3864985683445354,3.708659055657029,,,,False,False,False
+MW_023,Gwa gitonga gucokagirirwo ni mambura.,The home of a rich man is revisited during a ceremony (especially burial).,3.097704314134564,3.3642024770782903,2.882738686795162,,,,False,False,False
+MW_024,Haro ni ya muka uri thiiri,Quarrelling is the hallmark of the woman who has debts.,7.347053125977879,15.851165692617155,4.410363736106612,0.0,0.0,0.0,False,False,False
+MW_025,Hinya nduri indo,Strength has no wealth.,17.965205598154213,23.643540225079395,23.643540225079395,,,,False,False,False
+MW_026,Indo ciene inoragia mundu itina rimwe. W,Other people’s property fattens only one buttock.,4.02724819242185,5.693025330278465,3.673526562988939,,,,False,False,False
+MW_027,Indo ciene iri mutino.,Stolen goods bring misfortune.,8.116697886877475,4.196114906296549,4.767707020457095,,,,False,False,False
+MW_029,Indo ni kurimithanio,Wealth comes by cultivating together.,8.116697886877475,10.40059768900531,6.567274736060396,,,,False,False,False
+MW_030,Indo ni mwene.,Wealth is all about the owner.,13.134549472120794,27.48254571080018,15.207218222740094,,,,False,False,False
+MW_031,Iroobagia ha muoni.,They (vultures) haunt the yard of a wealthy man.,3.673526562988939,4.503733751056995,3.42209762272661,,,,False,False,False
+MW_032,Itonga igiri itiri nyoni.,Two rich persons do not wish each other a bird of ill omen.,3.2530620447891696,8.165346762611621,6.560271639619885,,,,False,False,False
+MW_033,Kahora kari indo.,Steadiness makes wealth.,6.567274736060395,16.233395773754946,13.134549472120794,0.3,0.4,0.4,False,False,False
+MW_034,Kigina gitiinikagwo irio hande itari nguru.,The seed-storing calabash should never be drained before the new crop has matured.,3.21858262703621,2.8398387225677895,2.8666091494718775,,,,False,False,False
+MW_035,Kihoto ni indo.,A fair argument is wealth.,6.567274736060396,34.98330125272251,12.223075560872525,,,,False,False,False
+MW_036,Kirema mbeeca ni kigariure. .,That which is beyond the power of money must be manipulated.,3.550932348642477,3.8232468526904646,3.4162113597999784,,,,False,False,False
+MW_037,Kumaatha gutiri hinya ta kuramata.,To acquire wealth is not as difficult as good stewardship.,4.540013809283726,16.052946190434394,17.467768504457773,,,,False,False,False
+MW_038,Kumaatha gutiri hinya ta kuramata.,To acquire wealth is not as difficult as good stewardship.,4.540013809283726,16.052946190434394,12.571192676522521,,,,False,False,False
+MW_039,Kuri mwoni na muraata thi.,There is one who finds wealth and one who merely mends the surface of its cracks.,1.9600629536473144,4.929297364398415,2.5831124391916536,,,,False,False,False
+MW_040,Kuria thiiri wene ni kuriha.,The way of eating a debt is paying it.,8.29519350710986,4.955725306405571,5.087641220727392,,,,False,False,False
+MW_041,Mbari ya uri moigaga matikaaga.,The family of the haves often say that they will never lack.,7.687847996206941,4.023185929567685,4.180311383108652,,,,False,False,False
+MW_042,Mbeeca itiri mwana kana nyina.,With money there is no child or mother.,8.29519350710986,8.29519350710986,9.287528999566801,,,,False,False,False
+MW_043,Mucii uri mburi ndwagaga kihuno.,A homestead with goats does not lack miscarriages.,4.196114906296549,6.742555929751843,38.16330911371337,,,,False,False,False
+MW_044,Mugunda ni mugema wa mwene. W,A farm is the ornament of the owner.,6.27465531099474,10.923299908191149,14.25876976452075,,,,False,False,False
+MW_045,Mugunda wene nduinagwo.,Another’s field is not praised.,10.552670315936318,9.287528999566801,6.567274736060396,,,,False,False,False
+MW_046,Mugurira hakuhi nita aheo.,The man who buys something at a place near by is like the man who is given something.,2.383435987623428,1.4064939156282434,2.487097221046712,,,,False,False,False
+MW_047,Muhakana na ciake itimuuragira. .,He who stands close to his property does not lose it.,2.8265205879007453,4.8312524369621626,8.639795714750207,,,,False,False,False
+MW_048,Muici ndathiragwo ni mari hindi.,The thief cannot keep fit because his stools contain undigested food.,4.02724819242185,3.3495035708457803,3.9832534781768225,0.0,0.0,0.0,False,False,False
+MW_049,Muici uri hunyu arindagira uri maguta.,"An ugly thief is more likely to be caught than one smeared with fat, i.e. carefully dressed.",1.9597730174832824,3.005948174755165,2.242872568617871,0.0,0.0,0.0,False,False,False
+MW_050,Muici utari munyiite ni muria gake.,A thief who has not been caught is like a proprietor who has just spent his own money.,3.5114603692955577,3.10975601982443,3.320934179608466,,,,False,False,False
+MW_051,Mukoobi thiiri ndendete kuriha. .,He who borrows does not like repaying.,7.495553473355842,5.693025330278465,4.767707020457095,,,,False,False,False
+MW_052,Mundu-muka ndatumagwo thiriini.,A woman is not sent to fetch debts.,9.980099403873663,47.750342648354646,31.55984539112945,0.0,0.3,0.0,False,False,False
+MW_053,"Muriio wa njoohi niuriukagwo, no wa indo nduriukagwo. . (GJW M 341, Ba","The drunkenness of beer passes away, but that of wealth does not.",1.8564670505078418,6.439931429457922,6.019608768705656,,,,False,False,False
+MW_054,"Muthiini niathinukaga, no munyamaari ndathiinukaga.","A poor man can overcome poverty, but a man poor at heart can never.",2.159701133933343,2.9275822595890535,12.060275498773779,0.0,0.2,0.2,False,False,False
+MW_055,Muthinio ni kuona akiriite muthinio ni waagi.,He who is troubled by wealth surpasses the one troubled by poverty.,3.005799339448764,3.6353588668522963,4.016138436407654,,,,False,False,False
+MW_056,Mutongi ndathethukaga. .,Whoever would like to be rich must have patience.,4.278179264606695,4.278179264606695,4.278179264606695,0.0,0.0,0.0,False,False,False
+MW_057,Mutongi ndathethukaga. .,Whoever would like to be rich must have patience.,4.196114906296549,4.278179264606695,4.167251645138561,,,,False,False,False
+MW_058,Mwana ni indo.,A child bears prosperity.,17.965205598154213,23.643540225079395,23.643540225079395,,,,False,False,False
+MW_059,Mwana wa kahii ti wa kairiitu.,"A male child, is not a female child.",13.545994273378144,8.130850857597448,6.917184228205474,,,,False,False,False
+MW_060,Mwanake wi na indo ndoihanaga.,"The youth who has enough to buy his girl, need not beseech her.",3.3495035708457803,2.302077893514382,6.053236275429152,,,,False,False,False
+MW_061,Mwendia niaguraga.,The one who sells also buys.,7.160476144948854,7.545383788761362,26.269098944241588,,,,False,False,False
+MW_062,Muthuuri athikagwo na indo.,An old man is buried with his wealth.,5.795599612995366,13.485111859503684,10.786826322527471,,,,False,False,False
+MW_063,Ndonga imwe ndihingaga iriuko.,A rich man cannot block the ford.,6.770186228657867,6.770186228657867,6.770186228657867,0.4,0.4,0.4,False,False,False
+MW_064,Ndonga naanu irugiitwo ni mukari.,"An arrogant rich man, is surpassed by a miser.",3.377156414337854,4.02724819242185,5.0243511979240845,,,,False,False,False
+MW_065,Ndugu nyingi ithaatagia muhuko.,Many acquaintances deplete the pocket.,8.643019616048525,7.809849842300641,6.567274736060396,,,,False,False,False
+MW_066,Ngai ndoonagio nda.,God is not shown one’s belly.,9.042266054940777,9.423716574733431,8.643019616048525,,,,False,False,False
+MW_067,Ngia itari thiiri ti ngia.,A poor person with no debts is not so poor a person.,7.817610446892725,7.687847996206941,7.817610446892725,,,,False,False,False
+MW_069,"Riua ritiri gitonga no ngia theri. (Riua ritiui gitonga no ngia their) (GJW R 23,Ba","The sun has no rich people, but only the poor people.",3.673526562988939,3.0890553181566975,6.9161417925511355,,,,False,False,False
+MW_070,Ruthuuro rutiiyuragia ikumbi,Selected goods do not fill the granary.,7.267884212102741,68.037493331712,68.037493331712,,,,False,False,False
+MW_071,Ruua rukuhi rutiri thogora.,A short hide is of no value.,7.267884212102741,5.669791110976001,5.669791110976001,0.0,0.4,0.0,False,False,False
+MW_073,Thiina nduri miri .,Poverty has no roots.,4.196114906296549,4.196114906296549,5.522397783539471,,,,False,False,False
+MW_074,Thiiri utarihwo no wa urogi.,The only debt which is not payable is the one of poisoning someone.,7.859438681510603,2.873083195618437,6.344849033136086,0.0,0.2,0.0,False,False,False
+MW_075,Thogora nduri mwana na nyina.,"In business bargain, there is no child or mother.",9.030367376343264,5.300156689756297,4.016138436407654,0.0,0.0,0.0,False,False,False
+MW_076,Thogora ni mururumo utaruo.,Buying and selling causes much noice but no strife.,2.8398387225677895,4.266331692956901,4.266331692956901,,,,False,False,False
+MW_077,Thogora ni maitho.,Buying and selling involves the eyes.,7.545383788761362,15.090767577522726,25.57539057896621,,,,False,False,False
+MW_078,Thogora uuragagwo ni kiongereri.,A bargain breaks down over the extra demand.,3.125190763972442,4.767707020457095,4.02724819242185,,,,False,False,False
+MW_079,Tiga kwihira uriri wi riikoini. GJW T 85) MW,When you are poor do not equate yourself with the rich.,4.069582841180383,4.503733751056995,3.673526562988939,0.0,0.2,0.4,False,False,False
+MW_080,Uhunii eetaga uhutii mukoroku. .,"He who is satisfied, calls the hungry one greedy.",4.368583925857938,4.515183688171633,5.300156689756297,,,,False,False,False
+MW_081,Ukari muhithe ndumenanagirwo. MW,Hidden miserliness does not attract scorn.,4.02724819242185,4.456882760699064,4.767707020457095,,,,False,False,False
+MW_082,"Urugari nduri indo, ni heho iri indo.","Warmth has no wealth, it is the cold that has.",10.511846841633776,31.455601883230702,4.02724819242185,,,,False,False,False
+MW_083,Urume uri iraria.(Urume wi indo),Bravery brings wealth.,4.02724819242185,4.02724819242185,4.767707020457095,,,,False,False,False
+MW_084,Utaana uminagira murokerwo ng’ombe.,Generosity ruins the man who gives his cows to morning visitors.,4.016138436407654,3.42209762272661,4.521356896113449,0.0,0.0,0.0,False,False,False
+MW_085,Utari ndari ngoro (Githumbi/ githumba gitiri ngoro),He who has nothing has no heart.,2.1476912089159055,8.097785064266205,4.990049701936832,,,,False,False,False
+MW_086,Utari ndeetagwo ndundu. .,A poor man is not invited to a private discussion.,5.300156689756297,4.995138898472386,4.513617516969122,,,,False,False,False
+MW_087,Utari ni wa kwa mari. (Muthiini egiritagia itonga) .,"A poor man leans on the rich. Kiswahili : Maskini hutegemea matajiri. Meaning: Each person needs another, regardless of status. Teaching: This proverb teaches that within a family or community, people cannot be equal. Some are poor and others rich. But they need each other for daily objectives to be achieved. Bible parallel: 1 Thessalonians 5:11 “Therefore encourage one another and build each other up, just as in fact you are doing.”",0.13458695900576276,0.12859013990676063,0.24657614588253268,,,,False,False,False
+MW_088,Uthaka nduriagwo.,Beauty is not consumed.,14.535768424205482,23.643540225079395,23.643540225079395,,,,False,False,False
+MW_089,Uthaka wa mundurume ni mbeeca. M,The beauty of a man is money.,6.770186228657867,33.03164318013807,6.770186228657867,0.3,0.4,0.4,False,False,False
+MW_090,Uthuri wa gitonga ndunungaga.,A rich man’s breaking of wind is odourless.,5.795599612995366,6.413885305524152,4.990049701936832,,,,False,False,False
+MW_091,Utonga nduhanyukagiruo.,Riches are not rushed for.,5.669791110976001,7.809849842300641,9.652434877402245,,,,False,False,False
+MW_092,Utonga nduri nyoni.,Riches have no bird of ill will.,6.770186228657867,6.567274736060396,6.567274736060396,0.0,0.6,0.4,False,False,False
+MW_093,Utonga ni kiiruru.,Riches are but a shadow.,10.40059768900531,32.55563013321615,10.40059768900531,,,,False,False,False
+MW_094,Utonga ni wa ngai.,Wealth belongs to God.,100.00000000000004,23.643540225079395,14.535768424205482,0.9,0.9,0.9,False,False,False
+MW_095,Utonga wa muthiini ni ciana. W,The wealth of the poor consists in having children.,19.96939588188939,45.93613320783059,29.071536848410968,,,,False,False,False
+MW_096,"Utonga wa muici nduthuunaga, na ni uteeaga wake.","Unlawful riches do not prosper, they ruin even the legitimate ones.",3.4585921141027365,3.4585921141027365,2.719665272174911,,,,False,False,False
+MW_097,Waariire aanyamaririe weigiire.,"He who ate (spent all his resources) persecuted the one who kept some aside. 98.Wagi ndumenanagirwo (GJW W 18, N 641) W English: Poverty does not cause enemity. 99.Waagi wi gitaranio. (KW vol.1 pg 348) W English: Lacking leads to dreamy thoughts of what the opposite would bring. 100.Wooni wi njaci. (Ba 991, KW vol.1 pg 321) MW English: The state of having acquired wealth, breeds contemptuous pride. A COLLECTION OF 100 PROVERBS AND WISE SAYINGS OF THE GIKUYU OF KENYA ABOUT MONEY AND WEALTH",4.8146639003318456e-05,0.00015206722685559063,0.00041517556860415367,,,,False,False,False
+MW_098,Wagi ndumenanagirwo.,Poverty does not cause enemity.,5.522397783539471,10.40059768900531,6.567274736060396,0.0,0.0,0.2,False,False,False
+MW_099,Waagi wi gitaranio.,Lacking leads to dreamy thoughts of what the opposite would bring.,2.9859662827819125,4.503733751056995,3.3495035708457803,,,,False,False,False
+MW_100,"Wooni wi njaci. (woni wi njaci, wagi gitaranjo)","The state of having acquired wealth, breeds contemptuous pride.",3.377156414337854,4.456882760699064,5.0243511979240845,,,,False,False,False

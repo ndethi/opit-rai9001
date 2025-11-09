@@ -1,0 +1,22 @@
+proverb_id,kikuyu_text,expert_translation,expert_cultural_meaning,raw_llm_translation,raw_llm_reasoning,raw_llm_confidence,raw_llm_time,google_translation,google_time,generation_timestamp,processing_order,systems_included,og_rag_status
+MW_001,Aikaragia mbia ta njuu ngigi.,He looks after his money the way storks pursue locusts.,,"```json
+{
+    ""translation"": ""A patient person will always succeed."",
+    ""reasoning"": ""The Kikuyu proverb 'Aikaragia mbia ta njuu ngigi' literally translates to 'Patience bears fruit on top of the tree'. This proverb emphasizes the value of patience and perseverance. It suggests that those who are patient and persistent will eventually achieve their goals, much like how fruit takes time to ripen and grow to the top of the tree."",
+    ""confidence"": 0.9
+}
+```",Direct translation without cultural context,0.5,4.968950986862183,Aikharia mbia ta njigi.,0.9921557903289795,2025-10-03T23:34:15.312737,1,"raw_llm,google",pending_implementation
+MW_001,Aikaragia mbia ta njuu ngigi.,He looks after his money the way storks pursue locusts.,Whoever has much always wants more.,"```json
+{
+    ""translation"": ""A patient person will always succeed."",
+    ""reasoning"": ""The Kikuyu proverb 'Aikaragia mbia ta njuu ngigi' literally translates to 'Patience bears fruits on top of the tree'. This proverb emphasizes the virtue of patience and the idea that those who are patient and persistent will eventually achieve their goals, just as one waits for fruits to ripen at the top of a tree."",
+    ""confidence"": 0.9
+}
+```",Direct translation without cultural context,0.5,2.614788770675659,Aikharia mbia ta njigi.,0.9795877933502197,2025-10-03T23:34:18.907429,2,"raw_llm,google",pending_implementation
+MW_002,Andu ni indo.,People are wealth.,,"```json
+{
+    ""translation"": ""A pot is not a home."",
+    ""reasoning"": ""This proverb seems to be emphasizing that a mere possession or object (the pot) does not constitute a home or a sense of belonging. It suggests that a home is more than just physical items; it's about community, family, and emotional connections. The Kikuyu people value communal living and strong family bonds, so this proverb likely underscores the importance of those relationships over material possessions."",
+    ""confidence"": 0.85
+}
+```",Direct translation without cultural context,0.5,2.9112319946289062,And touch it indo.,1.6215989589691162,2025-10-03T23:34:23.440535,3,"raw_llm,google",pending_implementation
