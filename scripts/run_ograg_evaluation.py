@@ -93,6 +93,62 @@ class OGRAGEvaluator:
         
         logger.info("✅ OGRAGEvaluator initialized successfully")
     
+    def find_last_checkpoint(self) -> int:
+        """
+        Find the last checkpoint file and determine how many proverbs were completed.
+        
+        Returns:
+            Number of proverbs already completed (0 if no checkpoint found)
+        """
+        checkpoint_files = list(self.output_dir.glob("ograg_evaluation_*_checkpoint_*.csv"))
+        
+        if not checkpoint_files:
+            logger.info("No checkpoint files found")
+            return 0
+        
+        # Find the highest checkpoint number
+        max_checkpoint = 0
+        for cf in checkpoint_files:
+            # Extract number from filename like "ograg_evaluation_100proverbs_checkpoint_90.csv"
+            parts = cf.stem.split('_checkpoint_')
+            if len(parts) == 2:
+                try:
+                    checkpoint_num = int(parts[1])
+                    if checkpoint_num > max_checkpoint:
+                        max_checkpoint = checkpoint_num
+                except ValueError:
+                    continue
+        
+        if max_checkpoint > 0:
+            logger.info(f"✅ Found checkpoint at {max_checkpoint} proverbs")
+        
+        return max_checkpoint
+    
+    def load_checkpoint_results(self, checkpoint_num: int) -> List[Dict[str, Any]]:
+        """
+        Load results from a checkpoint file.
+        
+        Args:
+            checkpoint_num: Checkpoint number to load
+            
+        Returns:
+            List of result dictionaries from checkpoint
+        """
+        checkpoint_file = self.output_dir / f"ograg_evaluation_100proverbs_checkpoint_{checkpoint_num}.csv"
+        
+        if not checkpoint_file.exists():
+            logger.warning(f"Checkpoint file not found: {checkpoint_file}")
+            return []
+        
+        results = []
+        with open(checkpoint_file, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                results.append(row)
+        
+        logger.info(f"✅ Loaded {len(results)} results from checkpoint")
+        return results
+    
     def load_proverbs_from_neo4j(self, limit: Optional[int] = None) -> List[Dict[str, str]]:
         """
         Load proverbs from Neo4j database.
@@ -318,12 +374,13 @@ class OGRAGEvaluator:
         logger.info(f"🎯 Total tokens so far: {self.total_tokens:,}")
         logger.info(f"{'='*70}\n")
     
-    def run_evaluation(self, limit: Optional[int] = None) -> Path:
+    def run_evaluation(self, limit: Optional[int] = None, start_from: int = 0) -> Path:
         """
         Run full evaluation on proverbs.
         
         Args:
             limit: Number of proverbs to process (None = all)
+            start_from: Start from proverb number N (1-based index, 0 = start from beginning)
             
         Returns:
             Path to final CSV file
@@ -338,32 +395,59 @@ class OGRAGEvaluator:
             logger.error("❌ No proverbs found in Neo4j!")
             return None
         
+        # Handle resume: load checkpoint results if starting from a later point
+        if start_from > 0:
+            if start_from > total:
+                logger.error(f"❌ start_from ({start_from}) is greater than total proverbs ({total})!")
+                return None
+            
+            logger.info(f"📂 Loading checkpoint results (proverbs 1-{start_from})...")
+            self.results = self.load_checkpoint_results(start_from)
+            
+            if len(self.results) != start_from:
+                logger.warning(f"⚠️ Expected {start_from} results from checkpoint, but got {len(self.results)}")
+                logger.warning(f"⚠️ Proceeding anyway, but verify final results!")
+            
+            # Skip already processed proverbs
+            proverbs = proverbs[start_from:]
+            logger.info(f"✅ Resuming from proverb {start_from + 1}")
+            logger.info(f"✅ Remaining proverbs to process: {len(proverbs)}")
+        
         logger.info(f"\n{'='*70}")
-        logger.info(f"🚀 STARTING EVALUATION")
+        if start_from > 0:
+            logger.info(f"🔄 RESUMING EVALUATION")
+        else:
+            logger.info(f"🚀 STARTING EVALUATION")
         logger.info(f"{'='*70}")
         logger.info(f"Total proverbs: {total}")
+        if start_from > 0:
+            logger.info(f"Already completed: {start_from}")
+            logger.info(f"Remaining: {len(proverbs)}")
         logger.info(f"Batch size: {self.batch_size}")
         logger.info(f"Save interval: {self.save_interval}")
-        logger.info(f"Estimated time: {(total * 0.15):.1f} - {(total * 0.2):.1f} minutes")
-        logger.info(f"Estimated cost: ${(total * 0.0333):.2f}")
+        logger.info(f"Estimated time: {(len(proverbs) * 0.15):.1f} - {(len(proverbs) * 0.2):.1f} minutes")
+        logger.info(f"Estimated cost: ${(len(proverbs) * 0.0333):.2f}")
         logger.info(f"{'='*70}\n")
         
         # Process each proverb
-        for i, proverb in enumerate(proverbs, 1):
-            result = self.translate_proverb(proverb, i, total)
+        for idx, proverb in enumerate(proverbs, 1):
+            # Calculate actual index in full list
+            actual_index = start_from + idx
+            
+            result = self.translate_proverb(proverb, actual_index, total)
             self.results.append(result)
             
             # Update Neo4j
             self.save_to_neo4j(result)
             
-            # Save checkpoint
-            if i % self.save_interval == 0:
-                self.save_to_csv(self.results, suffix=f"_checkpoint_{i}")
+            # Save checkpoint (using actual index)
+            if actual_index % self.save_interval == 0:
+                self.save_to_csv(self.results, suffix=f"_checkpoint_{actual_index}")
             
             # Show progress
-            if i % self.batch_size == 0 or i == total:
+            if idx % self.batch_size == 0 or actual_index == total:
                 elapsed = time.time() - self.start_time
-                self.show_progress(i, total, elapsed)
+                self.show_progress(actual_index, total, elapsed)
         
         # Final save
         logger.info(f"\n{'='*70}")
@@ -421,6 +505,17 @@ def main():
         default=10,
         help='Save checkpoint every N proverbs (default: 10)'
     )
+    parser.add_argument(
+        '--start-from',
+        type=int,
+        default=0,
+        help='Start from proverb number N (1-based index, for resuming)'
+    )
+    parser.add_argument(
+        '--resume',
+        action='store_true',
+        help='Resume from last checkpoint (automatically detects start point)'
+    )
     
     args = parser.parse_args()
     
@@ -431,8 +526,22 @@ def main():
             save_interval=args.save_interval
         )
         
+        # Determine start point
+        start_from = 0
+        if args.resume:
+            # Auto-detect last checkpoint
+            start_from = evaluator.find_last_checkpoint()
+            if start_from == 0:
+                logger.warning("⚠️ --resume specified but no checkpoint found. Starting from beginning.")
+            else:
+                logger.info(f"🔄 Resuming from checkpoint at {start_from} proverbs")
+        elif args.start_from > 0:
+            # Manual start point
+            start_from = args.start_from
+            logger.info(f"🔄 Starting from proverb {start_from + 1}")
+        
         # Run evaluation
-        output_file = evaluator.run_evaluation(limit=args.limit)
+        output_file = evaluator.run_evaluation(limit=args.limit, start_from=start_from)
         
         if output_file:
             print(f"\n{'='*70}")
