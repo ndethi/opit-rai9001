@@ -262,6 +262,52 @@ class AnthropicClient(LLMProvider_Client):
             logger.error(f"Anthropic API error: {e}")
             raise
 
+class GoogleClient(LLMProvider_Client):
+    """Google Gemini API client for LLM as a Judge evaluation."""
+    
+    def __init__(self, config: LLMModelConfig):
+        super().__init__(config)
+        try:
+            import google.generativeai as genai
+            genai.configure(api_key=config.api_key)
+            self.model = genai.GenerativeModel(config.model_name)
+        except ImportError:
+            logger.error("Google Generative AI library not installed. Install with: pip install google-generativeai")
+            raise
+    
+    async def generate_response(self, prompt: str) -> str:
+        """Generate response from Google Gemini model."""
+        import asyncio
+        import time
+        
+        max_retries = 3
+        retry_delay = 15  # seconds, to respect rate limits
+        
+        for attempt in range(max_retries):
+            try:
+                # Gemini API is synchronous, so we run it in executor
+                loop = asyncio.get_event_loop()
+                response = await loop.run_in_executor(
+                    None,
+                    lambda: self.model.generate_content(
+                        prompt,
+                        generation_config={
+                            'temperature': self.config.temperature,
+                            'max_output_tokens': self.config.max_tokens,
+                        }
+                    )
+                )
+                return response.text
+            except Exception as e:
+                error_msg = str(e)
+                if '429' in error_msg or 'quota' in error_msg.lower():
+                    if attempt < max_retries - 1:
+                        logger.warning(f"Rate limit hit, waiting {retry_delay}s before retry {attempt + 1}/{max_retries}")
+                        await asyncio.sleep(retry_delay)
+                        continue
+                logger.error(f"Google Gemini API error: {e}")
+                raise
+
 class LLMJudgeEvaluator:
     """Main LLM as a Judge evaluation framework."""
     
@@ -289,6 +335,8 @@ class LLMJudgeEvaluator:
                     self.clients[provider] = OpenAIClient(config)
                 elif provider == LLMProvider.ANTHROPIC:
                     self.clients[provider] = AnthropicClient(config)
+                elif provider == LLMProvider.GOOGLE:
+                    self.clients[provider] = GoogleClient(config)
                 
                 logger.info(f"Initialized {provider.value} client")
             except Exception as e:

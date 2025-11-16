@@ -13,6 +13,10 @@ from dataclasses import dataclass, field
 from enum import Enum
 import json
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load .env file automatically
+load_dotenv()
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

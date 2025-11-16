@@ -14,7 +14,9 @@ from pathlib import Path
 import json
 
 # Add src to path
-sys.path.append(str(Path(__file__).parent.parent))
+src_path = str(Path(__file__).parent.parent / "src")
+if src_path not in sys.path:
+    sys.path.insert(0, src_path)
 
 from evaluation.llm_config import DynamicLLMConfigurator
 from evaluation.llm_judge import LLMJudgeEvaluator
