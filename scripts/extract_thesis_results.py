@@ -45,7 +45,10 @@ def generate_latex_table_1(cultural_results):
         cultural_auth = f"{metrics['cultural_authenticity']['mean']:.3f} $\\pm$ {metrics['cultural_authenticity']['std']:.3f}"
         trans_fid = f"{metrics['translation_fidelity']['mean']:.3f} $\\pm$ {metrics['translation_fidelity']['std']:.3f}"
         overall_qual = f"{metrics['overall_quality']['mean']:.3f} $\\pm$ {metrics['overall_quality']['std']:.3f}"
-        grade = metrics['quality_grade']['most_common']
+        
+        # Get most common grade from distribution
+        grade_dist = metrics.get('grade_distribution', {})
+        grade = max(grade_dist.items(), key=lambda x: x[1])[0] if grade_dist else 'N/A'
         
         print(f"{system} & {cultural_auth} & {trans_fid} & {overall_qual} & {grade} \\\\")
     
@@ -86,11 +89,6 @@ def generate_key_statistics(cultural_results):
     print(f"📊 OVERALL QUALITY:")
     print(f"   OG-RAG:         {og_rag['overall_quality']['mean']:.3f} ± {og_rag['overall_quality']['std']:.3f}")
     print(f"   Raw GPT-4:      {raw_gpt4['overall_quality']['mean']:.3f} ± {raw_gpt4['overall_quality']['std']:.3f}")
-    print()
-    
-    print(f"📊 SEMANTIC SIMILARITY:")
-    print(f"   OG-RAG:         {og_rag['semantic_similarity']['mean']:.3f}")
-    print(f"   Raw GPT-4:      {raw_gpt4['semantic_similarity']['mean']:.3f}")
     print()
     
     # Extract metadata
