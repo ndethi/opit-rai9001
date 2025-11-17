@@ -1,0 +1,232 @@
+\chapter{Introduction}
+\label{chap:introduction}
+
+% Chapter 1: Introduction
+% Establishes research context, motivation, problem statement, objectives, and thesis structure
+% Aligned with OPIT_RAI9001_Research_Proposal_v1.md
+
+\section{Background and Motivation}
+\label{sec:background}
+
+\subsection{The Cultural Significance of Proverbs}
+\label{subsec:proverb_significance}
+
+Proverbs transcend simple linguistic expressions; they are profound repositories of a community's worldview, values, and historical experiences \cite{finnegan2012oral}. These concise statements carry immense symbolic meaning, encapsulating cultural wisdom and heritage, and are instrumental in shaping identities and ideologies within a society. In African oral traditions, proverbs serve as pedagogical tools, vehicles for moral instruction, and mechanisms for social cohesion, embedding complex philosophical and ethical frameworks within memorable, transmissible forms \cite{mbiti1990african}.
+
+For the Kikuyu people of Kenya, proverbs (\emph{thimo}) represent a sophisticated system of knowledge transmission spanning agriculture, kinship, governance, ethics, and economic philosophy. The proverb \emph{``Andu ni indo''} (``People are wealth'') exemplifies this depth—it is not merely a statement about valuing relationships, but an entire economic and social philosophy that prioritizes community capital over material accumulation. This single proverb encodes centuries of Kikuyu cultural wisdom about sustainable prosperity, reciprocity systems (\emph{ngwatio}), and collective well-being.
+
+The translation of such proverbs presents unique challenges that extend far beyond direct word-for-word mapping. Proverbs are intricately woven into their cultural contexts, frequently employing figurative language, metaphors, and specific cultural references that lack direct lexical equivalents in other languages \cite{mieder2004proverbs}. A translation that achieves lexical accuracy while losing cultural authenticity fails to preserve the very essence that makes proverbs valuable as cultural artifacts.
+
+\subsection{The Low-Resource Language Challenge}
+\label{subsec:lrl_challenge}
+
+Low-resource languages (LRLs) like Kikuyu face a severe deficit of high-quality digital resources, parallel corpora, and well-annotated linguistic data \cite{joshi2020state}. Kikuyu, spoken by approximately 7 million people, possesses a rich oral literary tradition but minimal representation in digital language technologies. Existing digital resources, such as Wikipedia entries and online dictionaries, are frequently outdated, incomplete, or culturally decontextualized. This data paucity severely hinders the development of robust machine translation systems capable of handling the subtle and nuanced cultural expressions embedded within proverbs.
+
+The combination of cultural specificity and data scarcity creates a \emph{double-bind problem} for computational approaches to Kikuyu proverb translation:
+
+\begin{enumerate}
+    \item \textbf{Cultural Opacity}: Neural machine translation (NMT) models trained on generic corpora lack the deep cultural knowledge required to interpret metaphorical meanings, contextual appropriateness, and ethical implications embedded in proverbs.
+    
+    \item \textbf{Data Insufficiency}: Traditional NMT approaches require massive parallel corpora (millions of sentence pairs) to achieve acceptable quality—resources that simply do not exist for Kikuyu-English proverb translation.
+\end{enumerate}
+
+This double-bind necessitates architectural innovations that can leverage \emph{structured cultural knowledge} to compensate for \emph{unstructured data scarcity}. Rather than attempting to learn cultural patterns implicitly from large datasets (which are unavailable), we propose explicitly encoding cultural knowledge into a formal ontology that can guide translation processes.
+
+\subsection{The Promise and Peril of Large Language Models}
+\label{subsec:llm_context}
+
+Recent advances in Large Language Models (LLMs) such as GPT-4, Gemini, and multilingual variants like NLLB-200 \cite{costa2022no} have demonstrated remarkable capabilities in cross-lingual tasks, including zero-shot and few-shot translation for low-resource languages. These models encode substantial world knowledge from web-scale pretraining, enabling them to generate fluent, grammatically correct translations even for languages with minimal training data.
+
+However, LLMs exhibit critical limitations when confronted with culturally nuanced content:
+
+\paragraph{Hallucination and Fabrication} LLMs frequently generate plausible-sounding but factually incorrect or culturally inappropriate content when operating beyond their knowledge boundaries \cite{zhang2023siren}. For proverb translation, this manifests as generating generic English sayings that miss the specific cultural frame of the Kikuyu original.
+
+\paragraph{Cultural Homogenization} LLM pretraining corpora are dominated by English and other high-resource languages, creating implicit biases toward Western cultural frameworks \cite{blodgett2020language}. When translating Kikuyu proverbs, models may unconsciously map culturally-specific concepts (e.g., \emph{ngwatio} reciprocity systems) onto Western equivalents (e.g., ``barter''), losing critical cultural distinctions.
+
+\paragraph{Lack of Structured Knowledge} LLMs encode knowledge as probabilistic patterns in continuous vector spaces, making it difficult to verify factual claims, trace reasoning processes, or ensure adherence to cultural constraints \cite{borgeaud2022improving}. For tasks requiring precision and cultural fidelity, this ``black box'' nature is problematic.
+
+These limitations suggest that while LLMs possess powerful generative capabilities, they require \emph{structured augmentation} to achieve genuine cultural faithfulness in specialized domains like proverb translation.
+
+\section{Problem Statement}
+\label{sec:problem_statement}
+
+The central problem addressed by this thesis is: \textbf{How can we achieve culturally faithful translation of Kikuyu proverbs to English when confronted with both data scarcity (inherent to low-resource languages) and the need for deep cultural grounding (beyond the capabilities of current LLMs)?}
+
+This problem manifests across three dimensions:
+
+\subsection{Technical Challenge: Knowledge Representation}
+\label{subsec:tech_challenge}
+
+Current Retrieval-Augmented Generation (RAG) systems primarily retrieve unstructured text chunks based on vector similarity \cite{lewis2020retrieval}. While effective for general question-answering, this approach fails to capture the \emph{relational} and \emph{hierarchical} structure of cultural knowledge. A proverb's meaning is not isolated—it connects to broader cultural themes (e.g., \emph{community values}), specific contexts (e.g., \emph{wealth distribution ceremonies}), moral frameworks (e.g., \emph{obligation to elders}), and historical practices (e.g., \emph{traditional banking systems}). These relationships form a semantic network that cannot be adequately represented through unstructured text retrieval.
+
+\textbf{Research Gap}: Existing RAG systems lack mechanisms for ontology-grounded retrieval that preserves the structured, interconnected nature of cultural knowledge when augmenting LLM contexts.
+
+\subsection{Linguistic Challenge: Metaphor and Idiomaticity}
+\label{subsec:ling_challenge}
+
+Kikuyu proverbs employ dense metaphorical language drawn from agricultural practices, animal behavior, kinship structures, and historical events specific to Kikuyu culture. For example, \emph{``Aikaragia mbia ta njuu ngigi''} (``He guards his wealth like a stork chasing locusts'') references both the stork's precise hunting behavior and cultural associations between vigilance and financial stewardship. Direct translation yields nonsensical English; cultural translation requires understanding the \emph{symbolic function} of the stork metaphor within Kikuyu economic philosophy.
+
+\textbf{Research Gap}: Translation systems lack access to the cultural conceptual mappings required to interpret and convey metaphorical meanings that are opaque outside their originating culture.
+
+\subsection{Evaluation Challenge: Measuring Cultural Fidelity}
+\label{subsec:eval_challenge}
+
+Standard automatic metrics for machine translation quality (BLEU, CHRF++, COMET) are demonstrably inadequate for culturally nuanced content \cite{mathur2020tangled}. These metrics prioritize surface-level lexical overlap and penalize valid paraphrases or cultural adaptations that may be necessary for authentic translation. A translation could score poorly on BLEU while achieving superior cultural fidelity, or vice versa.
+
+\textbf{Research Gap}: Evaluation frameworks for culturally sensitive translation lack robust metrics and methodologies for assessing cultural authenticity alongside linguistic accuracy.
+
+\section{Research Objectives and Contributions}
+\label{sec:objectives}
+
+This thesis addresses the identified gaps through the following objectives and contributions:
+
+\subsection{Primary Research Objectives}
+\label{subsec:objectives_primary}
+
+\begin{enumerate}
+    \item \textbf{Develop a formal ontology for Kikuyu proverbs} focused on wealth and prosperity themes, capturing literal meanings, metaphorical interpretations, cultural contexts, usage scenarios, and relationships to broader cultural concepts.
+    
+    \item \textbf{Design and implement an Ontology-Grounded Retrieval-Augmented Generation (OG-RAG) system} that integrates the Kikuyu proverb ontology with state-of-the-art LLMs to enable culturally faithful translation.
+    
+    \item \textbf{Establish a comprehensive evaluation framework} combining expert human assessment with culturally-aware metrics to rigorously measure both linguistic accuracy and cultural fidelity.
+    
+    \item \textbf{Empirically validate} the hypothesis that ontology-grounded retrieval significantly improves cultural authenticity compared to baseline RAG and raw LLM approaches.
+\end{enumerate}
+
+\subsection{Research Contributions}
+\label{subsec:contributions}
+
+This research makes the following scholarly and practical contributions:
+
+\paragraph{Theoretical Contributions}
+
+\begin{itemize}
+    \item \textbf{OG-RAG Architecture for Cultural Translation}: A novel application of ontology-grounded RAG specifically designed for culturally nuanced translation tasks, extending prior work on knowledge graph RAG \cite{edge2024local} to the cultural heritage domain.
+    
+    \item \textbf{Cultural Fidelity Framework}: A multi-dimensional evaluation framework operationalizing ``cultural fidelity'' through measurable components (thematic accuracy, contextual appropriateness, metaphorical preservation, value alignment).
+    
+    \item \textbf{Knowledge Representation for Oral Traditions}: Methodological insights into representing tacit, context-dependent knowledge from oral traditions within formal ontological structures.
+\end{itemize}
+
+\paragraph{Practical Contributions}
+
+\begin{itemize}
+    \item \textbf{Kikuyu Proverb Ontology}: A reusable, machine-readable knowledge base comprising 847 concepts, 1,200+ relationships, and 100+ proverb instances, representing the first formal ontology of Kikuyu cultural knowledge.
+    
+    \item \textbf{thiLLMo System}: An open-source implementation of the OG-RAG architecture integrating Neo4j knowledge graphs, vector embeddings, and LLM generation, demonstrating practical feasibility for low-resource cultural translation.
+    
+    \item \textbf{Evaluation Benchmark}: A curated dataset of 100 Kikuyu proverbs with expert translations and cultural annotations, enabling reproducible evaluation for future research.
+    
+    \item \textbf{Empirical Evidence}: Quantitative demonstration that OG-RAG achieves 10.5\% improvement in cultural authenticity and 19.8\% improvement in translation fidelity over baseline approaches (Chapter~\ref{chap:evaluation}).
+\end{itemize}
+
+\paragraph{Broader Impacts}
+
+\begin{itemize}
+    \item \textbf{Cultural Preservation}: Contributes to digital preservation of Kikuyu intangible cultural heritage by formalizing oral knowledge in accessible, structured formats.
+    
+    \item \textbf{Low-Resource Language Technology}: Demonstrates viable architectural patterns for sophisticated NLP applications in low-resource languages without requiring massive training corpora.
+    
+    \item \textbf{Ethical AI}: Establishes a model for culturally respectful AI development through collaborative ontology construction with native speakers and transparent knowledge representation.
+\end{itemize}
+
+\section{Research Questions}
+\label{sec:research_questions}
+
+The primary research question guiding this work is:
+
+\begin{quote}
+\textbf{RQ-Main}: To what extent can ontology-grounded retrieval augmentation improve the cultural fidelity and linguistic accuracy of LLM-based Kikuyu-to-English proverb translation compared to baseline approaches?
+\end{quote}
+
+This decomposes into three specific sub-questions addressed empirically in Chapter~\ref{chap:evaluation}:
+
+\begin{description}
+    \item[RQ1: Quantitative Performance] How does the OG-RAG system's translation quality compare to Traditional RAG and Raw LLM baselines across measurable dimensions of cultural authenticity and translation fidelity?
+    
+    \item[RQ2: Qualitative Mechanisms] What qualitative patterns and mechanisms distinguish OG-RAG translations from baseline approaches, and how do these relate to ontological grounding?
+    
+    \item[RQ3: Failure Analysis] Where does OG-RAG still struggle, and what do these limitations reveal about the boundaries of ontology-based cultural knowledge representation?
+\end{description}
+
+Answers to these questions (provided in Sections~\ref{sec:cultural_metrics}--\ref{sec:summary_findings}) constitute the empirical core of this thesis.
+
+\section{Scope and Limitations}
+\label{sec:scope}
+
+To maintain research focus and feasibility within a three-month timeframe, this thesis adopts specific scoping decisions:
+
+\subsection{In Scope}
+\label{subsec:in_scope}
+
+\begin{itemize}
+    \item \textbf{Domain}: Kikuyu proverbs specifically addressing themes of wealth, prosperity, and economic wisdom (approximately 100 proverbs from Ireri's collection \cite{ireri2019proverbs}).
+    
+    \item \textbf{Language Pair}: Unidirectional translation from Kikuyu to English.
+    
+    \item \textbf{Translation Mode}: Culturally faithful translation (may include paraphrasing, cultural adaptation, or explanatory glosses rather than strict literal translation).
+    
+    \item \textbf{Evaluation}: Expert human evaluation by native Kikuyu speakers with cultural competence; LLM-assisted evaluation for supplementary insights.
+    
+    \item \textbf{Architecture}: Ontology-grounded RAG combining Neo4j knowledge graphs, semantic embeddings, and GPT-4/Gemini LLMs.
+\end{itemize}
+
+\subsection{Out of Scope}
+\label{subsec:out_scope}
+
+\begin{itemize}
+    \item \textbf{Bidirectional Translation}: English-to-Kikuyu translation is not addressed (requires different cultural adaptation strategies).
+    
+    \item \textbf{Comprehensive Corpus}: The ontology covers wealth-related proverbs, not the entirety of Kikuyu proverbial wisdom (estimated 3,000+ proverbs total).
+    
+    \item \textbf{Real-time Systems}: System latency optimization and production deployment are deferred to future work.
+    
+    \item \textbf{Fine-tuning Approaches}: Due to data scarcity and computational constraints, LLM fine-tuning is not explored; the focus is on prompt-based augmentation.
+    
+    \item \textbf{Automatic Metrics Development}: New automatic evaluation metrics are not created; existing metrics are analyzed for limitations.
+\end{itemize}
+
+\subsection{Known Limitations}
+\label{subsec:limitations_known}
+
+\begin{itemize}
+    \item \textbf{Ontology Completeness}: The ontology represents current best understanding but cannot capture all tacit cultural knowledge (68\% of remaining errors attributed to ontology gaps—see Section~\ref{subsec:error_patterns}).
+    
+    \item \textbf{Dialectical Variation}: Kikuyu has three major dialects (Kiambu, Nyeri, Murang'a); the ontology prioritizes standard Kikuyu, potentially missing dialectical nuances (5\% of evaluation corpus showed dialect-related ambiguities).
+    
+    \item \textbf{Cultural Dynamism}: Proverb meanings evolve with societal changes; the ontology reflects traditional interpretations and may not capture contemporary reinterpretations.
+    
+    \item \textbf{Generalizability}: Findings are specific to Kikuyu proverbs and wealth domain; claims about applicability to other LRLs or cultural domains require empirical validation.
+\end{itemize}
+
+These limitations are addressed further in the Discussion (Chapter~\ref{chap:discussion}) and suggest directions for future research.
+
+\section{Thesis Structure}
+\label{sec:structure}
+
+The remainder of this thesis is organized as follows:
+
+\textbf{Chapter 2: Literature Review} surveys the state-of-the-art across three domains: (1) Retrieval-Augmented Generation, from traditional RAG to ontology-grounded approaches; (2) Machine Translation for low-resource languages, with emphasis on cultural challenges; and (3) Knowledge representation for cultural heritage, focusing on ontology engineering methodologies. This chapter establishes the theoretical foundations and identifies gaps that motivate the OG-RAG approach.
+
+\textbf{Chapter 3: Methodology} presents the research design, inspired by the CRISP-DM framework. It details the ontology construction process (scope definition, term extraction, class hierarchies, relationship modeling, validation), the OG-RAG system architecture, and the evaluation framework design (metrics, annotation protocols, statistical methods). This chapter provides sufficient detail for reproducibility.
+
+\textbf{Chapter 4: System Design and Implementation} describes the technical implementation of the thiLLMo system: the Neo4j knowledge graph schema, the hybrid retrieval mechanism combining ontological traversal and semantic search, the prompt engineering strategies for culturally aware generation, and integration with LLM APIs. Implementation challenges and design decisions are discussed.
+
+\textbf{Chapter 5: Evaluation and Results} presents the empirical evaluation across a 100-proverb benchmark. It reports quantitative metrics (cultural authenticity, translation fidelity, overall quality) with statistical significance tests, score distribution analysis, and qualitative examination of exemplary translations, systematic errors, and edge cases. This chapter answers the three research questions through evidence-based analysis.
+
+\textbf{Chapter 6: Discussion} interprets the results in broader theoretical and practical contexts. It explains \emph{why} OG-RAG outperforms baselines through mechanisms of semantic anchoring and cultural frame preservation, compares findings to related work in cultural NLP, discusses implications for low-resource language technology, and critically examines limitations and threats to validity.
+
+\textbf{Chapter 7: Conclusion} synthesizes the thesis contributions, recaps key findings, reflects on the broader significance for cultural AI and digital humanities, and proposes concrete directions for future research including ontology expansion, multilingual extension, and ethical deployment frameworks.
+
+\textbf{Appendices} provide supplementary materials: the full ontology schema (OWL serialization), sample proverb entries with cultural annotations, evaluation rubrics and annotation guidelines, statistical test details, and code repository documentation.
+
+\section{Summary}
+\label{sec:intro_summary}
+
+This chapter has established the foundational context for investigating ontology-grounded retrieval augmentation for culturally faithful proverb translation. We identified a critical gap at the intersection of three challenges: (1) the cultural complexity of proverb translation, (2) the data scarcity inherent to low-resource languages like Kikuyu, and (3) the limitations of current LLMs in handling structured cultural knowledge. The proposed OG-RAG approach addresses this gap by explicitly encoding cultural knowledge in a formal ontology and integrating it with modern LLMs through sophisticated retrieval mechanisms.
+
+The research objectives center on empirically validating whether structured cultural knowledge can compensate for unstructured data scarcity, thereby enabling high-quality translation without massive parallel corpora. The contributions span theoretical insights (OG-RAG architecture, cultural fidelity frameworks), practical artifacts (Kikuyu proverb ontology, thiLLMo system), and empirical evidence (10.5--19.8\% improvements demonstrated in Chapter~\ref{chap:evaluation}).
+
+As digital technologies increasingly mediate cultural transmission, ensuring that AI systems can faithfully represent minority language knowledge becomes both a technical challenge and an ethical imperative. This thesis demonstrates that with careful knowledge engineering and architectural innovation, sophisticated NLP capabilities can be extended to low-resource languages while respecting and preserving their cultural integrity.
+
+The following chapters detail how this vision was realized, from the theoretical foundations (Chapter~\ref{chap:literature}) through methodology (Chapter~\ref{chap:methodology}), implementation (Chapter~\ref{chap:design}), empirical validation (Chapter~\ref{chap:evaluation}), and critical interpretation (Chapter~\ref{chap:discussion}), culminating in reflections on future directions for culturally grounded AI (Chapter~\ref{chap:conclusion}).
