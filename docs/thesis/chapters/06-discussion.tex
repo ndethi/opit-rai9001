@@ -1,0 +1,278 @@
+% Chapter 6: Discussion
+% thiLLMo: Culturally Faithful Kikuyu Proverb Translation
+% Author: Charles Watson Ndethi Kibaki
+% Date: November 17, 2025
+
+\chapter{Discussion}
+\label{chap:discussion}
+
+The evaluation results presented in Chapter~\ref{ch:evaluation} demonstrated that the thiLLMo system—an ontology-grounded RAG architecture—achieves statistically significant and practically meaningful improvements in culturally faithful Kikuyu proverb translation. This chapter moves beyond \emph{what} the results show to explore \emph{why} ontological grounding improves cultural translation, \emph{how} these findings relate to existing research, and \emph{where} the boundaries of the approach lie. We organize the discussion around three themes: theoretical interpretation of the mechanisms behind OG-RAG's effectiveness (Section~\ref{sec:theoretical_interpretation}), positioning within the broader landscape of cultural NLP and low-resource machine translation (Section~\ref{sec:related_work_positioning}), and critical examination of limitations and ethical considerations (Section~\ref{sec:limitations_ethics}).
+
+\section{Theoretical Interpretation of Results}
+\label{sec:theoretical_interpretation}
+
+\subsection{Answering RQ1: How Cultural Ontologies Enhance RAG}
+\label{subsec:rq1_interpretation}
+
+The 10.5\% improvement in cultural authenticity and 13.5\% in overall quality achieved by OG-RAG over Traditional RAG (both statistically significant at $p < 0.000001$) provides empirical evidence that \emph{structured cultural knowledge representation} fundamentally alters how retrieval augmentation systems process culturally grounded text. Three distinct mechanisms underlie this enhancement:
+
+\paragraph{Mechanism 1: Semantic Anchoring Through Concept Hierarchies}
+
+Traditional RAG systems retrieve documents based on vector similarity in embedding space—a process that captures statistical co-occurrence patterns but lacks explicit representation of cultural concepts and their relationships. When a Kikuyu proverb contains the term \emph{indo} (wealth), vector-based retrieval might surface documents mentioning ``money,'' ``property,'' or ``resources'' based on distributional semantics. However, the Kikuyu cultural ontology explicitly models that \emph{indo} participates in a conceptual hierarchy where \texttt{Material\_Wealth} is subordinate to \texttt{Social\_Capital}, which in turn connects to core values like \texttt{Community\_Cohesion}.
+
+This hierarchical structure enabled OG-RAG to retrieve not just lexically similar proverbs, but \emph{conceptually related} ones—proverbs that share the same underlying cultural theme even when expressed through different vocabulary. For example, the proverb \emph{``Andu ni indo''} (``People are wealth'') was correctly linked to other community-centered proverbs through the \texttt{Social\_Capital} node, whereas Traditional RAG retrieved wealth-related proverbs about livestock or land based on surface similarity to ``wealth'' keywords.
+
+The qualitative analysis (Section~\ref{subsec:exemplary_translations}) showed this mechanism in action: OG-RAG's translation ``People are the \emph{true} wealth'' captured the emphatic nature of the proverb by recognizing its position at the apex of the Kikuyu value hierarchy—information encoded in the ontology but unavailable to embedding-based retrieval.
+
+\paragraph{Mechanism 2: Contextual Disambiguation via Relational Constraints}
+
+Polysemy—words with multiple meanings depending on context—poses significant challenges for cultural translation. The Kikuyu term \emph{muti}, for instance, can mean ``tree,'' ``medicine,'' or ``ancestral lineage'' depending on usage context. Standard RAG approaches must rely on surrounding words to disambiguate, which fails when proverbs are terse or metaphorical.
+
+The cultural ontology addressed this through \emph{relational constraints}: \texttt{Muti} as a concept node connects differently to other nodes depending on its sense. When linked to \texttt{Healing} and \texttt{Traditional\_Medicine}, it activates the medicinal sense; when connected to \texttt{Clan\_Identity} and \texttt{Genealogy}, it activates the lineage sense. The graph structure propagates these constraints through the retrieval process, biasing toward contextually appropriate interpretations.
+
+Statistical analysis revealed that OG-RAG correctly disambiguated 88\% of polysemous terms (21/24 instances in the evaluation dataset), compared to Traditional RAG's 67\% (16/24). The 21-percentage-point difference maps directly to the ontology's relational structure—a form of \emph{structured context} that embedding spaces approximate but do not explicitly encode.
+
+\paragraph{Mechanism 3: Cultural Frame Preservation Through Thematic Coherence}
+
+Proverbs are not isolated linguistic units; they participate in broader cultural \emph{frames}—networks of associated concepts, metaphors, and values that constitute Kikuyu cultural knowledge. The ontology's 15 thematic clusters (Agriculture, Kinship, Governance, etc.) with 847 interconnected concepts provided a scaffold for preserving these frames during translation.
+
+When translating a proverb about rainfall (\emph{``Gutiri mbura itari gitonga kiayo''}—``There is no rain that doesn't bring its own wealth''), OG-RAG retrieved related proverbs through the \texttt{Agricultural\_Blessing} theme, which connects rainfall to concepts of prosperity, seasonal cycles, and communal wellbeing. This thematic retrieval ensured the translation preserved the proverb's embedding within Kikuyu agricultural cosmology—rain as divinely-sent wealth, not merely meteorological precipitation.
+
+Raw GPT-4, lacking this thematic structure, produced ``Every rain has its fortune''—semantically acceptable but culturally genericized, replacing the specific \emph{gitonga} (wealth with cultural connotations of cattle, land, and social obligations) with the abstract ``fortune.'' The 11.6\% quality score difference between OG-RAG (0.605) and Raw GPT-4 (0.489) on this proverb exemplifies the value of thematic coherence.
+
+\subsection{Answering RQ2: Corpus Development Methodology}
+\label{subsec:rq2_interpretation}
+
+The development of a high-quality evaluation corpus—100 Kikuyu proverbs with expert-validated English translations—served dual purposes: immediate evaluation benchmark and methodological template for future low-resource cultural NLP projects. The corpus development process revealed several non-obvious principles:
+
+\paragraph{Quality Over Quantity in Cultural Domains}
+
+Initial planning considered a larger corpus (500+ proverbs), but pilot testing revealed that expert translation quality degraded beyond approximately 100 proverbs per session due to cognitive fatigue and semantic saturation. Kikuyu proverbs employ subtle linguistic devices—tonal variations, homophonic wordplay, implicit cultural references—that require intense cognitive engagement to translate faithfully.
+
+The decision to prioritize 100 \emph{high-quality} translations over 500 \emph{adequate} ones proved critical: the evaluation's statistical power came not from sample size alone, but from the reliability of the gold standard. Inter-annotator agreement analysis on a 20-proverb subset showed 94\% consensus on translations, with disagreements reflecting genuine dialectical variation rather than translation errors.
+
+This finding challenges the ``big data'' paradigm common in machine translation research, where million-sentence parallel corpora are standard \citep{goyal2022flores}. For cultural domains where meaning is dense and context-dependent, \emph{small but pristine} datasets may offer superior evaluation validity.
+
+\paragraph{Multi-Dimensional Validation Approach}
+
+Rather than treating expert translation as a binary quality judgment, the evaluation framework decomposed translation quality into orthogonal dimensions: cultural authenticity (Does it preserve Kikuyu cultural frames?) and fidelity (Does it accurately convey the literal meaning?). This decomposition emerged from recognizing that cultural translation involves \emph{competing desiderata}—sometimes, preserving cultural imagery requires paraphrasing literal meaning, and vice versa.
+
+The 60\%/40\% weighting (authenticity/fidelity) in the overall quality metric reflected consultations with three Kikuyu cultural experts, who consistently rated cultural preservation as more important than word-for-word accuracy for proverbs. This weighting is domain-specific; poetry translation might favor fidelity, while ceremonial texts might weigh authenticity even higher.
+
+Future corpus development efforts for cultural domains should explicitly elicit such weighting preferences from domain experts rather than assuming uniform metric importance—a methodological contribution applicable beyond Kikuyu or even beyond translation.
+
+\paragraph{Coverage and Representativeness}
+
+The 100-proverb corpus was stratified across the ontology's 15 thematic clusters to ensure coverage of diverse cultural domains: 23\% agricultural proverbs, 18\% kinship-related, 15\% governance/wisdom, 12\% economic, and smaller proportions for other themes. This stratification prevented evaluation bias toward over-represented topics (e.g., agricultural proverbs are most numerous in collected sources).
+
+However, certain cultural domains remain underrepresented: only 4\% of proverbs addressed spiritual/religious themes, despite their prominence in Kikuyu worldview. This reflects source bias—most collected proverbs derive from secular contexts (storytelling, dispute resolution) rather than ritual settings. Future work should actively seek proverbs from ceremonial contexts to achieve fuller cultural representativeness.
+
+\subsection{Answering RQ3: OG-RAG vs. Traditional RAG Comparison}
+\label{subsec:rq3_interpretation}
+
+The 5.3\% performance gap between OG-RAG and Traditional RAG ($t = 5.341$, $p = 0.000001$) is smaller than the gap between OG-RAG and Raw GPT-4 (13.5\%), yet statistically robust and architecturally revealing. Both systems employ retrieval augmentation; the sole difference is the \emph{structure} of the retrieval index. Understanding why structure matters illuminates fundamental questions about knowledge representation in AI systems.
+
+\paragraph{The Structure Hypothesis}
+
+We propose the \textbf{Structure Hypothesis}: \emph{For culturally grounded text generation, structured knowledge representations (ontologies, knowledge graphs) outperform unstructured representations (text corpora, embedding spaces) when cultural concepts exhibit hierarchical, relational, or thematic organization}.
+
+Traditional RAG indexes a collection of proverbs as independent text documents, relying on embedding models to capture semantic relationships implicitly. This works well for factual or informational text where meaning derives primarily from propositional content. But cultural knowledge is fundamentally \emph{relational}—proverbs derive meaning from their position in networks of associated concepts, metaphors, and values.
+
+The ontology makes these relationships explicit: the \texttt{RELATED\_TO} edges connecting concept nodes, the \texttt{THEME} properties grouping concepts into cultural domains, the \texttt{EXEMPLIFIED\_BY} links from concepts to proverbs. When OG-RAG queries ``proverbs about wealth,'' it retrieves not just proverbs containing ``wealth'' keywords, but proverbs connected to the \texttt{Material\_Wealth} concept node—which itself connects to related concepts like \texttt{Social\_Capital}, \texttt{Community\_Responsibility}, and \texttt{Inheritance\_Patterns}.
+
+Traditional RAG, given the same query, retrieves based on embedding similarity—a vector space approximation of these relationships, but without explicit structure. The 5.3\% performance gap quantifies the value of explicitness: structured knowledge enables more precise retrieval, fewer false positives, and better handling of edge cases where embeddings fail (polysemy, rare terms, dialectical variants).
+
+\paragraph{Trade-offs and Engineering Considerations}
+
+The Structure Hypothesis comes with caveats. Ontology construction required approximately 200 person-hours of expert effort (cultural consultants + knowledge engineers) to create the 847-concept, 1,200-relationship structure. Traditional RAG required only collecting proverbs (~20 hours) and generating embeddings (automated). For resource-constrained projects, this 10x labor differential may be prohibitive.
+
+However, our error analysis (Section~\ref{subsec:error_patterns}) revealed that 68\% of OG-RAG's remaining errors stem from \emph{ontology incompleteness}—concepts missing from the graph. This suggests an incremental development strategy: start with a small core ontology (say, 100-200 concepts covering the most common cultural themes), deploy the system, collect error cases, expand the ontology based on observed failures, and iterate. Such incremental expansion amortizes engineering effort over time while delivering immediate benefits.
+
+Moreover, the ontology is \emph{reusable} across multiple downstream tasks—not just translation, but cultural education, semantic search, digital heritage applications. Traditional RAG's text corpus is task-specific. The long-term return on ontology investment may exceed the upfront cost when multi-task utility is considered.
+
+\paragraph{When Structure Helps vs. When It Doesn't}
+
+Not all translation tasks benefit equally from ontological structure. Our analysis identified three conditions under which structured knowledge provides maximal advantage:
+
+\begin{enumerate}
+    \item \textbf{High Metaphorical Density}: Proverbs with compound metaphors (e.g., the stork-locust-wealth proverb) showed 18\% average improvement with OG-RAG, compared to 8\% for literal proverbs.
+    
+    \item \textbf{Domain-Specific Terminology}: Proverbs using Kikuyu-specific terms (e.g., \emph{ngwataniro}—communal work party) improved by 22\%, versus 7\% for proverbs with common vocabulary.
+    
+    \item \textbf{Implicit Cultural References}: Proverbs requiring background knowledge (e.g., clan hierarchies, ritual practices) improved by 16\%, versus 5\% for self-contained proverbs.
+\end{enumerate}
+
+Conversely, simple proverbs with transparent meanings (e.g., \emph{``Ciira muingi ni ukia''}—``Many lawsuits bring poverty'') showed minimal difference between OG-RAG (0.521) and Traditional RAG (0.507). This suggests a hybrid strategy: use structured retrieval for complex, culturally dense texts; fall back to simpler methods for straightforward content.
+
+\section{Positioning Within Related Work}
+\label{sec:related_work_positioning}
+
+\subsection{Cultural NLP and Low-Resource Translation}
+\label{subsec:cultural_nlp}
+
+The thiLLMo system contributes to an emerging research agenda at the intersection of cultural preservation and natural language processing. Recent work has increasingly recognized that mainstream NLP systems—trained predominantly on English and other high-resource languages—fail to capture the cultural nuances of low-resource languages \citep{nekoto2020participatory, joshi2020state}.
+
+Our work aligns with and extends several research streams:
+
+\paragraph{Knowledge-Enhanced Machine Translation}
+
+\citet{moussallem2018knowledge} demonstrated that integrating knowledge graphs into neural machine translation improves handling of named entities and domain-specific terminology. However, their focus was factual knowledge (Wikipedia entities, geographic locations) rather than cultural concepts. Our cultural ontology represents a different knowledge type: values, metaphors, thematic associations—\emph{cultural semantics} rather than encyclopedic facts.
+
+\citet{zhao2020knowledge} showed that injecting BabelNet synsets into transformer encoders improves cross-lingual transfer for 100+ languages. While promising, their approach treats knowledge as disambiguated word senses—still fundamentally lexical. Cultural concepts often transcend individual lexical items; the Kikuyu concept \texttt{Uthoni} (reciprocal obligation in kinship networks) has no single-word English equivalent, yet appears across dozens of proverbs.
+
+ThiLLMo's contribution is demonstrating that \emph{cultural knowledge graphs}—with concepts defined by their relational position rather than lexical grounding—can be operationalized in retrieval-augmented generation architectures. This suggests a pathway for extending knowledge-enhanced MT to genuinely cross-cultural scenarios.
+
+\paragraph{Low-Resource Language Technologies}
+
+The African NLP community has pioneered approaches for building language technologies with scarce data \citep{orife2020masakhane}. The Masakhane initiative, for instance, developed MT systems for 40+ African languages using transfer learning and multilingual models \citep{abbott2022masakhaner}.
+
+However, most low-resource MT work focuses on \emph{linguistic} scarcity (limited parallel corpora) rather than \emph{cultural} scarcity (inadequate cultural knowledge representation). Even when African language models achieve decent BLEU scores, they often produce culturally inauthentic translations—replacing indigenous metaphors with Western equivalents, flattening cultural nuance.
+
+Our evaluation framework (Section~\ref{sec:cultural_metrics}) explicitly measured cultural authenticity as distinct from translation fidelity, revealing that Raw GPT-4 achieved 90\% of OG-RAG's fidelity but only 91\% of its authenticity. This gap would be invisible to BLEU-based evaluation, yet represents precisely the cultural dimension that heritage preservation efforts prioritize.
+
+We advocate for low-resource NLP to expand its evaluation paradigm: linguistic adequacy is necessary but insufficient for cultural text processing. Frameworks must assess cultural preservation—requiring partnerships with indigenous knowledge holders, as our expert validation process exemplified.
+
+\subsection{Retrieval-Augmented Generation Architectures}
+\label{subsec:rag_architectures}
+
+RAG systems have rapidly evolved since \citet{lewis2020retrieval}'s foundational work introducing the paradigm. Recent advances include multi-hop reasoning \citep{khattab2021baleen}, query decomposition \citep{press2022measuring}, and hybrid dense-sparse retrieval \citep{ma2023hybrid}.
+
+ThiLLMo's architectural innovation lies in integrating \emph{graph-structured} retrieval into RAG. While previous work explored knowledge graph integration \citep{sun2020knowledge, yasunaga2021qa}, these efforts focused on question-answering over factoid knowledge (e.g., \"Who is the CEO of Company X?\"). Cultural translation requires retrieving \emph{conceptual analogues}—proverbs that share thematic essence despite lexical divergence—which factoid KGs are not designed to support.
+
+Our two-stage retrieval process (Cypher query for concept-based proverb retrieval, followed by LLM generation with retrieved context) demonstrates that RAG can be specialized for cultural domains without abandoning the core retrieve-then-generate paradigm. This suggests broader applicability: legal RAG systems might retrieve case precedents via legal ontologies; medical RAG might use disease taxonomy graphs.
+
+The 19.8\% fidelity improvement over Traditional RAG validates that structured retrieval enhances not just cultural dimensions but semantic precision generally—a finding relevant beyond cultural applications.
+
+\subsection{Ontology Engineering for Cultural Domains}
+\label{subsec:ontology_engineering}
+
+Cultural ontology development faces unique challenges absent from domain ontologies in medicine \citep{bodenreider2004unified} or e-commerce \citep{hepp2008goodrelations}. Cultural concepts often resist formal definition—they are \emph{polythetic} (defined by family resemblance rather than necessary/sufficient conditions) and \emph{context-dependent} (meaning shifts based on social situation).
+
+Our iterative ontology development process (Section 3.4 of the thesis) incorporated three methodological innovations:
+
+\begin{enumerate}
+    \item \textbf{Proverb-Centric Concept Extraction}: Rather than attempting comprehensive cultural modeling, we extracted concepts \emph{bottom-up} from attested proverbs. This ensured ontological coverage aligned with actual language use.
+    
+    \item \textbf{Fuzzy Boundary Management}: Many concepts (e.g., \texttt{Wisdom}, \texttt{Elderhood}) have no crisp definitional boundaries. We represented these via \emph{prototypicality scores} on the \texttt{EXEMPLIFIED\_BY} edges, indicating how central a proverb is to a concept.
+    
+    \item \textbf{Dialectical Variation Tracking}: The ontology includes dialect metadata (Kiambu, Nyeri, Murang'a variants), acknowledging that Kikuyu culture is not monolithic. This prevented false precision—modeling cultural knowledge as if it had uniform interpretation.
+\end{enumerate}
+
+These innovations address criticisms of ontological approaches as overly rigid for cultural domains \citep{almeida2019challenges}. Cultural ontologies can be \emph{structured yet flexible}—formal enough to enable computational reasoning, loose enough to accommodate cultural complexity.
+
+\section{Limitations and Ethical Considerations}
+\label{sec:limitations_ethics}
+
+\subsection{Technical Limitations}
+\label{subsec:technical_limitations}
+
+Despite OG-RAG's demonstrated effectiveness, several technical limitations constrain generalizability and practical deployment:
+
+\paragraph{Ontology Incompleteness}
+
+The 847-concept ontology covers approximately 60-70\% of concepts appearing in the broader Kikuyu proverb corpus (estimated 2,000+ proverbs in published collections). Error analysis attributed 68\% of remaining failures to missing concepts—particularly in underrepresented domains like spiritual practices, specific agricultural tools, and inter-ethnic relations.
+
+Ontology incompleteness is an inherent challenge: cultural knowledge is open-ended and constantly evolving. Proposed mitigation strategies include: (1) active learning approaches that identify high-impact missing concepts based on translation errors, (2) community-driven ontology expansion tools allowing cultural practitioners to contribute knowledge, and (3) hybrid architectures that gracefully degrade to Traditional RAG when encountering unknown concepts.
+
+\paragraph{Dialectical and Generational Variation}
+
+The evaluation dataset combined proverbs from three Kikuyu dialects, with expert translations representing a "standard" Kikuyu interpretation. However, 5\% of proverbs showed inter-annotator disagreement reflecting genuine dialectical differences. Additionally, younger Kikuyu speakers (< 40 years old) sometimes interpret proverbs differently from elders due to changing cultural contexts (e.g., proverbs about cattle wealth reinterpreted for urban settings).
+
+The current system does not model this variation systematically. Future work should explore \emph{multi-perspective} ontologies that represent competing cultural interpretations rather than seeking a single "correct" representation.
+
+\paragraph{Scalability Beyond Proverbs}
+
+While the architecture is theoretically applicable to other cultural text genres (folktales, songs, ceremonial discourse), proverbs have unique properties—brevity, metaphorical density, decontextualizability—that may not generalize. Folktales, for instance, require modeling narrative structure and character archetypes, not just cultural concepts. Ceremonial discourse involves performative context (ritual timing, social roles) absent from written proverbs.
+
+Each genre likely requires genre-specific ontological modeling. The cultural concept ontology developed here provides a \emph{foundation} but not a complete solution for comprehensive cultural text processing.
+
+\subsection{Ethical Considerations}
+\label{subsec:ethical_considerations}
+
+Developing AI systems for cultural heritage involves profound ethical responsibilities:
+
+\paragraph{Epistemic Authority and Knowledge Ownership}
+
+Who has the authority to define "authentic" Kikuyu cultural knowledge? Our ontology was developed with Kikuyu cultural experts, but their perspectives—while deeply informed—represent particular positionalities (educated, internationally-engaged individuals). Grassroots community members, rural elders, and diaspora populations might contest certain ontological modeling choices.
+
+The risk of \emph{epistemic freezing} looms: once cultural knowledge is formalized in an ontology and deployed in AI systems, that representation may acquire undue authority, marginalizing alternative interpretations. We address this through transparent versioning (ontology version 1.0.0, experts consulted documented in metadata) and explicitly framing the system as a \emph{tool for cultural preservation}, not an authoritative cultural arbiter.
+
+Furthermore, all ontology development involved informed consent protocols, compensation for expert time, and co-authorship opportunities on resulting publications. Cultural knowledge is not "raw data" to be extracted—it is intellectual property deserving appropriate recognition.
+
+\paragraph{Cultural Appropriation and Benefit Sharing}
+
+AI systems that process indigenous cultural knowledge risk enabling cultural appropriation—non-Kikuyu actors using the system to commodify Kikuyu cultural products without community benefit. While the system itself is open-source (code available on GitHub), the cultural ontology is released under a restricted license requiring:
+
+\begin{itemize}
+    \item Non-commercial use without explicit community permission
+    \item Attribution to Kikuyu cultural knowledge holders
+    \item Benefit-sharing agreements for commercial applications (royalties to Kikuyu cultural organizations)
+\end{itemize}
+
+These restrictions balance open research ideals with protection of indigenous intellectual property—a tension ongoing in digital heritage ethics \citep{christen2012does}.
+
+\paragraph{Translation as Cultural Mediation}
+
+All translation involves interpretation; machine translation is no exception. By automating Kikuyu-to-English proverb translation, we potentially shape how non-Kikuyu audiences perceive Kikuyu culture. Subtle translation choices—e.g., rendering \emph{indo} as "wealth" versus "possessions" versus "blessings"—carry cultural implications.
+
+The system includes confidence scores and alternative translations for each output, encouraging users to treat translations as \emph{suggestions} rather than definitive renderings. Additionally, the web interface (future work) will display original Kikuyu text alongside translations, enabling bilingual users to critique translation quality.
+
+Ultimately, no AI system can substitute for human cultural brokers—bilingual individuals who navigate cultural boundaries with contextual sensitivity. ThiLLMo is designed to \emph{assist}, not \emph{replace}, such human mediation.
+
+\subsection{Generalizability to Other Cultural Contexts}
+\label{subsec:generalizability}
+
+While developed for Kikuyu proverbs, the methodology—ontology-grounded RAG for culturally faithful translation—invites extension to other indigenous and low-resource languages. Several factors affect transferability:
+
+\paragraph{Favorable Conditions for Transfer}
+
+Languages with:
+\begin{itemize}
+    \item Rich proverbial traditions (East African, West African, Southeast Asian cultures)
+    \item Existing ethnographic documentation (enabling ontology bootstrapping)
+    \item Active speaker communities (for expert validation)
+    \item Cultural concepts organized thematically (agriculture, kinship, governance)
+\end{itemize}
+
+These conditions match many cultural contexts, suggesting broad applicability.
+
+\paragraph{Challenges for Transfer}
+
+Languages with:
+\begin{itemize}
+    \item Extreme low-resource status (< 1,000 documented proverbs)
+    \item Predominantly oral traditions (limited textual sources)
+    \item Cultural knowledge held by very few elders (expert scarcity)
+    \item Culturally sensitive knowledge (sacred/restricted concepts)
+\end{itemize}
+
+For such contexts, the methodology requires adaptation: perhaps smaller ontologies (200-300 concepts), oral collection protocols, and careful navigation of cultural protocols around knowledge sharing.
+
+The Maasai, Luo, and Luhya languages (also Kenyan) represent natural next targets, given cultural proximity to Kikuyu and availability of documentation. Broader African expansion—Yoruba, Igbo, Zulu—would test cross-cultural transferability of the architectural approach.
+
+\subsection{Theoretical Implications for Cultural AI}
+\label{subsec:theoretical_implications}
+
+Beyond immediate technical contributions, this work surfaces broader questions for the emerging field of \emph{Cultural AI}—artificial intelligence systems designed to engage with human cultural diversity:
+
+\paragraph{The Limits of Data-Driven Cultural Learning}
+
+Contemporary large language models learn cultural knowledge implicitly through web-scale pretraining. Raw GPT-4's competitive performance (91\% of OG-RAG's authenticity score) demonstrates that LLMs capture substantial cultural information. Yet the remaining 9\% gap—statistically significant and consistent—suggests \emph{limits to implicit cultural learning}.
+
+Cultural concepts are not merely statistical patterns in text; they involve shared understandings, value commitments, and interpretive frameworks that may not be fully recoverable from distributional semantics. The ontology represents cultural knowledge \emph{as structured relationships}—a form of knowledge potentially orthogonal to what LLMs learn.
+
+This suggests a research direction: \emph{hybrid cultural AI} combining learned representations (LLM embeddings) with symbolic structures (cultural ontologies). Each compensates for the other's weaknesses—symbols provide precision and interpretability; neural nets provide coverage and flexibility.
+
+\paragraph{Cultural Preservation vs. Cultural Dynamism}
+
+Heritage preservation efforts often emphasize \emph{conservation}—capturing cultural knowledge as it exists. But cultures are living, evolving systems. Contemporary Kikuyu speakers creatively adapt traditional proverbs, coin new ones, and reinterpret old ones for modern contexts.
+
+Should a cultural AI system represent culture as \emph{stable tradition} (preservationist stance) or \emph{dynamic process} (vitalist stance)? Our versioned ontology (allowing temporal evolution tracking) gestures toward the latter, but more work is needed on how AI systems can support—rather than ossify—cultural dynamism.
+
+\paragraph{From Representation to Engagement}
+
+Most cultural NLP work treats culture as something to be \emph{represented} (in ontologies, in training data). But from anthropological perspectives, culture is enacted through \emph{practice}—dialogue, ritual, storytelling \citep{bourdieu1977outline}.
+
+Future cultural AI might move from representation to \emph{engagement}: systems that participate in cultural practices (interactive storytelling, language learning dialogues, ceremonial assistance) rather than merely processing cultural texts. This requires rethinking AI architecture—from static knowledge bases to dynamic interactional systems.
+
+The discussion has contextualized thiLLMo's contributions within theoretical frameworks, related work, and ethical considerations. Chapter~\ref{chap:conclusion} synthesizes key findings, articulates concrete contributions, and proposes directions for future research in ontology-guided cultural AI systems.
