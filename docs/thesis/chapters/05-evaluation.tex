@@ -6,18 +6,72 @@
 \chapter{Evaluation and Results}
 \label{ch:evaluation}
 
-% TODO: Add chapter introduction paragraph
+This chapter presents the comprehensive evaluation of the thiLLMo system---an ontology-grounded Retrieval Augmented Generation (OG-RAG) approach for culturally faithful Kikuyu proverb translation. The evaluation was designed to rigorously assess whether the integration of a domain-specific cultural ontology with RAG meaningfully improves translation quality compared to baseline approaches. We present quantitative results from cultural metrics evaluation, statistical significance tests, and qualitative analysis of translation outputs.
 
 \section{Evaluation Overview}
 \label{sec:evaluation_overview}
 
-% TODO: Write evaluation overview
-% - Research questions recap
-% - Evaluation methodology overview  
-% - 100-proverb dataset description
-% - Three systems compared (Raw GPT-4, Traditional RAG, OG-RAG)
-% - Metrics overview (cultural authenticity, translation fidelity, overall quality)
-% - Statistical testing approach (paired t-tests)
+\subsection{Research Questions}
+
+This evaluation directly addresses the three core research questions that motivated this work:
+
+\begin{enumerate}
+    \item \textbf{RQ1: Cultural Enhancement} --- How can cultural ontologies enhance the contextual understanding of RAG systems for Kikuyu proverb translation?
+    \item \textbf{RQ2: Corpus Development} --- What methodology enables the development of a high-quality, culturally-grounded business proverb corpus for evaluation?
+    \item \textbf{RQ3: Comparative Performance} --- How does ontology-grounded RAG compare to traditional RAG and raw LLM approaches in preserving cultural authenticity?
+\end{enumerate}
+
+The evaluation framework was specifically designed to capture cultural fidelity---a dimension often overlooked by standard machine translation metrics like BLEU or CHRF++, which focus primarily on lexical overlap rather than semantic and cultural preservation.
+
+\subsection{Evaluation Dataset}
+
+The evaluation utilized a carefully curated corpus of 100 Kikuyu proverbs focused on wealth and prosperity themes. These proverbs were selected from ``1000 Kikuyu Proverbs'' and Margaret Wambere Ireri's collection of 100 proverbs about money and wealth~\cite{ireri2019}. Each proverb was paired with expert human translations that served as gold-standard references, providing culturally-informed English interpretations that preserve both literal meaning and cultural nuance.
+
+The dataset represents diverse linguistic and cultural phenomena common in Kikuyu proverbial wisdom, including:
+\begin{itemize}
+    \item Metaphorical expressions requiring cultural context
+    \item Idiomatic constructions without direct English equivalents
+    \item References to traditional Kikuyu social practices and values
+    \item Figurative language embedded in agricultural and pastoral contexts
+\end{itemize}
+
+This diversity ensures that the evaluation captures the system's ability to handle the full spectrum of translation challenges inherent in culturally-grounded proverb translation.
+
+\subsection{Systems Compared}
+
+Three translation systems were evaluated to isolate the contribution of ontology-grounded knowledge integration:
+
+\begin{enumerate}
+    \item \textbf{Raw GPT-4 (Baseline)} --- Direct translation using GPT-4 with no external knowledge augmentation. This baseline represents the current state-of-the-art in large language model translation capabilities, relying solely on the model's pre-trained knowledge.
+    
+    \item \textbf{Traditional RAG} --- GPT-4 augmented with a vector-similarity retrieval system over unstructured documents. This approach retrieves relevant text chunks from the proverb corpus based on semantic similarity but lacks explicit cultural knowledge structuring.
+    
+    \item \textbf{OG-RAG (thiLLMo)} --- GPT-4 enhanced with ontology-grounded retrieval from the Kikuyu cultural knowledge graph. This system leverages the formal ontology to retrieve structured cultural context, including proverb-concept relationships, cultural themes, and usage contexts.
+\end{enumerate}
+
+This three-way comparison enables us to distinguish between the benefits of external knowledge augmentation (Traditional RAG vs. Raw GPT-4) and the specific advantages of ontological structuring (OG-RAG vs. Traditional RAG).
+
+\subsection{Evaluation Metrics}
+
+Given the limitations of automatic metrics for culturally-sensitive translation tasks, we developed a multi-dimensional evaluation framework:
+
+\textbf{Cultural Authenticity (60\% weight):} Measures how well the translation preserves the cultural context, metaphorical meaning, and appropriate usage scenarios of the original Kikuyu proverb. This metric captures whether the translation conveys not just literal meaning but also cultural wisdom and nuance.
+
+\textbf{Translation Fidelity (40\% weight):} Quantifies alignment between system outputs and expert human translations using cosine similarity over sentence embeddings. This metric assesses how closely the automated translation matches expert judgment.
+
+\textbf{Overall Quality:} A composite metric combining cultural authenticity and translation fidelity with the weights specified above. This provides a holistic assessment of translation performance that balances both cultural preservation and semantic accuracy.
+
+Additionally, we employed traditional surface-level metrics (ROUGE-1, ROUGE-2, ROUGE-L, word overlap) as supplementary indicators, though we acknowledge their limited utility for assessing cultural and metaphorical content.
+
+\subsection{Statistical Testing Methodology}
+
+To ensure the robustness and generalizability of our findings, we employed paired t-tests to assess the statistical significance of performance differences between systems. The paired test design accounts for the fact that all three systems translated the same set of proverbs, allowing us to control for proverb-level difficulty and focus on system-level differences.
+
+Tests were conducted at a significance level of $\alpha = 0.05$, with Bonferroni correction applied for multiple comparisons where appropriate. All statistical analyses were performed on 97 proverbs that were successfully evaluated across all three systems, ensuring fair comparison.
+
+\subsection{Chapter Organization}
+
+The remainder of this chapter is organized as follows: Section~\ref{sec:cultural_metrics} presents the results of cultural metrics evaluation, including detailed analysis of cultural authenticity, translation fidelity, and overall quality scores. Section~\ref{sec:statistical_analysis} reports statistical significance tests validating the observed differences. Section~\ref{sec:score_distributions} analyzes score distributions to understand consistency and variability in system performance. Section~\ref{sec:qualitative_analysis} provides qualitative analysis of example translations, highlighting specific patterns of success and failure. Finally, Section~\ref{sec:summary_findings} summarizes key findings and transitions to the Discussion chapter.
 
 \section{Cultural Metrics Evaluation}
 \label{sec:cultural_metrics}
