@@ -6,7 +6,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage{biblatex}
+% \usepackage{biblatex}  % Not available in basic TeX - using bibtex instead
 \usepackage{geometry}
 \usepackage{setspace}
 
@@ -14,8 +14,8 @@
 \geometry{margin=1in}
 \doublespacing
 
-% Bibliography
-\addbibresource{references/references.bib}
+% Bibliography - using bibtex instead of biblatex
+% \addbibresource{references/references.bib}
 
 % Title page information
 \title{thiLLMo: Culturally Faithful Kikuyu Proverb Translation Using Ontology-Grounded RAG}
@@ -34,13 +34,13 @@
 \input{chapters/01-introduction}
 
 \chapter{Literature Review}
-\input{chapters/02-literature-review}
+\input{chapters/02-literature-review-v2.0.0}
 
 \chapter{Methodology}
 \input{chapters/03-methodology}
 
 \chapter{System Design and Implementation}
-\input{chapters/04-system-design}
+\input{chapters/04-design-implementation}
 
 \chapter{Evaluation and Results}
 \input{chapters/05-evaluation}
@@ -51,10 +51,12 @@
 \chapter{Conclusion and Future Work}
 \input{chapters/07-conclusion}
 
-\printbibliography
+% \printbibliography
+\bibliographystyle{plain}
+\bibliography{references/references}
 
-\appendix
-\chapter{Appendices}
-\input{chapters/appendices}
+% \appendix
+% \chapter{Appendices}
+% \input{chapters/appendices}
 
 \end{document}
