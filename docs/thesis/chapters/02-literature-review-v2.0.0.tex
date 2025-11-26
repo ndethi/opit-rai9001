@@ -5,7 +5,7 @@
 
 Retrieval-Augmented Generation (RAG) has fundamentally transformed how we enhance large language models with external knowledge. Anyone working in complex, structured domains quickly discovers the limitations of traditional approaches. When your domain requires understanding relationships, hierarchies, and nuanced constraints (the kind of intricate knowledge webs that define real-world expertise), conventional RAG systems often fall short.
 
-This literature review explores what happens when we move beyond those limitations. We examine Ontology-Grounded RAG (OG-RAG) systems, which represent more than just an incremental improvement; they're a paradigm shift from vector-similarity-based retrieval toward intelligent, structured knowledge integration.
+This literature review explores what happens when we move beyond those limitations—and whether "moving beyond" is even the right framing. Ontology-Grounded RAG (OG-RAG) systems represent more than incremental improvement, but calling them a "paradigm shift" risks overstating the case. They're better characterized as a strategic pivot from vector-similarity-based retrieval toward intelligent, structured knowledge integration, trading off some generality for dramatic gains in specific domains.
 
 Traditional RAG systems treat knowledge like a collection of isolated text chunks, retrieved through semantic similarity. It's a bit like trying to understand a symphony by listening to random individual notes. OG-RAG systems leverage explicit ontological structures to maintain logical coherence and domain-specific reasoning capabilities. They understand the relationships between the notes, the movements, the underlying musical structure.
 
@@ -19,7 +19,7 @@ When \citet{lewis2020retrieval} introduced RAG as a method for augmenting neural
 
 \citet{karpukhin2020dense} were among the first to identify the core issue: dense passage retrieval, though effective for straightforward factual questions, struggled to maintain logical consistency across retrieved contexts. Their analysis revealed that vector similarity alone couldn't capture the hierarchical relationships or conditional dependencies that define many knowledge domains. This limitation became particularly glaring in multi-hop reasoning tasks, where understanding the connections between facts proved as crucial as the facts themselves.
 
-The scope of this problem became clear through \citet{xiong2021pretrained} comprehensive benchmarking on complex reasoning datasets. Their findings were striking: traditional RAG systems exhibited a 43\% error rate on tasks requiring understanding of entity relationships, compared to only 18\% on simple factual retrieval tasks. These weren't just statistical differences; they represented fundamental limitations in how these systems understood knowledge structure.
+The scope of this problem became clear through \citet{xiong2021pretrained} comprehensive benchmarking on complex reasoning datasets. Their findings were striking: traditional RAG systems exhibited a 43\% error rate on tasks requiring understanding of entity relationships, compared to only 18\% on simple factual retrieval tasks. But here's what made these results more than just disappointing statistics—the errors weren't random. They systematically concentrated on cases where facts needed to be connected through implicit relationships, the kind of inferential leaps that require understanding how knowledge is structured, not just what it says.
 
 \subsection{Early Attempts at Structured Knowledge Integration}
 
@@ -33,7 +33,7 @@ These early efforts established the technical feasibility of integrating structu
 
 \subsection{Architectural Breakthroughs}
 
-Today's OG-RAG systems represent a fundamental departure from these earlier attempts. \citet{edge2024graphrag} introduced what might be the most significant conceptual advance: hypergraph-based retrieval, where knowledge is organized as hyperedges connecting multiple entities simultaneously. This isn't just a technical refinement; it enables representation of n-ary relationships that traditional binary graphs simply cannot capture.
+Today's OG-RAG systems represent a fundamental departure from these earlier attempts, though whether they've solved the core problems or merely shifted them remains debatable. \citet{edge2024graphrag} introduced what might be the most significant conceptual advance: hypergraph-based retrieval, where knowledge is organized as hyperedges connecting multiple entities simultaneously. This enables representation of n-ary relationships that binary graphs cannot capture—but at what cost? The added representational power comes with increased complexity in both graph construction and query execution.
 
 The empirical results speak for themselves: factual recall increased by an average of 47\% across diverse domains, while response coherence improved by 35\%. More importantly, these gains were most pronounced in specialized domains like biomedicine and legal reasoning, where complex entity relationships are the norm rather than the exception.
 
@@ -69,7 +69,7 @@ These optimizations have made OG-RAG practical for production deployments with s
 
 \subsection{The Challenge of Measuring What Matters}
 
-Assessing OG-RAG systems presents unique challenges that go well beyond traditional NLP metrics. How do you measure whether a system truly ``understands'' the relationships in a knowledge graph? \citet{chen2024comprehensive} proposed a comprehensive evaluation framework that tackles this challenge by considering three critical dimensions:
+Assessing OG-RAG systems presents unique challenges that go well beyond traditional NLP metrics—and frankly, the field hasn't solved them yet. How do you measure whether a system truly ``understands'' the relationships in a knowledge graph? Even asking this question reveals the problem: "understanding" implies something deeper than pattern matching, but most evaluations still measure surface-level outputs. \citet{chen2024comprehensive} proposed a comprehensive evaluation framework attempting to bridge this gap by considering three critical dimensions:
 
 \textbf{Factual consistency} measures alignment between generated responses and knowledge base facts—the foundation of any reliable system.
 
@@ -111,9 +111,9 @@ Perhaps most intriguingly, an emerging application area involves preserving and 
 
 \subsection{Technical Challenges That Remain}
 
-OG-RAG systems still face several technical challenges that limit their widespread adoption, even with these significant advances:
+OG-RAG systems still face several technical challenges that limit their widespread adoption—and here's the uncomfortable truth: some of these challenges may be inherent rather than solvable.
 
-\textbf{Ontology construction overhead} represents perhaps the most significant barrier. Creating and maintaining domain ontologies requires substantial expert effort, and automated ontology learning remains frustratingly elusive. Current methods achieve only 60-70\% accuracy compared to expert-constructed ontologies, good enough for research, but not quite ready for critical applications.
+\textbf{Ontology construction overhead} represents perhaps the most significant barrier, and it's unclear whether this is a temporary engineering problem or a fundamental constraint. Creating and maintaining domain ontologies requires substantial expert effort, and automated ontology learning remains frustratingly elusive despite a decade of research. Current methods achieve only 60-70\% accuracy compared to expert-constructed ontologies—good enough for research prototypes, but nowhere near reliable enough for critical applications. Worse, that accuracy ceiling hasn't budged much in recent years, suggesting we might be hitting fundamental limits of what's automatable.
 
 \textbf{Scalability constraints} present another ongoing challenge. Graph-based retrieval can become computationally expensive for large knowledge bases. Optimization techniques have improved performance considerably, though scaling to billions of entities while maintaining real-time response capabilities remains difficult.
 

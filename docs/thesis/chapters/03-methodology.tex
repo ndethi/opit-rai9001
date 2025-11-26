@@ -14,15 +14,7 @@ While CRISP-DM was originally designed for data mining projects, its iterative, 
 \subsection{Methodological Rationale}
 \label{subsec:method_rationale}
 
-The choice of CRISP-DM over alternative research frameworks (e.g., design science research, action research) was motivated by three factors:
-
-\begin{enumerate}
-    \item \textbf{Knowledge Engineering Focus}: CRISP-DM's data preparation phase naturally accommodates the intensive ontology construction work central to this project, treating structured knowledge as a first-class research artifact rather than merely a preprocessing step.
-    
-    \item \textbf{Iterative Refinement}: The framework's cyclical nature aligns with the realities of ontology development, where initial conceptualizations are refined through validation, testing, and expert feedback loops.
-    
-    \item \textbf{Evaluation-Driven Development}: CRISP-DM explicitly separates modeling from evaluation, enabling rigorous empirical assessment of system performance against predefined metrics—essential for establishing the validity of the OG-RAG approach.
-\end{enumerate}
+We chose CRISP-DM over alternative research frameworks (design science, action research) for three reasons. First, its data preparation phase naturally accommodates the intensive ontology construction central to this project, treating structured knowledge as a first-class research artifact rather than a preprocessing step. Second, the framework's cyclical nature aligns with ontology development realities, where initial conceptualizations require refinement through validation and expert feedback. Third, CRISP-DM explicitly separates modeling from evaluation, enabling rigorous empirical assessment—essential for validating the OG-RAG approach.
 
 Figure~\ref{fig:methodology_overview} illustrates the adapted CRISP-DM workflow for this project, highlighting the key activities and deliverables within each phase.
 
@@ -34,15 +26,9 @@ Figure~\ref{fig:methodology_overview} illustrates the adapted CRISP-DM workflow 
 \subsection{Problem Definition}
 \label{subsec:problem_definition}
 
-The initial phase established the research problem scope through literature analysis (Chapter~\ref{chap:literature}) and preliminary consultations with Kikuyu language experts. The core problem was operationalized as: \emph{achieving culturally faithful translation of Kikuyu proverbs to English under conditions of data scarcity and cultural complexity}.
+Before designing any system, we needed to precisely define what ``culturally faithful translation'' means in practice. Literature analysis (Chapter~\ref{chap:litreview}) and consultations with Kikuyu experts helped us operationalize the core problem: \emph{achieving culturally faithful translation of Kikuyu proverbs to English under conditions of data scarcity and cultural complexity}.
 
-Three dimensions of this problem were identified as critical:
-
-\paragraph{Cultural Fidelity Gap} Existing machine translation systems prioritize lexical accuracy over cultural authenticity, producing translations that may be grammatically correct but culturally meaningless or misleading. This gap is particularly pronounced for proverbs, which encode layered meanings that depend on cultural context for interpretation.
-
-\paragraph{Knowledge Representation Challenge} LLMs lack structured representations of cultural knowledge, relying instead on probabilistic patterns learned from training data. For low-resource languages with minimal web presence, this results in shallow or distorted cultural understanding.
-
-\paragraph{Evaluation Inadequacy} Standard MT evaluation metrics (BLEU, CHRF++) correlate poorly with cultural fidelity, creating a measurement gap where improvements in cultural authenticity may be invisible to conventional metrics.
+Three dimensions of this problem emerged as critical. First, existing machine translation systems prioritize lexical accuracy over cultural authenticity, producing translations that may be grammatically correct but culturally meaningless—what we call the \emph{cultural fidelity gap}. This proves particularly pronounced for proverbs, which encode layered meanings dependent on cultural context. Second, LLMs lack structured representations of cultural knowledge, relying instead on probabilistic patterns that prove shallow for low-resource languages with minimal web presence—a fundamental \emph{knowledge representation challenge}. Third, standard MT metrics (BLEU, CHRF++) correlate poorly with cultural fidelity, creating an \emph{evaluation inadequacy} where improvements in cultural authenticity remain invisible to conventional measures.
 
 \subsection{Success Criteria Definition}
 \label{subsec:success_criteria}
@@ -65,40 +51,24 @@ These criteria operationalize the broader research objectives from Section~\ref{
 \subsection{Proverb Corpus Collection}
 \label{subsec:corpus_collection}
 
-The primary data source for this research was Margaret Wambere Ireri's collection of 100 Kikuyu proverbs and wise sayings about money and wealth \cite{ireri2019proverbs}, compiled through field research with Kikuyu elders in Kiambu, Nyeri, and Murang'a counties between 2018-2019. This corpus was selected for three reasons:
-
-\begin{enumerate}
-    \item \textbf{Cultural Authenticity}: Proverbs were collected through oral interviews with recognized community knowledge keepers, ensuring cultural legitimacy and avoiding potential contamination from secondary sources.
-    
-    \item \textbf{Thematic Coherence}: The focus on wealth and prosperity provides conceptual coherence, enabling deeper ontological modeling of interconnected concepts rather than superficial coverage of disparate domains.
-    
-    \item \textbf{Expert Annotations}: Each proverb includes Ireri's expert translations and contextual notes, providing gold-standard references for evaluation.
-\end{enumerate}
+The primary data source for this research was Margaret Wambere Ireri's collection of 100 Kikuyu proverbs and wise sayings about money and wealth \cite{ireri2019proverbs}, compiled through field research with Kikuyu elders in Kiambu, Nyeri, and Murang'a counties between 2018-2019. We selected this corpus because it offers genuine cultural authenticity—proverbs collected through oral interviews with recognized knowledge keepers rather than secondary sources—alongside thematic coherence that enables deeper ontological modeling of interconnected wealth concepts. Additionally, Ireri's expert translations and contextual notes provide gold-standard references for evaluation, addressing what would otherwise require years of independent fieldwork.
 
 Supplementary sources included Gikandi's ``1000 Kikuyu Proverbs'' \cite{gikandi2005thousand} for cross-validation and Kenyatta's ``Facing Mount Kenya'' \cite{kenyatta1938facing} for broader cultural context. However, Ireri's collection remained the primary evaluation benchmark due to its focused domain and expert curation.
 
 \subsection{Data Characterization}
 \label{subsec:data_characterization}
 
-Initial analysis of the corpus revealed several characteristics relevant to system design:
-
-\paragraph{Linguistic Complexity} Proverbs averaged 7.3 words in Kikuyu (SD = 2.8), with syntactic structures ranging from simple declaratives (\emph{``Andu ni indo''} – ``People are wealth'') to complex metaphorical constructions involving multiple clauses and cultural allusions.
-
-\paragraph{Metaphorical Density} Manual annotation identified three categories: (1) literal proverbs (18\% of corpus) with transparent meanings, (2) metaphorical proverbs (64\%) requiring cultural interpretation, and (3) highly opaque proverbs (18\%) referencing specific historical events or ritual practices unknown to contemporary speakers.
-
-\paragraph{Dialectical Variation} The corpus combined proverbs from three Kikuyu dialects, with 12 proverbs (12\%) showing significant lexical or phonological variation across regional variants. This variation was noted but not systematically addressed due to scope limitations.
-
-\paragraph{Cultural Domain Distribution} Thematic analysis identified primary concepts: reciprocity systems (23\%), agricultural wealth (19\%), kinship obligations (17\%), patience/delayed gratification (15\%), communal vs. individual prosperity (13\%), and other themes (13\%). This distribution informed ontology concept prioritization.
+Our initial corpus analysis revealed several characteristics that would shape system design. Linguistically, proverbs averaged just 7.3 words (SD = 2.8) but packed considerable metaphorical density—64\% required cultural interpretation beyond literal meaning, and 18\% referenced historical events or ritual practices opaque even to contemporary speakers. The remaining 18\% offered relatively transparent literal meanings. The corpus combined three Kikuyu dialects, introducing lexical variation in 12\% of cases—a complexity we noted but did not systematically address given scope limitations. Thematically, wealth proverbs clustered around reciprocity systems (23\%), agricultural wealth (19\%), kinship obligations (17\%), and patience (15\%)—a distribution that guided our ontology concept prioritization.
 
 \section{Phase 3: Data Preparation -- Ontology Construction}
 \label{sec:phase_ontology}
 
-The ontology construction phase represents the methodological core of this research, transforming unstructured proverb knowledge into a formal, machine-readable semantic structure. This process followed established ontology engineering methodologies \cite{noy2001ontology,suarez2012ontology} adapted for cultural heritage knowledge.
+How do you transform centuries of oral cultural knowledge into something a machine can reason about? This question drove our ontology construction work—the methodological core of this research. We needed to convert unstructured proverb wisdom into formal, machine-readable semantic structures without losing the nuances that make proverbs culturally meaningful. We followed established ontology engineering methodologies \cite{noy2001ontology,suarez2012ontology} adapted for cultural heritage knowledge.
 
 \subsection{Ontology Development Methodology}
 \label{subsec:ontology_methodology}
 
-The ontology was developed iteratively over 8 weeks following a seven-step process:
+We spent 8 weeks building the ontology through an iterative seven-step process. Early attempts at comprehensive coverage quickly revealed that breadth without depth would produce superficial representations, so we narrowed focus to wealth-related proverbs where we could achieve genuine semantic richness. The process unfolded as follows:
 
 \subsubsection{Step 1: Scope Determination}
 \label{subsubsec:scope_determination}
@@ -214,24 +184,14 @@ The ontology underwent three validation procedures:
 \subsection{Knowledge Graph Implementation}
 \label{subsec:kg_implementation}
 
-The validated ontology was instantiated as a knowledge graph in Neo4j (version 5.x), a graph database optimized for relationship-rich queries. The implementation process involved:
-
-\begin{enumerate}
-    \item \textbf{Schema Translation}: OWL classes and properties were mapped to Neo4j node labels and relationship types. For example, the OWL class \texttt{Proverb} became a Neo4j node label \texttt{:Proverb}, and the object property \texttt{expresses} became a relationship type \texttt{:EXPRESSES}.
-    
-    \item \textbf{Constraint Definition}: Neo4j constraints enforced uniqueness (e.g., proverb IDs must be unique) and existence (e.g., all Proverbs must have kikuyuText property).
-    
-    \item \textbf{Index Creation}: Full-text indexes were created on proverb text, cultural theme names, and concept definitions to enable efficient hybrid retrieval (Section~\ref{sec:retrieval_mechanism}).
-    
-    \item \textbf{Data Loading}: A custom Python script (\texttt{ontology\_builder.py}) bulk-loaded the 100 proverb instances and 847 concept nodes, creating 1,247 relationships.
-\end{enumerate}
+We chose Neo4j (version 5.x) for implementing the knowledge graph because its native graph architecture handles relationship-rich queries more efficiently than relational databases—critical when retrieval depends on traversing semantic connections. Implementation required careful translation from OWL to Neo4j's property graph model. We mapped OWL classes to node labels (e.g., \texttt{Proverb} $\rightarrow$ \texttt{:Proverb}) and object properties to relationship types (e.g., \texttt{expresses} $\rightarrow$ \texttt{:EXPRESSES}). Neo4j constraints enforced uniqueness and existence requirements that OWL's open-world assumption doesn't guarantee. We created full-text indexes on proverb text, cultural theme names, and concept definitions to enable efficient hybrid retrieval (Section~\ref{sec:retrieval_mechanism}). A custom Python script (\texttt{ontology\_builder.py}) bulk-loaded the 100 proverb instances and 847 concept nodes, creating 1,247 relationships.
 
 The resulting knowledge graph contained 947 nodes (100 Proverbs + 847 Concepts) and 1,247 edges, with an average node degree of 2.6 (indicating moderate relational density suitable for traversal-based retrieval).
 
 \section{Phase 4: Modeling -- OG-RAG System Development}
 \label{sec:phase_modeling}
 
-The modeling phase translated the ontology into an operational translation system through the design and implementation of the thiLLMo (Ontology-Grounded RAG for Kikuyu) architecture.
+Building on the validated ontology, we now turn to system implementation—translating semantic structures into operational translation capabilities. This phase realized the thiLLMo (Ontology-Grounded RAG for Kikuyu) architecture.
 
 \subsection{System Architecture Overview}
 \label{subsec:system_architecture}
@@ -245,19 +205,13 @@ The OG-RAG system comprises four primary components (detailed architecture in Ch
     
     \item \textbf{Context Formatting Module}: Serializes retrieved graph structures into natural language prompts suitable for LLM consumption.
     
-    \item \textbf{LLM Generation Module}: Interfaces with GPT-4 and Gemini 2.0 Pro APIs to generate culturally faithful English translations guided by the structured context.
+    \item \textbf{LLM Generation Module}: Interfaces with GPT-4 and Gemini 2.5 Pro APIs to generate culturally faithful English translations guided by the structured context.
 \end{enumerate}
 
 \subsection{Baseline System Configurations}
 \label{subsec:baseline_configs}
 
-To empirically validate the value of ontological grounding, two baseline systems were implemented for comparison:
-
-\paragraph{Raw LLM Baseline} Direct prompting of GPT-4 with the Kikuyu proverb text and a generic instruction to ``translate this Kikuyu proverb to English, preserving cultural meaning.'' No external knowledge is provided. This tests the LLM's intrinsic multilingual and cultural capabilities.
-
-\paragraph{Traditional RAG Baseline} Vector similarity retrieval using Sentence-BERT embeddings \cite{reimers2019sentence} over a corpus of 100 proverb texts and expert translations. The top-3 similar proverbs are included in the prompt as examples. This tests whether unstructured text retrieval provides sufficient context.
-
-\paragraph{OG-RAG (Proposed)} The full ontology-grounded system combining graph traversal, semantic search, and structured context injection. This represents the core contribution being evaluated.
+To empirically validate the value of ontological grounding, we implemented two baseline systems for comparison. The \emph{Raw LLM baseline} tests GPT-4's intrinsic capabilities through direct prompting with generic instructions and no external knowledge—establishing the floor performance achievable through pure LLM capabilities. The \emph{Traditional RAG baseline} uses Sentence-BERT embeddings \cite{reimers2019sentence} for vector similarity retrieval over the proverb corpus, providing the top-3 similar examples in the prompt—testing whether unstructured text retrieval suffices. Our proposed \emph{OG-RAG system} combines graph traversal, semantic search, and structured context injection—the core contribution under evaluation.
 
 All three systems use identical LLM backends (GPT-4-turbo) and generation parameters (temperature=0.3, max\_tokens=150) to isolate the effect of retrieval mechanisms.
 
@@ -369,7 +323,7 @@ Inter-rater reliability was assessed using Krippendorff's alpha, achieving $\alp
 \subsubsection{LLM-Assisted Evaluation}
 \label{subsubsec:llm_evaluation}
 
-As a supplementary evaluation method, Gemini 2.0 Flash was configured as an automated judge to provide additional assessment perspectives. The LLM judge evaluated translations along four dimensions:
+As a supplementary evaluation method, Gemini 2.5 Pro was configured as an automated judge to provide additional assessment perspectives. Cohere's Command-R-Plus was configured as a fallback provider to ensure evaluation continuity in case of API limitations, though the primary evaluation successfully completed using Gemini. The LLM judge evaluated translations along four dimensions:
 
 \begin{itemize}
     \item Cultural Authenticity (0-1 scale)
@@ -472,12 +426,12 @@ These directions position the current work as an initial prototype within a long
 \section{Methodological Limitations}
 \label{sec:methodological_limitations}
 
-Several limitations of the chosen methodology warrant acknowledgment:
+Every methodological choice involves trade-offs. We opted for depth over breadth, cultural validity over computational scale, and expert judgment over automated metrics. These decisions enabled rigorous validation of the OG-RAG approach while establishing boundaries that future work can expand.
 
 \subsection{Sample Size Constraints}
 \label{subsec:sample_limitations}
 
-The 100-proverb evaluation corpus, while appropriate for initial validation, is relatively small for drawing broad generalizations about Kikuyu proverbial discourse (estimated 3,000+ proverbs total). The focus on wealth-related proverbs may not represent patterns in other thematic domains (e.g., kinship, warfare, agriculture).
+We deliberately focused on 100 wealth-related proverbs rather than attempting superficial coverage of Kikuyu's estimated 3,000+ total proverbs. This choice prioritized ontological depth—capturing genuine semantic richness within a coherent domain—over quantity. The cost is limited generalizability to other thematic areas (kinship, warfare, agriculture), but the benefit is confidence that our findings reflect robust patterns rather than artifacts of sparse coverage.
 
 \subsection{Ontology Completeness}
 \label{subsec:ontology_completeness}
@@ -510,4 +464,4 @@ The evaluation framework (Section~\ref{sec:phase_evaluation}) addresses a critic
 
 Methodological limitations were transparently acknowledged, including sample size constraints, ontology completeness bounds, and generalization boundaries. These limitations suggest concrete directions for future methodological refinements while establishing appropriate confidence bounds for the current findings.
 
-The following chapters detail the technical implementation of this methodology (Chapter~\ref{chap:design}) and present the empirical results of the evaluation (Chapter~\ref{chap:evaluation}), demonstrating that the chosen methodological approach successfully addresses the research questions posed in Section~\ref{sec:research_questions}.
+The following chapters detail the technical implementation of this methodology (Chapter~\ref{chap:design}) and present the empirical results of the evaluation (Chapter~\ref{ch:evaluation}), demonstrating that the chosen methodological approach successfully addresses the research questions posed in Section~\ref{sec:research_questions}.
