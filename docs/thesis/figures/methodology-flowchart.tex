@@ -1,0 +1,66 @@
+% Methodology Flowchart - Figure 3.1
+\begin{tikzpicture}[
+    node distance=1.2cm and 2cm,
+    phase/.style={rectangle, draw, fill=blue!20, text width=3.5cm, minimum height=1.1cm, align=center, rounded corners, font=\small, thick},
+    activity/.style={rectangle, draw, fill=green!15, text width=3cm, minimum height=0.8cm, align=center, font=\footnotesize},
+    arrow/.style={->, >=stealth, thick},
+    feedback/.style={->, >=stealth, dashed, red, thick},
+]
+
+% Column 1: CRISP-DM Phases
+\node[phase] (p1) at (0,0) {\textbf{1. Problem\\Definition}};
+\node[phase, below=of p1] (p2) {\textbf{2. Data\\Understanding}};
+\node[phase, below=of p2] (p3) {\textbf{3. Ontology\\Construction}};
+\node[phase, below=of p3] (p4) {\textbf{4. System\\Development}};
+\node[phase, below=of p4] (p5) {\textbf{5. Evaluation}};
+\node[phase, below=of p5] (p6) {\textbf{6. Deployment}};
+
+% Column 2: Key Activities
+\node[activity, right=of p1] (a1) {Expert consultations\\Success criteria};
+\node[activity, right=of p2] (a2) {Corpus analysis\\Theme extraction};
+\node[activity, right=of p3] (a3) {847 concepts\\Neo4j schema};
+\node[activity, right=of p4] (a4) {OG-RAG system\\3 baselines};
+\node[activity, right=of p5] (a5) {3 annotators\\9 metrics};
+\node[activity, right=of p6] (a6) {Documentation\\Framework};
+
+% Column 3: Deliverables
+\node[activity, fill=orange!15, right=of a1] (d1) {Research gap\\Hypotheses};
+\node[activity, fill=orange!15, right=of a2] (d2) {100 proverbs\\Themes};
+\node[activity, fill=orange!15, right=of a3] (d3) {KG: 947 nodes\\1,247 edges};
+\node[activity, fill=orange!15, right=of a4] (d4) {thiLLMo\\system};
+\node[activity, fill=orange!15, right=of a5] (d5) {Results:\\$p<0.001$};
+\node[activity, fill=orange!15, right=of a6] (d6) {Thesis\\Code};
+
+% Main workflow arrows
+\draw[arrow] (p1) -- (p2);
+\draw[arrow] (p2) -- (p3);
+\draw[arrow] (p3) -- (p4);
+\draw[arrow] (p4) -- (p5);
+\draw[arrow] (p5) -- (p6);
+
+% Horizontal connections
+\draw[arrow] (p1) -- (a1);
+\draw[arrow] (p2) -- (a2);
+\draw[arrow] (p3) -- (a3);
+\draw[arrow] (p4) -- (a4);
+\draw[arrow] (p5) -- (a5);
+\draw[arrow] (p6) -- (a6);
+
+\draw[arrow] (a1) -- (d1);
+\draw[arrow] (a2) -- (d2);
+\draw[arrow] (a3) -- (d3);
+\draw[arrow] (a4) -- (d4);
+\draw[arrow] (a5) -- (d5);
+\draw[arrow] (a6) -- (d6);
+
+% Feedback loops (iterative refinement)
+\draw[feedback] (p5.west) -- ++(-0.8,0) |- (p3.west) node[pos=0.25, left, font=\tiny, text width=1.2cm, align=right] {Error\\analysis};
+\draw[feedback] (p4.west) -- ++(-0.5,0) |- (p3.west);
+\draw[feedback] (p3.west) -- ++(-0.5,0) |- (p2.west) node[pos=0.25, left, font=\tiny, text width=1.2cm, align=right] {Corpus\\expansion};
+
+% Annotations
+\node[above=0.2cm of p1, font=\footnotesize\bfseries, text=purple] {CRISP-DM Adapted};
+\node[above=0.2cm of a1, font=\footnotesize\bfseries, text=green!50!black] {Activities};
+\node[above=0.2cm of d1, font=\footnotesize\bfseries, text=orange!80!black] {Outputs};
+
+\end{tikzpicture}

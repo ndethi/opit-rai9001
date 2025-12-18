@@ -424,30 +424,41 @@ pdflatex main.tex
 
 ---
 
-### DAY 12: Retrieval Pipeline Diagram (8 hours)
+### DAY 12: Additional Architecture Diagrams (8 hours)
 
-**Morning Session (4 hours)**
-- [ ] **8.1** Create Figure 4.2: Retrieval and Context Pipeline
-- [ ] **8.2** Design 8-stage sequential pipeline (left-to-right):
-  1. Input Stage (Kikuyu query)
-  2. Embedding Stage (Sentence-BERT)
-  3. Semantic Search (Vector index)
-  4. Graph Traversal (Cypher)
-  5. Context Serialization
-  6. Prompt Construction
-  7. LLM Generation (GPT-4)
-  8. Post-Processing (JSON parsing)
-- [ ] **8.3** Add details for each stage:
-  - Example data/format
-  - Latency annotation
-  - Data size/format transformations
-- [ ] **8.4** Use color coding for operation types (compute vs. I/O)
-- [ ] **8.5** Export formats (PDF, PNG, SVG)
-- [ ] **8.6** Save to `docs/thesis/figures/retrieval_pipeline.pdf`
+**Morning Session (4 hours) - Retrieval Pipeline**
+- [x] **8.1** Create Figure 4.2: Retrieval and Context Pipeline
+- [x] **8.2** Design 3-phase OG-RAG retrieval process
+- [x] **8.3** Add TikZ diagram with performance metrics
+- [x] **8.4** Save to `docs/thesis/figures/retrieval-pipeline.tex`
+- [x] **8.5** Write comprehensive caption
+- [x] **8.6** Integrate into Chapter 4 after retrieval section
+- [x] **8.7** Compile and verify display
 
-**Afternoon Session (4 hours)**
-- [ ] **8.7** Write comprehensive caption with example
-- [ ] **8.8** Add to Chapter 4 after Section 4.3.1:
+**Afternoon Session (4 hours) - Methodology Flowchart**
+- [ ] **8.8** Create Figure 3.1: CRISP-DM Adapted Methodology Flowchart
+- [ ] **8.9** Design TikZ flowchart showing:
+  - Research Design phase
+  - Data Understanding phase
+  - Ontology Construction phase
+  - System Implementation phase
+  - Evaluation phase
+  - Deployment phase
+  - Feedback loops between phases
+  - Iterative refinement cycles
+- [ ] **8.10** Highlight adaptations specific to this research
+- [ ] **8.11** Save to `docs/thesis/figures/methodology-flowchart.tex`
+- [ ] **8.12** Write caption explaining CRISP-DM adaptation
+- [ ] **8.13** Integrate into Chapter 3 after Section 3.1 (Research Design)
+- [ ] **8.14** Add cross-reference in methodology narrative
+- [ ] **8.15** Compile and verify
+- [ ] **8.16** Git commit: "Add Figure 3.1: Methodology Flowchart"
+
+**Enhancement Justification:**
+- Exceeds minimum "at least 2 diagrams" requirement (total: 3 diagrams)
+- Directly addresses supervisor concern about methodology being "too tutorial-like"
+- Visualizes CRISP-DM adaptations and iterative workflow
+- Standard expectation for methodology chapters in technical theses
   ```latex
   \begin{figure}[htbp]
       \centering

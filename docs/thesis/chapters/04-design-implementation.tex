@@ -65,7 +65,7 @@ The \texttt{GraphRetriever} class (\texttt{graph\_retriever.py}) implements retr
 
 \begin{figure}[htbp]
 \centering
-\input{figures/retrieval-pipeline}
+\resizebox{0.75\textwidth}{!}{\input{figures/retrieval-pipeline}}
 \caption{OG-RAG Hybrid Retrieval Pipeline: Three-phase process from input proverb to culturally grounded context. Phase 1 extracts cultural concepts using keyword matching and semantic expansion. Phase 2 traverses the knowledge graph via Cypher queries to retrieve conceptually similar proverbs. Phase 3 applies hybrid scoring ($0.5S_c + 0.3S_w + 0.2S_l$) combining concept overlap, cultural weight, and lexical similarity. Average end-to-end latency: 1.02 seconds per proverb.}
 \label{fig:retrieval_pipeline}
 \end{figure}
