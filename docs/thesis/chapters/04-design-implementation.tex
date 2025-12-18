@@ -6,7 +6,7 @@
 \section{System Architecture Overview}
 \label{sec:system_architecture}
 
-The thiLLMo (Ontology-Grounded RAG for Kikuyu) system implements the OG-RAG approach through a modular architecture comprising five primary subsystems: (1) Knowledge Graph Infrastructure, (2) Hybrid Retrieval Engine, (3) Context Builder, (4) LLM Integration Layer, and (5) Evaluation Pipeline. This chapter details the technical design and implementation of each component, the rationale for key architectural decisions, and the integration mechanisms that enable culturally faithful proverb translation.
+The thiLLMo (Ontology-Grounded RAG for Kikuyu) system implements the OG-RAG approach through a modular architecture comprising five primary subsystems: (1) Knowledge Graph Infrastructure, (2) Hybrid Retrieval Engine, (3) Context Builder, (4) LLM Integration Layer, and (5) Evaluation Pipeline (see Figure~\ref{fig:system_architecture}). This chapter details the technical design and implementation of each component, the rationale for key architectural decisions, and the integration mechanisms that enable culturally faithful proverb translation.
 
 \subsection{Design Principles}
 \label{subsec:design_principles}
@@ -19,6 +19,13 @@ Four guiding principles shaped architectural decisions throughout development. \
 The technology stack reflects pragmatic trade-offs between capability and accessibility. \textbf{Neo4j 5.x (AuraDB)} provides cloud-hosted graph database infrastructure for ontology storage and Cypher-based traversal queries, chosen over alternatives like TigerGraph or Amazon Neptune for its mature Python driver and generous free tier suitable for academic research. \textbf{Python 3.11} serves as the primary implementation language, leveraging its rich NLP ecosystem. For LLM backends, we use \textbf{OpenAI API (GPT-4-turbo, GPT-4)} for translation generation alongside \textbf{Google Gemini 2.5 Pro} for comparative evaluation and LLM-as-judge tasks, enabling cross-model validation. \textbf{Sentence-BERT} handles semantic embeddings for vector similarity search in the Traditional RAG baseline. Standard scientific computing libraries—\textbf{NumPy/SciPy} for statistical analysis, \textbf{Matplotlib/Seaborn} for visualization—complete the stack.
 
 The complete codebase is organized into four Python packages: \texttt{src/ontology} (schema management), \texttt{src/og-rag-system} (core translation pipeline), \texttt{src/evaluation} (metrics and baselines), and \texttt{src/data\_loading} (corpus ingestion).
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.85\textwidth}{!}{\input{figures/system-architecture}}
+\caption{thiLLMo System Architecture: Five-layer modular design showing the flow from knowledge graph infrastructure through retrieval, context building, LLM integration, to evaluation. Each layer operates independently with well-defined interfaces, enabling systematic comparison of OG-RAG against baseline approaches (Raw LLM, Traditional RAG). The dashed red arrow indicates error analysis feedback for iterative refinement.}
+\label{fig:system_architecture}
+\end{figure}
 
 \section{Knowledge Graph Infrastructure}
 \label{sec:kg_infrastructure}
@@ -43,7 +50,7 @@ The retrieval engine implements the core OG-RAG innovation: ontology-grounded co
 \subsection{Retrieval Strategy}
 \label{subsec:retrieval_strategy}
 
-The three-phase retrieval strategy: (1) \textbf{Concept Extraction} via keyword matching (curated Kikuyu lexicon) followed by semantic expansion through graph traversal (\texttt{:RELATES\_TO|SUBSUMES} paths); (2) \textbf{Graph Retrieval} using Cypher queries to find top-$k$ proverbs with maximum salience-weighted concept overlap; (3) \textbf{Hybrid Scoring} combining concept overlap, cultural weight, and lexical Jaccard similarity:
+The three-phase retrieval strategy (illustrated in Figure~\ref{fig:retrieval_pipeline}): (1) \textbf{Concept Extraction} via keyword matching (curated Kikuyu lexicon) followed by semantic expansion through graph traversal (\texttt{:RELATES\_TO|SUBSUMES} paths); (2) \textbf{Graph Retrieval} using Cypher queries to find top-$k$ proverbs with maximum salience-weighted concept overlap; (3) \textbf{Hybrid Scoring} combining concept overlap, cultural weight, and lexical Jaccard similarity:
 
 \begin{equation}
 \text{HybridScore}(p) = 0.5 \cdot S_{\text{concept}}(p) + 0.3 \cdot S_{\text{weight}}(p) + 0.2 \cdot S_{\text{lexical}}(p)
@@ -55,6 +62,13 @@ This balances semantic, cultural, and surface similarity, addressing pure vector
 \label{subsec:graph_retriever_impl}
 
 The \texttt{GraphRetriever} class (\texttt{graph\_retriever.py}) implements retrieval via \texttt{extract\_concepts()}, \texttt{retrieve\_by\_concepts()}, and \texttt{hybrid\_retrieve()} methods, bundling results in \texttt{RetrievedProverb} dataclasses. Average retrieval latency: 1.02s/proverb (0.12s concept extraction + 0.68s graph query + 0.22s scoring).
+
+\begin{figure}[htbp]
+\centering
+\input{figures/retrieval-pipeline}
+\caption{OG-RAG Hybrid Retrieval Pipeline: Three-phase process from input proverb to culturally grounded context. Phase 1 extracts cultural concepts using keyword matching and semantic expansion. Phase 2 traverses the knowledge graph via Cypher queries to retrieve conceptually similar proverbs. Phase 3 applies hybrid scoring ($0.5S_c + 0.3S_w + 0.2S_l$) combining concept overlap, cultural weight, and lexical similarity. Average end-to-end latency: 1.02 seconds per proverb.}
+\label{fig:retrieval_pipeline}
+\end{figure}
 
 \section{Context Builder}
 \label{sec:context_builder}
