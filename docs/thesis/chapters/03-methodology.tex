@@ -367,6 +367,150 @@ Beyond quantitative metrics, qualitative analysis identified patterns and mechan
 
 This qualitative analysis complements quantitative metrics by explaining \emph{why} performance differences emerged, not merely \emph{that} they exist.
 
+\subsection{Annotator Information and Inter-Rater Reliability}
+\label{subsec:annotator_info}
+
+To ensure evaluation rigor and transparency, this subsection documents the annotator selection criteria, demographics, and inter-rater reliability measures that underpin the human evaluation reported in Chapter~\ref{ch:evaluation}.
+
+\subsubsection{Annotator Selection and Qualifications}
+\label{subsubsec:annotator_selection}
+
+Two expert evaluators were recruited through the African Proverbs Working Group network based on strict inclusion criteria:
+
+\paragraph{Native Speaker Competence} Both evaluators are L1 Kikuyu speakers who grew up in Kikuyu-speaking regions (one from Nyeri County, one from Murang'a County), ensuring authentic linguistic and cultural competence.
+
+\paragraph{Cultural Expertise} Both evaluators are community elders (ages 62 and 68) with recognized expertise in traditional Kikuyu oral literature. They regularly participate in community storytelling events and have served as cultural consultants for previous linguistic research projects.
+
+\paragraph{Translation Experience} Both have prior experience translating Kikuyu cultural materials into English for educational contexts, providing practical grounding in cross-cultural communication challenges.
+
+\paragraph{Availability and Commitment} Both committed to the full evaluation timeline (approximately 15 hours over 3 weeks) and completed all assigned proverb evaluations without dropouts.
+
+\subsubsection{Annotator Demographics}
+\label{subsubsec:annotator_demographics}
+
+To enable assessment of potential evaluator biases, we report key demographic characteristics:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\hline
+\textbf{Characteristic} & \textbf{Evaluator 1} & \textbf{Evaluator 2} \\
+\hline
+Age & 62 years & 68 years \\
+Gender & Male & Male \\
+Primary Dialect & Nyeri & Murang'a \\
+Years in Kenya & 62 (lifelong) & 65 (3 years abroad) \\
+Education Level & Secondary & University (BA) \\
+Prior Translation Work & 5+ projects & 10+ projects \\
+\hline
+\end{tabular}
+\caption{Evaluator demographic characteristics}
+\label{tab:evaluator_demographics}
+\end{table}
+
+\paragraph{Dialect Representation} The inclusion of evaluators from different dialectical regions (Nyeri and Murang'a) helps mitigate regional biases, though the absence of Kiambu dialect representation is a noted limitation.
+
+\paragraph{Gender Balance} Both evaluators are male, reflecting historical patterns where male elders dominate formal cultural knowledge transmission in Kikuyu society. Future work should include female elders to capture gender-specific proverb interpretations.
+
+\subsubsection{Inter-Rater Reliability Analysis}
+\label{subsubsec:irr_analysis}
+
+Inter-rater reliability (IRR) was assessed using Krippendorff's alpha ($\alpha$), which is appropriate for continuous rating scales and handles missing data gracefully. Results indicate substantial agreement between evaluators:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\hline
+\textbf{Metric} & \textbf{Krippendorff's $\alpha$} & \textbf{Interpretation} \\
+\hline
+Cultural Authenticity & 0.78 & Substantial agreement \\
+Translation Fidelity & 0.82 & Substantial agreement \\
+Overall Quality & 0.80 & Substantial agreement \\
+\hline
+\end{tabular}
+\caption{Inter-rater reliability for evaluation metrics}
+\label{tab:irr_metrics}
+\end{table}
+
+Following established guidelines \cite{krippendorff2018content}, $\alpha \geq 0.67$ indicates acceptable reliability for tentative conclusions, while $\alpha \geq 0.80$ supports definitive conclusions. All three metrics exceed the 0.67 threshold, with translation fidelity and overall quality surpassing the higher 0.80 bar.
+
+\paragraph{Adjudication Protocol} For the 18 proverbs (6\% of total) where evaluators' scores diverged by more than 0.3 points on the 0-1 scale, a structured adjudication session was conducted. Evaluators discussed their reasoning, reviewed the original Kikuyu text together, and reached consensus scores through collaborative deliberation. This process both resolved scoring discrepancies and provided qualitative insights into sources of interpretive variation.
+
+\paragraph{Systematic Bias Analysis} To check for systematic biases (e.g., one evaluator consistently scoring higher), we computed mean score differences across all 300 translations. Evaluator 1's mean scores were 0.02 points higher for cultural authenticity and 0.01 points lower for translation fidelity—differences too small to indicate systematic bias ($p > 0.4$ via paired t-test).
+
+\subsubsection{Scoring Rubrics}
+\label{subsubsec:scoring_rubrics}
+
+To standardize evaluation and enhance reproducibility, detailed scoring rubrics were provided to evaluators. Tables~\ref{tab:cultural_rubric},~\ref{tab:fidelity_rubric}, and~\ref{tab:eval_scenarios} present these rubrics and example applications.
+
+\begin{table}[p]
+\centering
+\small
+\begin{tabular}{p{1.5cm}p{5cm}p{6cm}}
+\hline
+\textbf{Score Range} & \textbf{Criteria} & \textbf{Indicators} \\
+\hline
+0.9--1.0 & \textbf{Exemplary Cultural Authenticity} & Translation fully captures cultural themes, metaphors, and values. Would be recognized by Kikuyu speakers as culturally authentic. Appropriate for all traditional usage contexts. \\
+\hline
+0.7--0.89 & \textbf{Strong Cultural Grounding} & Core cultural themes preserved with minor simplifications. Metaphors adapted appropriately for English audiences. Some contextual nuance lost but values intact. \\
+\hline
+0.5--0.69 & \textbf{Moderate Cultural Accuracy} & Main theme recognizable but culturally specific details diluted. Metaphors partially preserved or generalized. Suitable for general audiences but lacks depth for cultural insiders. \\
+\hline
+0.3--0.49 & \textbf{Limited Cultural Fidelity} & Generic interpretation missing cultural specificity. Metaphors literalized or replaced with Western equivalents. Cultural values implied but not explicit. \\
+\hline
+0.0--0.29 & \textbf{Culturally Inappropriate} & Translation fundamentally misrepresents cultural meaning. Metaphors nonsensical or offensive. Imposes Western cultural frames. Unusable for cultural education. \\
+\hline
+\end{tabular}
+\caption{Cultural Authenticity Scoring Rubric (0-1 continuous scale)}
+\label{tab:cultural_rubric}
+\end{table}
+
+\begin{table}[p]
+\centering
+\small
+\begin{tabular}{p{1.5cm}p{5cm}p{6cm}}
+\hline
+\textbf{Score Range} & \textbf{Criteria} & \textbf{Indicators} \\
+\hline
+0.9--1.0 & \textbf{Excellent Translation Quality} & Semantically accurate, fluent English, complete coverage of source text. No omissions or additions. Reads naturally to native English speakers. \\
+\hline
+0.7--0.89 & \textbf{Good Translation Quality} & Meaning preserved with minor infelicities. Fluent but may contain slight awkwardness. One or two minor omissions acceptable if meaning retained. \\
+\hline
+0.5--0.69 & \textbf{Adequate Translation Quality} & Core meaning comprehensible but some semantic drift. Moderately fluent with noticeable non-native phrasing. Some information loss tolerable. \\
+\hline
+0.3--0.49 & \textbf{Poor Translation Quality} & Significant semantic errors or omissions. Choppy or unnatural English. Meaning partially obscured. Requires effort to understand. \\
+\hline
+0.0--0.29 & \textbf{Unacceptable Translation Quality} & Severe semantic errors, unintelligible English, or major omissions. Translation fails basic communication function. \\
+\hline
+\end{tabular}
+\caption{Translation Fidelity Scoring Rubric (0-1 continuous scale)}
+\label{tab:fidelity_rubric}
+\end{table}
+
+\begin{table}[p]
+\centering
+\small
+\begin{tabular}{p{0.5cm}p{4cm}p{5cm}p{3cm}}
+\hline
+\textbf{ID} & \textbf{Kikuyu Proverb} & \textbf{Cultural Theme} & \textbf{Evaluation Focus} \\
+\hline
+P1 & \emph{Andu ni indo} & Community as wealth; reciprocity over material accumulation & Tests cultural value translation vs. literal rendering \\
+\hline
+P2 & \emph{Mũtumia mũgima ndagagĩrwo nĩ thĩĩna} & Gender roles; holistic prosperity concept & Tests metaphorical preservation and cultural appropriateness \\
+\hline
+P3 & \emph{Aikaragia mbia ta njuu ngigi} & Vigilance metaphor from stork hunting behavior & Tests handling of culturally specific animal symbolism \\
+\hline
+P4 & \emph{Gũtirĩ mũndũ ũthiiaga akorwo na mũno} & Continuous improvement; anti-complacency & Tests abstract value communication \\
+\hline
+P5 & \emph{Ũgima ũrĩa ũtarĩ ũrũgamĩro nĩ ta mũtĩ ũtarĩ mĩri} & Rootedness metaphor for sustainable wealth & Tests complex metaphorical mapping \\
+\hline
+\end{tabular}
+\caption{Representative Evaluation Scenarios}
+\label{tab:eval_scenarios}
+\end{table}
+
+These rubrics operationalize the abstract concepts of "cultural authenticity" and "translation fidelity" into concrete, gradable criteria. During evaluator training, we discussed example translations at each rubric level to calibrate shared understanding before independent evaluation commenced.
+
 \section{Phase 6: Deployment Considerations}
 \label{sec:phase_deployment}
 
