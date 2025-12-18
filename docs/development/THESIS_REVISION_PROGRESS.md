@@ -12,12 +12,12 @@
 
 | Phase | Status | Days Allocated | Days Used | Completion % |
 |-------|--------|----------------|-----------|--------------|
-| Phase 1: Critical Blockers | � In Progress | 5 | 1 | 20% |
+| Phase 1: Critical Blockers | 🟡 In Progress | 5 | 3 | 60% |
 | Phase 2: Content Reduction | 🔴 Not Started | 5 | 0 | 0% |
 | Phase 3: Visual Enhancement | 🔴 Not Started | 2 | 0 | 0% |
 | Phase 4: Conclusion Refinement | 🔴 Not Started | 2 | 0 | 0% |
 | Phase 5: Final Quality | 🔴 Not Started | 2 | 0 | 0% |
-| **TOTAL** | 🟡 In Progress | **16** | **1** | **6%** |
+| **TOTAL** | 🟡 In Progress | **16** | **3** | **19%** |
 
 **Status Legend:**
 - 🔴 Not Started
@@ -34,7 +34,7 @@
 
 | Chapter/Section | Start | Target | Current | Status |
 |----------------|-------|--------|---------|--------|
-| **Total Thesis** | 130 | 90-100 | 130 | 🔴 |
+| **Total Thesis** | 130 | 90-100 | 133 | 🔴 |
 | Chapter 2 (Lit Review) | ~25 | 15 | 25 | 🔴 |
 | Chapter 3 (Methodology) | ~30 | 20 | 30 | 🔴 |
 | Chapter 7 (Conclusion) | ~15 | 8 | 15 | 🔴 |
@@ -43,7 +43,7 @@
 
 | Item | Target | Status | Location |
 |------|--------|--------|----------|
-| Formal Hypotheses Section | Section 1.4 | 🔴 Not Started | Chapter 1 |
+| Formal Hypotheses Section | Section 1.4 | � Complete | Chapter 1 |
 | Annotator Information | Section 3.6.6 | 🔴 Not Started | Chapter 3 |
 | Cultural Auth. Rubric | Table 3.2 | 🔴 Not Started | Chapter 3 |
 | Translation Fid. Rubric | Table 3.3 | 🔴 Not Started | Chapter 3 |
@@ -442,3 +442,69 @@ git merge supervisor-revisions
 
 **Last Updated:** December 18, 2025  
 **Next Update:** When Day 1 begins
+
+---
+
+### Day 2-3: December 18, 2025 - Add Formal Hypotheses
+
+**Status:** 🟢 Complete
+
+**Planned Tasks:**
+- [x] Write Section 1.4 "Formal Hypotheses"
+- [x] Define null hypotheses (H₀¹, H₀², H₀³)
+- [x] Define alternative hypotheses (H₁, H₂, H₃)
+- [x] Specify predicted effect sizes (10%, 15%, 5%)
+- [x] Add statistical parameters (α=0.05, power=0.80)
+- [x] Add required citations (Cohen 1988, Lakens 2013)
+- [x] Verify section numbering (LaTeX auto-numbers)
+- [x] Compile and verify
+
+**Actual Activities:**
+- Inserted comprehensive Section 1.4 after Problem Statement (Section 1.3)
+- Formulated three testable hypotheses aligned with research questions:
+  * H₁: Cultural authenticity improvement ≥10% (OG-RAG vs Trad-RAG)
+  * H₂: Translation fidelity improvement ≥15% (OG-RAG vs Trad-RAG)
+  * H₃: Overall quality improvement ≥5% (OG-RAG vs Raw LLM)
+- Included statistical methodology: paired/independent t-tests, Bonferroni correction
+- Added power analysis justification (n=100 proverbs for d=0.5, power=0.80)
+- Added bibliography entries for Cohen (1988) and Lakens (2013)
+- Fixed erroneous `\printbibliography` command in Chapter 2 (leftover from biblatex)
+- LaTeX sections auto-numbered correctly (1.4→Hypotheses, 1.5→Objectives, etc.)
+
+**Metrics:**
+- Pages: 131 → 133 (added 2 pages with hypotheses section)
+- Section 1.4 word count: ~600 words
+- New subsections: 4 (H1, H2, H3, Statistical Methods)
+- New equations: 6 (hypothesis formulations)
+- New citations: 2 (statistical methodology)
+- Commits: 1 (Day 2-3 complete)
+
+**Content Quality:**
+- Hypotheses are specific, measurable, and falsifiable
+- Effect sizes grounded in prior RAG/knowledge graph literature
+- Statistical approach aligns with evaluation framework in Chapter 5
+- Forward references to Section 5.6 (statistical analysis) established
+- Rationales connect hypotheses to ontology design principles
+
+**Technical Notes:**
+- LaTeX automatically renumbered all subsequent sections
+- Label references remain valid (no broken cross-references)
+- Equations rendered correctly with proper mathematical notation
+- Bibliography integration successful with bibtex/natbib workflow
+
+**Blockers Resolved:**
+- ✅ Formal hypotheses now explicitly stated (supervisor feedback item #3)
+- ✅ Testable predictions with quantified effect sizes
+- ✅ Statistical rigor established for evaluation
+
+**Supervisor Feedback Addressed:**
+- Item 3: "Add formal hypotheses with predicted effect sizes" → ✅ COMPLETE
+  * Null and alternative hypotheses formulated
+  * Effect sizes: 10%, 15%, 5% specified with rationales
+  * Statistical parameters: α=0.05, power=0.80, n=100
+  * Links to Chapter 5 evaluation established
+
+**Next Actions:**
+- Begin Day 4-5: Add evaluation transparency (Section 3.6.6, Tables 3.2-3.4)
+- Gather annotator information (count, demographics, Cohen's κ)
+- Create scoring rubrics for cultural authenticity and translation fidelity

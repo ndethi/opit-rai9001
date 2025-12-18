@@ -71,6 +71,69 @@ Standard automatic metrics for machine translation quality (BLEU, CHRF++, COMET)
 
 \textbf{Research Gap}: Evaluation frameworks for culturally sensitive translation lack robust metrics and methodologies for assessing cultural authenticity alongside linguistic accuracy.
 
+\section{Formal Hypotheses}
+\label{sec:hypotheses}
+
+To enable rigorous empirical validation of the OG-RAG approach, we formulate testable null and alternative hypotheses grounded in the research gaps identified above. These hypotheses are designed to be falsifiable through statistical testing with significance level $\alpha = 0.05$ and target statistical power of 0.80 \cite{cohen1988statistical}.
+
+\subsection{Hypothesis 1: Cultural Authenticity}
+\label{subsec:h1_cultural}
+
+\textbf{Null Hypothesis (H$_0^1$)}: Ontology-grounded RAG does not significantly improve cultural authenticity scores compared to Traditional RAG in Kikuyu proverb translation.
+
+\begin{equation}
+H_0^1: \mu_{\text{OG-RAG}} - \mu_{\text{Trad-RAG}} \leq 0
+\end{equation}
+
+\textbf{Alternative Hypothesis (H$_1$)}: Ontology-grounded RAG significantly improves cultural authenticity scores by at least 10\% compared to Traditional RAG.
+
+\begin{equation}
+H_1: \mu_{\text{OG-RAG}} - \mu_{\text{Trad-RAG}} > 0.10 \times \mu_{\text{Trad-RAG}}
+\end{equation}
+
+\textbf{Rationale}: The explicit encoding of cultural relationships, metaphorical mappings, and contextual constraints in the ontology should enable more culturally faithful translations than unstructured text retrieval. We predict a medium-to-large effect size (Cohen's $d \geq 0.5$) based on the structured nature of cultural knowledge representation.
+
+\subsection{Hypothesis 2: Translation Fidelity}
+\label{subsec:h2_fidelity}
+
+\textbf{Null Hypothesis (H$_0^2$)}: Ontology-grounded RAG does not significantly improve translation fidelity scores compared to Traditional RAG.
+
+\begin{equation}
+H_0^2: \mu_{\text{OG-RAG}}^{\text{fidelity}} - \mu_{\text{Trad-RAG}}^{\text{fidelity}} \leq 0
+\end{equation}
+
+\textbf{Alternative Hypothesis (H$_2$)}: Ontology-grounded RAG significantly improves translation fidelity by at least 15\% compared to Traditional RAG.
+
+\begin{equation}
+H_2: \mu_{\text{OG-RAG}}^{\text{fidelity}} - \mu_{\text{Trad-RAG}}^{\text{fidelity}} > 0.15 \times \mu_{\text{Trad-RAG}}^{\text{fidelity}}
+\end{equation}
+
+\textbf{Rationale}: Structured retrieval should provide more semantically relevant context than similarity-based text matching, enabling the LLM to generate translations that better preserve original meanings. The larger predicted effect size (15\% vs. 10\%) reflects the hypothesis that ontological grounding benefits semantic precision even more than cultural authenticity.
+
+\subsection{Hypothesis 3: System Superiority Over Baseline}
+\label{subsec:h3_baseline}
+
+\textbf{Null Hypothesis (H$_0^3$)}: OG-RAG performance does not significantly exceed raw LLM baseline (zero-shot translation without retrieval augmentation).
+
+\begin{equation}
+H_0^3: \mu_{\text{OG-RAG}}^{\text{overall}} - \mu_{\text{Raw-LLM}}^{\text{overall}} \leq 0
+\end{equation}
+
+\textbf{Alternative Hypothesis (H$_3$)}: OG-RAG achieves at least 5\% improvement in overall translation quality compared to the raw LLM baseline.
+
+\begin{equation}
+H_3: \mu_{\text{OG-RAG}}^{\text{overall}} - \mu_{\text{Raw-LLM}}^{\text{overall}} > 0.05 \times \mu_{\text{Raw-LLM}}^{\text{overall}}
+\end{equation}
+
+\textbf{Rationale}: This hypothesis validates the fundamental value of retrieval augmentation for culturally nuanced translation. The conservative 5\% threshold reflects uncertainty about whether any retrieval augmentation suffices, or whether ontological grounding is specifically necessary. Rejecting H$_0^3$ while accepting H$_1$ and H$_2$ would provide strong evidence for the OG-RAG approach.
+
+\subsection{Statistical Testing Approach}
+\label{subsec:statistical_methods}
+
+These hypotheses will be tested using paired t-tests (for within-system comparisons across proverbs) and independent t-tests (for between-system comparisons), with Bonferroni correction for multiple comparisons ($\alpha_{\text{corrected}} = 0.05/3 = 0.0167$). Effect sizes will be reported using Cohen's $d$ for interpretability. Sample size was determined through power analysis to detect medium effects ($d = 0.5$) with 80\% power, yielding a minimum requirement of $n = 64$ proverbs per condition; our evaluation uses $n = 100$ for additional robustness \cite{lakens2013calculating}.
+
+The evaluation methodology and detailed results addressing these hypotheses are presented in Chapter~\ref{ch:evaluation}, with statistical interpretation in Section~\ref{sec:statistical_analysis}.
+
 \section{Research Objectives and Contributions}
 \label{sec:objectives}
 
