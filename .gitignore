@@ -20,6 +20,9 @@
 !docs/thesis/chapters/*.pdf
 !docs/thesis/*.pdf
 
+# Thesis archive folder (local comparison artifacts)
+docs/thesis/archive/
+
 # Backup files
 *~
 *.bak
