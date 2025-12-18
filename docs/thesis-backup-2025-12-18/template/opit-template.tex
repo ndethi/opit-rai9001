@@ -1,0 +1,295 @@
+
+\documentclass[12pt]{report}
+\usepackage{mathptmx} 
+\usepackage[a4paper, bottom=0.75in, top=0.75in, left=1in, right=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{lipsum}
+\usepackage{tocloft}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage[utf8]{inputenc}
+\usepackage[style=apa,backend=biber]{biblatex}
+\addbibresource{custom.bib} % your bib file
+\usepackage{graphicx}
+%For table
+\usepackage{tabularx}
+%Caption setup
+\usepackage{caption}
+\captionsetup[table]{skip=10pt}
+%For code
+\usepackage{listings}
+
+\setlength{\cftbeforechapskip}{0pt}   % no extra space before chapters
+\setlength{\cftbeforesecskip}{0pt}    % no extra space before sections
+\setlength{\cftbeforesubsecskip}{0pt} % no extra space before subsections
+
+% \titleformat{\chapter}[display]{\bfseries\centering\LARGE}{}{0pt}{\Huge}
+\titleformat{\chapter}[display]{\bfseries\centering\LARGE}{\chaptername\ \thechapter}{12pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{30pt}
+\titleformat{\section}{\bfseries\Large}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\normalsize}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[runin]{\bfseries\normalsize\itshape}{\thesubsubsection}{1em}{}[.]
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\parindent}{0.5in}
+\setstretch{2}
+
+\begin{document}
+
+
+
+\begin{titlepage}
+\centering
+{\Large\bfseries THESIS TITLE ALL UPPERCASE \par}
+\vfill
+A thesis presented at OPIT - Open Institute of Technology\\
+in partial fulfillment of the requirements for the degree of\\
+{[Bachelor of Science (BSc) or Master of Science (MSc)] in [insert Program name]}\\
+\vfill
+by\\
+First Name Middle Initial Last Name\\
+\vfill
+St. Julian's, Malta\\
+Month, Year of Submission\\
+\vfill
+\copyright~[year] by [Author Name]
+\end{titlepage}
+
+% ----- Front matter -----
+\pagenumbering{roman}  % Roman page numbering: i, ii, iii, ...
+\chapter*{Approval of the Thesis}
+\addcontentsline{toc}{chapter}{Approval of the Thesis}
+\begin{center}
+    {\Large THESIS TITLE ALL UPPERCASE }
+\end{center}
+\vspace{1cm}
+
+This thesis by [Name of Candidate] has been approved by faculty below, who recommend it be accepted in partial fulfillment of requirements for the degree of [Bachelor of Science / Master of Science] in [insert program name].
+
+\vspace{1cm}
+\textbf{Thesis Supervisor} \\
+Name Surname \\
+Signature \\
+Date 
+
+\vspace{1cm}
+\textbf{Project Contact [for internships only - delete if not applicable]} \\
+Name Surname \\
+Signature \\
+Date 
+
+\vspace{1cm}
+\textbf{Thesis Defense Examining Committee [for MSc students only - delete if not applicable]} \\
+Name Surname \\
+Name Surname
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+The first paragraph situates the research project in the subject domain. It conveys the purpose, focus, problem area, context, and research question of the study. It may discuss the literature, major links to related research, or its absence.
+\\
+The second paragraph describes the method(s) and rationale for its selection, key demographic characteristics of the research participants or other data sources, and key terms regarding the nature of the data, sampling, research design, instrumentation, and data collection.
+\\
+The third paragraph presents the chief findings directly relevant to the research purpose and question. It includes terminology to indicate the form of data analysis procedure used. It may also include supplemental findings considered important for cross-referencing.
+\\
+The last paragraph concisely communicates the meaning, significance, contribution, and implications of the research, as well as suggesting directions for further study. \\
+% Continue as needed...
+
+\chapter*{Dedication}
+\addcontentsline{toc}{chapter}{Dedication}
+This page is optional [not counted or numbered]. Authors may choose to dedicate their work to family members, mentors, or any other meaningful organization or influence.
+\\
+If you choose not to have a dedication page, please comment this section by selecting this section along with the content and press 'ctrl' and '/' together or by directly pressing del button after selecting this section. This action will comment this section.
+\chapter*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgments}
+Research funding, grants, and permission to reprint copyrighted materials must be acknowledged on this page. Publishers usually require specific wording. Many writers choose to recognize the help of friends, colleagues, mentors, assistants, and family members on this page. The page is double-spaced and immediately precedes the table of contents.
+
+\newpage
+% \tableofcontents
+% \listoftables
+% \listoffigures
+\tableofcontents
+\newpage
+\listoftables
+\newpage
+\listoffigures
+
+% ----- Main matter -----
+\clearpage
+\pagenumbering{arabic} % Start normal page numbering
+\setcounter{page}{1}   % Start from page 1
+
+\chapter{Introduction}
+Begin your text here, making sure to indent 0.5 inches and double-space it. This document uses Times New Roman size 12 font, as it is the most common.
+\\
+Usually, introduction chapters utilize only APA level 1 headings. In Chapter 2, you will see how to use heading levels to organize the paper. The formatting for each heading level has been built into the section tags in latex syntax in this template, including chapter headings. The headings can be automatically updated in your Table of Contents as soon you add a chapter/section in the document.
+\\
+Each chapter must start on a new page. This is achieved automatically as soon as you start a chapter using chapter tag. The introduction usually includes a statement of the problem and the purpose and rationale for the study.
+
+\chapter{Literature Review}
+Use heading levels to organize content within each chapter. 
+\\
+Some samples are given as reference for you here.
+
+\section{Level 2 headings}
+\subsection{This is Level 2 heading}
+
+
+\section{Level 3 headings}
+\subsubsection{This is Level 3 heading}
+Rarely used types are Level 4 and Level 5 headings.
+
+\section{Updating Table of Contents}
+Just changing the document in this tex file like by adding one more section with some content is going to display the same in the contents page. 
+\\
+Uncomment below lines in the main tex file (by erasing \% from beginning of the line)
+% \chapter{Sample Chapter added}
+% \section{Sample Heading added}
+% \subsection{Sample subsection added}
+
+
+\chapter{Methodology}
+Begin your next chapter here. The introduction to the chapter will vary in length depending on the topic and required content before beginning heading levels, just as it would in the previous chapters.
+
+
+\section{Captioning Tables and Figures}
+You may use ref tag with figure's label to show as "Figure \ref{fig:cat}" to refer to Cat's figure and ref tag with table's label to show as "Table \ref{tab:participant_characteristics}" to refer to the table in the content.
+
+\begin{table}[hbtp]
+\centering
+%Caption of the table with table number
+\caption{Participant Characteristics}
+\label{tab:participant_characteristics}
+\begin{tabularx}{\textwidth}{@{} l c c c l X @{}}
+\toprule
+\textbf{Pseudonym} & \textbf{Actual Age} & \textbf{Subjective Age} & \textbf{Gender} & \textbf{Length of Time} & \textbf{Organization Type} \\
+\midrule
+Laura     & 71 & 30       & Female & 10 years         & Large University           \\
+Elizabeth & 65 & 50s      & Female & 13 years         & Large Pharma               \\
+Catherine & 67 & younger  & Female & 29 years         & Industrial Services        \\
+Esther    & 72 & 60s      & Female & 10 years         & Event Planning             \\
+Ellen     & 82 & 65       & Female & 36 years         & Legal Office               \\
+Dan       & 80 & 60       & Male   & 46 years         & Legal Office               \\
+Chester   & 65 & 30s      & Male   & 36 years         & Large Defense Contractor   \\
+Gabby     & 72 & 50       & Female & 23 years         & Large Health / Weight Loss Co \\
+Molly     & 65 & 25       & Female & 11 years         & Large Hospital             \\
+Charley   & 72 & 40       & Male   & 38 years         & Legal Office               \\
+Frances   & 65 & 50       & Female & 40 years         & Marketing                  \\
+Joel      & 67 & 47       & Male   & 3 years / 20 years & Large Health Care         \\
+Satch     & 72 & 20       & Male   & 49 years         & Large Defense Contractor   \\
+Kiki      & 67 & 55       & Female & 3 years / 15 years & Retail                   \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+%Figure
+\begin{figure}[t]
+\caption{I am a Cat}
+\label{fig:cat}
+\includegraphics[width=8cm]{cat.jpg}
+\centering
+\end{figure}
+
+
+
+
+\section{Formatting/Inserting a List of Figures}
+You may refer to \href{https://www.overleaf.com/learn/how-to/How_to_insert_figures_in_Overleaf}{Click me for short tutorial}, to check how to insert images in latex.
+
+
+\section{Mathematical Expressions and Coding}
+You may refer to \href{https://www.overleaf.com/learn/latex/Mathematical_expressions}{Click me for a tutorial}, to learn to insert equations in your content.
+\\
+Some sample is given here for your help:
+\begin{quote}
+In physics, the mass-energy equivalence is stated 
+by the equation \(E=mc^2\), discovered in 1905 by Albert Einstein.
+\end{quote}
+
+\noindent Instead if writing (enclosing) inline math between \verb|\(...\)| you can use \texttt{\$...\$} to achieve the same result:
+
+\begin{quote}
+In physics, the mass-energy equivalence is stated 
+by the equation $E=mc^2$, discovered in 1905 by Albert Einstein.
+\end{quote}
+
+\noindent Or, you can use \verb|\begin{math}...\end{math}|:
+
+\begin{quote}
+In physics, the mass-energy equivalence is stated 
+by the equation \begin{math}E=mc^2\end{math}, discovered in 1905 by Albert Einstein.
+\end{quote}
+
+\section{Inserting Code}
+You may refer to link \href{https://www.overleaf.com/learn/latex/Code_listing}{Click me to learn to insert code in doc}.
+
+Sample:
+\begin{singlespace}
+\begin{lstlisting}[language=Python]
+import numpy as np
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+    
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+                
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+                
+                VT = np.zeros((n*m,1), int)
+    
+    return M
+\end{lstlisting}
+\end{singlespace}
+
+\chapter{Findings or Results}
+Whether this chapter is called findings or results depends upon the type of study done. Many qualitative studies, such as phenomenological, heuristic, case study, grounded theory, narrative, autoethnography, and so forth have findings. Studies using some sort of quantitative method will often have results of what happened due to the intervention or what was discovered by the survey. Modify the chapter title in this template as needed. 
+
+\chapter{Discussion}
+Begin your chapter text here. Cite the reference like \cite{arslan2013psychological}, \cite{turing1936computable} and \cite{knuth1984texbook} to display it in the References section. Include the bibtex of the corresponding article in the custom.bib file associated with this project. To get the bibtex of a research paper, use google scholar and click on cite and press the bibtex to copy and paste the same on custom.bib. Then cite that article using the cite tag as shown above and reload the document. Use \href{https://www.overleaf.com/learn/latex/Bibliography_management_in_LaTeX#The_bibliography_file}{this} link to learn more.
+
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+% Example reference
+% \noindent Arslan, S. (2012). Psychological results... \\
+% Birks, M., \& Mills, J. (2011). Grounded theory... \\
+% Blauwet, C., \& Willick, S. E. (2012). The paralympic movement...
+\printbibliography[heading=none]
+
+\appendix
+\renewcommand\chaptername{Appendix}
+
+\chapter{Your Title Goes Here}
+...
+\newpage
+The actual appendix material might be placed on a new page like this one if it will not fit on the previous page with the appendix title. If a glossary is included, it should be the final appendix.
+
+\chapter{Useful Resources}
+Use this for tutorial on Latex: \href{https://www.overleaf.com/learn/latex/Tutorials}{Click me for Latex tutorial}. We hope that you found this template helpful, but now that you have made it through the content, you may have further questions.
+\\
+\\
+\textbf{Questions?} 
+Contact your Supervisor or Program Coordinator 
+
+\end{document}

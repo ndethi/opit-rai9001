@@ -1,0 +1,171 @@
+/Users/ndethi/dev/opit/opit-rai9001/scripts/generate_thesis_chapter5.py:277: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = axes[idx].boxplot(data, labels=systems, patch_artist=True)
+/Users/ndethi/dev/opit/opit-rai9001/scripts/generate_thesis_chapter5.py:277: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = axes[idx].boxplot(data, labels=systems, patch_artist=True)
+/Users/ndethi/dev/opit/opit-rai9001/scripts/generate_thesis_chapter5.py:277: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = axes[idx].boxplot(data, labels=systems, patch_artist=True)
+
+======================================================================
+CHAPTER 5 CONTENT GENERATION
+======================================================================
+
+Loading evaluation data...
+
+======================================================================
+STATISTICAL SIGNIFICANCE TESTS
+======================================================================
+
+📋 Paired samples: 97 proverbs with all three systems evaluated
+
+📊 OG-RAG vs Raw GPT-4:
+   t-statistic: 7.4676
+   p-value: 0.000000
+   Significant: ✅ YES (p < 0.05)
+
+📊 OG-RAG vs Traditional RAG:
+   t-statistic: 5.3413
+   p-value: 0.000001
+   Significant: ✅ YES (p < 0.05)
+
+📊 Traditional RAG vs Raw GPT-4:
+   t-statistic: 2.8770
+   p-value: 0.004947
+   Significant: ✅ YES (p < 0.05)
+
+
+======================================================================
+LATEX TABLE 5.2: Statistical Significance Tests
+======================================================================
+
+\begin{table}[htbp]
+\centering
+\caption{Statistical Significance Tests for Cultural Authenticity}
+\label{tab:statistical_tests}
+\begin{tabular}{lccc}
+\hline
+\textbf{Comparison} & \textbf{t-statistic} & \textbf{p-value} & \textbf{Interpretation} \\
+\hline
+OG-RAG vs Raw GPT-4 & 7.468 & 0.000000 & Significant \\
+OG-RAG vs Traditional RAG & 5.341 & 0.000001 & Significant \\
+Traditional RAG vs Raw GPT-4 & 2.877 & 0.004947 & Significant \\
+\hline
+\multicolumn{4}{l}{\textit{Note: Significance level $\alpha = 0.05$; paired t-test (n=100)}} \\
+\end{tabular}
+\end{table}
+
+
+======================================================================
+GENERATING VISUALIZATIONS
+======================================================================
+
+✅ Saved: docs/thesis/figures/cultural_authenticity_comparison.png
+✅ Saved: docs/thesis/figures/translation_fidelity_comparison.png
+✅ Saved: docs/thesis/figures/overall_quality_comparison.png
+✅ Saved: docs/thesis/figures/score_distributions.png
+✅ Saved: docs/thesis/figures/og_rag_improvements.png
+
+✅ All visualizations saved to docs/thesis/figures/
+
+======================================================================
+INTERPRETATION SECTIONS FOR CHAPTER 5
+======================================================================
+
+\subsection{Cultural Authenticity Results}
+\label{sec:cultural_authenticity_results}
+
+The cultural authenticity evaluation across 100 Kikuyu proverbs revealed significant
+differences between the three translation systems. As shown in Table~\ref{tab:cultural_metrics}
+and Figure~\ref{fig:cultural_authenticity}, the OG-RAG system achieved a mean cultural
+authenticity score of 0.627 ($\pm$ 0.089), representing a
+10.5\% improvement over the baseline Raw GPT-4 system (M = 0.568,
+SD = 0.080). The Traditional RAG system achieved an intermediate
+score of 0.584 ($\pm$ 0.088), demonstrating that knowledge
+integration improves cultural authenticity, but ontology-grounded retrieval provides
+superior cultural context.
+
+Statistical analysis using paired t-tests confirmed that the OG-RAG system's
+performance improvement was statistically significant (t = 7.468,
+p = 0.000000, p < 0.05), indicating that the observed differences
+are unlikely to have occurred by chance. This validates our hypothesis (H1) that
+ontology-grounded RAG significantly improves cultural authenticity compared to
+baseline LLM approaches.
+
+The comparison between OG-RAG and Traditional RAG was also statistically
+significant (t = 5.341, p = 0.000001),
+demonstrating that the ontology-grounded approach provides measurable benefits
+beyond simple document retrieval. This suggests that the semantic structure
+encoded in the cultural ontology enables more contextually appropriate knowledge
+retrieval, leading to translations that better preserve cultural nuances.
+
+\subsection{Translation Fidelity Results}
+\label{sec:translation_fidelity_results}
+
+Translation fidelity, measured through cosine similarity between system outputs
+and expert translations, showed consistent patterns with cultural authenticity
+results. The OG-RAG system achieved a mean fidelity score of 0.369
+($\pm$ 0.151), representing a 19.8\% improvement
+over the Raw GPT-4 baseline (M = 0.308, SD = 0.154).
+The Traditional RAG system scored 0.334 ($\pm$ 0.167),
+again showing intermediate performance.
+
+These results demonstrate that translations with higher cultural authenticity
+also tend to align more closely with expert human translations. This correlation
+suggests that the cultural knowledge integration provided by the ontology enables
+the system to make translation choices that match expert judgment, even when
+the system has not been explicitly trained on those specific translations.
+
+\subsection{Overall Quality Assessment}
+\label{sec:overall_quality}
+
+The composite overall quality metric, which combines cultural authenticity
+(60\% weight) and translation fidelity (40\% weight), provides a holistic
+assessment of translation performance. The OG-RAG system achieved a mean
+overall quality score of 0.380 ($\pm$ 0.085),
+representing a 13.5\% improvement over the baseline
+(M = 0.335, SD = 0.083).
+
+Analysis of the grade distribution reveals that 96 out of 100
+translations were classified as grade F (failing), with 1 achieving
+grade D. While these absolute scores may appear low, they reflect the challenging
+nature of culturally-grounded translation and the high standards set by expert
+human translators. Importantly, the 10.5\% relative improvement
+demonstrates meaningful progress toward preserving cultural authenticity in
+machine translation systems.
+
+\subsection{Implications for RQ1}
+\label{sec:rq1_implications}
+
+These results directly address Research Question 1: \textit{How can cultural}
+\textit{ontologies enhance the contextual understanding of RAG systems for Kikuyu}
+\textit{proverb translation?} The statistically significant improvements in cultural
+authenticity (p < 0.05) demonstrate that ontology-grounded knowledge retrieval
+provides measurable benefits over both unaugmented LLMs and traditional RAG
+approaches.
+
+The ontology enhancement operates through three key mechanisms:
+\begin{enumerate}
+  \item \textbf{Semantic Grounding}: The ontology structure enables retrieval of
+        culturally-related concepts rather than just lexically similar documents.
+  \item \textbf{Context Enrichment}: Retrieved knowledge includes relationship
+        information (e.g., proverb-concept links, concept hierarchies) that
+        provides richer context for the translation model.
+  \item \textbf{Cultural Coherence}: The ontology ensures that retrieved knowledge
+        maintains cultural coherence by respecting the semantic structure of
+        Kikuyu cultural knowledge.
+\end{enumerate}
+
+The 10.5\% improvement in cultural authenticity validates the
+hypothesis that these mechanisms lead to translations that better preserve
+cultural nuances and contextual meaning.
+
+
+======================================================================
+✅ CHAPTER 5 CONTENT GENERATION COMPLETE
+======================================================================
+
+Next steps:
+1. Copy LaTeX tables and text sections into docs/thesis/chapters/chapter5.tex
+2. Reference figures using \includegraphics{figures/filename.png}
+3. Add LLM-as-a-Judge results when processing is complete
+4. Write discussion section connecting results to research questions
+
