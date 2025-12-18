@@ -322,42 +322,9 @@ These directions position the current work as an initial prototype within a long
 \section{Methodological Limitations}
 \label{sec:methodological_limitations}
 
-Every methodological choice involves trade-offs. We opted for depth over breadth, cultural validity over computational scale, and expert judgment over automated metrics. These decisions enabled rigorous validation of the OG-RAG approach while establishing boundaries that future work can expand.
-
-\subsection{Sample Size Constraints}
-\label{subsec:sample_limitations}
-
-We deliberately focused on 100 wealth-related proverbs rather than attempting superficial coverage of Kikuyu's estimated 3,000+ total proverbs. This choice prioritized ontological depth—capturing genuine semantic richness within a coherent domain—over quantity. The cost is limited generalizability to other thematic areas (kinship, warfare, agriculture), but the benefit is confidence that our findings reflect robust patterns rather than artifacts of sparse coverage.
-
-\subsection{Ontology Completeness}
-\label{subsec:ontology_completeness}
-
-Despite rigorous development, the ontology cannot capture all tacit cultural knowledge. Expert evaluators noted 12 instances (12\% of corpus) where proverbs invoked cultural concepts not explicitly represented in the ontology. This "bounded completeness" is inherent to formal knowledge representation but limits system performance.
-
-\subsection{Evaluation Subjectivity}
-\label{subsec:eval_subjectivity}
-
-Cultural authenticity judgments are inherently subjective, shaped by evaluators' personal experiences and regional/generational perspectives. While inter-rater reliability was substantial ($\alpha > 0.75$), some degree of evaluator variance is unavoidable. Future work could expand the evaluator pool to capture broader perspectives.
-
-\subsection{Temporal Validity}
-\label{subsec:temporal_validity}
-
-Proverb meanings evolve as cultural contexts change. The ontology captures traditional interpretations but may not reflect contemporary urban reinterpretations. Longitudinal studies would be needed to track semantic drift over time.
-
-\subsection{Generalization Boundaries}
-\label{subsec:generalization}
-
-Findings are specific to Kikuyu proverbs and the wealth domain. Claims about OG-RAG's effectiveness for other languages, genres, or cultural domains require independent empirical validation. The methodology is \emph{transferable} but results are not automatically \emph{generalizable}.
+We prioritized depth over breadth (100 wealth-domain proverbs vs. 3,000+ corpus-wide), cultural validity over scale (expert judgment vs. automated metrics), and ontological coherence over completeness. Limitations include: (1) \textbf{Sample constraints}: findings specific to wealth domain, requiring validation for kinship, agriculture, governance themes; (2) \textbf{Ontology gaps}: 12\% of proverbs invoked concepts not formally represented; (3) \textbf{Evaluation subjectivity}: IRR $\alpha > 0.75$ substantial but evaluator variance unavoidable; (4) \textbf{Temporal validity}: captures traditional interpretations, may miss contemporary urban reinterpretations; (5) \textbf{Generalization boundaries}: methodology transferable to other Bantu languages but results not automatically generalizable. These boundaries establish confidence limits while suggesting concrete expansion directions.
 
 \section{Summary}
 \label{sec:methodology_summary}
 
-This chapter presented a comprehensive research methodology grounded in the CRISP-DM framework, adapted for ontology-driven NLP research. The approach progresses through six interconnected phases: from problem definition and data understanding, through intensive ontology construction and system development, to rigorous multi-dimensional evaluation and deployment planning.
-
-The ontology construction process (Section~\ref{sec:phase_ontology}) represents a significant methodological contribution, demonstrating how tacit cultural knowledge can be systematically elicited, structured, validated, and operationalized within computational systems. The resulting 847-concept knowledge graph provides the semantic foundation for ontology-grounded retrieval.
-
-The evaluation framework (Section~\ref{sec:phase_evaluation}) addresses a critical gap in culturally sensitive translation assessment by combining expert human judgment with automated metrics, prioritizing cultural authenticity alongside linguistic accuracy. The two-dimensional scoring system (cultural authenticity + translation fidelity) operationalizes "cultural faithfulness" in a measurable, reproducible manner.
-
-Methodological limitations were transparently acknowledged, including sample size constraints, ontology completeness bounds, and generalization boundaries. These limitations suggest concrete directions for future methodological refinements while establishing appropriate confidence bounds for the current findings.
-
-The following chapters detail the technical implementation of this methodology (Chapter~\ref{chap:design}) and present the empirical results of the evaluation (Chapter~\ref{ch:evaluation}), demonstrating that the chosen methodological approach successfully addresses the research questions posed in Section~\ref{sec:research_questions}.
+This chapter presented a CRISP-DM-based methodology for ontology-driven cultural NLP research. The six-phase approach (problem definition, data understanding, ontology construction with 847 concepts, system development, multi-dimensional evaluation, deployment considerations) demonstrates systematic elicitation and operationalization of tacit cultural knowledge. Key contributions: (1) ontology construction process for cultural knowledge representation, (2) two-dimensional evaluation framework (cultural authenticity + translation fidelity) addressing gaps in culturally sensitive translation assessment. Acknowledged limitations establish confidence bounds while suggesting expansion directions. Chapters~\ref{chap:design} and~\ref{ch:evaluation} detail technical implementation and empirical results.

@@ -59,144 +59,12 @@ The \texttt{GraphRetriever} class (\texttt{graph\_retriever.py}) implements retr
 \section{Context Builder}
 \label{sec:context_builder}
 
-The Context Builder transforms graph-retrieved knowledge into natural language prompts optimized for LLM consumption.
-
-\subsection{Context Serialization Strategy}
-\label{subsec:context_serialization}
-
-Retrieved graph subgraphs (nodes + relationships) are serialized into structured text following a five-section template:
-
-\begin{enumerate}
-    \item \textbf{Cultural Themes}: Lists extracted concepts with definitions
-    \item \textbf{Related Proverbs}: Top-3 similar proverbs with expert translations and cultural meanings
-    \item \textbf{Usage Contexts}: Appropriate scenarios for proverb application
-    \item \textbf{Moral Lessons}: Ethical principles the proverb teaches
-    \item \textbf{Metaphorical Elements}: Cultural entities referenced and their symbolic meanings
-\end{enumerate}
-
-Example serialization for input ``Andu ni indo'' (People are wealth):
-
-\begin{verbatim}
-CULTURAL CONTEXT (from Kikuyu Proverb Ontology):
-
-CULTURAL THEMES:
-- Community: Collective identity and mutual support systems
-- Social Capital: Human relationships as wealth
-- Value Hierarchy: Kikuyu priorities of people over possessions
-
-RELATED PROVERBS:
-1. "Ciringi imurikagwa na ingi" (Money is made by money)
-   Cultural Meaning: Wealth multiplication requires initial capital
-   
-2. "Gutiri mbura itari gitonga kiayo" (No rain without its wealth)
-   Cultural Meaning: Every challenge brings opportunities
-
-USAGE CONTEXTS:
-- Wealth distribution ceremonies (emphasizing communal sharing)
-- Advice to young people (teaching value priorities)
-- Business partnerships (prioritizing trust over capital)
-
-MORAL LESSONS:
-- People constitute ultimate wealth, not material possessions
-- Community relationships generate sustainable prosperity
-- Social obligations precede individual accumulation
-\end{verbatim}
-
-This structured format enables LLMs to parse specific knowledge types (themes vs. examples vs. contexts) rather than processing an undifferentiated text blob.
-
-\subsection{Implementation: ContextBuilder Class}
-\label{subsec:context_builder_impl}
-
-Implemented in \texttt{src/og-rag-system/context\_builder.py}:
-
-\begin{verbatim}
-class ContextBuilder:
-    def __init__(self, graph_retriever: GraphRetriever):
-        self.retriever = graph_retriever
-    
-    def build_cultural_context(
-        self, 
-        kikuyu_text: str, 
-        k_proverbs: int = 3
-    ) -> CulturalContext:
-        """Build structured context from graph retrieval."""
-        
-        # Retrieve similar proverbs
-        retrieved = self.retriever.hybrid_retrieve(
-            kikuyu_text, k=k_proverbs
-        )
-        
-        # Extract unique concepts
-        all_concepts = set()
-        for p in retrieved:
-            all_concepts.update(p.matched_concepts)
-        
-        # Build sections
-        context = CulturalContext(
-            themes=self._format_themes(all_concepts),
-            related_proverbs=self._format_proverbs(retrieved),
-            contexts=self._format_usage_contexts(all_concepts),
-            lessons=self._format_moral_lessons(all_concepts)
-        )
-        
-        return context
-    
-    def to_prompt_string(self, context: CulturalContext) -> str:
-        """Serialize context to LLM prompt format."""
-        # Template-based string generation
-        ...
-\end{verbatim}
-
-The \texttt{CulturalContext} dataclass stores structured sections before final serialization, enabling A/B testing of different prompt formats without modifying retrieval logic.
+The Context Builder (\texttt{context\_builder.py}) serializes graph-retrieved knowledge into five-section natural language prompts: (1) Cultural Themes (concept definitions), (2) Related Proverbs (top-3 with cultural meanings), (3) Usage Contexts (appropriate scenarios), (4) Moral Lessons (ethical principles), (5) Metaphorical Elements (symbolic meanings). This structured format enables LLMs to parse specific knowledge types rather than undifferentiated text.
 
 \section{LLM Integration Layer}
 \label{sec:llm_integration}
 
-The LLM Integration Layer interfaces with OpenAI and Google Gemini APIs to generate translations guided by ontology-derived context.
-
-\subsection{Translation Modes}
-\label{subsec:translation_modes}
-
-The system implements three translation modes for comparative evaluation:
-
-\subsubsection{Raw LLM Mode}
-\label{subsubsec:raw_llm}
-
-Baseline approach using zero-shot prompting without external context:
-
-\begin{verbatim}
-PROMPT:
-You are an expert translator specializing in African languages.
-Translate the following Kikuyu proverb to English, preserving
-its cultural meaning and wisdom.
-
-Kikuyu: "{kikuyu_text}"
-
-Provide:
-1. English translation
-2. Brief cultural explanation
-\end{verbatim}
-
-This tests the LLM's intrinsic multilingual and cultural knowledge.
-
-\subsubsection{Traditional RAG Mode}
-\label{subsubsec:traditional_rag}
-
-Standard RAG approach retrieving similar proverbs via vector similarity (Sentence-BERT embeddings) without ontological structure:
-
-\begin{verbatim}
-PROMPT:
-You are an expert translator. Use these example Kikuyu proverbs
-to guide your translation:
-
-EXAMPLES:
-{vector_retrieved_examples}
-
-TRANSLATE:
-Kikuyu: "{kikuyu_text}"
-\end{verbatim}
-
-This tests whether unstructured retrieval provides sufficient cultural context.
+Three translation modes enable comparative evaluation: (1) \textbf{Raw LLM}: zero-shot prompting without retrieval, testing intrinsic LLM cultural knowledge; (2) \textbf{Traditional RAG}: vector-similarity retrieval via Sentence-BERT, injecting unstructured examples; (3) \textbf{OG-RAG}: ontology-grounded retrieval with structured cultural context including themes, usage contexts, and cultural requirements (preserve worldview, maintain metaphors, adapt references). The \texttt{OGRAGTranslator} class (\texttt{ograg\_translator.py}) implements all three methods using OpenAI API (GPT-4-turbo: \$0.01/1K input, \$0.03/1K output) with response caching and batch processing. Total evaluation cost: \$12.47 for 300 translations.
 
 \subsubsection{OG-RAG Mode}
 \label{subsubsec:ograg_mode}
@@ -330,45 +198,7 @@ Cultural authenticity scoring (40% thematic accuracy, 30% metaphor preservation,
 
 \textbf{Neo4j AuraDB Latency}: Cloud hosting introduced 300-500ms/query latency. Implemented \texttt{lru\_cache} for repeat queries, reducing retrieval from 1.8s to 0.6s/proverb when concepts overlapped (80\% of cases). \textbf{Concept Extraction Ambiguity}: Context-aware disambiguation using surrounding words resolved keyword false positives (e.g., ``muti'' mapping correctly to ``medicine'' vs. ``tree''). \textbf{LLM Response Parsing}: Structured prompts with section markers (``TRANSLATION:'', ``EXPLANATION:'') and regex post-processing handled format deviations (3\% fallback rate). \textbf{Cultural Weight Calibration}: Adjudication sessions improved expert agreement from $\alpha = 0.61$ to $\alpha = 0.78$.
 
-\section{Code Organization and Repository Structure}
-\label{sec:code_organization}
-
-The codebase is organized for modularity and reproducibility:
-
-\begin{verbatim}
-opit-rai9001/
-├── src/
-│   ├── ontology/
-│   │   ├── enhanced_neo4j_schema.py      # Schema definition
-│   │   ├── cultural_weights.py           # Weight assignments
-│   │   └── kikuyu_proverb_ontology.py    # Ontology utils
-│   ├── og-rag-system/
-│   │   ├── graph_retriever.py            # Hybrid retrieval
-│   │   ├── context_builder.py            # Context serialization
-│   │   └── ograg_translator.py           # Translation pipeline
-│   ├── evaluation/
-│   │   ├── cultural_metrics.py           # Metric computation
-│   │   ├── statistical_analysis.py       # Statistical tests
-│   │   ├── baseline_translation_system.py # Baselines
-│   │   └── comparative_pipeline.py       # Evaluation orchestration
-│   └── data_loading/
-│       └── proverb_loader.py             # Corpus ingestion
-├── scripts/
-│   ├── ontology_builder.py               # KG population
-│   ├── ontology_validator.py             # Validation checks
-│   └── run_evaluation.py                 # Main evaluation script
-├── data/
-│   ├── proverbs/                         # Source corpus
-│   ├── ontology/                         # Ontology artifacts
-│   ├── results/                          # Translation outputs
-│   └── evaluation/                       # Metrics and analysis
-├── docs/thesis/                          # Thesis LaTeX files
-└── requirements.txt                      # Python dependencies
-\end{verbatim}
-
-All code is version-controlled in GitHub (\url{https://github.com/ndethi/opit-rai9001}), with tagged releases corresponding to experimental runs reported in Chapter~\ref{ch:evaluation}.
-
 \section{Summary}
 \label{sec:design_summary}
 
-This chapter detailed the thiLLMo OG-RAG architecture: (1) a 947-node Neo4j knowledge graph encoding 847 cultural concepts with 6 relationship types, (2) hybrid retrieval combining graph traversal, cultural weights, and lexical similarity, (3) structured context serialization for LLM prompts, and (4) a comparative evaluation framework with cultural authenticity and translation fidelity metrics. Implementation addressed latency (caching), concept ambiguity (context-aware disambiguation), parsing variability (structured prompts), and weight calibration (expert adjudication). The modular design enables systematic comparison of OG-RAG against baseline approaches while maintaining reproducibility.
+This chapter detailed the thiLLMo OG-RAG architecture: a 947-node Neo4j knowledge graph with 847 cultural concepts, hybrid retrieval (graph traversal + cultural weights + lexical similarity), structured context serialization, and comparative evaluation framework (cultural authenticity + translation fidelity). The modular codebase (\texttt{src/ontology}, \texttt{src/og-rag-system}, \texttt{src/evaluation}, \texttt{src/data\_loading}) enables systematic comparison while maintaining reproducibility. Implementation addressed latency (caching), concept ambiguity (context-aware disambiguation), parsing variability (structured prompts), and weight calibration (expert adjudication). Code available: \url{https://github.com/ndethi/opit-rai9001}.
