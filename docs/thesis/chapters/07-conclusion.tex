@@ -2,12 +2,12 @@
 % thiLLMo: Culturally Faithful Kikuyu Proverb Translation
 \label{chap:conclusion}
 
-This thesis demonstrated that ontology-grounded RAG (OG-RAG) significantly improves Kikuyu proverb translation: 10.5\% in cultural authenticity, 19.8\% in translation fidelity, 13.5\% overall quality. These results validate the core hypothesis that structured cultural knowledge representations outperform unstructured approaches for culturally nuanced translation tasks.
+This thesis addressed a critical gap in culturally faithful machine translation by developing and evaluating ontology-grounded retrieval-augmented generation (OG-RAG) for Kikuyu proverbs. The thiLLMo system achieved statistically significant improvements over baseline approaches: 10.5\% in cultural authenticity ($p<0.001$), 19.8\% in translation fidelity ($p<0.001$), and 13.5\% in overall quality. These results validate the central hypothesis (H1, H2) that structured cultural knowledge representations outperform unstructured approaches when translating culturally nuanced linguistic artifacts. Beyond technical validation, this work contributes a reusable methodology for integrating indigenous knowledge systems into AI architectures.
 
 \section{Research Contributions}
 \label{sec:contributions}
 
-\textbf{Technical Contributions:} The thiLLMo architecture introduces graph-based retrieval over Neo4j knowledge graphs, concept-proverb linking via ontological relationships, hybrid fallback to Traditional RAG for unknown concepts, and multi-dimensional prompt engineering. The 847-concept Kikuyu cultural ontology spans 15 thematic domains with 1,200+ relationships, providing a reusable template for other cultural domains. Both system and ontology are open-source.
+\textbf{Technical Contributions:} The thiLLMo architecture combines graph-based retrieval with hybrid fallback mechanisms, enabling structured cultural knowledge integration while maintaining robustness. The accompanying Kikuyu proverb ontology (847 concepts, 15 thematic domains, 1,200+ relationships) provides a reusable template for cultural knowledge engineering. Both artifacts are open-source, facilitating replication and extension to other cultural contexts.
 
 \textbf{Methodological Contributions:} The cultural translation evaluation framework decomposes quality into orthogonal dimensions (cultural authenticity vs. translation fidelity), employs expert-validated benchmarks with 94\% inter-annotator agreement, and applies rigorous statistical validation. The iterative ontology development process contributes LLM-assisted concept extraction (40\% effort reduction), prototypicality-based fuzzy boundaries for polythetic cultural categories, and versioned community co-creation pathways.
 
@@ -16,26 +16,26 @@ This thesis demonstrated that ontology-grounded RAG (OG-RAG) significantly impro
 \section{Limitations}
 \label{sec:conclusion_limitations}
 
-\textbf{Scope:} Findings are specific to Kikuyu proverbs and Kikuyu→English translation. Transferability to other languages, genres (folktales, ceremonial discourse), or translation directions requires empirical validation.
+\textbf{Scope:} Findings are specific to Kikuyu proverbs and Kikuyu→English translation; generalization to other languages, genres, or translation directions requires empirical validation.
 
-\textbf{Ontology Coverage:} The 847-concept ontology covers ~60-70\% of broader Kikuyu proverb concepts. Error analysis attributed 68\% of failures to incompleteness. Ongoing community-driven expansion is necessary.
+\textbf{Ontology Coverage:} The ontology covers approximately 60-70\% of Kikuyu proverb concepts, with 68\% of system failures attributed to incompleteness—ongoing community-driven expansion is necessary.
 
-\textbf{Evaluation Scale:} 100-proverb evaluation represents <5\% of documented Kikuyu proverbs (~2,000+). Resource constraints limited scale; larger evaluations would increase confidence.
+\textbf{Evaluation Scale:} The 100-proverb evaluation represents <5\% of documented Kikuyu proverbs; larger-scale validation would strengthen generalizability claims.
 
-\textbf{Cultural Variation:} Models "standard" Kikuyu from three dialects and primarily elder perspectives. Younger speakers, urban/rural contexts, and diaspora communities interpret proverbs differently—representing intra-cultural diversity remains an open challenge.
+\textbf{Cultural Diversity:} The model represents "standard" Kikuyu from elder perspectives across three dialects; capturing variation across generations, contexts, and diaspora communities remains an open challenge.
 
 \section{Future Directions}
 \label{sec:future_work}
 
-\textbf{Cross-Linguistic Transfer:} Apply methodology to related Kenyan languages (Kikamba, Kimeru), broader African languages (Yoruba, Swahili, Amharic), and global indigenous languages (Maori, Quechua, Navajo) to test generalizability.
+\textbf{Immediate Priorities:} Scale the evaluation to larger corpora (targeting 500+ proverbs) and expand ontology coverage through active learning—identifying high-impact conceptual gaps from system error patterns. Deploy pilot applications in Kenyan educational contexts to assess real-world utility and gather user feedback.
 
-\textbf{Genre Expansion:} Extend to folktales (requiring narrative pattern ontologies), ceremonial discourse (modeling pragmatic context), and contemporary cultural production (tracking concept evolution via temporal knowledge graphs).
+\textbf{Cross-Linguistic Transfer:} Test methodology generalizability by applying to related Bantu languages (Kikamba, Kimeru) and structurally distinct African languages (Yoruba, Amharic), then global indigenous languages (Māori, Quechua) to identify language-independent principles.
 
-\textbf{Technical Enhancements:} Active learning for ontology expansion (identifying high-impact gaps from system failures), multi-modal ontologies linking text to visual/auditory cultural knowledge, and interpretable retrieval explanations for user trust.
+\textbf{Genre and Modality Expansion:} Extend beyond proverbs to folktales (requiring narrative pattern ontologies) and ceremonial discourse (modeling pragmatic context). Investigate multi-modal cultural knowledge representation linking textual, visual, and auditory heritage artifacts.
 
-\textbf{Practical Deployment:} Educational applications in Kenyan schools, digital heritage platforms with community contribution, and community-governed sustainability models transferring cultural authority to Kikuyu organizations.
+\textbf{Community Partnership:} Establish community-governed sustainability models transferring cultural authority and economic benefits to Kikuyu organizations. Develop interpretable retrieval explanations enabling cultural stakeholders to validate and refine system behavior.
 
-\textbf{Theoretical Questions:} Investigate limits of ontological formalization (what cultural knowledge resists symbolic representation), cultural ontology dynamics (representing evolving concepts via temporal versioning), and cross-cultural alignment (finding correspondences between indigenous ontologies).
+\textbf{Theoretical Investigation:} Explore limits of ontological formalization—identifying cultural knowledge that resists symbolic representation—and develop frameworks for representing cultural concept evolution through temporal knowledge graphs.
 
 \section{Closing Reflections}
 \label{sec:reflections}
