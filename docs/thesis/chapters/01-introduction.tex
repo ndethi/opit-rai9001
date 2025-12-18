@@ -128,7 +128,7 @@ H_3: \mu_{\text{OG-RAG}}^{\text{overall}} - \mu_{\text{Raw-LLM}}^{\text{overall}
 \textbf{Rationale}: This hypothesis validates the fundamental value of retrieval augmentation for culturally nuanced translation. The conservative 5\% threshold reflects uncertainty about whether any retrieval augmentation suffices, or whether ontological grounding is specifically necessary. Rejecting H$_0^3$ while accepting H$_1$ and H$_2$ would provide strong evidence for the OG-RAG approach.
 
 \subsection{Statistical Testing Approach}
-\label{subsec:statistical_methods}
+\label{subsec:intro_statistical_methods}
 
 These hypotheses will be tested using paired t-tests (for within-system comparisons across proverbs) and independent t-tests (for between-system comparisons), with Bonferroni correction for multiple comparisons ($\alpha_{\text{corrected}} = 0.05/3 = 0.0167$). Effect sizes will be reported using Cohen's $d$ for interpretability. Sample size was determined through power analysis to detect medium effects ($d = 0.5$) with 80\% power, yielding a minimum requirement of $n = 64$ proverbs per condition; our evaluation uses $n = 100$ for additional robustness \cite{lakens2013calculating}.
 
