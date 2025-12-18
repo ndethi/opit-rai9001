@@ -7,14 +7,7 @@
 \section{Research Design Overview}
 \label{sec:research_design}
 
-This research adopts a mixed-methods approach combining knowledge engineering, system development, and empirical evaluation to address the research questions posed in Section~\ref{sec:research_questions}. The methodological framework is inspired by the Cross-Industry Standard Process for Data Mining (CRISP-DM) \cite{wirth2000crisp}, adapted for the specialized context of ontology-grounded natural language processing research.
-
-While CRISP-DM was originally designed for data mining projects, its iterative, phase-based structure provides an effective scaffold for AI research involving knowledge engineering and system development. The methodology progresses through six interconnected phases: (1) Business Understanding, (2) Data Understanding, (3) Data Preparation (Ontology Construction), (4) Modeling (System Development), (5) Evaluation, and (6) Deployment Considerations. These phases are not strictly sequential; rather, they form an iterative cycle where insights from later phases inform refinements in earlier work.
-
-\subsection{Methodological Rationale}
-\label{subsec:method_rationale}
-
-We chose CRISP-DM over alternative research frameworks (design science, action research) for three reasons. First, its data preparation phase naturally accommodates the intensive ontology construction central to this project, treating structured knowledge as a first-class research artifact rather than a preprocessing step. Second, the framework's cyclical nature aligns with ontology development realities, where initial conceptualizations require refinement through validation and expert feedback. Third, CRISP-DM explicitly separates modeling from evaluation, enabling rigorous empirical assessment—essential for validating the OG-RAG approach.
+This research adopts a mixed-methods approach combining knowledge engineering, system development, and empirical evaluation. The framework follows CRISP-DM \cite{wirth2000crisp} adapted for ontology-grounded NLP: (1) Problem Definition, (2) Data Understanding, (3) Ontology Construction, (4) System Development, (5) Evaluation, and (6) Deployment Considerations. CRISP-DM's iterative structure naturally accommodates intensive ontology construction as a first-class research artifact while maintaining separation between modeling and evaluation.
 
 Figure~\ref{fig:methodology_overview} illustrates the adapted CRISP-DM workflow for this project, highlighting the key activities and deliverables within each phase.
 
@@ -27,15 +20,10 @@ Figure~\ref{fig:methodology_overview} illustrates the adapted CRISP-DM workflow 
 \caption{CRISP-DM methodology adapted for thiLLMo project}
 \end{figure}
 
-\section{Phase 1: Business Understanding}
+\section{Phase 1: Problem Definition}
 \label{sec:phase_business}
 
-\subsection{Problem Definition}
-\label{subsec:problem_definition}
-
-Before designing any system, we needed to precisely define what ``culturally faithful translation'' means in practice. Literature analysis (Chapter~\ref{chap:litreview}) and consultations with Kikuyu experts helped us operationalize the core problem: \emph{achieving culturally faithful translation of Kikuyu proverbs to English under conditions of data scarcity and cultural complexity}.
-
-Three dimensions of this problem emerged as critical. First, existing machine translation systems prioritize lexical accuracy over cultural authenticity, producing translations that may be grammatically correct but culturally meaningless—what we call the \emph{cultural fidelity gap}. This proves particularly pronounced for proverbs, which encode layered meanings dependent on cultural context. Second, LLMs lack structured representations of cultural knowledge, relying instead on probabilistic patterns that prove shallow for low-resource languages with minimal web presence—a fundamental \emph{knowledge representation challenge}. Third, standard MT metrics (BLEU, CHRF++) correlate poorly with cultural fidelity, creating an \emph{evaluation inadequacy} where improvements in cultural authenticity remain invisible to conventional measures.
+Consultations with Kikuyu experts operationalized culturally faithful translation as preserving thematic content, metaphorical meanings, and value systems alongside linguistic accuracy. Three critical gaps emerged: (1) existing MT systems prioritize lexical over cultural fidelity, (2) LLMs lack structured cultural knowledge representation, and (3) standard metrics (BLEU, CHRF++) correlate poorly with cultural authenticity.
 
 \subsection{Success Criteria Definition}
 \label{subsec:success_criteria}
@@ -55,170 +43,19 @@ These criteria operationalize the broader research objectives from Section~\ref{
 \section{Phase 2: Data Understanding}
 \label{sec:phase_data_understanding}
 
-\subsection{Proverb Corpus Collection}
-\label{subsec:corpus_collection}
+The primary corpus comprised Ireri's 100 Kikuyu wealth proverbs \cite{ireri2019proverbs}, collected through elder interviews (2018-2019) across three counties. Supplementary sources included Gikandi \cite{gikandi2005thousand} and Kenyatta \cite{kenyatta1938facing}. Corpus analysis revealed: mean length 7.3 words (SD=2.8), 64\% requiring cultural interpretation, 12\% dialectical variation. Thematic clusters: reciprocity (23\%), agricultural wealth (19\%), kinship (17\%), patience (15\%).
 
-The primary data source for this research was Margaret Wambere Ireri's collection of 100 Kikuyu proverbs and wise sayings about money and wealth \cite{ireri2019proverbs}, compiled through field research with Kikuyu elders in Kiambu, Nyeri, and Murang'a counties between 2018-2019. We selected this corpus because it offers genuine cultural authenticity—proverbs collected through oral interviews with recognized knowledge keepers rather than secondary sources—alongside thematic coherence that enables deeper ontological modeling of interconnected wealth concepts. Additionally, Ireri's expert translations and contextual notes provide gold-standard references for evaluation, addressing what would otherwise require years of independent fieldwork.
-
-Supplementary sources included Gikandi's ``1000 Kikuyu Proverbs'' \cite{gikandi2005thousand} for cross-validation and Kenyatta's ``Facing Mount Kenya'' \cite{kenyatta1938facing} for broader cultural context. However, Ireri's collection remained the primary evaluation benchmark due to its focused domain and expert curation.
-
-\subsection{Data Characterization}
-\label{subsec:data_characterization}
-
-Our initial corpus analysis revealed several characteristics that would shape system design. Linguistically, proverbs averaged just 7.3 words (SD = 2.8) but packed considerable metaphorical density—64\% required cultural interpretation beyond literal meaning, and 18\% referenced historical events or ritual practices opaque even to contemporary speakers. The remaining 18\% offered relatively transparent literal meanings. The corpus combined three Kikuyu dialects, introducing lexical variation in 12\% of cases—a complexity we noted but did not systematically address given scope limitations. Thematically, wealth proverbs clustered around reciprocity systems (23\%), agricultural wealth (19\%), kinship obligations (17\%), and patience (15\%)—a distribution that guided our ontology concept prioritization.
-
-\section{Phase 3: Data Preparation -- Ontology Construction}
+\section{Phase 3: Ontology Construction}
 \label{sec:phase_ontology}
 
-How do you transform centuries of oral cultural knowledge into something a machine can reason about? This question drove our ontology construction work—the methodological core of this research. We needed to convert unstructured proverb wisdom into formal, machine-readable semantic structures without losing the nuances that make proverbs culturally meaningful. We followed established ontology engineering methodologies \cite{noy2001ontology,suarez2012ontology} adapted for cultural heritage knowledge.
+The ontology was developed through iterative refinement following Noy \& McGuinness \cite{noy2001ontology}: (1) scope bounded to wealth-domain proverbs, (2) reused CIDOC CRM \cite{doerr2003cidoc} and SKOS templates, (3) extracted 847 terms via expert elicitation and corpus analysis, (4) organized into 5 top-level classes (Proverb, CulturalTheme, UsageContext, MoralLesson, CulturalEntity) with hierarchical sub-classes, (5) defined relationships (\texttt{expresses}, \texttt{teachesLesson}, \texttt{usedIn}) and properties, (6) instantiated 100 proverbs with manual annotation, (7) validated via OOPS! \cite{poveda2014oops}, competency questions, and expert review (3 Kikuyu consultants).
 
-\subsection{Ontology Development Methodology}
-\label{subsec:ontology_methodology}
+The Neo4j implementation (v5.x) translated OWL to property graphs: 947 nodes, 1,247 edges, average degree 2.6. Full-text indexes enabled hybrid retrieval combining graph traversal and semantic search.
 
-We spent 8 weeks building the ontology through an iterative seven-step process. Early attempts at comprehensive coverage quickly revealed that breadth without depth would produce superficial representations, so we narrowed focus to wealth-related proverbs where we could achieve genuine semantic richness. The process unfolded as follows:
-
-\subsubsection{Step 1: Scope Determination}
-\label{subsubsec:scope_determination}
-
-The ontology scope was explicitly bounded to:
-\begin{itemize}
-    \item \textbf{Domain}: Kikuyu proverbs addressing wealth, prosperity, and economic wisdom
-    \item \textbf{Competency Questions}: The ontology must answer queries such as: ``What cultural themes does proverb X express?'', ``What contexts is proverb Y appropriate for?'', ``Which proverbs relate to the concept of reciprocity?''
-    \item \textbf{Intended Users}: NLP systems (for retrieval augmentation), Kikuyu language learners, cultural preservation initiatives
-\end{itemize}
-
-Scope boundaries excluded: proverbs outside the wealth domain, grammatical/phonological information, dialectical variants (beyond noting their existence).
-
-\subsubsection{Step 2: Reuse Consideration}
-\label{subsubsec:ontology_reuse}
-
-Existing ontologies were evaluated for potential reuse:
-
-\begin{itemize}
-    \item \textbf{CIDOC CRM} \cite{doerr2003cidoc}: Conceptual Reference Model for cultural heritage documentation. Portions relating to intangible cultural heritage events and cultural transmission were adapted.
-    
-    \item \textbf{Schema.org CreativeWork}: Basic properties for proverbs as cultural artifacts (creator, date, location) were imported.
-    
-    \item \textbf{SKOS} (Simple Knowledge Organization System): Concept hierarchy structures and preferred/alternative labels were adopted for cultural themes.
-\end{itemize}
-
-While these provided structural templates, the core cultural concepts (e.g., \emph{ngwatio} reciprocity, \emph{ithaka} kinship obligations) required original modeling due to their cultural specificity.
-
-\subsubsection{Step 3: Term Enumeration}
-\label{subsubsec:term_enumeration}
-
-Key terms were extracted through three methods:
-
-\paragraph{Expert Elicitation} Structured interviews with three Kikuyu language experts identified 127 culturally salient concepts mentioned or implied in the proverb corpus.
-
-\paragraph{Proverb Analysis} Manual analysis of all 100 proverbs identified recurring motifs, metaphors, and cultural references. For example, the term \emph{muti} (tree/medicine/lineage) appeared in 8 proverbs with different metaphorical mappings.
-
-\paragraph{Literature Mining} Secondary sources \cite{kenyatta1938facing,leakey1977southern,muriuki1974history} provided historical and anthropological context for concepts not explicitly defined in the proverb texts themselves.
-
-The enumeration process yielded 847 distinct terms, later consolidated through synonym resolution and hierarchical organization.
-
-\subsubsection{Step 4: Class Definition and Hierarchy}
-\label{subsubsec:class_definition}
-
-Terms were organized into a class hierarchy with five top-level categories:
-
-\begin{description}
-    \item[Proverb] (100 instances): Individual proverbs with properties for Kikuyu text, literal meaning, metaphorical interpretation, expert translation.
-    
-    \item[CulturalTheme] (15 main themes, 52 sub-themes): Abstract cultural concepts (e.g., Community, Wisdom, Patience) organized hierarchically. Example: CulturalTheme $\rightarrow$ EconomicConcepts $\rightarrow$ Reciprocity $\rightarrow$ NgwatioSystem.
-    
-    \item[UsageContext] (31 contexts): Situations where proverbs are appropriately used (e.g., WealthDistributionCeremony, ElderAdviceSession, DisputeMediation).
-    
-    \item[MoralLesson] (43 lessons): Ethical principles or behavioral guidance encoded in proverbs (e.g., PatienceBringsProsperity, CommunityOverIndividual).
-    
-    \item[CulturalEntity] (67 entities): Concrete cultural referents appearing in proverbs (e.g., animals, plants, historical figures, traditional practices).
-\end{description}
-
-This hierarchy balances expressive power (capturing nuanced distinctions) with practical usability (avoiding excessive granularity that complicates retrieval).
-
-\subsubsection{Step 5: Property Definition and Relationship Modeling}
-\label{subsubsec:property_definition}
-
-Object properties (relationships between classes) and datatype properties (attributes) were defined:
-
-\textbf{Object Properties:}
-\begin{itemize}
-    \item \texttt{expresses}: Proverb $\rightarrow$ CulturalTheme (many-to-many)
-    \item \texttt{teachesLesson}: Proverb $\rightarrow$ MoralLesson (many-to-many)
-    \item \texttt{usedIn}: Proverb $\rightarrow$ UsageContext (many-to-many)
-    \item \texttt{references}: Proverb $\rightarrow$ CulturalEntity (many-to-many)
-    \item \texttt{relatesTo}: CulturalTheme $\rightarrow$ CulturalTheme (associative)
-    \item \texttt{subsumes}: CulturalTheme $\rightarrow$ CulturalTheme (hierarchical)
-\end{itemize}
-
-\textbf{Datatype Properties:}
-\begin{itemize}
-    \item \texttt{kikuyuText}: String (original proverb text)
-    \item \texttt{literalMeaning}: String (word-for-word translation)
-    \item \texttt{metaphoricalMeaning}: String (cultural interpretation)
-    \item \texttt{expertTranslation}: String (Ireri's gold standard translation)
-    \item \texttt{culturalSignificance}: String (anthropological context)
-    \item \texttt{businessRelevance}: String (modern applicability)
-\end{itemize}
-
-Cardinality constraints were specified where appropriate (e.g., each Proverb must express at least one CulturalTheme).
-
-\subsubsection{Step 6: Instance Creation}
-\label{subsubsec:instance_creation}
-
-All 100 proverbs from Ireri's collection were instantiated as Proverb individuals, with properties manually populated through:
-
-\begin{enumerate}
-    \item Extracting kikuyuText and expertTranslation directly from the source
-    \item Generating literalMeaning through word-by-word glossing
-    \item Deriving metaphoricalMeaning through expert consultation
-    \item Linking to CulturalTheme, MoralLesson, and UsageContext instances based on semantic analysis
-\end{enumerate}
-
-CulturalTheme instances (e.g., ``Reciprocity'', ``Patience'') were created inductively from proverb analysis, with definitions drawing on anthropological literature. This bottom-up approach ensured the ontology reflected actual proverb content rather than imposing external theoretical frameworks.
-
-\subsubsection{Step 7: Ontology Validation}
-\label{subsubsec:ontology_validation}
-
-The ontology underwent three validation procedures:
-
-\paragraph{Structural Validation} The OOPS! (Ontology Pitfall Scanner) \cite{poveda2014oops} tool was used to detect common modeling errors. Initial scans identified 7 minor pitfalls (e.g., missing domain/range specifications), all subsequently corrected. The final ontology passed OOPS! validation with zero critical or important pitfalls.
-
-\paragraph{Competency Question Testing} The ontology was queried using SPARQL to verify it could answer the predefined competency questions. All 23 test queries executed successfully, confirming the ontology's functional adequacy.
-
-\paragraph{Expert Review} Three Kikuyu cultural experts (two elders from Kiambu, one linguist from University of Nairobi) reviewed the ontology for cultural accuracy. Feedback led to 14 revisions, primarily refining definitions and adding missing contextual relationships.
-
-\subsection{Knowledge Graph Implementation}
-\label{subsec:kg_implementation}
-
-We chose Neo4j (version 5.x) for implementing the knowledge graph because its native graph architecture handles relationship-rich queries more efficiently than relational databases—critical when retrieval depends on traversing semantic connections. Implementation required careful translation from OWL to Neo4j's property graph model. We mapped OWL classes to node labels (e.g., \texttt{Proverb} $\rightarrow$ \texttt{:Proverb}) and object properties to relationship types (e.g., \texttt{expresses} $\rightarrow$ \texttt{:EXPRESSES}). Neo4j constraints enforced uniqueness and existence requirements that OWL's open-world assumption doesn't guarantee. We created full-text indexes on proverb text, cultural theme names, and concept definitions to enable efficient hybrid retrieval (Section~\ref{sec:retrieval_mechanism}). A custom Python script (\texttt{ontology\_builder.py}) bulk-loaded the 100 proverb instances and 847 concept nodes, creating 1,247 relationships.
-
-The resulting knowledge graph contained 947 nodes (100 Proverbs + 847 Concepts) and 1,247 edges, with an average node degree of 2.6 (indicating moderate relational density suitable for traversal-based retrieval).
-
-\section{Phase 4: Modeling -- OG-RAG System Development}
+\section{Phase 4: System Development}
 \label{sec:phase_modeling}
 
-Building on the validated ontology, we now turn to system implementation—translating semantic structures into operational translation capabilities. This phase realized the thiLLMo (Ontology-Grounded RAG for Kikuyu) architecture.
-
-\subsection{System Architecture Overview}
-\label{subsec:system_architecture}
-
-The OG-RAG system comprises four primary components (detailed architecture in Chapter~\ref{chap:design}):
-
-\begin{enumerate}
-    \item \textbf{Ontology-Grounded Retrieval Module}: Queries the Neo4j knowledge graph to retrieve relevant proverb-concept subgraphs based on input text.
-    
-    \item \textbf{Hybrid Retrieval Strategy}: Combines graph traversal (exploiting ontological relationships) with vector similarity search (capturing semantic proximity) to identify contextually relevant knowledge.
-    
-    \item \textbf{Context Formatting Module}: Serializes retrieved graph structures into natural language prompts suitable for LLM consumption.
-    
-    \item \textbf{LLM Generation Module}: Interfaces with GPT-4 and Gemini 2.5 Pro APIs to generate culturally faithful English translations guided by the structured context.
-\end{enumerate}
-
-\subsection{Baseline System Configurations}
-\label{subsec:baseline_configs}
-
-To empirically validate the value of ontological grounding, we implemented two baseline systems for comparison. The \emph{Raw LLM baseline} tests GPT-4's intrinsic capabilities through direct prompting with generic instructions and no external knowledge—establishing the floor performance achievable through pure LLM capabilities. The \emph{Traditional RAG baseline} uses Sentence-BERT embeddings \cite{reimers2019sentence} for vector similarity retrieval over the proverb corpus, providing the top-3 similar examples in the prompt—testing whether unstructured text retrieval suffices. Our proposed \emph{OG-RAG system} combines graph traversal, semantic search, and structured context injection—the core contribution under evaluation.
+The OG-RAG system integrates: (1) ontology-grounded retrieval querying Neo4j for relevant concept subgraphs, (2) hybrid retrieval combining graph traversal with vector similarity, (3) context formatting serializing graphs to natural language prompts, (4) LLM generation via GPT-4/Gemini APIs. Baselines: Raw LLM (zero-shot), Traditional RAG (top-3 vector retrieval). Technical details in Chapter~\ref{chap:design}.
 
 All three systems use identical LLM backends (GPT-4-turbo) and generation parameters (temperature=0.3, max\_tokens=150) to isolate the effect of retrieval mechanisms.
 
@@ -370,25 +207,7 @@ This qualitative analysis complements quantitative metrics by explaining \emph{w
 \subsection{Annotator Information and Inter-Rater Reliability}
 \label{subsec:annotator_info}
 
-To ensure evaluation rigor and transparency, this subsection documents the annotator selection criteria, demographics, and inter-rater reliability measures that underpin the human evaluation reported in Chapter~\ref{ch:evaluation}.
-
-\subsubsection{Annotator Selection and Qualifications}
-\label{subsubsec:annotator_selection}
-
-Two expert evaluators were recruited through the African Proverbs Working Group network based on strict inclusion criteria:
-
-\paragraph{Native Speaker Competence} Both evaluators are L1 Kikuyu speakers who grew up in Kikuyu-speaking regions (one from Nyeri County, one from Murang'a County), ensuring authentic linguistic and cultural competence.
-
-\paragraph{Cultural Expertise} Both evaluators are community elders (ages 62 and 68) with recognized expertise in traditional Kikuyu oral literature. They regularly participate in community storytelling events and have served as cultural consultants for previous linguistic research projects.
-
-\paragraph{Translation Experience} Both have prior experience translating Kikuyu cultural materials into English for educational contexts, providing practical grounding in cross-cultural communication challenges.
-
-\paragraph{Availability and Commitment} Both committed to the full evaluation timeline (approximately 15 hours over 3 weeks) and completed all assigned proverb evaluations without dropouts.
-
-\subsubsection{Annotator Demographics}
-\label{subsubsec:annotator_demographics}
-
-To enable assessment of potential evaluator biases, we report key demographic characteristics:
+Two expert evaluators were recruited through the African Proverbs Working Group: both are L1 Kikuyu speakers (ages 62 and 68 from Nyeri and Murang'a counties), recognized community elders with expertise in traditional oral literature, and experienced in translating Kikuyu cultural materials.
 
 \begin{table}[h]
 \centering
@@ -397,46 +216,16 @@ To enable assessment of potential evaluator biases, we report key demographic ch
 \textbf{Characteristic} & \textbf{Evaluator 1} & \textbf{Evaluator 2} \\
 \hline
 Age & 62 years & 68 years \\
-Gender & Male & Male \\
 Primary Dialect & Nyeri & Murang'a \\
-Years in Kenya & 62 (lifelong) & 65 (3 years abroad) \\
-Education Level & Secondary & University (BA) \\
-Prior Translation Work & 5+ projects & 10+ projects \\
+Education & Secondary & University (BA) \\
+Translation Projects & 5+ & 10+ \\
 \hline
 \end{tabular}
-\caption{Evaluator demographic characteristics}
+\caption{Evaluator demographics}
 \label{tab:evaluator_demographics}
 \end{table}
 
-\paragraph{Dialect Representation} The inclusion of evaluators from different dialectical regions (Nyeri and Murang'a) helps mitigate regional biases, though the absence of Kiambu dialect representation is a noted limitation.
-
-\paragraph{Gender Balance} Both evaluators are male, reflecting historical patterns where male elders dominate formal cultural knowledge transmission in Kikuyu society. Future work should include female elders to capture gender-specific proverb interpretations.
-
-\subsubsection{Inter-Rater Reliability Analysis}
-\label{subsubsec:irr_analysis}
-
-Inter-rater reliability (IRR) was assessed using Krippendorff's alpha ($\alpha$), which is appropriate for continuous rating scales and handles missing data gracefully. Results indicate substantial agreement between evaluators:
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lcc}
-\hline
-\textbf{Metric} & \textbf{Krippendorff's $\alpha$} & \textbf{Interpretation} \\
-\hline
-Cultural Authenticity & 0.78 & Substantial agreement \\
-Translation Fidelity & 0.82 & Substantial agreement \\
-Overall Quality & 0.80 & Substantial agreement \\
-\hline
-\end{tabular}
-\caption{Inter-rater reliability for evaluation metrics}
-\label{tab:irr_metrics}
-\end{table}
-
-Following established guidelines \cite{krippendorff2018content}, $\alpha \geq 0.67$ indicates acceptable reliability for tentative conclusions, while $\alpha \geq 0.80$ supports definitive conclusions. All three metrics exceed the 0.67 threshold, with translation fidelity and overall quality surpassing the higher 0.80 bar.
-
-\paragraph{Adjudication Protocol} For the 18 proverbs (6\% of total) where evaluators' scores diverged by more than 0.3 points on the 0-1 scale, a structured adjudication session was conducted. Evaluators discussed their reasoning, reviewed the original Kikuyu text together, and reached consensus scores through collaborative deliberation. This process both resolved scoring discrepancies and provided qualitative insights into sources of interpretive variation.
-
-\paragraph{Systematic Bias Analysis} To check for systematic biases (e.g., one evaluator consistently scoring higher), we computed mean score differences across all 300 translations. Evaluator 1's mean scores were 0.02 points higher for cultural authenticity and 0.01 points lower for translation fidelity—differences too small to indicate systematic bias ($p > 0.4$ via paired t-test).
+Inter-rater reliability (IRR) was assessed using Krippendorff's alpha, showing substantial agreement: Cultural Authenticity $\alpha = 0.78$, Translation Fidelity $\alpha = 0.82$, Overall Quality $\alpha = 0.80$. All values exceed the $\alpha \geq 0.67$ threshold for tentative conclusions \cite{krippendorff2018content}. For 18 proverbs (6\%) where scores diverged by $>0.3$ points, structured adjudication sessions achieved consensus. No systematic bias was detected (mean difference $<0.02$ points, $p > 0.4$).
 
 \subsubsection{Scoring Rubrics}
 \label{subsubsec:scoring_rubrics}
@@ -514,51 +303,7 @@ These rubrics operationalize the abstract concepts of "cultural authenticity" an
 \section{Phase 6: Deployment Considerations}
 \label{sec:phase_deployment}
 
-While full production deployment is beyond the scope of this three-month thesis, this phase addresses considerations for future real-world application.
-
-\subsection{Scalability Analysis}
-\label{subsec:scalability}
-
-The current system architecture was designed for research rather than production scale. Key scalability considerations include:
-
-\paragraph{Ontology Expansion} The 100-proverb, 847-concept ontology represents a focused prototype. Scaling to comprehensive coverage (estimated 3,000+ Kikuyu proverbs) would require:
-\begin{itemize}
-    \item Semi-automated concept extraction tools to reduce manual annotation burden
-    \item Collaborative ontology editing interfaces for distributed expert participation
-    \item Version control and conflict resolution mechanisms for managing updates
-\end{itemize}
-
-\paragraph{Query Optimization} Current retrieval latency averages 2.3 seconds per proverb (0.8s graph query + 1.2s vector search + 0.3s formatting). For production systems serving multiple concurrent users, optimizations would include:
-\begin{itemize}
-    \item Caching frequently retrieved subgraphs
-    \item Precomputing embeddings for common query patterns
-    \item Implementing approximate nearest neighbor search (e.g., FAISS, Annoy)
-\end{itemize}
-
-\paragraph{LLM Cost Management} At current OpenAI pricing (\$0.01/1K tokens), translating 1,000 proverbs costs approximately \$3-5. For large-scale deployment, cost reduction strategies include:
-\begin{itemize}
-    \item Using smaller, fine-tuned open-source models (e.g., Llama-3-8B) for routine translations
-    \item Reserving frontier models (GPT-4) for complex or high-stakes translations
-    \item Implementing response caching to avoid redundant API calls
-\end{itemize}
-
-\subsection{Ethical Considerations}
-\label{subsec:ethical_considerations}
-
-Several ethical dimensions informed the research design and would require ongoing attention in deployment:
-
-\paragraph{Cultural Ownership and Consent} Proverbs are communal intellectual property. The research obtained permission from community elders and will share the ontology back to the Kikuyu community through the African Proverbs Working Group. Any commercial deployment would require formal community consent and benefit-sharing agreements.
-
-\paragraph{Representation and Bias} The ontology reflects the perspectives of specific expert consultants and may not capture all dialectical or generational variations in proverb interpretation. Future work should expand the expert base to include diverse voices (women, youth, diaspora members).
-
-\paragraph{Technology Appropriateness} While NLP systems can aid cultural preservation, they should supplement rather than replace oral transmission practices. Deployment plans must avoid creating technological dependencies that undermine traditional knowledge-sharing systems.
-
-\paragraph{Data Sovereignty} The proverb data and ontology are stored on Western cloud platforms (AWS, OpenAI). Future deployments should explore data localization options to align with emerging digital sovereignty frameworks in Kenya.
-
-\subsection{Future Research Directions}
-\label{subsec:future_directions}
-
-The CRISP-DM framework's iterative nature suggests several refinement cycles:
+While full production deployment is beyond this thesis scope, we address key scalability and ethical considerations for future application. Scaling the 100-proverb ontology to comprehensive coverage (3,000+ proverbs) would require semi-automated concept extraction and collaborative editing interfaces. Query optimization (current latency: 2.3s/proverb) could leverage caching and approximate nearest-neighbor search. Ethically, proverb data represents communal intellectual property requiring formal community consent for commercial deployment, expanded expert representation (women, youth, diaspora), and alignment with Kenyan data sovereignty frameworks to avoid Western platform dependencies.
 
 \begin{enumerate}
     \item \textbf{Multilingual Extension}: Adapting the OG-RAG approach to other Bantu languages (Kamba, Gusii, Luhya) to test generalizability.

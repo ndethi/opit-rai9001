@@ -28,98 +28,11 @@ The knowledge graph serves as the structured semantic foundation for ontology-gr
 \subsection{Neo4j Schema Design}
 \label{subsec:neo4j_schema}
 
-The graph schema implements a multi-layered structure optimizing for both ontological expressiveness and query efficiency.
-
-\subsubsection{Node Types}
-\label{subsubsec:node_types}
-
-Four primary node types encode different knowledge facets. \paragraph{Proverb Nodes} (\texttt{:Proverb}, 100 instances) represent individual proverbs, storing not just text but the rich contextual metadata essential for cultural translation: \texttt{proverb\_id} (unique identifier like MW\_001), \texttt{kikuyu\_text} (original proverb), \texttt{expert\_translation} (gold-standard English), \texttt{expert\_cultural\_meaning} (anthropological interpretation), \texttt{expert\_business\_relevance} (modern applicability), \texttt{cultural\_weight} (0.0-1.0 importance score from expert assessment), and \texttt{thematic\_category} (primary cultural theme like ``Reciprocity'' or ``Patience''). This property-rich design lets retrieval queries filter by cultural significance, not just keyword matching.
-
-\paragraph{CulturalConcept Nodes} (\texttt{:CulturalConcept}, 847 instances) represent abstract cultural themes, values, and knowledge domains:
-\begin{itemize}
-    \item \texttt{concept\_name}: Canonical name (e.g., ``Reciprocity'', ``NgwatioSystem'')
-    \item \texttt{definition}: Formal definition of the cultural concept
-    \item \texttt{cultural\_significance}: Anthropological context and importance
-    \item \texttt{business\_relevance}: Contemporary economic interpretations
-    \item \texttt{hierarchy\_level}: Depth in concept taxonomy (0 = root, 1 = theme, 2+ = sub-concepts)
-\end{itemize}
-
-\paragraph{UsageContext Nodes} (\texttt{:UsageContext}, 31 instances) encode appropriate situations for proverb use:
-\begin{itemize}
-    \item \texttt{context\_name}: Context identifier (e.g., ``WealthDistributionCeremony'')
-    \item \texttt{description}: Detailed scenario description
-    \item \texttt{participants}: Typical social roles involved
-    \item \texttt{appropriateness}: When this context is culturally appropriate
-\end{itemize}
-
-\paragraph{MoralLesson Nodes} (\texttt{:MoralLesson}, 43 instances) capture ethical principles:
-\begin{itemize}
-    \item \texttt{lesson\_name}: Principle name (e.g., ``CommunityOverIndividual'')
-    \item \texttt{teaching}: Explicit moral instruction
-    \item \texttt{examples}: Illustrative scenarios
-\end{itemize}
-
-\subsubsection{Relationship Types}
-\label{subsubsec:relationship_types}
-
-Six relationship types link nodes, forming the semantic network:
-
-\begin{description}
-    \item[\texttt{:EXPRESSES\_CONCEPT}] (Proverb $\rightarrow$ CulturalConcept): Indicates a proverb expresses a cultural theme. Properties: \texttt{salience} (0.0-1.0 indicating centrality of concept to proverb meaning).
-    
-    \item[\texttt{:TEACHES\_LESSON}] (Proverb $\rightarrow$ MoralLesson): Links proverbs to moral teachings. Properties: \texttt{directness} (explicit vs. implicit teaching).
-    
-    \item[\texttt{:USED\_IN}] (Proverb $\rightarrow$ UsageContext): Specifies appropriate usage contexts. Properties: \texttt{appropriateness\_score} (cultural fit rating).
-    
-    \item[\texttt{:RELATES\_TO}] (CulturalConcept $\leftrightarrow$ CulturalConcept): Associative connections between concepts (e.g., Reciprocity relates to CommunityValues). Properties: \texttt{strength} (relatedness score).
-    
-    \item[\texttt{:SUBSUMES}] (CulturalConcept $\rightarrow$ CulturalConcept): Hierarchical parent-child relationships (e.g., EconomicConcepts subsumes Reciprocity). Properties: \texttt{is\_defining} (whether child is definitional for parent).
-    
-    \item[\texttt{:REFERENCES}] (Proverb $\rightarrow$ CulturalEntity): Links to concrete cultural referents (animals, plants, historical figures). Properties: \texttt{metaphorical} (boolean indicating metaphorical vs. literal reference).
-\end{description}
-
-\subsubsection{Constraints and Indexes}
-\label{subsubsec:constraints_indexes}
-
-To ensure data integrity and query performance, the schema defines:
-
-\paragraph{Uniqueness Constraints}
-\begin{verbatim}
-CREATE CONSTRAINT proverb_id IF NOT EXISTS
-FOR (p:Proverb) REQUIRE p.proverb_id IS UNIQUE;
-
-CREATE CONSTRAINT concept_name IF NOT EXISTS
-FOR (c:CulturalConcept) REQUIRE c.concept_name IS UNIQUE;
-\end{verbatim}
-
-\paragraph{Property Indexes} for efficient lookups:
-\begin{verbatim}
-CREATE INDEX proverb_weight IF NOT EXISTS
-FOR (p:Proverb) ON (p.cultural_weight);
-
-CREATE INDEX concept_hierarchy IF NOT EXISTS
-FOR (c:CulturalConcept) ON (c.hierarchy_level);
-\end{verbatim}
-
-\paragraph{Full-Text Indexes} enabling semantic search:
-\begin{verbatim}
-CREATE FULLTEXT INDEX proverb_text IF NOT EXISTS
-FOR (p:Proverb) ON EACH [p.kikuyu_text, 
-                          p.expert_translation,
-                          p.expert_cultural_meaning];
-
-CREATE FULLTEXT INDEX concept_definitions IF NOT EXISTS
-FOR (c:CulturalConcept) ON EACH [c.concept_name,
-                                   c.definition,
-                                   c.cultural_significance];
-\end{verbatim}
+The graph schema implements a multi-layered structure with four node types: (1) \texttt{:Proverb} nodes (100 instances) store Kikuyu text, expert translation, cultural meaning, business relevance, and thematic category; (2) \texttt{:CulturalConcept} nodes (847 instances) represent abstract themes with definitions, significance, and hierarchy levels; (3) \texttt{:UsageContext} nodes (31 instances) encode appropriate usage scenarios; (4) \texttt{:MoralLesson} nodes (43 instances) capture ethical principles. Six relationship types link nodes: \texttt{:EXPRESSES\_CONCEPT} (proverb $\rightarrow$ concept with salience scores), \texttt{:TEACHES\_LESSON} (proverb $\rightarrow$ moral), \texttt{:USED\_IN} (proverb $\rightarrow$ context), \texttt{:RELATES\_TO} (concept $\leftrightarrow$ concept), \texttt{:SUBSUMES} (concept hierarchy), and \texttt{:REFERENCES} (cultural entities). Uniqueness constraints on \texttt{proverb\_id} and \texttt{concept\_name} ensure data integrity, while property indexes on \texttt{cultural\_weight} and \texttt{hierarchy\_level} optimize query performance.
 
 \subsection{Ontology Population Pipeline}
 \label{subsec:ontology_population}
-
-Populating the knowledge graph from raw proverb data required solving a chicken-and-egg problem: we needed concepts to structure the graph, but extracting concepts required understanding proverbs in context. Our multi-stage ETL pipeline (\texttt{scripts/ontology\_builder.py}) addressed this through iterative refinement. \textbf{Data extraction} began simply—parsing Ireri's proverb collection from CSV, extracting Kikuyu text, expert translations, and cultural annotations. \textbf{Concept identification} proved trickier: keyword matching alone produced too many false positives (``muti'' matching both tree and medicine concepts indiscriminately), so we added LLM-assisted extraction (\texttt{extract\_ontology\_concepts\_with\_llm.py}) that used surrounding context for disambiguation. For proverb MW\_002 (``Andu ni indo''), this extracted ``Community'', ``SocialCapital'', and ``ValueHierarchy''—concepts keyword matching would have missed. \textbf{Relationship inference} created \texttt{:EXPRESSES\_CONCEPT} edges weighted by salience scores computed from term frequency in cultural meaning annotations; concepts scoring above 0.7 became primary retrieval themes. \textbf{Weight assignment} aggregated expert surveys—3 Kikuyu elders rated importance on 1-5 scales, which we normalized to 0.0-1.0. High-weight proverbs like MW\_002 (0.92) get prioritized during retrieval. Finally, \textbf{validation} via \texttt{scripts/ontology\_validator.py} checked that all proverbs linked to concepts, hierarchies stayed acyclic, and no orphaned nodes existed.
-
-The final populated graph contains 947 nodes (100 Proverbs + 847 CulturalConcepts + supplementary nodes) and 1,247 edges, achieving 99.8\% schema compliance (2 minor anomalies in concept hierarchy depth, manually corrected).
+The multi-stage ETL pipeline (\texttt{ontology\_builder.py}) addresses concept extraction through LLM-assisted disambiguation, creates \texttt{:EXPRESSES\_CONCEPT} edges weighted by term frequency salience, assigns cultural weights from expert surveys (normalized 0.0-1.0), and validates graph integrity. The final populated graph contains 947 nodes and 1,247 edges at 99.8\% schema compliance.
 
 \section{Hybrid Retrieval Engine}
 \label{sec:retrieval_engine}
@@ -130,130 +43,18 @@ The retrieval engine implements the core OG-RAG innovation: ontology-grounded co
 \subsection{Retrieval Strategy}
 \label{subsec:retrieval_strategy}
 
-For a given Kikuyu proverb input, the retriever executes a three-phase strategy:
-
-\subsubsection{Phase 1: Concept Extraction}
-\label{subsubsec:concept_extraction}
-
-Input text is analyzed to identify cultural concepts using two methods:
-
-\paragraph{Keyword Matching} A curated dictionary maps lexical patterns to concepts:
-\begin{verbatim}
-CONCEPT_KEYWORDS = {
-    'wealth': ['utonga', 'mbeca', 'indo', 'gitonga'],
-    'reciprocity': ['ngwatio', 'ũtugi', 'reciprocal'],
-    'patience': ['kĩrĩa', 'eterera', 'wait'],
-    ...
-}
-\end{verbatim}
-
-Matching against proverb text yields candidate concepts (e.g., ``wealth'', ``patience'').
-
-\paragraph{Semantic Expansion} Matched concepts are expanded to include hierarchically related concepts via graph traversal:
-\begin{verbatim}
-MATCH (c:CulturalConcept {concept_name: $matched_concept})
-      -[:RELATES_TO|SUBSUMES*1..2]-(related:CulturalConcept)
-RETURN DISTINCT related.concept_name
-\end{verbatim}
-
-This expands ``wealth'' to include ``WealthAcquisition'', ``MaterialProsperity'', ``EconomicWisdom'', etc., capturing broader semantic neighborhoods.
-
-\subsubsection{Phase 2: Graph-Based Retrieval}
-\label{subsubsec:graph_retrieval}
-
-Using extracted concepts, Cypher queries retrieve proverbs expressing similar cultural themes:
-
-\begin{verbatim}
-MATCH (c:CulturalConcept)<-[r:EXPRESSES_CONCEPT]-(p:Proverb)
-WHERE c.concept_name IN $extracted_concepts
-  AND NOT p.proverb_id = $input_proverb_id
-WITH p, 
-     collect(DISTINCT c.concept_name) as matched_concepts,
-     sum(r.salience) as concept_score
-RETURN p, matched_concepts, concept_score
-ORDER BY concept_score DESC
-LIMIT $k
-\end{verbatim}
-
-This retrieves the top-$k$ proverbs sharing the most conceptual overlap (weighted by salience) with the input.
-
-\subsubsection{Phase 3: Hybrid Scoring and Re-ranking}
-\label{subsubsec:hybrid_scoring}
-
-Graph-retrieved proverbs are re-ranked using a hybrid score combining three signals:
+The three-phase retrieval strategy: (1) \textbf{Concept Extraction} via keyword matching (curated Kikuyu lexicon) followed by semantic expansion through graph traversal (\texttt{:RELATES\_TO|SUBSUMES} paths); (2) \textbf{Graph Retrieval} using Cypher queries to find top-$k$ proverbs with maximum salience-weighted concept overlap; (3) \textbf{Hybrid Scoring} combining concept overlap, cultural weight, and lexical Jaccard similarity:
 
 \begin{equation}
-\text{HybridScore}(p) = w_c \cdot S_{\text{concept}}(p) + w_w \cdot S_{\text{weight}}(p) + w_l \cdot S_{\text{lexical}}(p)
+\text{HybridScore}(p) = 0.5 \cdot S_{\text{concept}}(p) + 0.3 \cdot S_{\text{weight}}(p) + 0.2 \cdot S_{\text{lexical}}(p)
 \end{equation}
 
-where:
-\begin{itemize}
-    \item $S_{\text{concept}}(p)$: Normalized concept overlap score from Phase 2
-    \item $S_{\text{weight}}(p)$: Cultural weight of proverb $p$ (expert importance rating)
-    \item $S_{\text{lexical}}(p)$: Jaccard similarity between Kikuyu text of $p$ and input proverb
-    \item $w_c = 0.5$, $w_w = 0.3$, $w_l = 0.2$: Empirically tuned weights
-\end{itemize}
+This balances semantic, cultural, and surface similarity, addressing pure vector similarity limitations (Section~\ref{subsec:tech_challenge}).
 
-This hybrid approach balances semantic similarity (concept overlap) with cultural significance (expert weights) and surface-level textual similarity (lexical matching), addressing the limitations of pure vector similarity discussed in Section~\ref{subsec:tech_challenge}.
-
-\subsection{Implementation: GraphRetriever Class}
+\subsection{Implementation}
 \label{subsec:graph_retriever_impl}
 
-The retrieval logic is encapsulated in \texttt{src/og-rag-system/graph\_retriever.py}:
-
-\begin{verbatim}
-class GraphRetriever:
-    def __init__(self, uri, username, password, database='neo4j'):
-        self.driver = GraphDatabase.driver(uri, 
-                                           auth=(username, password))
-        self.database = database
-    
-    def extract_concepts(self, text: str) -> List[str]:
-        """Extract cultural concepts from text."""
-        # Keyword matching + semantic expansion
-        ...
-    
-    def retrieve_by_concepts(self, concepts: List[str], 
-                            k: int = 5) -> List[RetrievedProverb]:
-        """Retrieve top-k proverbs via graph query."""
-        # Cypher query execution
-        ...
-    
-    def hybrid_retrieve(self, kikuyu_text: str, 
-                       k: int = 5) -> List[RetrievedProverb]:
-        """Full hybrid retrieval pipeline."""
-        concepts = self.extract_concepts(kikuyu_text)
-        candidates = self.retrieve_by_concepts(concepts, k=k*3)
-        reranked = self._hybrid_score(candidates, kikuyu_text)
-        return reranked[:k]
-\end{verbatim}
-
-The \texttt{RetrievedProverb} dataclass bundles retrieved proverb data with metadata:
-\begin{verbatim}
-@dataclass
-class RetrievedProverb:
-    proverb_id: str
-    kikuyu_text: str
-    expert_translation: str
-    expert_cultural_meaning: str
-    cultural_weight: float
-    similarity_score: float
-    matched_concepts: List[str]
-    retrieval_method: str  # 'graph', 'hybrid', 'lexical'
-\end{verbatim}
-
-\subsection{Retrieval Performance}
-\label{subsec:retrieval_performance}
-
-Retrieval latency was profiled across the 100-proverb corpus:
-\begin{itemize}
-    \item \textbf{Concept Extraction}: 0.12s average (keyword matching dominates)
-    \item \textbf{Graph Query}: 0.68s average (Cypher execution + network latency to AuraDB)
-    \item \textbf{Hybrid Scoring}: 0.22s average (Python-side computation)
-    \item \textbf{Total Retrieval}: 1.02s average per proverb
-\end{itemize}
-
-For production deployment, caching frequently retrieved subgraphs and precomputing concept embeddings could reduce latency by an estimated 40-60\%.
+The \texttt{GraphRetriever} class (\texttt{graph\_retriever.py}) implements retrieval via \texttt{extract\_concepts()}, \texttt{retrieve\_by\_concepts()}, and \texttt{hybrid\_retrieve()} methods, bundling results in \texttt{RetrievedProverb} dataclasses. Average retrieval latency: 1.02s/proverb (0.12s concept extraction + 0.68s graph query + 0.22s scoring).
 
 \section{Context Builder}
 \label{sec:context_builder}
@@ -515,169 +316,19 @@ To empirically validate OG-RAG's contributions, two baseline systems were implem
 
 Implemented in \texttt{src/evaluation/baseline\_translation\_system.py}, this baseline uses zero-shot prompting without any retrieval augmentation. It represents the current state-of-practice for low-resource translation: relying entirely on the LLM's pretrained knowledge.
 
-Performance characteristics:
-\begin{itemize}
-    \item \textbf{Latency}: 1.8s average (single API call, no retrieval overhead)
-    \item \textbf{Token Usage}: 127 prompt tokens, 89 completion tokens average
-    \item \textbf{Cost}: \$0.0037 per translation
-\end{itemize}
-
-\subsection{Traditional RAG Baseline}
-\label{subsec:traditional_rag_baseline}
-
-This baseline implements standard RAG using Sentence-BERT embeddings to retrieve similar proverbs:
-
-\begin{enumerate}
-    \item \textbf{Embedding Generation}: All 100 proverbs (Kikuyu + English) embedded using \texttt{sentence-transformers/paraphrase-multilingual-mpnet-base-v2}
-    \item \textbf{Vector Similarity Search}: Cosine similarity between input embedding and corpus embeddings
-    \item \textbf{Context Injection}: Top-3 similar proverbs (by vector distance) included in prompt as examples
-\end{enumerate}
-
-Performance characteristics:
-\begin{itemize}
-    \item \textbf{Latency}: 2.4s average (0.5s embedding + 0.1s similarity search + 1.8s LLM generation)
-    \item \textbf{Token Usage}: 312 prompt tokens, 94 completion tokens average (higher due to example context)
-    \item \textbf{Cost}: \$0.0061 per translation
-\end{itemize}
-
-Key limitation: Vector similarity captures surface-level semantic overlap but misses structured cultural relationships (e.g., that reciprocity relates to community values, not merely via keyword co-occurrence).
+Raw baseline (1.8s latency, 127/89 tokens, \$0.0037/translation) tests zero-shot LLM capability. Traditional RAG baseline uses Sentence-BERT embeddings for vector similarity retrieval (2.4s latency including embedding + search), injecting top-3 similar proverbs as unstructured examples—capturing surface semantics but missing hierarchical cultural relationships.
 
 \section{Evaluation Pipeline}
 \label{sec:eval_pipeline}
 
-The evaluation pipeline orchestrates translation generation, metric computation, and statistical analysis.
+The \texttt{comparative\_pipeline.py} framework generates translations via all three systems, anonymizes outputs for blind evaluation, computes cultural authenticity and translation fidelity metrics, and performs statistical testing (paired t-tests, Cohen's d effect sizes).
 
-\subsection{Comparative Evaluation Framework}
-\label{subsec:comparative_framework}
-
-Implemented in \texttt{src/evaluation/comparative\_pipeline.py}, the framework:
-
-\begin{enumerate}
-    \item Loads the 100-proverb evaluation corpus
-    \item Generates translations using all three systems (Raw, Traditional RAG, OG-RAG)
-    \item Anonymizes and randomizes translations for blind evaluation
-    \item Computes automated metrics (cultural authenticity, translation fidelity, overall quality)
-    \item Performs statistical significance tests (paired t-tests, effect sizes)
-    \item Generates visualization outputs
-\end{enumerate}
-
-\subsection{Metric Computation}
-\label{subsec:metric_computation}
-
-The \texttt{src/evaluation/cultural\_metrics.py} module implements the two-dimensional evaluation framework from Section~\ref{subsec:eval_metrics}:
-
-\begin{verbatim}
-class CulturalMetrics:
-    def compute_cultural_authenticity(
-        self, 
-        translation: str,
-        expert_cultural_meaning: str,
-        cultural_themes: List[str]
-    ) -> float:
-        """
-        Compute cultural authenticity score (0.0-1.0).
-        
-        Components:
-        - Thematic accuracy (40%): Theme preservation
-        - Metaphorical preservation (30%): Figurative language
-        - Contextual appropriateness (20%): Usage contexts
-        - Value alignment (10%): Cultural values
-        """
-        # LLM-assisted scoring against expert annotations
-        ...
-    
-    def compute_translation_fidelity(
-        self,
-        translation: str,
-        expert_translation: str,
-        kikuyu_text: str
-    ) -> float:
-        """
-        Compute translation fidelity score (0.0-1.0).
-        
-        Components:
-        - Semantic accuracy (50%): Meaning preservation
-        - Fluency (30%): English naturalness
-        - Completeness (20%): Information coverage
-        """
-        # Combination of BLEU, semantic similarity, fluency
-        ...
-    
-    def compute_overall_quality(
-        self,
-        cultural_authenticity: float,
-        translation_fidelity: float
-    ) -> float:
-        """Weighted composite: 60% cultural + 40% fidelity."""
-        return 0.6 * cultural_authenticity + 0.4 * translation_fidelity
-\end{verbatim}
-
-\subsection{Statistical Analysis Module}
-\label{subsec:statistical_analysis}
-
-The \texttt{src/evaluation/statistical\_analysis.py} module implements the statistical testing framework:
-
-\begin{verbatim}
-from scipy import stats
-
-def paired_t_test(scores_a: List[float], 
-                 scores_b: List[float]) -> Tuple[float, float]:
-    """
-    Perform paired t-test for system comparison.
-    
-    Returns:
-        (t_statistic, p_value)
-    """
-    t_stat, p_val = stats.ttest_rel(scores_a, scores_b)
-    return t_stat, p_val
-
-def cohens_d(scores_a: List[float], 
-            scores_b: List[float]) -> float:
-    """
-    Compute Cohen's d effect size.
-    
-    Interpretation:
-    - Small: d ~ 0.2
-    - Medium: d ~ 0.5
-    - Large: d ~ 0.8
-    """
-    mean_diff = np.mean(scores_a) - np.mean(scores_b)
-    pooled_std = np.sqrt((np.var(scores_a) + np.var(scores_b)) / 2)
-    return mean_diff / pooled_std
-\end{verbatim}
+Cultural authenticity scoring (40% thematic accuracy, 30% metaphor preservation, 20% contextual appropriateness, 10% value alignment) and translation fidelity (50% semantic accuracy, 30% fluency, 20% completeness) are computed via \texttt{cultural\_metrics.py}. Statistical testing uses paired t-tests and Cohen's d effect sizes (small: 0.2, medium: 0.5, large: 0.8).
 
 \section{Implementation Challenges and Solutions}
 \label{sec:implementation_challenges}
 
-Several technical challenges emerged during implementation:
-
-\subsection{Neo4j AuraDB Cloud Latency}
-\label{subsec:auradb_latency}
-
-\textbf{Challenge}: Cloud-hosted Neo4j AuraDB introduced 300-500ms network latency per query—acceptable for occasional lookups, but devastating when retrieving context for 100 proverbs meant 300+ round-trips. Initial benchmarking showed retrieval taking 50-70 seconds for the full evaluation dataset, making iterative development painfully slow.
-
-\textbf{Solution}: We implemented query result caching using Python's \texttt{functools.lru\_cache}, reducing repeat queries for identical concept sets. This simple change dropped average retrieval time from 1.8s to 0.6s per proverb when concepts overlapped across proverbs (which happened frequently—80\% of proverbs shared at least one concept). For production deployment, migrating to a self-hosted Neo4j instance could eliminate network latency entirely, though AuraDB's managed infrastructure proved worth the latency cost during research.
-
-\subsection{Concept Extraction Ambiguity}
-\label{subsec:concept_ambiguity}
-
-\textbf{Challenge}: Keyword-based concept extraction produced false positives (e.g., ``muti'' matching both ``tree'' and ``medicine'' concepts when only one was intended).
-
-\textbf{Solution}: Implemented context-aware disambiguation using surrounding words and synonym lists. For example, ``muti wa ũganga'' (medicine tree) correctly maps to ``TraditionalMedicine'' not ``ForestResources''.
-
-\subsection{LLM Response Parsing}
-\label{subsec:response_parsing}
-
-\textbf{Challenge}: LLM outputs occasionally deviated from expected format (translation + explanation), complicating automated parsing.
-
-\textbf{Solution}: Employed structured prompting with explicit section markers (``TRANSLATION:'', ``EXPLANATION:'') and regex-based post-processing to extract components. Fallback handling logs unparseable responses for manual review (occurred in 3\% of cases).
-
-\subsection{Cultural Weight Calibration}
-\label{subsec:weight_calibration}
-
-\textbf{Challenge}: Expert-assigned cultural weights showed high inter-rater variance (Krippendorff's $\alpha = 0.61$, below ideal threshold).
-
-\textbf{Solution}: Conducted adjudication sessions where experts discussed discrepancies, achieving consensus weights. Final weights showed improved consistency ($\alpha = 0.78$).
+\textbf{Neo4j AuraDB Latency}: Cloud hosting introduced 300-500ms/query latency. Implemented \texttt{lru\_cache} for repeat queries, reducing retrieval from 1.8s to 0.6s/proverb when concepts overlapped (80\% of cases). \textbf{Concept Extraction Ambiguity}: Context-aware disambiguation using surrounding words resolved keyword false positives (e.g., ``muti'' mapping correctly to ``medicine'' vs. ``tree''). \textbf{LLM Response Parsing}: Structured prompts with section markers (``TRANSLATION:'', ``EXPLANATION:'') and regex post-processing handled format deviations (3\% fallback rate). \textbf{Cultural Weight Calibration}: Adjudication sessions improved expert agreement from $\alpha = 0.61$ to $\alpha = 0.78$.
 
 \section{Code Organization and Repository Structure}
 \label{sec:code_organization}
@@ -720,10 +371,4 @@ All code is version-controlled in GitHub (\url{https://github.com/ndethi/opit-ra
 \section{Summary}
 \label{sec:design_summary}
 
-This chapter detailed the technical architecture and implementation of the thiLLMo OG-RAG system, spanning knowledge graph infrastructure, hybrid retrieval mechanisms, context building, LLM integration, and evaluation pipelines. The modular design enables systematic comparison of OG-RAG against baseline approaches (Raw LLM, Traditional RAG) while maintaining transparency and reproducibility.
-
-Key architectural contributions include: (1) a multi-layered Neo4j schema encoding 847 cultural concepts with rich relational semantics, (2) a hybrid retrieval strategy combining graph traversal, cultural weight signals, and lexical similarity to achieve ontology-grounded context selection, (3) a structured context serialization approach transforming graph data into LLM-optimized prompts, and (4) a comprehensive evaluation framework operationalizing cultural fidelity measurement.
-
-The implementation faced challenges typical of cultural NLP research—ambiguous concept extraction, expert knowledge elicitation, LLM output variability—addressed through context-aware disambiguation, structured adjudication processes, and robust parsing mechanisms. The resulting system provides a replicable platform for investigating how structured cultural knowledge enhances LLM-based translation quality.
-
-The next chapter (Chapter~\ref{ch:evaluation}) presents the empirical evaluation of this system, demonstrating through rigorous quantitative and qualitative analysis that ontology-grounded retrieval significantly improves both cultural authenticity and translation fidelity compared to baseline approaches.
+This chapter detailed the thiLLMo OG-RAG architecture: (1) a 947-node Neo4j knowledge graph encoding 847 cultural concepts with 6 relationship types, (2) hybrid retrieval combining graph traversal, cultural weights, and lexical similarity, (3) structured context serialization for LLM prompts, and (4) a comparative evaluation framework with cultural authenticity and translation fidelity metrics. Implementation addressed latency (caching), concept ambiguity (context-aware disambiguation), parsing variability (structured prompts), and weight calibration (expert adjudication). The modular design enables systematic comparison of OG-RAG against baseline approaches while maintaining reproducibility.
