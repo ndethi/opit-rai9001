@@ -1,0 +1,65 @@
+Subject: Revised Dissertation for Review - December 2025
+
+Dear [Supervisor Name],
+
+I am writing to submit the revised version of my dissertation, "thiLLMo: Ontology-Grounded RAG for Culturally Faithful Kikuyu-English Proverb Translation" (attached as Kibaki_DissertationForSupervisorReview.pdf), incorporating the feedback from our recent discussions.
+
+MAJOR METHODOLOGICAL REVISIONS:
+
+1. Single Expert Evaluator Framework
+   - Reframed evaluation methodology from "2-3 annotators" to transparent single expert evaluator (native Kikuyu speaker, age 35, Murang'a dialect)
+   - Validated approach against published sources (Ireri 2017, Gikandi 1982)
+   - Replaced inter-rater reliability metrics with test-retest reliability (92% stability over 2-week interval)
+   - Added comprehensive limitation section addressing single evaluator constraints with future work framing
+
+2. LLM-Assisted Ontology Construction Disclosure
+   - Added new subsection (3.3.1) documenting hybrid human-AI ontology development process
+   - Acknowledged GPT-4's role in concept extraction (~40% efficiency gain)
+   - Documented 15-20% rejection rate of LLM suggestions during expert validation
+   - Addressed potential Western bias artifacts as methodological limitation
+   - Framed as pragmatic solution to resource constraints with full transparency
+
+3. Enhanced Limitations and Future Work
+   - Added five substantive limitation paragraphs: LLM construction artifacts, single evaluator methodology, elder accessibility challenges, resource constraints, linguistic expertise gaps
+   - Expanded future work to prioritize diverse evaluator panel establishment
+   - Revised claims about ontology adoption from definitive to potential applications
+
+WRITING AND PRESENTATION IMPROVEMENTS:
+
+4. Proverb Accuracy and Sourcing
+   - Replaced all illustrative proverbs with verified entries from Ireri (2017) gold standard
+   - Chapter 1 opening now uses MW_006: "Cia thuguri itiyuragia ikumbi" (expert translation included)
+   - Table 3.4 evaluation scenarios updated with MW_014 and MW_037 from validated corpus
+   - All proverb translations now cross-verified against expert annotations
+
+5. Removed AI Writing Markers
+   - Eliminated contrast framing phrases (4 instances: "In contrast," "Conversely," etc.)
+   - Reduced strategic em-dash usage (6 replacements with colons/periods)
+   - Removed AI-characteristic phrasing throughout
+
+6. Structural Consistency
+   - Aligned research question nomenclature between Chapter 1 definitions and Chapter 6 analysis
+   - Fixed title to specify translation direction: "Kikuyu-English Proverb Translation"
+   - Added "About the Name" section explaining thiLLMo portmanteau and pronunciation
+
+TECHNICAL VERIFICATION:
+
+- PDF: 107 pages, compiles successfully
+- All figures present and verified (box plots contain actual data distributions)
+- Git version control: Tag v2.1-supervisor-review-dec2025 for easy reversion if needed
+- Backup checkpoint created at: docs/thesis-checkpoint-dec19-pre-annotator-revision/
+
+The dissertation now presents a methodologically honest account of the research process, acknowledges constraints transparently, and maintains academic rigor while being realistic about resource limitations in low-resource language research.
+
+I believe these revisions address the core concerns while strengthening the contribution's validity. I welcome your feedback on whether further adjustments are needed.
+
+Thank you for your continued guidance.
+
+Best regards,
+[Your Name]
+
+---
+Attachment: Kibaki_DissertationForSupervisorReview.pdf (1.1 MB, 107 pages)
+Git Reference: v2.1-supervisor-review-dec2025
+Branch: supervisor-revisions
+Last Updated: December 19, 2025
