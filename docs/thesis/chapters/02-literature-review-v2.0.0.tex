@@ -19,7 +19,7 @@ When \citet{lewis2020retrieval} introduced RAG as a method for augmenting neural
 
 \citet{karpukhin2020dense} were among the first to identify the core issue: dense passage retrieval, though effective for straightforward factual questions, struggled to maintain logical consistency across retrieved contexts. Their analysis revealed that vector similarity alone couldn't capture the hierarchical relationships or conditional dependencies that define many knowledge domains. This limitation became particularly glaring in multi-hop reasoning tasks, where understanding the connections between facts proved as crucial as the facts themselves.
 
-The scope of this problem became clear through \citet{xiong2021pretrained} comprehensive benchmarking on complex reasoning datasets. Their findings were striking: traditional RAG systems exhibited a 43\% error rate on tasks requiring understanding of entity relationships, compared to only 18\% on simple factual retrieval tasks. But here's what made these results more than just disappointing statistics—the errors weren't random. They systematically concentrated on cases where facts needed to be connected through implicit relationships, the kind of inferential leaps that require understanding how knowledge is structured, not just what it says.
+The scope of this problem became clear through \citet{xiong2021pretrained} comprehensive benchmarking on complex reasoning datasets. Their findings were striking: traditional RAG systems exhibited a 43\% error rate on tasks requiring understanding of entity relationships, compared to only 18\% on simple factual retrieval tasks. These results revealed systematic patterns: the errors were not random. They concentrated on cases where facts needed to be connected through implicit relationships, the kind of inferential leaps that require understanding how knowledge is structured, not just what it says.
 
 \subsection{Early Attempts at Structured Knowledge Integration}
 
@@ -97,7 +97,7 @@ OG-RAG has found particularly fertile ground in biomedical applications, where d
 \item Successfully passed medical licensing exam questions with 87\% accuracy
 \end{itemize}
 
-These aren't just statistical improvements; they represent genuine advances in the reliability of AI systems for healthcare applications.
+These statistical improvements represent genuine advances in the reliability of AI systems for healthcare applications.
 
 \subsection{Legal Reasoning: Navigating Complexity}
 
@@ -111,7 +111,7 @@ Perhaps most intriguingly, an emerging application area involves preserving and 
 
 \subsection{Technical Challenges That Remain}
 
-OG-RAG systems still face several technical challenges that limit their widespread adoption—and here's the uncomfortable truth: some of these challenges may be inherent rather than solvable.
+OG-RAG systems still face several technical challenges that limit their widespread adoption. Some of these challenges may be inherent rather than solvable.
 
 \textbf{Ontology construction overhead} represents perhaps the most significant barrier, and it's unclear whether this is a temporary engineering problem or a fundamental constraint. Creating and maintaining domain ontologies requires substantial expert effort, and automated ontology learning remains frustratingly elusive despite a decade of research. Current methods achieve only 60-70\% accuracy compared to expert-constructed ontologies—good enough for research prototypes, but nowhere near reliable enough for critical applications. Worse, that accuracy ceiling hasn't budged much in recent years, suggesting we might be hitting fundamental limits of what's automatable.
 
