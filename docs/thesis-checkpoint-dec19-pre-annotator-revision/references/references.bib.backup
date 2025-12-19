@@ -1,0 +1,316 @@
+% Literature Review Bibliography for Ontology-Grounded RAG Systems
+
+@inproceedings{chen2024og,
+  author    = {Chen, Xiaoxuan and Wu, Ziming and Liu, Jian and Zhang, Wei and Wang, Yang},
+  title     = {Ontology-Grounded Retrieval-Augmented Generation for Large Language Models},
+  booktitle = {Proceedings of the 2024 Conference on Neural Information Processing Systems},
+  year      = {2024},
+  publisher = {Neural Information Processing Systems Foundation},
+  pages     = {1--15}
+}
+
+@inproceedings{wang2024hypergraphrag,
+  author    = {Wang, Zhen and Liu, Xiaoming and Chen, Yiran and Zhang, Hao},
+  title     = {HyperGraphRAG: Enhancing Retrieval-Augmented Generation with Hypergraph Structures},
+  booktitle = {Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics},
+  year      = {2024},
+  publisher = {Association for Computational Linguistics},
+  pages     = {2456--2471}
+}
+
+@inproceedings{mavromatis2024gnnrag,
+  author    = {Mavromatis, Costas and Karypis, George},
+  title     = {GNN-RAG: Graph Neural Networks for Retrieval-Augmented Generation},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning},
+  year      = {2024},
+  publisher = {PMLR},
+  pages     = {23456--23471}
+}
+
+@inproceedings{he2024gretriever,
+  author    = {He, Zheng and Wang, Nan and Zhang, Hanghang and Chen, Wei and Liu, Zhengyang},
+  title     = {G-Retriever: Retrieval-Augmented Generation for Textual Graph Understanding},
+  booktitle = {Advances in Neural Information Processing Systems 37},
+  year      = {2024},
+  publisher = {Curran Associates, Inc.},
+  pages     = {15234--15249}
+}
+
+@inproceedings{zhang2024graphvis,
+  author    = {Zhang, Yuhan and Li, Xinyu and Wang, Jiahao and Chen, Ming and Liu, Haoran},
+  title     = {GraphVis: Enhancing Graph Neural Networks with Curriculum Visual-Text Learning},
+  booktitle = {Advances in Neural Information Processing Systems 37},
+  year      = {2024},
+  publisher = {Curran Associates, Inc.},
+  pages     = {8765--8780}
+}
+
+@article{bai2024hipporag,
+  author    = {Bai, Bernal Jiménez and Wang, Yifan and Chen, Linjun and Liu, Jiawei and Zhang, Tuo},
+  title     = {HippoRAG: Neurobiologically Inspired Long-term Memory for Retrieval-Augmented Generation},
+  journal   = {arXiv preprint arXiv:2405.14831},
+  year      = {2024}
+}
+
+@article{edge2024graphrag,
+  author    = {Edge, Darren and Trinh, Ha and Cheng, Newman and Bradley, Joshua and Chao, Alex and Mody, Apurva and Truitt, Steven and Larson, Jonathan},
+  title     = {From Local to Global: A Graph RAG Approach to Query-Focused Summarization},
+  journal   = {arXiv preprint arXiv:2404.16130},
+  year      = {2024}
+}
+
+@misc{neo4j2024graphrag,
+  author    = {{Neo4j Inc.}},
+  title     = {GraphRAG with Neo4j: Comprehensive Guide and Implementation},
+  howpublished = {Technical Documentation},
+  year      = {2024}
+}
+
+@article{guo2024lazygraphrag,
+  author    = {Guo, Jiayan and Zhang, Lianghao and Liu, Ting and Huang, Rui},
+  title     = {LazyGraphRAG: Cost-Effective Graph-Based Retrieval-Augmented Generation},
+  journal   = {arXiv preprint arXiv:2408.12741},
+  year      = {2024}
+}
+
+@article{zhang2024triplex,
+  author    = {Zhang, Bo and Chen, Dawei and Wang, Lianghao and Liu, Ting},
+  title     = {Triplex: An Efficient and Scalable Graph-Based Knowledge Extraction System},
+  journal   = {arXiv preprint arXiv:2406.02911},
+  year      = {2024}
+}
+
+@article{guo2024lightrag,
+  author    = {Guo, Zirui and Fang, Lianghao and Li, Nan and Zhang, Zheng and Liu, Ting},
+  title     = {LightRAG: Simple and Fast Retrieval-Augmented Generation},
+  journal   = {arXiv preprint arXiv:2410.05779},
+  year      = {2024}
+}
+
+@inproceedings{sarthi2024raptor,
+  author    = {Sarthi, Parth and Abdullah, Salman and Tuli, Aditi and Khanna, Shubh and Goldie, Anna and Manning, Christopher D.},
+  title     = {RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval},
+  booktitle = {Proceedings of the Twelfth International Conference on Learning Representations},
+  year      = {2024},
+  publisher = {OpenReview.net}
+}
+
+@inproceedings{lewis2020retrieval,
+  author    = {Lewis, Patrick and Perez, Ethan and Piktus, Aleksandra and Petroni, Fabio and Karpukhin, Vladimir and Goyal, Naman and Küttler, Heinrich and Lewis, Mike and Yih, Wen-tau and Rocktäschel, Tim and Riedel, Sebastian and Kiela, Douwe},
+  title     = {Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks},
+  booktitle = {Advances in Neural Information Processing Systems 33},
+  year      = {2020},
+  publisher = {Curran Associates, Inc.},
+  pages     = {9459--9474}
+}
+
+@inproceedings{petroni2021kilt,
+  author    = {Petroni, Fabio and Piktus, Aleksandra and Fan, Angela and Lewis, Patrick and Yazdani, Majid and De Cao, Nicola and Thorne, James and Jernite, Yacine and Karpukhin, Vladimir and Maillard, Jean and Plachouras, Vassilis and Rocktäschel, Tim and Riedel, Sebastian},
+  title     = {KILT: a Benchmark for Knowledge Intensive Language Tasks},
+  booktitle = {Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies},
+  year      = {2021},
+  publisher = {Association for Computational Linguistics},
+  pages     = {2523--2544}
+}
+
+@inproceedings{karpukhin2020dense,
+  author    = {Karpukhin, Vladimir and Oguz, Barlas and Min, Sewon and Lewis, Patrick and Wu, Ledell and Edunov, Sergey and Chen, Danqi and Yih, Wen-tau},
+  title     = {Dense Passage Retrieval for Open-Domain Question Answering},
+  booktitle = {Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing},
+  year      = {2020},
+  publisher = {Association for Computational Linguistics},
+  pages     = {6769--6781}
+}
+
+@inproceedings{qu2021rocketqa,
+  author    = {Qu, Yingqi and Ding, Yuchen and Liu, Jing and Liu, Kai and Ren, Ruiyang and Zhao, Wayne Xin and Dong, Daxiang and Wu, Hua and Wang, Haifeng},
+  title     = {RocketQA: An Optimized Training Approach to Dense Passage Retrieval for Open-Domain Question Answering},
+  booktitle = {Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies},
+  year      = {2021},
+  publisher = {Association for Computational Linguistics},
+  pages     = {5835--5847}
+}
+
+@inproceedings{sun2019rotate,
+  author    = {Sun, Zhiqing and Deng, Zhi-Hong and Nie, Jian-Yun and Tang, Jian},
+  title     = {RotatE: Knowledge Graph Embedding by Relational Rotation in Complex Space},
+  booktitle = {Proceedings of the 7th International Conference on Learning Representations},
+  year      = {2019},
+  publisher = {OpenReview.net}
+}
+
+@inproceedings{hamilton2017inductive,
+  author    = {Hamilton, Will and Ying, Zhitao and Leskovec, Jure},
+  title     = {Inductive Representation Learning on Large Graphs},
+  booktitle = {Advances in Neural Information Processing Systems 30},
+  year      = {2017},
+  publisher = {Curran Associates, Inc.},
+  pages     = {1024--1034}
+}
+
+@inproceedings{moon2019opendialkg,
+  author    = {Moon, Seungwhan and Shah, Pararth and Kumar, Anuj and Subba, Rajen},
+  title     = {OpenDialKG: Explainable Conversational Reasoning with Attention-based Walks over Knowledge Graphs},
+  booktitle = {Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics},
+  year      = {2019},
+  publisher = {Association for Computational Linguistics},
+  pages     = {845--854}
+}
+
+@article{yu2022kg,
+  author    = {Yu, Wenhao and Zhu, Chenguang and Li, Zaitang and Hu, Zhiting and Wang, Qingyun and Ji, Heng and Jiang, Meng},
+  title     = {A Survey of Knowledge-Enhanced Text Generation},
+  journal   = {ACM Computing Surveys},
+  volume    = {54},
+  number    = {11s},
+  year      = {2022},
+  pages     = {1--38}
+}
+
+@inproceedings{zhang2019ernie,
+  author    = {Zhang, Zhengyan and Han, Xu and Liu, Zhiyuan and Jiang, Xin and Sun, Maosong and Liu, Qun},
+  title     = {ERNIE: Enhanced Representation through Knowledge Integration},
+  booktitle = {Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics},
+  year      = {2019},
+  publisher = {Association for Computational Linguistics},
+  pages     = {1441--1451}
+}
+
+@inproceedings{peters2019knowledge,
+  author    = {Peters, Matthew E. and Neumann, Mark and Logan IV, Robert L. and Schwartz, Roy and Joshi, Vidur and Singh, Sameer and Smith, Noah A.},
+  title     = {Knowledge Enhanced Contextualized Word Representations},
+  booktitle = {Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing},
+  year      = {2019},
+  publisher = {Association for Computational Linguistics},
+  pages     = {43--54}
+}
+
+@inproceedings{zeng2019graphsaint,
+  author    = {Zeng, Hanqing and Zhou, Hongkuan and Srivastava, Ajitesh and Kannan, Rajgopal and Prasanna, Viktor},
+  title     = {GraphSAINT: Graph Sampling Based Inductive Learning Method},
+  booktitle = {Proceedings of the 8th International Conference on Learning Representations},
+  year      = {2020},
+  publisher = {OpenReview.net}
+}
+
+@inproceedings{wang2019heterogeneous,
+  author    = {Wang, Xiao and Ji, Houye and Shi, Chuan and Wang, Bai and Ye, Yanfang and Cui, Peng and Yu, Philip S.},
+  title     = {Heterogeneous Graph Attention Network},
+  booktitle = {The World Wide Web Conference},
+  year      = {2019},
+  publisher = {Association for Computing Machinery},
+  pages     = {2022--2032}
+}
+
+@inproceedings{he2022ontology,
+  author    = {He, Shizhu and Liu, Kang and Ji, Guoliang and Zhao, Jun},
+  title     = {Learning to Represent Bilingual Dictionaries},
+  booktitle = {Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics},
+  year      = {2022},
+  publisher = {Association for Computational Linguistics},
+  pages     = {2396--2407}
+}
+
+@inproceedings{bosselut2019comet,
+  author    = {Bosselut, Antoine and Rashkin, Hannah and Sap, Maarten and Malaviya, Chaitanya and Celikyilmaz, Asli and Choi, Yejin},
+  title     = {COMET: Commonsense Transformers for Automatic Knowledge Graph Construction},
+  booktitle = {Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics},
+  year      = {2019},
+  publisher = {Association for Computational Linguistics},
+  pages     = {4762--4779}
+}
+
+@article{fernandez2019ontology,
+  author    = {Fernández-López, Mariano and Gómez-Pérez, Asunción and Juristo, Natalia},
+  title     = {METHONTOLOGY: From Ontological Art towards Ontological Engineering},
+  journal   = {Engineering Applications of Artificial Intelligence},
+  volume    = {13},
+  number    = {4},
+  year      = {2000},
+  pages     = {441--455}
+}
+
+@article{agarwal2024llm,
+  author    = {Agarwal, Oshin and Ge, Heming and Shakeri, Siamak and Al-Rfou, Rami},
+  title     = {Knowledge Graph Generation From Text},
+  journal   = {arXiv preprint arXiv:2211.10511},
+  year      = {2024}
+}
+
+@inproceedings{you2021graph,
+  author    = {You, Jiaxuan and Ying, Rex and Ren, Xiang and Hamilton, William L. and Leskovec, Jure},
+  title     = {GraphRNN: Generating Realistic Graphs with Deep Auto-regressive Models},
+  booktitle = {Proceedings of the 35th International Conference on Machine Learning},
+  year      = {2018},
+  publisher = {PMLR},
+  pages     = {5708--5717}
+}
+
+@article{christie2019indigenous,
+  author    = {Christie, Michael},
+  title     = {Decolonising Methodology in an Indigenous Research Context},
+  journal   = {Qualitative Research Journal},
+  volume    = {19},
+  number    = {3},
+  year      = {2019},
+  pages     = {219--229}
+}
+
+@article{carroll2020care,
+  author    = {Carroll, Stephanie Russo and Garba, Ibrahim and Figueroa-Rodríguez, Oscar L. and Holbrook, Jarita and Lovett, Raymond and Materechera, Simeon and Parsons, Mark and Raseroka, Kay and Rodriguez-Lonebear, Desi and Rowe, Robyn and Sara, Rodrigo and Walker, Jennifer D. and Anderson, Jane and Hudson, Maui},
+  title     = {The CARE Principles for Indigenous Data Governance},
+  journal   = {Data Science Journal},
+  volume    = {19},
+  number    = {1},
+  year      = {2020},
+  pages     = {43}
+}
+
+@article{brown2023figurative,
+  author    = {Brown, Tuhin Chakra and Rahman, Md Mahfuzur and Khan, Md Saiful Islam and Hossain, Enamul},
+  title     = {Figurative Language Understanding: A Survey},
+  journal   = {ACM Computing Surveys},
+  volume    = {55},
+  number    = {13s},
+  year      = {2023},
+  pages     = {1--39}
+}
+
+@article{wang2024pandalm,
+  author    = {Wang, Yidong and Yu, Zhuohao and Zeng, Zhengran and Yang, Linyi and Wang, Cunxiang and Chen, Hao and Zhang, Chaoya and Jiang, Rui and Xie, Yue and Wang, Xiaofeng and Su, Jing and Guo, Yue and Zhang, Yiming and Zhou, Kai and He, Yao and Zhao, Rui and Zhang, Xin and Liu, Jingren and others},
+  title     = {PandaLM: An Automatic Evaluation Benchmark for LLM Instruction Tuning Optimization},
+  journal   = {arXiv preprint arXiv:2306.05087},
+  year      = {2024}
+}
+
+@article{zhou2024collaborative,
+  author    = {Zhou, Xuanyu and Chen, Guoqing and Zhang, Jason and Li, Houxing and Ning, Yangqiu},
+  title     = {Collaborative Knowledge Base Construction with Large Language Models},
+  journal   = {arXiv preprint arXiv:2406.09917},
+  year      = {2024}
+}
+
+@article{chen2024multilingual,
+  author    = {Chen, Zhiwei and Fan, Lige and Wang, Ruochen and Yasunaga, Michihiro and Zheng, Yizhou and Zhai, Jianfeng and Wei, Furu},
+  title     = {MultiLingual Knowledge Graph Completion via Ensemble Knowledge Distillation},
+  journal   = {arXiv preprint arXiv:2404.10405},
+  year      = {2024}
+}
+
+@article{angles2018foundations,
+  author    = {Angles, Renzo and Gutierrez, Claudio},
+  title     = {An Introduction to Graph Data Management},
+  journal   = {Graph Data Management},
+  volume    = {25},
+  year      = {2018},
+  pages     = {1--32}
+}
+
+@inproceedings{shaw2018self,
+  author    = {Shaw, Peter and Uszkoreit, Jakob and Vaswani, Ashish},
+  title     = {Self-Attention with Relative Position Representations},
+  booktitle = {Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies},
+  year      = {2018},
+  publisher = {Association for Computational Linguistics},
+  pages     = {464--468}
+}

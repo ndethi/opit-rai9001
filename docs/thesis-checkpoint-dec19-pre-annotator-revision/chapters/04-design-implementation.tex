@@ -1,0 +1,218 @@
+% Chapter 4: System Design and Implementation
+% Details the technical architecture, implementation, and design decisions
+% for the thiLLMo OG-RAG system
+\label{chap:design}
+
+\section{System Architecture Overview}
+\label{sec:system_architecture}
+
+The thiLLMo (Ontology-Grounded RAG for Kikuyu) system implements the OG-RAG approach through a modular architecture comprising five primary subsystems: (1) Knowledge Graph Infrastructure, (2) Hybrid Retrieval Engine, (3) Context Builder, (4) LLM Integration Layer, and (5) Evaluation Pipeline (see Figure~\ref{fig:system_architecture}). This chapter details the technical design and implementation of each component, the rationale for key architectural decisions, and the integration mechanisms that enable culturally faithful proverb translation.
+
+\subsection{Design Principles}
+\label{subsec:design_principles}
+
+Four guiding principles shaped architectural decisions throughout development. \textbf{Modularity} came first—each subsystem operates as an independent module with well-defined interfaces, enabling isolated testing and potential reuse in other cultural NLP applications. This modular structure proved essential during debugging, when isolating the retrieval engine from the LLM layer let us quickly diagnose whether errors originated from graph queries or prompt construction. \textbf{Transparency} followed naturally: all retrieval and generation steps produce interpretable outputs (which concepts matched, what cultural context was retrieved), facilitating error analysis that would be impossible with black-box architectures. \textbf{Scalability} addresses future needs—the design accommodates expansion from 100 proverbs to thousands, and from the wealth domain to broader cultural knowledge, without architectural redesign. Finally, \textbf{reproducibility} requirements meant versioning configuration files, randomness seeds, and API parameters, ensuring experimental results can be replicated by other researchers.
+
+\subsection{Technology Stack}
+\label{subsec:tech_stack}
+
+The technology stack reflects pragmatic trade-offs between capability and accessibility. \textbf{Neo4j 5.x (AuraDB)} provides cloud-hosted graph database infrastructure for ontology storage and Cypher-based traversal queries, chosen over alternatives like TigerGraph or Amazon Neptune for its mature Python driver and generous free tier suitable for academic research. \textbf{Python 3.11} serves as the primary implementation language, leveraging its rich NLP ecosystem. For LLM backends, we use \textbf{OpenAI API (GPT-4-turbo, GPT-4)} for translation generation alongside \textbf{Google Gemini 2.5 Pro} for comparative evaluation and LLM-as-judge tasks, enabling cross-model validation. \textbf{Sentence-BERT} handles semantic embeddings for vector similarity search in the Traditional RAG baseline. Standard scientific computing libraries—\textbf{NumPy/SciPy} for statistical analysis, \textbf{Matplotlib/Seaborn} for visualization—complete the stack.
+
+The complete codebase is organized into four Python packages: \texttt{src/ontology} (schema management), \texttt{src/og-rag-system} (core translation pipeline), \texttt{src/evaluation} (metrics and baselines), and \texttt{src/data\_loading} (corpus ingestion).
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.85\textwidth}{!}{\input{figures/system-architecture}}
+\caption{thiLLMo System Architecture: Five-layer modular design showing the flow from knowledge graph infrastructure through retrieval, context building, LLM integration, to evaluation. Each layer operates independently with well-defined interfaces, enabling systematic comparison of OG-RAG against baseline approaches (Raw LLM, Traditional RAG). The dashed red arrow indicates error analysis feedback for iterative refinement.}
+\label{fig:system_architecture}
+\end{figure}
+
+\section{Knowledge Graph Infrastructure}
+\label{sec:kg_infrastructure}
+
+The knowledge graph serves as the structured semantic foundation for ontology-grounded retrieval, encoding the 847-concept ontology and 100-proverb corpus developed in Chapter~\ref{chap:methodology}.
+
+\subsection{Neo4j Schema Design}
+\label{subsec:neo4j_schema}
+
+The graph schema implements a multi-layered structure with four node types: (1) \texttt{:Proverb} nodes (100 instances) store Kikuyu text, expert translation, cultural meaning, business relevance, and thematic category; (2) \texttt{:CulturalConcept} nodes (847 instances) represent abstract themes with definitions, significance, and hierarchy levels; (3) \texttt{:UsageContext} nodes (31 instances) encode appropriate usage scenarios; (4) \texttt{:MoralLesson} nodes (43 instances) capture ethical principles. Six relationship types link nodes: \texttt{:EXPRESSES\_CONCEPT} (proverb $\rightarrow$ concept with salience scores), \texttt{:TEACHES\_LESSON} (proverb $\rightarrow$ moral), \texttt{:USED\_IN} (proverb $\rightarrow$ context), \texttt{:RELATES\_TO} (concept $\leftrightarrow$ concept), \texttt{:SUBSUMES} (concept hierarchy), and \texttt{:REFERENCES} (cultural entities). Uniqueness constraints on \texttt{proverb\_id} and \texttt{concept\_name} ensure data integrity, while property indexes on \texttt{cultural\_weight} and \texttt{hierarchy\_level} optimize query performance.
+
+\subsection{Ontology Population Pipeline}
+\label{subsec:ontology_population}
+The multi-stage ETL pipeline (\texttt{ontology\_builder.py}) addresses concept extraction through LLM-assisted disambiguation, creates \texttt{:EXPRESSES\_CONCEPT} edges weighted by term frequency salience, assigns cultural weights from expert surveys (normalized 0.0-1.0), and validates graph integrity. The final populated graph contains 947 nodes and 1,247 edges at 99.8\% schema compliance.
+
+\section{Hybrid Retrieval Engine}
+\label{sec:retrieval_engine}
+\label{sec:retrieval_mechanism}  % Alias for forward references
+
+The retrieval engine implements the core OG-RAG innovation: ontology-grounded context retrieval combining graph traversal with vector similarity.
+
+\subsection{Retrieval Strategy}
+\label{subsec:retrieval_strategy}
+
+The three-phase retrieval strategy (illustrated in Figure~\ref{fig:retrieval_pipeline}): (1) \textbf{Concept Extraction} via keyword matching (curated Kikuyu lexicon) followed by semantic expansion through graph traversal (\texttt{:RELATES\_TO|SUBSUMES} paths); (2) \textbf{Graph Retrieval} using Cypher queries to find top-$k$ proverbs with maximum salience-weighted concept overlap; (3) \textbf{Hybrid Scoring} combining concept overlap, cultural weight, and lexical Jaccard similarity:
+
+\begin{equation}
+\text{HybridScore}(p) = 0.5 \cdot S_{\text{concept}}(p) + 0.3 \cdot S_{\text{weight}}(p) + 0.2 \cdot S_{\text{lexical}}(p)
+\end{equation}
+
+This balances semantic, cultural, and surface similarity, addressing pure vector similarity limitations (Section~\ref{subsec:tech_challenge}).
+
+\subsection{Implementation}
+\label{subsec:graph_retriever_impl}
+
+The \texttt{GraphRetriever} class (\texttt{graph\_retriever.py}) implements retrieval via \texttt{extract\_concepts()}, \texttt{retrieve\_by\_concepts()}, and \texttt{hybrid\_retrieve()} methods, bundling results in \texttt{RetrievedProverb} dataclasses. Average retrieval latency: 1.02s/proverb (0.12s concept extraction + 0.68s graph query + 0.22s scoring).
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.75\textwidth}{!}{\input{figures/retrieval-pipeline}}
+\caption{OG-RAG Hybrid Retrieval Pipeline: Three-phase process from input proverb to culturally grounded context. Phase 1 extracts cultural concepts using keyword matching and semantic expansion. Phase 2 traverses the knowledge graph via Cypher queries to retrieve conceptually similar proverbs. Phase 3 applies hybrid scoring ($0.5S_c + 0.3S_w + 0.2S_l$) combining concept overlap, cultural weight, and lexical similarity. Average end-to-end latency: 1.02 seconds per proverb.}
+\label{fig:retrieval_pipeline}
+\end{figure}
+
+\section{Context Builder}
+\label{sec:context_builder}
+
+The Context Builder (\texttt{context\_builder.py}) serializes graph-retrieved knowledge into five-section natural language prompts: (1) Cultural Themes (concept definitions), (2) Related Proverbs (top-3 with cultural meanings), (3) Usage Contexts (appropriate scenarios), (4) Moral Lessons (ethical principles), (5) Metaphorical Elements (symbolic meanings). This structured format enables LLMs to parse specific knowledge types rather than undifferentiated text.
+
+\section{LLM Integration Layer}
+\label{sec:llm_integration}
+
+Three translation modes enable comparative evaluation: (1) \textbf{Raw LLM}: zero-shot prompting without retrieval, testing intrinsic LLM cultural knowledge; (2) \textbf{Traditional RAG}: vector-similarity retrieval via Sentence-BERT, injecting unstructured examples; (3) \textbf{OG-RAG}: ontology-grounded retrieval with structured cultural context including themes, usage contexts, and cultural requirements (preserve worldview, maintain metaphors, adapt references). The \texttt{OGRAGTranslator} class (\texttt{ograg\_translator.py}) implements all three methods using OpenAI API (GPT-4-turbo: \$0.01/1K input, \$0.03/1K output) with response caching and batch processing. Total evaluation cost: \$12.47 for 300 translations.
+
+\subsubsection{OG-RAG Mode}
+\label{subsubsec:ograg_mode}
+
+Full ontology-grounded approach with structured cultural context:
+
+\begin{verbatim}
+PROMPT:
+You are an expert in Kikuyu culture specializing in proverb
+translation. Use the following ontology-derived cultural 
+knowledge to produce a culturally faithful translation.
+
+{structured_cultural_context}
+
+PROVERB TO TRANSLATE:
+Kikuyu: "{kikuyu_text}"
+Literal gloss: "{literal_translation}"
+
+REQUIREMENTS:
+1. Preserve cultural worldview (not just literal meaning)
+2. Maintain metaphorical imagery where appropriate
+3. Adapt culturally-specific references for English audiences
+4. Ensure translation would be appropriate in usage contexts
+   listed above
+
+Provide:
+1. Culturally faithful English translation
+2. Brief explanation of cultural adaptation choices
+\end{verbatim}
+
+This represents the core OG-RAG contribution.
+
+\subsection{Implementation: OGRAGTranslator Class}
+\label{subsec:ograg_translator_impl}
+
+The end-to-end translation pipeline is implemented in \texttt{src/og-rag-system/ograg\_translator.py}:
+
+\begin{verbatim}
+class OGRAGTranslator:
+    def __init__(self, openai_api_key: str, 
+                 model: str = 'gpt-4-turbo',
+                 temperature: float = 0.3):
+        self.client = OpenAI(api_key=openai_api_key)
+        self.model = model
+        self.temperature = temperature
+        self.graph_retriever = GraphRetriever(...)
+        self.context_builder = ContextBuilder(self.graph_retriever)
+    
+    def translate_raw(self, kikuyu_text: str) -> TranslationResult:
+        """Raw LLM translation (baseline)."""
+        prompt = self._build_raw_prompt(kikuyu_text)
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=self.temperature,
+            max_tokens=500
+        )
+        return self._parse_response(response, method='raw')
+    
+    def translate_traditional_rag(self, kikuyu_text: str) 
+                                 -> TranslationResult:
+        """Traditional RAG with vector similarity."""
+        examples = self._retrieve_vector_examples(kikuyu_text)
+        prompt = self._build_rag_prompt(kikuyu_text, examples)
+        response = self.client.chat.completions.create(...)
+        return self._parse_response(response, 
+                                    method='traditional_rag')
+    
+    def translate_ograg(self, kikuyu_text: str) -> TranslationResult:
+        """OG-RAG with ontology-grounded context."""
+        cultural_context = self.context_builder.build_cultural_context(
+            kikuyu_text, k_proverbs=3
+        )
+        prompt = self._build_ograg_prompt(kikuyu_text, 
+                                          cultural_context)
+        response = self.client.chat.completions.create(...)
+        return self._parse_response(response, method='ograg')
+\end{verbatim}
+
+The \texttt{TranslationResult} dataclass captures comprehensive metadata for analysis:
+\begin{verbatim}
+@dataclass
+class TranslationResult:
+    proverb_id: str
+    kikuyu_text: str
+    translation: str
+    explanation: Optional[str]
+    method: str  # 'raw', 'traditional_rag', 'ograg'
+    retrieved_proverbs: Optional[List[RetrievedProverb]]
+    concepts_used: Optional[List[str]]
+    prompt_tokens: int
+    completion_tokens: int
+    total_tokens: int
+    timestamp: str
+\end{verbatim}
+
+\subsection{API Management and Cost Optimization}
+\label{subsec:api_management}
+
+OpenAI API costs were managed through:
+\begin{itemize}
+    \item \textbf{Model Selection}: Using GPT-4-turbo (\$0.01/1K input tokens, \$0.03/1K output) for OG-RAG vs. GPT-3.5-turbo (\$0.0005/1K) for preliminary testing
+    \item \textbf{Response Caching}: Storing translations in \texttt{data/results/} to avoid redundant API calls during analysis iterations
+    \item \textbf{Token Budgeting}: Limiting max\_tokens=500 for translations (empirically sufficient for proverb translations + explanations)
+    \item \textbf{Batch Processing}: Processing 100 proverbs in batches of 10 with exponential backoff for rate limiting
+\end{itemize}
+
+Total API cost for full evaluation (300 translations: 100 proverbs $\times$ 3 systems): \$12.47 (within research budget).
+
+\section{Baseline Systems}
+\label{sec:baseline_systems}
+
+To empirically validate OG-RAG's contributions, two baseline systems were implemented for comparison.
+
+\subsection{Raw GPT-4 Baseline}
+\label{subsec:raw_baseline}
+
+Implemented in \texttt{src/evaluation/baseline\_translation\_system.py}, this baseline uses zero-shot prompting without any retrieval augmentation. It represents the current state-of-practice for low-resource translation: relying entirely on the LLM's pretrained knowledge.
+
+Raw baseline (1.8s latency, 127/89 tokens, \$0.0037/translation) tests zero-shot LLM capability. Traditional RAG baseline uses Sentence-BERT embeddings for vector similarity retrieval (2.4s latency including embedding + search), injecting top-3 similar proverbs as unstructured examples—capturing surface semantics but missing hierarchical cultural relationships.
+
+\section{Evaluation Pipeline}
+\label{sec:eval_pipeline}
+
+The \texttt{comparative\_pipeline.py} framework generates translations via all three systems, anonymizes outputs for blind evaluation, computes cultural authenticity and translation fidelity metrics, and performs statistical testing (paired t-tests, Cohen's d effect sizes).
+
+Cultural authenticity scoring (40% thematic accuracy, 30% metaphor preservation, 20% contextual appropriateness, 10% value alignment) and translation fidelity (50% semantic accuracy, 30% fluency, 20% completeness) are computed via \texttt{cultural\_metrics.py}. Statistical testing uses paired t-tests and Cohen's d effect sizes (small: 0.2, medium: 0.5, large: 0.8).
+
+\section{Implementation Challenges and Solutions}
+\label{sec:implementation_challenges}
+
+\textbf{Neo4j AuraDB Latency}: Cloud hosting introduced 300-500ms/query latency. Implemented \texttt{lru\_cache} for repeat queries, reducing retrieval from 1.8s to 0.6s/proverb when concepts overlapped (80\% of cases). \textbf{Concept Extraction Ambiguity}: Context-aware disambiguation using surrounding words resolved keyword false positives (e.g., ``muti'' mapping correctly to ``medicine'' vs. ``tree''). \textbf{LLM Response Parsing}: Structured prompts with section markers (``TRANSLATION:'', ``EXPLANATION:'') and regex post-processing handled format deviations (3\% fallback rate). \textbf{Cultural Weight Calibration}: Adjudication sessions improved expert agreement from $\alpha = 0.61$ to $\alpha = 0.78$.
+
+\section{Summary}
+\label{sec:design_summary}
+
+This chapter detailed the thiLLMo OG-RAG architecture: a 947-node Neo4j knowledge graph with 847 cultural concepts, hybrid retrieval (graph traversal + cultural weights + lexical similarity), structured context serialization, and comparative evaluation framework (cultural authenticity + translation fidelity). The modular codebase (\texttt{src/ontology}, \texttt{src/og-rag-system}, \texttt{src/evaluation}, \texttt{src/data\_loading}) enables systematic comparison while maintaining reproducibility. Implementation addressed latency (caching), concept ambiguity (context-aware disambiguation), parsing variability (structured prompts), and weight calibration (expert adjudication). Code available: \url{https://github.com/ndethi/opit-rai9001}.

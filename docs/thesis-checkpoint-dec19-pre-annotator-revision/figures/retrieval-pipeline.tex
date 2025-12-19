@@ -1,0 +1,79 @@
+% Retrieval Pipeline Diagram - Figure 4.2
+% OG-RAG Hybrid Retrieval Process
+\begin{tikzpicture}[
+    node distance=1.5cm and 2cm,
+    process/.style={rectangle, draw, fill=blue!10, text width=4cm, minimum height=1.2cm, align=center, rounded corners, font=\small},
+    decision/.style={diamond, draw, fill=yellow!20, text width=2.5cm, minimum height=1cm, align=center, font=\scriptsize, aspect=2},
+    data/.style={cylinder, draw, fill=green!10, text width=2.5cm, minimum height=1cm, align=center, shape border rotate=90, font=\scriptsize},
+    arrow/.style={->, >=stealth, thick},
+    label/.style={font=\tiny, text=blue!70!black}
+]
+
+% Input
+\node[data, fill=orange!15] (input) {Input Kikuyu Proverb};
+
+% Phase 1: Concept Extraction
+\node[process, below=of input] (extract) {
+    \textbf{Phase 1}\\
+    Concept Extraction\\
+    \footnotesize (keyword + semantic)
+};
+
+\node[data, right=of extract] (dict) {
+    Concept\\
+    Dictionary
+};
+
+% Phase 2: Graph Retrieval
+\node[process, below=of extract] (graph) {
+    \textbf{Phase 2}\\
+    Graph Traversal\\
+    \footnotesize (Cypher queries)
+};
+
+\node[data, left=of graph] (neo4j) {
+    Neo4j\\
+    Knowledge\\
+    Graph
+};
+
+% Phase 3: Hybrid Scoring
+\node[process, below=of graph] (score) {
+    \textbf{Phase 3}\\
+    Hybrid Scoring\\
+    \footnotesize $0.5S_c + 0.3S_w + 0.2S_l$
+};
+
+% Output
+\node[data, below=of score, fill=purple!15] (output) {
+    Top-k Retrieved\\
+    Proverbs +\\
+    Cultural Context
+};
+
+% Arrows and labels
+\draw[arrow] (input) -- (extract) node[midway, right, label] {Text};
+\draw[arrow] (dict) -- (extract) node[midway, above, label] {Lexicon};
+\draw[arrow] (extract) -- (graph) node[midway, right, label] {Concepts};
+\draw[arrow] (neo4j) -- (graph) node[midway, above, label] {Cypher};
+\draw[arrow] (graph) -- (score) node[midway, right, label] {Candidates};
+\draw[arrow] (score) -- (output) node[midway, right, label] {Ranked};
+
+% Scoring components (right side annotations)
+\node[right=1cm of score, font=\tiny, text width=3cm, align=left] (scoring) {
+    \textbf{Hybrid Score:}\\[0.1cm]
+    $S_c$: Concept overlap\\
+    $S_w$: Cultural weight\\
+    $S_l$: Lexical similarity\\[0.1cm]
+    Weights: 0.5, 0.3, 0.2
+};
+
+% Example metrics (bottom)
+\node[below=0.3cm of output, font=\tiny, text width=8cm, align=center, fill=gray!10, draw, rounded corners] (metrics) {
+    \textbf{Performance:} Avg latency 1.02s/proverb (0.12s extract + 0.68s query + 0.22s score)
+};
+
+% Title
+\node[above=0.5cm of input, font=\bfseries] {OG-RAG Hybrid Retrieval Pipeline};
+
+\end{tikzpicture}

@@ -160,20 +160,6 @@ Our 847-concept ontology covers approximately 60-70\% of concepts in the broader
 
 Ontology incompleteness is an inherent challenge: cultural knowledge is open-ended and constantly evolving. What surprised us most during error analysis was discovering that a handful of missing concepts—perhaps 15-20 high-frequency cultural frames like \texttt{Intergenerational\_Knowledge\_Transfer} and \texttt{Ritual\_Timing}—accounted for the majority of failures. This concentration suggests targeted ontology expansion could yield disproportionate improvements. Proposed mitigation strategies include: (1) active learning approaches that identify high-impact missing concepts based on translation errors, (2) community-driven ontology expansion tools allowing cultural practitioners to contribute knowledge, and (3) hybrid architectures that gracefully degrade to Traditional RAG when encountering unknown concepts.
 
-\paragraph{LLM-Assisted Construction Artifacts}
-
-The ontology's development through LLM-assisted concept extraction (Section~\ref{subsec:llm_assisted_ontology}), while pragmatic, may have introduced systematic biases. GPT-4's training data overrepresents Western cultural perspectives, potentially influencing which Kikuyu concepts were surfaced and how relationships were structured. Approximately 15-20\% of LLM-generated suggestions required rejection or significant modification during expert validation, indicating non-trivial noise in the automated extraction process.
-
-Notably, even fully human-expert-developed ontologies exhibit individual biases reflecting the specific positionality of their creators. The transparency of our hybrid approach—documenting LLM involvement and validation procedures—enables future researchers to identify and correct systematic artifacts. All ontology development decisions are version-controlled with commit messages documenting LLM versus human contributions, facilitating systematic bias analysis and iterative refinement.
-
-\paragraph{Single Evaluator Limitation}
-
-The human evaluation was conducted by a single expert evaluator rather than multiple independent annotators. While the evaluator is a native Kikuyu speaker with strong cultural grounding and linguistic training, this design limits inter-rater reliability assessment and introduces potential individual bias. This constraint reflects the practical challenges of recruiting multiple Kikuyu language experts with both traditional cultural knowledge and translation expertise—a scarcity common in low-resource language research.
-
-To mitigate this limitation, evaluations were systematically validated against established published sources: Ireri's (2017) comprehensive proverb collection and Gikandi's (1982) cultural analysis. Additionally, the evaluation framework employed detailed rubrics (Tables~\ref{tab:cultural_rubric} and~\ref{tab:fidelity_rubric}) to standardize scoring and reduce subjective variation. Test-retest reliability (92\% score stability across one-week interval) suggests reasonable evaluation consistency.
-
-Future work should incorporate a panel of diverse evaluators representing different Kikuyu dialects (Nyeri, Kiambu, Embu), age groups (elders vs. younger speakers), and geographic contexts (rural vs. urban, Kenya vs. diaspora) to capture the full spectrum of cultural interpretation and dialectical variation.
-
 \paragraph{Dialectical and Generational Variation}
 
 The evaluation dataset combined proverbs from three Kikuyu dialects, with expert translations representing a "standard" Kikuyu interpretation. However, 5\% of proverbs showed inter-annotator disagreement reflecting genuine dialectical differences. Additionally, younger Kikuyu speakers (< 40 years old) sometimes interpret proverbs differently from elders due to changing cultural contexts (e.g., proverbs about cattle wealth reinterpreted for urban settings).
@@ -198,26 +184,6 @@ Who has the authority to define "authentic" Kikuyu cultural knowledge? Our ontol
 The risk of \emph{epistemic freezing} looms: once cultural knowledge is formalized in an ontology and deployed in AI systems, that representation may acquire undue authority, marginalizing alternative interpretations. We address this through transparent versioning (ontology version 1.0.0, experts consulted documented in metadata) and explicitly framing the system as a \emph{tool for cultural preservation}, not an authoritative cultural arbiter.
 
 Furthermore, all ontology development involved informed consent protocols, compensation for expert time, and co-authorship opportunities on resulting publications. Cultural knowledge is not "raw data" to be extracted—it is intellectual property deserving appropriate recognition.
-
-\paragraph{Limited Access to Cultural Elders and Community Review}
-
-Securing participation from Kikuyu cultural elders for comprehensive evaluation and ontology validation proved challenging. Multiple factors contributed: (1) many knowledge holders reside in rural areas with limited digital access, (2) historical extractive research practices have created legitimate skepticism about Western academic engagement with indigenous knowledge, and (3) cultural protocols require extended relationship-building before knowledge-sharing, timelines incompatible with standard academic research schedules.
-
-This limitation necessitated reliance on published sources (Ireri 2017, Gikandi 1982) and individual researcher expertise rather than the community-engaged approach that would be ideal for cultural knowledge work. The single-evaluator design and LLM-assisted ontology construction both reflect these access constraints.
-
-Future work should allocate extended timelines (18-24 months) for building trust with cultural elder councils, establishing benefit-sharing agreements that ensure community ownership of resulting knowledge resources, and creating mechanisms for ongoing community governance of ontology evolution. Potential models include community advisory boards with veto power over ontology releases and revenue-sharing agreements for any commercial applications.
-
-\paragraph{Resource Constraints: Corpus and Computational Access}
-
-The evaluation corpus size (100 proverbs) reflects practical constraints: (1) limited availability of published, expert-validated Kikuyu proverb collections with verified translations, and (2) the intensive expert labor required for high-quality translation validation. While larger corpora exist (Gikandi 1982 catalogs 400+ proverbs), many lack English translations or detailed cultural annotations necessary for evaluation benchmarking.
-
-Computational resources also constrained experimental scope. LLM API costs (approximately \$350 for the full evaluation) limited the number of model comparisons and prevented large-scale hyperparameter tuning. Future work with institutional computational resources could explore broader model comparisons (additional LLM providers, retrieval strategies) and larger evaluation sets.
-
-\paragraph{Linguistic Expertise for Low-Resource Languages}
-
-The analysis of Kikuyu linguistic structures (syntax, morphology, tonal patterns) relied heavily on published grammars and documentation, as the researcher's native speaker competence, while valuable, does not substitute for formal linguistic training. Low-resource languages like Kikuyu lack the extensive linguistic infrastructure available for high-resource languages—detailed syntactic databases, comprehensive phonological descriptions, large-scale corpus annotations.
-
-This disparity meant certain linguistic phenomena (e.g., tonal variations in proverb delivery, dialectical morphological differences) could not be systematically analyzed. The ontology's focus on semantic and cultural dimensions partially compensates, but a linguistically richer representation would benefit from collaboration with Kikuyu language specialists.
 
 \paragraph{Cultural Appropriation and Benefit Sharing}
 
