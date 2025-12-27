@@ -47,7 +47,7 @@ Beyond quantitative metrics, RQ2 asks what qualitative patterns distinguish OG-R
 
 Should we have aimed for 500+ proverbs instead of 100? Initial planning suggested yes: larger samples mean stronger statistical power. Pilot testing proved otherwise; expert translation quality degraded sharply beyond 100 proverbs per session. Kikuyu proverbs employ subtle linguistic devices (tonal variations, homophonic wordplay, implicit cultural references) that require intense cognitive engagement to translate faithfully.
 
-The decision to prioritize 100 \emph{high-quality} translations over 500 \emph{adequate} ones proved critical: the evaluation's statistical power came not from sample size alone, but from the reliability of the gold standard. Inter-annotator agreement analysis on a 20-proverb subset showed 94\% consensus on translations, with disagreements reflecting genuine dialectical variation rather than translation errors.
+The decision to prioritize 100 \emph{high-quality} translations over 500 \emph{adequate} ones proved critical: the evaluation's statistical power came not from sample size alone, but from the reliability of the gold standard. Cross-validation with published sources confirmed the validity of expert translations, with discrepancies primarily reflecting genuine dialectical variation documented in the literature rather than translation inconsistencies.
 
 Our prioritization of quality over quantity challenges the ``big data'' paradigm common in machine translation research, where million-sentence parallel corpora are standard \citep{goyal2022flores}. For cultural domains where meaning is dense and context-dependent, \emph{small but pristine} datasets may offer superior evaluation validity—a methodological principle with broader implications for heritage NLP.
 
@@ -168,7 +168,7 @@ Notably, even fully human-expert-developed ontologies exhibit individual biases 
 
 \paragraph{Single Evaluator Limitation}
 
-The human evaluation was conducted by a single evaluator rather than multiple independent annotators. While the evaluator is a native Kikuyu speaker with strong cultural grounding and linguistic training, this design limits inter-rater reliability assessment and introduces potential individual bias. This constraint reflects the practical challenges of recruiting multiple Kikuyu language experts with both traditional cultural knowledge and translation expertise—a scarcity common in low-resource language research.
+The human evaluation was conducted by a single evaluator rather than multiple independent annotators. While the evaluator is a native Kikuyu speaker with strong cultural grounding, this design limits inter-rater reliability assessment and introduces potential individual bias. This constraint reflects the practical challenges of recruiting multiple Kikuyu language experts with both traditional cultural knowledge and translation expertise—a scarcity common in low-resource language research.
 
 To mitigate this limitation, evaluations were systematically validated against established published sources: Ireri's (2017) comprehensive proverb collection and Gikandi's (1982) cultural analysis. Additionally, the evaluation framework employed detailed rubrics (Tables~\ref{tab:cultural_rubric} and~\ref{tab:fidelity_rubric}) to standardize scoring and reduce subjective variation. Test-retest reliability (92\% score stability across one-week interval) suggests reasonable evaluation consistency.
 
@@ -212,12 +212,6 @@ Future work should allocate extended timelines (18-24 months) for building trust
 The evaluation corpus size (100 proverbs) reflects practical constraints: (1) limited availability of published, expert-validated Kikuyu proverb collections with verified translations, and (2) the intensive expert labor required for high-quality translation validation. While larger corpora exist (Gikandi 1982 catalogs 400+ proverbs), many lack English translations or detailed cultural annotations necessary for evaluation benchmarking.
 
 Computational resources also constrained experimental scope. LLM API costs (approximately \$350 for the full evaluation) limited the number of model comparisons and prevented large-scale hyperparameter tuning. Future work with institutional computational resources could explore broader model comparisons (additional LLM providers, retrieval strategies) and larger evaluation sets.
-
-\paragraph{Linguistic Expertise for Low-Resource Languages}
-
-The analysis of Kikuyu linguistic structures (syntax, morphology, tonal patterns) relied heavily on published grammars and documentation, as the researcher's native speaker competence, while valuable, does not substitute for formal linguistic training. Low-resource languages like Kikuyu lack the extensive linguistic infrastructure available for high-resource languages—detailed syntactic databases, comprehensive phonological descriptions, large-scale corpus annotations.
-
-This disparity meant certain linguistic phenomena (e.g., tonal variations in proverb delivery, dialectical morphological differences) could not be systematically analyzed. The ontology's focus on semantic and cultural dimensions partially compensates, but a linguistically richer representation would benefit from collaboration with Kikuyu language specialists.
 
 \paragraph{Cultural Appropriation and Benefit Sharing}
 
