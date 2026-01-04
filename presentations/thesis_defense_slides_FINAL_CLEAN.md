@@ -129,32 +129,45 @@ This isn't just an academic problem—it's cultural survival. Digital preservati
 ## SLIDE 5: THE CULTURAL TRANSLATION PROBLEM
 
 ### Visual Content:
+
+**[IMAGE PROMPT: Split-screen illustration. LEFT: Wealthy Kikuyu man in traditional attire sitting among gold coins, treasures, and grain sacks, but holding a bowl with meager food, looking tired and unhealthy. RIGHT: An emaciated dying goat with visible ribs. Background shows traditional Kikuyu homestead. Style: Semi-realistic watercolor, warm earth tones (ochre, terracotta, sage green), dignified portrayal of Kikuyu culture. Lighting should emphasize the irony—brightness on the wealth, shadows on the goat and man's face.]**
+
 **Problem Statement:**
 "When African proverbs are translated word-for-word, their cultural soul is lost"
 
-**Example - Visual Split Screen:**
+**Example - Proverb MW_012:**
 
-**LEFT: Kikuyu Proverb**
-"Mũũgĩ ũrĩa ũhaicaga ndaha ndĩrĩ mũrango"
+**Kikuyu:** "Gitonga kiriaga munyuko"  
+**Literal:** "Rich-person eats dying-goat"
 
-**Literal Translation (WRONG):**
-"A rich person who builds a house without a door"
+**❌ Raw GPT-4 Translation (BLEU: 1.41):**  
+"Wealth announces itself in a homestead."
 
-**RIGHT: Cultural Meaning**
-"Wealth is meaningless without community relationships to share it through"
+**Problem:** Completely opposite meaning! Changed from critique of wealth obsession → celebration of wealth display
 
-**The door represents:** The ngwatio reciprocal giving system—sharing prosperity with your community
+**✅ Expert Cultural Meaning:**  
+"A wealthy man eats only a dying goat (very thin with tough meat/undesirable food)."
+
+**The Teaching:** Relentless quest for wealth can be meaningless—rich person so obsessed with accumulating they neglect their own nourishment and wellbeing
+
+**The Visual Metaphor:**
+- 🐐 Dying goat = worst food (emaciated, tough meat)
+- 🤑 Wealthy man = material riches  
+- 🍽️ Ironic eating = having wealth but consuming worst food
+- 💡 Cultural wisdom = Wealth without health is hollow
 
 **The Challenge:**
-- Proverbs encode cultural worldviews
-- Figurative language resists literal translation
-- Low-resource languages lack training data
-- Even GPT-4 struggles with cultural faithfulness
+- Proverbs encode cultural worldviews through visual metaphors
+- Literal translation destroys the imagery (dying goat → "announces wealth")
+- Cultural context determines meaning (this is a WARNING, not celebration)
+- Even GPT-4 invents opposite interpretations
 
 ### Speaker Notes (1 minute):
-"Consider this Kikuyu proverb. Word-for-word translation produces nonsense—why build a house without a door? But to a Kikuyu speaker, this encodes profound cultural value: wealth without social relationships is incomplete. The door represents ngwatio—the reciprocal giving system of sharing prosperity.
+"This proverb perfectly illustrates the problem. The literal meaning—a rich man eats a dying goat—seems nonsensical. But in Kikuyu culture, this is a powerful warning: someone so obsessed with accumulating wealth that they neglect their own wellbeing, eating the worst food despite being rich.
 
-This exemplifies why machine translation fails for proverbs. They're not just text to translate—they're cultural knowledge to preserve. With over 2,000 African languages, most low-resource, we need scalable approaches that respect cultural meaning."
+Look what happens with literal translation: GPT-4 produces 'Wealth announces itself in a homestead'—celebrating wealth! It's the exact opposite. The AI lost the irony, lost the visual metaphor of the emaciated goat, lost the cultural critique of meaningless accumulation.
+
+This isn't just about BLEU scores or word matching. It's about preserving cultural wisdom that has guided Kikuyu communities for centuries. With over 2,000 African languages, most low-resource, we need scalable approaches that understand cultural metaphors, not just words."
 
 **Timing: 3:00-4:00**
 
