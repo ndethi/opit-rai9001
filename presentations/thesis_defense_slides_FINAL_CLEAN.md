@@ -130,44 +130,46 @@ This isn't just an academic problem—it's cultural survival. Digital preservati
 
 ### Visual Content:
 
-**[IMAGE PROMPT: Split-screen illustration. LEFT: Wealthy Kikuyu man in traditional attire sitting among gold coins, treasures, and grain sacks, but holding a bowl with meager food, looking tired and unhealthy. RIGHT: An emaciated dying goat with visible ribs. Background shows traditional Kikuyu homestead. Style: Semi-realistic watercolor, warm earth tones (ochre, terracotta, sage green), dignified portrayal of Kikuyu culture. Lighting should emphasize the irony—brightness on the wealth, shadows on the goat and man's face.]**
+**[IMAGE PROMPT: Split-screen illustration showing traditional Kikuyu marriage customs and value. LEFT: Beautiful, healthy goat with glossy coat, adorned with decorative ribbons or beads, being presented by family members at a traditional wedding ceremony. RIGHT: Goat with visible defect (limping, scar, or blemish), being rejected with respectful hand gesture. Background: Traditional Kikuyu homestead with family gathering, Mount Kenya visible in distance. Style: Semi-realistic watercolor with vibrant warm tones (ochre, terracotta, sage green, ceremonial reds and golds). Cultural portrayal dignified showing traditional wedding practices and the honor system respectfully. Lighting: Warm celebratory lighting on the perfect goat and accepting families, softer light on the defective goat to show the teaching about quality and respect.]**
 
 **Problem Statement:**
 "When African proverbs are translated word-for-word, their cultural soul is lost"
 
-**Example - Proverb MW_012:**
+**Example - Proverb MW_015:**
 
-**Kikuyu:** "Gitonga kiriaga munyuko"  
-**Literal:** "Rich-person eats dying-goat"
+**Kikuyu:** "Gutiri mburi itangiracio, tiga inawathe"  
+**Literal:** "There-is-no goat unsuitable-for-bridewealth unless it-has-defect"
 
-**❌ Raw GPT-4 Translation (BLEU: 1.41):**  
-"Wealth announces itself in a homestead."
+**❌ Raw GPT-4 Translation (BLEU: 2.63):**  
+"There is no sheep that starts bleating and fails to attract the hyena's attention."
 
-**Problem:** Completely opposite meaning! Changed from critique of wealth obsession → celebration of wealth display
+**Problem:** Completely wrong metaphor! Changed from marriage/respect → animals and predators; lost the cultural teaching entirely
 
-**✅ Expert Cultural Meaning:**  
-"A wealthy man eats only a dying goat (very thin with tough meat/undesirable food)."
+**✅ Expert Cultural Meaning (Ireri Corpus):**  
+"Any goat can serve as bridewealth, unless it has a defect."
 
-**The Teaching:** Relentless quest for wealth can be meaningless—rich person so obsessed with accumulating they neglect their own nourishment and wellbeing
+**The Teaching:** "The value of a wife is very great and can only be symbolized by the best choice of the present given to the in-law. A wife is of very great value to a family and community—she must be appreciated, and her true value cannot be measured."
 
 **The Visual Metaphor:**
-- 🐐 Dying goat = worst food (emaciated, tough meat)
-- 🤑 Wealthy man = material riches  
-- 🍽️ Ironic eating = having wealth but consuming worst food
-- 💡 Cultural wisdom = Wealth without health is hollow
+- 🐐 Goat (mburi) = Traditional wealth symbol and bridewealth currency
+- 💍 Bridewealth (itangiracio) = Gifts given to bride's family to honor her value
+- ✨ Perfection (no defect/wathe) = Must be flawless to show proper respect
+- 👰 Wife's value = Cannot be measured, symbolized by best possible gift
 
 **The Challenge:**
-- Proverbs encode cultural worldviews through visual metaphors
-- Literal translation destroys the imagery (dying goat → "announces wealth")
-- Cultural context determines meaning (this is a WARNING, not celebration)
-- Even GPT-4 invents opposite interpretations
+- Proverbs encode cultural values through marriage customs
+- Literal translation invents unrelated metaphors (bridewealth goat → "hyena chasing bleating sheep")
+- Cultural context determines meaning (this teaches RESPECT and valuation of marriage)
+- GPT-4 abandons wedding imagery completely, losing teachings about honor and appreciation
 
 ### Speaker Notes (1 minute):
-"This proverb perfectly illustrates the problem. The literal meaning—a rich man eats a dying goat—seems nonsensical. But in Kikuyu culture, this is a powerful warning: someone so obsessed with accumulating wealth that they neglect their own wellbeing, eating the worst food despite being rich.
+"This proverb perfectly illustrates the problem. In Kikuyu culture, bridewealth (paying the in-laws with livestock) is a sacred custom that honors the value of a wife. The proverb teaches that only a PERFECT goat—one without defects—is worthy as bridewealth, because a wife's value to the family and community is immeasurable and must be properly respected.
 
-Look what happens with literal translation: GPT-4 produces 'Wealth announces itself in a homestead'—celebrating wealth! It's the exact opposite. The AI lost the irony, lost the visual metaphor of the emaciated goat, lost the cultural critique of meaningless accumulation.
+Look what happens with literal translation: GPT-4 produces 'There is no sheep that starts bleating and fails to attract the hyena's attention'—completely abandoning the marriage context! The AI turned a teaching about respect and honor into an unrelated metaphor about predators and prey. It lost the goat, lost the bridewealth custom, lost the perfection requirement, and lost the cultural teaching about valuing women.
 
-This isn't just about BLEU scores or word matching. It's about preserving cultural wisdom that has guided Kikuyu communities for centuries. With over 2,000 African languages, most low-resource, we need scalable approaches that understand cultural metaphors, not just words."
+The expert translation from Margaret Wambere Ireri's corpus explains: 'The value of a wife is very great and can only be symbolized by the best choice.' This proverb has guided Kikuyu marriage customs for generations—teaching that proper appreciation requires offering your very best.
+
+This isn't just about BLEU scores or word matching. It's about preserving cultural wisdom encoded in marriage customs. With over 2,000 African languages, most low-resource, we need scalable approaches that understand these cultural values, not just words."
 
 **Timing: 3:00-4:00**
 
