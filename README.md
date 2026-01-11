@@ -2,6 +2,22 @@
 
 *Preserving Cultural Heritage Through Ontology-Grounded AI Translation*
 
+## 🚨 Neo4j Database Recovery
+
+**If your AuraDB instance was deleted**, restore it quickly:
+
+```bash
+# Interactive menu (recommended)
+./scripts/neo4j_quick_restore.sh
+
+# Or direct command
+python scripts/restore_neo4j_from_repo.py --env production --auradb --clear
+```
+
+📖 **Full recovery guide:** [docs/setup/NEO4J_RECOVERY_GUIDE.md](docs/setup/NEO4J_RECOVERY_GUIDE.md)
+
+---
+
 ## About the Name
 
 **thiLLMo** is a portmanteau combining:
