@@ -131,26 +131,44 @@ class Neo4jRestorer:
         with open(concepts_file, 'r', encoding='utf-8') as f:
             data = json.load(f)
         
-        # Extract unique concepts
-        all_concepts = set()
-        for proverb_data in data.values():
-            for theme in proverb_data.get('themes', []):
-                all_concepts.add(theme)
-            for concept in proverb_data.get('concepts', []):
-                all_concepts.add(concept)
+        # Extract unique concepts from cultural_concepts field
+        all_concepts = {}  # Use dict to preserve concept details
+        proverb_items = data if isinstance(data, list) else data.values()
         
-        print(f"  Found {len(all_concepts)} unique concepts")
+        for proverb_data in proverb_items:
+            # Extract from cultural_concepts array
+            for concept_data in proverb_data.get('cultural_concepts', []):
+                concept_name = concept_data.get('concept_name')
+                if concept_name and concept_name not in all_concepts:
+                    all_concepts[concept_name] = {
+                        'name': concept_name,
+                        'explanation': concept_data.get('cultural_explanation', ''),
+                        'moral_dimension': concept_data.get('moral_dimension', ''),
+                        'kikuyu_expressions': ', '.join(concept_data.get('kikuyu_expressions', []))
+                    }
         
+        print(f"  Found {len(all_concepts)} unique cultural concepts")
+        
+        # Import concepts to Neo4j with EXPRESSES_CONCEPT relationship compatible properties
         with self.driver.session(database=self.database) as session:
-            for concept in all_concepts:
+            for concept_name, concept_info in all_concepts.items():
+                # Use concept_name directly as ID to satisfy UNIQUE constraint
                 session.run("""
-                    MERGE (c:CulturalConcept {name: $name})
-                    SET c.id = toLower(replace($name, ' ', '_')),
-                        c.description = $name,
+                    MERGE (c:CulturalConcept {id: $concept_id})
+                    SET c.concept_name = $concept_name,
+                        c.description = $explanation,
+                        c.moral_dimension = $moral_dimension,
+                        c.kikuyu_expressions = $kikuyu_expressions,
                         c.created_at = datetime()
-                """, name=concept)
+                """, 
+                    concept_id=concept_name,  # Use concept_name as ID
+                    concept_name=concept_name,
+                    explanation=concept_info['explanation'],
+                    moral_dimension=concept_info['moral_dimension'],
+                    kikuyu_expressions=concept_info['kikuyu_expressions']
+                )
         
-        print(f"✅ Imported {len(all_concepts)} concepts")
+        print(f"✅ Imported {len(all_concepts)} cultural concepts")
         return True
     
     def import_proverbs(self):
@@ -159,6 +177,7 @@ class Neo4jRestorer:
         
         # Try multiple possible proverb data locations
         proverb_files = [
+            project_root / "data/ontology/extracted_concepts_100proverbs.json",
             project_root / "data/proverbs/tier1_50_gold_standard.json",
             project_root / "data/proverbs/tier2_50_diverse_sample.json",
             project_root / "data/evaluation/gold_standard_100.json"
@@ -175,8 +194,13 @@ class Neo4jRestorer:
             with open(proverb_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
             
+            # Handle both dict and list formats
+            proverb_items = data.items() if isinstance(data, dict) else enumerate(data)
+            
             with self.driver.session(database=self.database) as session:
-                for proverb_id, proverb_data in data.items():
+                for proverb_id, proverb_data in proverb_items:
+                    if isinstance(proverb_id, int):
+                        proverb_id = proverb_data.get('proverb_id', f'P_{proverb_id:03d}')
                     kikuyu_text = proverb_data.get('kikuyu_text', '')
                     english_translation = proverb_data.get('expert_translation', 
                                                           proverb_data.get('english_translation', ''))
@@ -191,6 +215,7 @@ class Neo4jRestorer:
                             p.english_translation = $english,
                             p.literal_translation = $literal,
                             p.cultural_meaning = $cultural,
+                            p.thematic_category = $thematic_category,
                             p.source = $source,
                             p.created_at = datetime()
                         RETURN p
@@ -199,18 +224,28 @@ class Neo4jRestorer:
                         kikuyu=kikuyu_text,
                         english=english_translation,
                         literal=proverb_data.get('literal_translation', ''),
-                        cultural=proverb_data.get('cultural_meaning', ''),
+                        cultural=proverb_data.get('expert_cultural_meaning', 
+                                                   proverb_data.get('cultural_meaning', '')),
+                        thematic_category=proverb_data.get('thematic_category', ''),
                         source=proverb_file.name
                     )
                     
-                    # Link to concepts/themes
-                    themes = proverb_data.get('themes', [])
-                    for theme in themes:
-                        session.run("""
-                            MATCH (p:Proverb {id: $proverb_id})
-                            MERGE (c:CulturalConcept {name: $theme})
-                            MERGE (p)-[:EXPRESSES]->(c)
-                        """, proverb_id=proverb_id, theme=theme)
+                    # Link to cultural concepts using EXPRESSES_CONCEPT relationship
+                    cultural_concepts = proverb_data.get('cultural_concepts', [])
+                    for concept_data in cultural_concepts:
+                        concept_name = concept_data.get('concept_name')
+                        if concept_name:
+                            session.run("""
+                                MATCH (p:Proverb {id: $proverb_id})
+                                MATCH (c:CulturalConcept {concept_name: $concept_name})
+                                MERGE (p)-[r:EXPRESSES_CONCEPT]->(c)
+                                SET r.moral_dimension = $moral_dimension,
+                                    r.created_at = datetime()
+                            """, 
+                                proverb_id=proverb_id, 
+                                concept_name=concept_name,
+                                moral_dimension=concept_data.get('moral_dimension', '')
+                            )
                     
                     proverbs_imported += 1
         
@@ -381,9 +416,11 @@ def main():
         # Show stats
         restorer.get_database_stats()
         
-        # Create backup
-        if not args.skip_backup:
+        # Create backup (skip on AuraDB due to APOC limitations)
+        if not args.skip_backup and not args.auradb:
             restorer.create_backup_script()
+        elif args.auradb:
+            print("\n⚠️  Skipping backup on AuraDB (use backup_neo4j.py script instead)")
         
         restorer.close()
         
