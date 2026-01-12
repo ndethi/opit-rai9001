@@ -1,0 +1,52 @@
+[
+  {
+    "ethical_category": "diligence",
+    "moral_id": "ML001",
+    "teaching": "Hard work leads to prosperity",
+    "created_date": "2026-01-12T13:22:01.394125",
+    "_labels": [
+      "MoralLesson"
+    ],
+    "_id": 1064
+  },
+  {
+    "ethical_category": "moderation",
+    "moral_id": "ML002",
+    "teaching": "Greed brings downfall",
+    "created_date": "2026-01-12T13:22:01.394125",
+    "_labels": [
+      "MoralLesson"
+    ],
+    "_id": 1065
+  },
+  {
+    "ethical_category": "generosity",
+    "moral_id": "ML003",
+    "teaching": "Share with community",
+    "created_date": "2026-01-12T13:22:01.394125",
+    "_labels": [
+      "MoralLesson"
+    ],
+    "_id": 1066
+  },
+  {
+    "ethical_category": "wisdom",
+    "moral_id": "ML004",
+    "teaching": "Plan for the future",
+    "created_date": "2026-01-12T13:22:01.394125",
+    "_labels": [
+      "MoralLesson"
+    ],
+    "_id": 1067
+  },
+  {
+    "ethical_category": "diligence",
+    "moral_id": "ML005",
+    "teaching": "Avoid laziness",
+    "created_date": "2026-01-12T13:22:01.394125",
+    "_labels": [
+      "MoralLesson"
+    ],
+    "_id": 1068
+  }
+]

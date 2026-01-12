@@ -1,0 +1,672 @@
+[
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_001",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_001",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_002",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_002",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_002",
+    "end_label": "MoralLesson",
+    "end_id": "ML005",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_003",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_003",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_004",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_004",
+    "end_label": "MoralLesson",
+    "end_id": "ML005",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_005",
+    "end_label": "MoralLesson",
+    "end_id": "ML001",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_005",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_006",
+    "end_label": "MoralLesson",
+    "end_id": "ML005",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_007",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_008",
+    "end_label": "MoralLesson",
+    "end_id": "ML001",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_008",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_008",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_008",
+    "end_label": "MoralLesson",
+    "end_id": "ML005",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_009",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_010",
+    "end_label": "MoralLesson",
+    "end_id": "ML001",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_010",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_011",
+    "end_label": "MoralLesson",
+    "end_id": "ML001",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_011",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_012",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_012",
+    "end_label": "MoralLesson",
+    "end_id": "ML005",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_013",
+    "end_label": "MoralLesson",
+    "end_id": "ML001",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_013",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_013",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_014",
+    "end_label": "MoralLesson",
+    "end_id": "ML001",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_015",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_015",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_015",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_015",
+    "end_label": "MoralLesson",
+    "end_id": "ML005",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_016",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_016",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_017",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_017",
+    "end_label": "MoralLesson",
+    "end_id": "ML005",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_018",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_018",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_018",
+    "end_label": "MoralLesson",
+    "end_id": "ML005",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_019",
+    "end_label": "MoralLesson",
+    "end_id": "ML001",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_019",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_019",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_019",
+    "end_label": "MoralLesson",
+    "end_id": "ML005",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_020",
+    "end_label": "MoralLesson",
+    "end_id": "ML001",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_020",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_020",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_021",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_021",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_022",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_022",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_023",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_024",
+    "end_label": "MoralLesson",
+    "end_id": "ML001",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_024",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_024",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_024",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_025",
+    "end_label": "MoralLesson",
+    "end_id": "ML001",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_025",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_026",
+    "end_label": "MoralLesson",
+    "end_id": "ML001",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_026",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_026",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_026",
+    "end_label": "MoralLesson",
+    "end_id": "ML005",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_027",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_027",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_028",
+    "end_label": "MoralLesson",
+    "end_id": "ML002",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_029",
+    "end_label": "MoralLesson",
+    "end_id": "ML003",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_030",
+    "end_label": "MoralLesson",
+    "end_id": "ML001",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  },
+  {
+    "type": "TEACHES_LESSON",
+    "start_label": "Proverb",
+    "start_id": "MW_030",
+    "end_label": "MoralLesson",
+    "end_id": "ML004",
+    "properties": {
+      "created_date": "2026-01-12T13:22:01.717078"
+    }
+  }
+]

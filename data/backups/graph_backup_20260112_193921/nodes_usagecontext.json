@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Business Planning",
+    "description": "Strategic business decision-making",
+    "context_id": "UC001",
+    "created_date": "2026-01-12T13:22:01.242008",
+    "_labels": [
+      "UsageContext"
+    ],
+    "_id": 1059
+  },
+  {
+    "name": "Wealth Management",
+    "description": "Managing and preserving resources",
+    "context_id": "UC002",
+    "created_date": "2026-01-12T13:22:01.242008",
+    "_labels": [
+      "UsageContext"
+    ],
+    "_id": 1060
+  },
+  {
+    "name": "Community Guidance",
+    "description": "Advising community members",
+    "context_id": "UC003",
+    "created_date": "2026-01-12T13:22:01.242008",
+    "_labels": [
+      "UsageContext"
+    ],
+    "_id": 1061
+  },
+  {
+    "name": "Youth Education",
+    "description": "Teaching young generation",
+    "context_id": "UC004",
+    "created_date": "2026-01-12T13:22:01.242008",
+    "_labels": [
+      "UsageContext"
+    ],
+    "_id": 1062
+  },
+  {
+    "name": "Conflict Resolution",
+    "description": "Resolving disputes",
+    "context_id": "UC005",
+    "created_date": "2026-01-12T13:22:01.242008",
+    "_labels": [
+      "UsageContext"
+    ],
+    "_id": 1063
+  }
+]
