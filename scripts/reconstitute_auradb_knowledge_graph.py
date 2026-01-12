@@ -292,62 +292,411 @@ class KnowledgeGraphReconstitution:
                 with open(self.concepts_json, 'r', encoding='utf-8') as f:
                     data = json.load(f)
                     
-                    # Parse extracted data structure
+                    print(f"   📊 JSON file loaded successfully")
+                    print(f"   🔍 Detected format: {'list' if isinstance(data, list) else 'dict'}")
+                    
+                    # Parse extracted data structure (handle list format)
                     concepts_dict = {}
                     edges = []
+                    proverb_count = 0
                     
-                    for proverb_id, extraction in data.items():
-                        if not isinstance(extraction, dict):
-                            continue
+                    # Handle list format (actual format of extracted_concepts_100proverbs.json)
+                    if isinstance(data, list):
+                        print(f"   📋 Processing {len(data)} proverb extractions...")
                         
-                        # Extract concepts from different categories
-                        all_concepts = []
-                        
-                        # Cultural concepts
-                        if 'cultural_concepts' in extraction:
-                            for concept in extraction['cultural_concepts']:
-                                if isinstance(concept, dict):
-                                    all_concepts.append({
-                                        'name': concept.get('concept', ''),
-                                        'definition': concept.get('definition', ''),
-                                        'type': 'cultural_value',
-                                        'significance': concept.get('significance', '')
-                                    })
-                        
-                        # Entities (persons, animals, objects)
-                        if 'entities' in extraction:
-                            for entity in extraction['entities']:
-                                if isinstance(entity, dict):
-                                    all_concepts.append({
-                                        'name': entity.get('kikuyu_term', ''),
-                                        'definition': entity.get('meaning', ''),
-                                        'type': entity.get('type', 'entity'),
-                                        'significance': ''
-                                    })
-                        
-                        # Add concepts to dictionary and create edges
-                        for concept in all_concepts:
-                            name = concept['name'].strip()
-                            if name and len(name) > 1:
-                                # Add to concepts dict (deduplicate)
-                                if name not in concepts_dict:
-                                    concepts_dict[name] = concept
+                        for idx, proverb_data in enumerate(data, 1):
+                            if not isinstance(proverb_data, dict):
+                                continue
+                            
+                            proverb_id = proverb_data.get('proverb_id', f'UNKNOWN_{idx}')
+                            proverb_count += 1
+                            
+                            # Progress indicator every 10 proverbs
+                            if proverb_count % 10 == 0:
+                                print(f"      Processing proverb {proverb_count}/{len(data)}... ({len(concepts_dict)} concepts so far)")
+                            
+                            # Extract thematic category as a concept
+                            theme = proverb_data.get('thematic_category', '').strip()
+                            if theme:
+                                if theme not in concepts_dict:
+                                    concepts_dict[theme] = {
+                                        'name': theme,
+                                        'definition': f'Thematic category: {theme}',
+                                        'type': 'thematic_category',
+                                        'significance': 'Primary theme classification'
+                                    }
                                 
-                                # Create edge
                                 edges.append({
                                     'proverb_id': proverb_id,
-                                    'concept_name': name,
-                                    'salience': 0.5  # Default salience
+                                    'concept_name': theme,
+                                    'salience': 0.9  # Very high salience for theme
                                 })
+                            
+                            # Extract key concepts from expert teaching
+                            teaching = proverb_data.get('expert_teaching', '')
+                            if teaching and isinstance(teaching, str):
+                                # Extract moral/ethical concepts from teaching
+                                teaching_lower = teaching.lower()
+                                moral_concepts = []
+                                
+                                # Common moral/ethical terms
+                                if 'greed' in teaching_lower:
+                                    moral_concepts.append(('greed', 'negative'))
+                                if 'hard work' in teaching_lower or 'diligence' in teaching_lower:
+                                    moral_concepts.append(('hard_work', 'positive'))
+                                if 'wisdom' in teaching_lower or 'wise' in teaching_lower:
+                                    moral_concepts.append(('wisdom', 'positive'))
+                                if 'generosity' in teaching_lower or 'generous' in teaching_lower:
+                                    moral_concepts.append(('generosity', 'positive'))
+                                if 'selfishness' in teaching_lower or 'selfish' in teaching_lower:
+                                    moral_concepts.append(('selfishness', 'negative'))
+                                if 'patience' in teaching_lower or 'patient' in teaching_lower:
+                                    moral_concepts.append(('patience', 'positive'))
+                                if 'planning' in teaching_lower or 'plan' in teaching_lower:
+                                    moral_concepts.append(('planning', 'positive'))
+                                if 'community' in teaching_lower or 'togetherness' in teaching_lower:
+                                    moral_concepts.append(('community', 'positive'))
+                                if 'hospitality' in teaching_lower or 'welcoming' in teaching_lower:
+                                    moral_concepts.append(('hospitality', 'positive'))
+                                if 'respect' in teaching_lower:
+                                    moral_concepts.append(('respect', 'positive'))
+                                if 'pride' in teaching_lower or 'arrogance' in teaching_lower:
+                                    moral_concepts.append(('pride', 'negative'))
+                                if 'poverty' in teaching_lower or 'poor' in teaching_lower:
+                                    moral_concepts.append(('poverty', 'neutral'))
+                                if 'wealth' in teaching_lower or 'rich' in teaching_lower:
+                                    moral_concepts.append(('wealth', 'neutral'))
+                                if 'cooperation' in teaching_lower or 'collaborate' in teaching_lower:
+                                    moral_concepts.append(('cooperation', 'positive'))
+                                if 'wasteful' in teaching_lower or 'waste' in teaching_lower:
+                                    moral_concepts.append(('wastefulness', 'negative'))
+                                
+                                for concept_name, valence in moral_concepts:
+                                    if concept_name not in concepts_dict:
+                                        concepts_dict[concept_name] = {
+                                            'name': concept_name,
+                                            'definition': f'Moral concept extracted from teachings ({valence})',
+                                            'type': f'moral_{valence}',
+                                            'significance': 'Derived from expert teaching interpretation'
+                                        }
+                                    
+                                    edges.append({
+                                        'proverb_id': proverb_id,
+                                        'concept_name': concept_name,
+                                        'salience': 0.75
+                                    })
+                            
+                            # Extract key concepts from cultural meaning
+                            meaning = proverb_data.get('expert_cultural_meaning', '')
+                            if meaning and isinstance(meaning, str):
+                                # Extract wealth/poverty related concepts
+                                meaning_lower = meaning.lower()
+                                semantic_concepts = []
+                                
+                                if 'wealth' in meaning_lower or 'rich' in meaning_lower or 'prosperity' in meaning_lower:
+                                    semantic_concepts.append('wealth_prosperity')
+                                if 'poor' in meaning_lower or 'poverty' in meaning_lower or 'destitute' in meaning_lower:
+                                    semantic_concepts.append('poverty_hardship')
+                                if 'work' in meaning_lower or 'labor' in meaning_lower or 'toil' in meaning_lower:
+                                    semantic_concepts.append('labor_effort')
+                                if 'success' in meaning_lower or 'achievement' in meaning_lower:
+                                    semantic_concepts.append('success_achievement')
+                                if 'failure' in meaning_lower or 'downfall' in meaning_lower:
+                                    semantic_concepts.append('failure_downfall')
+                                if 'share' in meaning_lower or 'sharing' in meaning_lower:
+                                    semantic_concepts.append('sharing_distribution')
+                                if 'save' in meaning_lower or 'saving' in meaning_lower:
+                                    semantic_concepts.append('savings_conservation')
+                                
+                                for concept_name in semantic_concepts:
+                                    if concept_name not in concepts_dict:
+                                        concepts_dict[concept_name] = {
+                                            'name': concept_name,
+                                            'definition': f'Semantic concept from cultural meaning',
+                                            'type': 'semantic_concept',
+                                            'significance': 'Derived from cultural meaning interpretation'
+                                        }
+                                    
+                                    edges.append({
+                                        'proverb_id': proverb_id,
+                                        'concept_name': concept_name,
+                                        'salience': 0.65
+                                    })
+                            
+                            # Extract Kikuyu word-level concepts
+                            kikuyu_text = proverb_data.get('kikuyu_text', '')
+                            if kikuyu_text:
+                                # Split Kikuyu text into words (basic tokenization)
+                                words = kikuyu_text.lower().replace('.', '').replace(',', '').split()
+                                for word in words:
+                                    # Only add significant words (length > 2)
+                                    if len(word) > 2 and word not in ['the', 'and', 'ta', 'ni']:
+                                        if word not in concepts_dict:
+                                            concepts_dict[word] = {
+                                                'name': word,
+                                                'definition': f'Kikuyu term from proverb text',
+                                                'type': 'kikuyu_word',
+                                                'significance': 'Individual word from proverb'
+                                            }
+                                        
+                                        edges.append({
+                                            'proverb_id': proverb_id,
+                                            'concept_name': word,
+                                            'salience': 0.4  # Lower salience for individual words
+                                        })
+                            
+                            # Extract English translation word-level concepts  
+                            english_translation = proverb_data.get('expert_translation', '')
+                            if english_translation and isinstance(english_translation, str):
+                                # Extract significant English words (nouns, verbs, adjectives)
+                                eng_words = english_translation.lower().replace('.', '').replace(',', '').replace('/', ' ').split()
+                                # Filter out common stop words
+                                stop_words = {'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 
+                                             'of', 'with', 'by', 'from', 'as', 'is', 'are', 'was', 'were', 'be',
+                                             'have', 'has', 'had', 'do', 'does', 'did', 'that', 'this', 'it', 'he',
+                                             'she', 'they', 'them', 'their', 'his', 'her', 'its', 'who', 'what'}
+                                
+                                for word in eng_words:
+                                    if len(word) > 3 and word not in stop_words:
+                                        if word not in concepts_dict:
+                                            concepts_dict[word] = {
+                                                'name': word,
+                                                'definition': f'English concept from translation',
+                                                'type': 'english_concept',
+                                                'significance': 'Concept from expert translation'
+                                            }
+                                        
+                                        edges.append({
+                                            'proverb_id': proverb_id,
+                                            'concept_name': word,
+                                            'salience': 0.35
+                                        })
+                            
+                            # Extract entities (kikuyu terms)
+                            if 'entities' in proverb_data:
+                                for entity in proverb_data['entities']:
+                                    if isinstance(entity, dict):
+                                        kikuyu_term = entity.get('kikuyu_term', '').strip()
+                                        if kikuyu_term and len(kikuyu_term) > 1:
+                                            if kikuyu_term not in concepts_dict:
+                                                concepts_dict[kikuyu_term] = {
+                                                    'name': kikuyu_term,
+                                                    'definition': entity.get('english_translation', ''),
+                                                    'type': f"entity_{entity.get('category', 'general')}",
+                                                    'significance': entity.get('cultural_significance', '')
+                                                }
+                                            
+                                            edges.append({
+                                                'proverb_id': proverb_id,
+                                                'concept_name': kikuyu_term,
+                                                'salience': 0.7  # High salience for explicit entities
+                                            })
+                            
+                            # Extract actions (kikuyu verbs)
+                            if 'actions' in proverb_data:
+                                for action in proverb_data['actions']:
+                                    if isinstance(action, dict):
+                                        kikuyu_verb = action.get('kikuyu_verb', '').strip()
+                                        if kikuyu_verb and len(kikuyu_verb) > 1:
+                                            if kikuyu_verb not in concepts_dict:
+                                                concepts_dict[kikuyu_verb] = {
+                                                    'name': kikuyu_verb,
+                                                    'definition': action.get('english_meaning', ''),
+                                                    'type': 'action_verb',
+                                                    'significance': action.get('cultural_context', '')
+                                                }
+                                            
+                                            edges.append({
+                                                'proverb_id': proverb_id,
+                                                'concept_name': kikuyu_verb,
+                                                'salience': 0.6  # Medium salience for actions
+                                            })
+                            
+                            # Extract cultural concepts
+                            if 'cultural_concepts' in proverb_data:
+                                for concept in proverb_data['cultural_concepts']:
+                                    if isinstance(concept, dict):
+                                        concept_name = concept.get('concept_name', concept.get('concept', '')).strip()
+                                        if concept_name and len(concept_name) > 1:
+                                            if concept_name not in concepts_dict:
+                                                concepts_dict[concept_name] = {
+                                                    'name': concept_name,
+                                                    'definition': concept.get('cultural_explanation', concept.get('definition', '')),
+                                                    'type': f"cultural_{concept.get('moral_dimension', 'concept')}",
+                                                    'significance': concept.get('cultural_explanation', '')
+                                                }
+                                            
+                                            edges.append({
+                                                'proverb_id': proverb_id,
+                                                'concept_name': concept_name,
+                                                'salience': 0.8  # High salience for cultural concepts
+                                            })
+                                        
+                                        # Also extract Kikuyu expressions as separate concepts
+                                        for kikuyu_expr in concept.get('kikuyu_expressions', []):
+                                            if kikuyu_expr and len(kikuyu_expr) > 1:
+                                                if kikuyu_expr not in concepts_dict:
+                                                    concepts_dict[kikuyu_expr] = {
+                                                        'name': kikuyu_expr,
+                                                        'definition': f"Kikuyu expression for {concept_name}",
+                                                        'type': 'kikuyu_expression',
+                                                        'significance': concept.get('cultural_explanation', '')
+                                                    }
+                                                
+                                                edges.append({
+                                                    'proverb_id': proverb_id,
+                                                    'concept_name': kikuyu_expr,
+                                                    'salience': 0.7
+                                                })
+                            
+                            # Extract metaphor (singular field)
+                            if 'metaphor' in proverb_data:
+                                metaphor = proverb_data['metaphor']
+                                if isinstance(metaphor, dict):
+                                    vehicle = metaphor.get('vehicle', '').strip()
+                                    tenor = metaphor.get('tenor', '').strip()
+                                    
+                                    # Add vehicle (source domain)
+                                    if vehicle and len(vehicle) > 2:
+                                        if vehicle not in concepts_dict:
+                                            concepts_dict[vehicle] = {
+                                                'name': vehicle,
+                                                'definition': metaphor.get('mapping_explanation', ''),
+                                                'type': 'metaphor_vehicle',
+                                                'significance': metaphor.get('cultural_resonance', '')
+                                            }
+                                        
+                                        edges.append({
+                                            'proverb_id': proverb_id,
+                                            'concept_name': vehicle,
+                                            'salience': 0.6
+                                        })
+                                    
+                                    # Add tenor (target domain)
+                                    if tenor and len(tenor) > 2:
+                                        if tenor not in concepts_dict:
+                                            concepts_dict[tenor] = {
+                                                'name': tenor,
+                                                'definition': metaphor.get('mapping_explanation', ''),
+                                                'type': 'metaphor_tenor',
+                                                'significance': metaphor.get('cultural_resonance', '')
+                                            }
+                                        
+                                        edges.append({
+                                            'proverb_id': proverb_id,
+                                            'concept_name': tenor,
+                                            'salience': 0.8
+                                        })
+                            
+                            # Extract metaphors (plural field - for compatibility)
+                            if 'metaphors' in proverb_data:
+                                for metaphor in proverb_data['metaphors']:
+                                    if isinstance(metaphor, dict):
+                                        vehicle = metaphor.get('vehicle', '').strip()
+                                        tenor = metaphor.get('tenor', '').strip()
+                                        
+                                        # Add vehicle (source domain)
+                                        if vehicle and len(vehicle) > 2:
+                                            if vehicle not in concepts_dict:
+                                                concepts_dict[vehicle] = {
+                                                    'name': vehicle,
+                                                    'definition': metaphor.get('source_domain', ''),
+                                                    'type': 'metaphor_vehicle',
+                                                    'significance': metaphor.get('mapping', '')
+                                                }
+                                            
+                                            edges.append({
+                                                'proverb_id': proverb_id,
+                                                'concept_name': vehicle,
+                                                'salience': 0.6
+                                            })
+                                        
+                                        # Add tenor
+                                        if tenor and len(tenor) > 2:
+                                            if tenor not in concepts_dict:
+                                                concepts_dict[tenor] = {
+                                                    'name': tenor,
+                                                    'definition': metaphor.get('target_domain', ''),
+                                                    'type': 'metaphor_tenor',
+                                                    'significance': metaphor.get('mapping', '')
+                                                }
+                                            
+                                            edges.append({
+                                                'proverb_id': proverb_id,
+                                                'concept_name': tenor,
+                                                'salience': 0.8
+                                            })
+                    
+                    # Handle dictionary format (legacy support)
+                    elif isinstance(data, dict):
+                        print(f"   📋 Processing {len(data)} proverb extractions (dict format)...")
+                        
+                        for proverb_id, extraction in data.items():
+                            if not isinstance(extraction, dict):
+                                continue
+                            
+                            proverb_count += 1
+                            if proverb_count % 10 == 0:
+                                print(f"      Processing proverb {proverb_count}... ({len(concepts_dict)} concepts so far)")
+                            
+                            # Extract concepts from different categories
+                            all_concepts = []
+                            
+                            # Cultural concepts
+                            if 'cultural_concepts' in extraction:
+                                for concept in extraction['cultural_concepts']:
+                                    if isinstance(concept, dict):
+                                        all_concepts.append({
+                                            'name': concept.get('concept', ''),
+                                            'definition': concept.get('definition', ''),
+                                            'type': 'cultural_value',
+                                            'significance': concept.get('significance', '')
+                                        })
+                            
+                            # Entities (persons, animals, objects)
+                            if 'entities' in extraction:
+                                for entity in extraction['entities']:
+                                    if isinstance(entity, dict):
+                                        all_concepts.append({
+                                            'name': entity.get('kikuyu_term', ''),
+                                            'definition': entity.get('meaning', ''),
+                                            'type': entity.get('type', 'entity'),
+                                            'significance': ''
+                                        })
+                            
+                            # Add concepts to dictionary and create edges
+                            for concept in all_concepts:
+                                name = concept['name'].strip()
+                                if name and len(name) > 1:
+                                    # Add to concepts dict (deduplicate)
+                                    if name not in concepts_dict:
+                                        concepts_dict[name] = concept
+                                    
+                                    # Create edge
+                                    edges.append({
+                                        'proverb_id': proverb_id,
+                                        'concept_name': name,
+                                        'salience': 0.5  # Default salience
+                                    })
                     
                     concepts = list(concepts_dict.values())
-                    print(f"   ✅ Loaded {len(concepts)} unique concepts from JSON")
+                    print(f"\n   ✅ Successfully extracted {len(concepts)} unique concepts from JSON")
                     print(f"   ✅ Created {len(edges)} proverb-concept edges")
+                    print(f"   📊 Processed {proverb_count} proverbs")
+                    print(f"   📈 Average concepts per proverb: {len(edges)/max(proverb_count, 1):.1f}")
+                    
+                    # Show concept type breakdown
+                    type_counts = Counter([c['type'] for c in concepts])
+                    print(f"\n   📊 Concept breakdown by type:")
+                    for ctype, count in sorted(type_counts.items(), key=lambda x: x[1], reverse=True):
+                        print(f"      • {ctype}: {count}")
                     
                     return concepts, edges
                     
             except Exception as e:
                 print(f"   ⚠️  Failed to load JSON: {e}")
+                import traceback
+                traceback.print_exc()
                 print("   📝 Falling back to heuristic extraction...")
         
         # Fallback: Heuristic extraction from proverb text
@@ -438,13 +787,19 @@ class KnowledgeGraphReconstitution:
             })
         
         print(f"\n🚀 Creating {len(enriched_concepts)} CulturalConcept nodes...")
+        print(f"   📊 Weight distribution: min={min(c['cultural_weight'] for c in enriched_concepts):.3f}, max={max(c['cultural_weight'] for c in enriched_concepts):.3f}")
         
         with self.driver.session() as session:
             batch_size = 50
             created_count = 0
+            total_batches = (len(enriched_concepts) + batch_size - 1) // batch_size
             
             for i in range(0, len(enriched_concepts), batch_size):
                 batch = enriched_concepts[i:i+batch_size]
+                batch_num = i//batch_size + 1
+                
+                # Show sample concepts from batch
+                sample_names = [c['name'] for c in batch[:3]]
                 
                 result = session.run("""
                     UNWIND $concepts AS c
@@ -463,7 +818,7 @@ class KnowledgeGraphReconstitution:
                 created = result.single()['created']
                 created_count += created
                 self.stats['nodes_created'] += created
-                print(f"   ✅ Batch {i//batch_size + 1}: Created {created} concepts")
+                print(f"   ✅ Batch {batch_num}/{total_batches}: Created {created} concepts ({created_count}/{len(enriched_concepts)} total) - e.g., {', '.join(sample_names[:2])}...")
         
         print(f"\n✅ Total CulturalConcept nodes created: {created_count}")
     
@@ -485,13 +840,16 @@ class KnowledgeGraphReconstitution:
         print("="*70)
         
         print(f"\n🚀 Creating {len(edges)} EXPRESSES_CONCEPT edges...")
+        print(f"   📊 Average salience: {sum(e['salience'] for e in edges)/len(edges):.2f}")
         
         with self.driver.session() as session:
             batch_size = 100
             created_count = 0
+            total_batches = (len(edges) + batch_size - 1) // batch_size
             
             for i in range(0, len(edges), batch_size):
                 batch = edges[i:i+batch_size]
+                batch_num = i//batch_size + 1
                 
                 result = session.run("""
                     UNWIND $edges AS e
@@ -507,7 +865,7 @@ class KnowledgeGraphReconstitution:
                 created = result.single()['created']
                 created_count += created
                 self.stats['relationships_created'] += created
-                print(f"   ✅ Batch {i//batch_size + 1}: Created {created} relationships")
+                print(f"   ✅ Batch {batch_num}/{total_batches}: Created {created} relationships ({created_count}/{len(edges)} total)")
         
         print(f"\n✅ Total EXPRESSES_CONCEPT relationships created: {created_count}")
     
