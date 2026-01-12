@@ -1,0 +1,37 @@
+{
+  "timestamp": "20260112_193921",
+  "uri": "neo4j+s://ec4d262f.databases.neo4j.io",
+  "nodes": {
+    "Proverb": 100,
+    "CulturalConcept": 959,
+    "UsageContext": 5,
+    "MoralLesson": 5
+  },
+  "relationships": {
+    "EXPRESSES_CONCEPT": 1895,
+    "TEACHES_LESSON": 67,
+    "USED_IN": 39,
+    "RELATES_TO": 4394,
+    "SUBSUMES": 50
+  },
+  "total_nodes": 1069,
+  "total_relationships": 6445,
+  "backup_date": "2026-01-12T19:39:26.723767",
+  "schema_version": "1.0",
+  "thesis_compliance": "959 concepts (exceeds 847 target)",
+  "files": {
+    "nodes": [
+      "nodes_proverb.json",
+      "nodes_usagecontext.json",
+      "nodes_morallesson.json",
+      "nodes_culturalconcept.json"
+    ],
+    "relationships": [
+      "relationships_teaches_lesson.json",
+      "relationships_used_in.json",
+      "relationships_expresses_concept.json",
+      "relationships_subsumes.json",
+      "relationships_relates_to.json"
+    ]
+  }
+}

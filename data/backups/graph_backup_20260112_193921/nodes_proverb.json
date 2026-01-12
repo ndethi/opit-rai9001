@@ -1,0 +1,1702 @@
+[
+  {
+    "cultural_weight": 0.875,
+    "proverb_id": "MW_001",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Whoever has much always wants more. | Teaching: It teaches that lack of satisfaction with what one has, leads to greed and hunger for more money. It also creates mistrust, such that the person becomes possessive. | Focus: Money management and financial wisdom",
+    "expert_translation": "He looks after his money the way storks pursue locusts.",
+    "expert_cultural_meaning": "Whoever has much always wants more.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.443369",
+    "kikuyu_text": "Aikaragia mbia ta njuu ngigi.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 0
+  },
+  {
+    "cultural_weight": 0.7,
+    "proverb_id": "MW_002",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Teaching: It teaches that wealth emanates from people. Good insights, ideas and opportunities that bring someone prosperity of different kinds, are derived from communicating and working together with people. Bible parallel Proverbs 27:17 “As iron sharpens iron, so one person sharpens another.” | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "People are wealth.",
+    "expert_cultural_meaning": "",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.443436",
+    "kikuyu_text": "Andu ni indo.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 1
+  },
+  {
+    "cultural_weight": 0.7,
+    "proverb_id": "MW_003",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Teaching: This proverb shows that one can spend money for purposes which are not really important. It teaches that carefully planned usage is necessary in order for it to last. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "In an unstable country one cannot become wealthy",
+    "expert_cultural_meaning": "",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.443475",
+    "kikuyu_text": "Bururi uri ngui ndungiciarikira indo.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 2
+  },
+  {
+    "cultural_weight": 0.895,
+    "proverb_id": "MW_004",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Political stability facilitates wealth. | Teaching: This proverb teaches that a person can only invest successfully in an environment that is stable, socially, economically and politically. One should therefore, choose well in order to prosper. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "In an unstable country one cannot become wealthy.",
+    "expert_cultural_meaning": "Political stability facilitates wealth.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.443801",
+    "kikuyu_text": "Bururi uri ngui ndungiciarikira indo.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 3
+  },
+  {
+    "cultural_weight": 0.99,
+    "proverb_id": "MW_005",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "A poor man is unable to obtain any more than he possesses. | Teaching: It teaches against grabbing/acquiring fraudulently, the property of a poor or disabled person because they cannot fight back. Acquire property through the correct methods. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "The property of an invalid are not distributed while the person is still alive.",
+    "expert_cultural_meaning": "A poor man is unable to obtain any more than he possesses.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.444264",
+    "kikuyu_text": "Cia kionje itigayagwo kiri muoyo/gitanakua.",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 4
+  },
+  {
+    "cultural_weight": 0.885,
+    "proverb_id": "MW_006",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "One must work hard to achieve wealth. | Teaching: Do not hope to become rich without cultivating your fields. It teaches that a person cannot have enough by begging. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Bought things do not fill the granary.",
+    "expert_cultural_meaning": "One must work hard to achieve wealth.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.444343",
+    "kikuyu_text": "Cia thuguri itiyuragia ikumbi",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 5
+  },
+  {
+    "cultural_weight": 0.8,
+    "proverb_id": "MW_007",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Be quick to forgive. | Teaching: It teaches that when disputes arise they should be sorted out at the quickest opportunity, because the persons involved stop focusing on more benefitial endeavours and concentrate on the dispute. The costs involved waste a lot of resources during this period. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "A long lawsuit brings poverty.",
+    "expert_cultural_meaning": "Be quick to forgive.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.444412",
+    "kikuyu_text": "Ciira muingi/munene ni ukia.",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 6
+  },
+  {
+    "cultural_weight": 0.81,
+    "proverb_id": "MW_008",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Use money, make money. | Teaching: It teaches that a person must spend money to get wealthy. The more money one invests, the better the chances of getting a higher benefit. One cannot generate money unless they invest. | Focus: Money management and financial wisdom",
+    "expert_translation": "To get money, you have to spend money.",
+    "expert_cultural_meaning": "Use money, make money.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.444531",
+    "kikuyu_text": "Ciringi imurikagwo na ingi.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 7
+  },
+  {
+    "cultural_weight": 0.84,
+    "proverb_id": "MW_009",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Life has no rest, only toil. | Teaching: It teaches that the value of land never diminishes whatever its size. Land makes one to toil endlessly in order to get its benefits. It encourages people to fend for themselves. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "A piece of land is not a little thing.",
+    "expert_cultural_meaning": "Life has no rest, only toil.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.444600",
+    "kikuyu_text": "Gicigo kia mugunda gitinyihaga.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 8
+  },
+  {
+    "cultural_weight": 0.835,
+    "proverb_id": "MW_010",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Owning property is a right. | Teaching: It teaches that the property inherited from family rightfully cannot be denied you; however, a person needs to acquire more from their own effort. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Land is inalienable (from the clan).",
+    "expert_cultural_meaning": "Owning property is a right.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.445462",
+    "kikuyu_text": "Githaka ni ngwatira.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 9
+  },
+  {
+    "cultural_weight": 0.775,
+    "proverb_id": "MW_011",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Might is right. | Teaching: It teaches that it is a fact that a rich man who leaves a piece of land to a poor man on which to build his hut, very often he will want it back as soon as the soil has been enriched by the droppings of the animal.(animals live in the owner’s hut, the floor becomes fertilized.) | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "The rich man cannot be prevented from cultivating the “iganjo”he wants.",
+    "expert_cultural_meaning": "Might is right.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.445527",
+    "kikuyu_text": "Gitonga kigiragio iganjo gikaarima",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 10
+  },
+  {
+    "cultural_weight": 0.965,
+    "proverb_id": "MW_012",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Relentless quest for wealth can often be meaningless. | Teaching: This proverb teaches that in the pursuit of wealth, a rich man can eat unworthy food since he has no time for himself. He malnourishes his body until he withers away.",
+    "expert_translation": "A wealthy man eats only a dying goat (very thin with tough meat)/undesirable food.",
+    "expert_cultural_meaning": "Relentless quest for wealth can often be meaningless.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.445582",
+    "kikuyu_text": "Gitonga kiriaga munyuko.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 11
+  },
+  {
+    "cultural_weight": 0.92,
+    "proverb_id": "MW_013",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "When prosperity comes, do not use all of it. | Teaching: It teaches that being rich is not permanent and can change to being poor. A person should be cautious of how they spend their wealth, in case they end up being poor. | Focus: Integrated wealth and money management",
+    "expert_translation": "Poverty and riches do not leave each other.",
+    "expert_cultural_meaning": "When prosperity comes, do not use all of it.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.445617",
+    "kikuyu_text": "Gukiaga na gutonga ititiganaga. GJW G 59, Ba 73) WM",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 12
+  },
+  {
+    "cultural_weight": 0.93,
+    "proverb_id": "MW_014",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Nothing of value is given on a silver platter. | Teaching: “In order to succeed, your desire for success should be greater than your fear of failure.” Bill Cosby It teaches that a person should pursue useful ventures despite any barriers and difficulties that may be encountered, and always focus on achieving their objective.",
+    "expert_translation": "There is nothing that is of worth, that is obtained from the comfort corner.",
+    "expert_cultural_meaning": "Nothing of value is given on a silver platter.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.445655",
+    "kikuyu_text": "Gutiri kiega kiumaga heega.",
+    "thematic_category": "generosity_sharing",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 13
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_015",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "The value of a wife is very great and can only be symbolized by the best choice of the present given to the in-law. | Teaching: This proverb teaches that a wife is of very great value to a family and community. She therefore, must be appreciated. Her true value cannot be measured by wealth but, can only be symbolized by presentation of gifts. That is why brideswealth which is presented must be of the best quality. These presents are continuous throughout life to ensure to carry on the best of relationships between the two families forever. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Any goat can serve as brideswealth, unless it has a defect.",
+    "expert_cultural_meaning": "The value of a wife is very great and can only be symbolized by the best choice of the present given to the in-law.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.445700",
+    "kikuyu_text": "Gutiri mburi itangiracio, tiga inawathe.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 14
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_016",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "“Do what you can, with what you have, where you are.” — Theodore Roosevelt | Teaching: It teaches that young people have a great chance to make their lives stable and prosperous. They have the opportunity to develop economically, socially and physically. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "No young person can be considered poor.",
+    "expert_cultural_meaning": "“Do what you can, with what you have, where you are.” — Theodore Roosevelt",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.445734",
+    "kikuyu_text": "Gutiri munini mukia.",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 15
+  },
+  {
+    "cultural_weight": 0.875,
+    "proverb_id": "MW_017",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Having nothing is a bitter reality. | Teaching: A poor man should not be despised, but understood and assisted to change his status. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "A man is poor not because he scorns possessions, but because he possesses nothing.",
+    "expert_cultural_meaning": "Having nothing is a bitter reality.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.445765",
+    "kikuyu_text": "Gutiri uthuire tiga akiaga.",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 16
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_018",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "“People take different roads seeking fulfillment and happiness. Just because they're not on your road doesn't mean they've gotten lost. DalaiLama | Teaching: It teaches that we should not misjudge a poor person by considering them as foolish. One could have wisdom, but lack material wealth. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "To be poor does not connote being foolish.",
+    "expert_cultural_meaning": "“People take different roads seeking fulfillment and happiness. Just because they're not on your road doesn't mean they've gotten lost. DalaiLama",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.445950",
+    "kikuyu_text": "Guthiina ti kuriita",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 17
+  },
+  {
+    "cultural_weight": 0.865,
+    "proverb_id": "MW_019",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Virtue is the only true nobility. | Teaching: Intrinsic worth of a person is most preferable than material success. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Virtue is better than riches.",
+    "expert_cultural_meaning": "Virtue is the only true nobility.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.445988",
+    "kikuyu_text": "Guthinga kurugite gutonga.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 18
+  },
+  {
+    "cultural_weight": 0.87,
+    "proverb_id": "MW_020",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Everyone has their chance in life. | Teaching: It teaches that there are always opportunities that bring good benefits to people, especially when they least expect it. Chances come to people in different times and varied ways.",
+    "expert_translation": "There is no rain that does not bring wealth to someone.",
+    "expert_cultural_meaning": "Everyone has their chance in life.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446021",
+    "kikuyu_text": "Gutiri mbura itari gitonga kiayo.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 19
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_021",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "No situation is permanent. \"That some achieve great success, is proof to all that others can achieve it as well.\" Abraham Lincoln | Teaching: It teaches that everyone has their chance for their life to change. A poor man can become rich; just as a rich man can become poor. A person without wealth should never lose hope of getting rich. | Focus: Integrated wealth and money management",
+    "expert_translation": "Every poor person has his day.",
+    "expert_cultural_meaning": "No situation is permanent. \"That some achieve great success, is proof to all that others can achieve it as well.\" Abraham Lincoln",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446073",
+    "kikuyu_text": "Gutiri ngia itari muthenya wayo.",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 20
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_022",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "“Seek not greater wealth, but simpler pleasure; not higher fortune, but deeper felicity.” ― Mahatma Gandhi | Teaching: It brings out the fact that people are always happy when they have comforts of property and wealth. However, when one lacks they complain and are unhappy. Happiness should be as a result of other positive things in life, not just by riches. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Nobody grumbles at being rich, only at being poor.",
+    "expert_cultural_meaning": "“Seek not greater wealth, but simpler pleasure; not higher fortune, but deeper felicity.” ― Mahatma Gandhi",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446114",
+    "kikuyu_text": "Gutiri uriragio ni utonga no ukia.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 21
+  },
+  {
+    "cultural_weight": 0.95,
+    "proverb_id": "MW_023",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Show hospitality to one another without grumbling. | Teaching: Usually a rich man forbids people from entering his home when he is alive, but during a mourning period they frock to bid him farewell and to taste a little of his wealth. It teaches that people should not segregate themselves from the community because of their riches, but mingle with society. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "The home of a rich man is revisited during a ceremony (especially burial).",
+    "expert_cultural_meaning": "Show hospitality to one another without grumbling.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446159",
+    "kikuyu_text": "Gwa gitonga gucokagirirwo ni mambura.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 22
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_024",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Debts cause unhappiness. “Debt can turn a free, happy person into a bitter human being.”-Michael Mihalik | Teaching: It teaches that a person should be careful about what they do and avoid owing anyone anything; whether money or services because it causes edginess, discontent and bother. | Focus: Money management and financial wisdom",
+    "expert_translation": "Quarrelling is the hallmark of the woman who has debts.",
+    "expert_cultural_meaning": "Debts cause unhappiness. “Debt can turn a free, happy person into a bitter human being.”-Michael Mihalik",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446194",
+    "kikuyu_text": "Haro ni ya muka uri thiiri",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 23
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_025",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "“Strive not to be a success, but rather to be of value.” Albert Einstein | Teaching: Strong people are not necessarily rich people. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Strength has no wealth.",
+    "expert_cultural_meaning": "“Strive not to be a success, but rather to be of value.” Albert Einstein",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446231",
+    "kikuyu_text": "Hinya nduri indo",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 24
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_026",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Self reliance is the best choice in life \"The only prosperity the people can afford to be satisfied with is the kind that lasts\"- Henry Ford | Teaching: This proverb teaches that a person should be content with their own property, and not seek that of other people, especially unlawfully, because it can cause and discomfort in one’s life. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Other people’s property fattens only one buttock.",
+    "expert_cultural_meaning": "Self reliance is the best choice in life \"The only prosperity the people can afford to be satisfied with is the kind that lasts\"- Henry Ford",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446324",
+    "kikuyu_text": "Indo ciene inoragia mundu itina rimwe. W",
+    "thematic_category": "community_relations",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 25
+  },
+  {
+    "cultural_weight": 0.86,
+    "proverb_id": "MW_027",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Ill gotten goods seldom prosper. | Teaching: It teaches that it is wrong to obtain other people’s property fraudulently. Doing so brings misfortunes and unhappy eventualities. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Stolen goods bring misfortune.",
+    "expert_cultural_meaning": "Ill gotten goods seldom prosper.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446361",
+    "kikuyu_text": "Indo ciene iri mutino.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 26
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_028",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "When you court trouble, you get it. “If you rattle the snake, it will bite you” The late John Michuki (Minister Internal Security, Kenya) | Teaching: It is used as a warning that when one interferes with the comforts/property or money of other people, he/she should expect trouble or bad happenings.",
+    "expert_translation": "",
+    "expert_cultural_meaning": "When you court trouble, you get it. “If you rattle the snake, it will bite you” The late John Michuki (Minister Internal Security, Kenya)",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446397",
+    "kikuyu_text": "Indo ciene itiri ndokeirwo nuu!",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 27
+  },
+  {
+    "cultural_weight": 0.835,
+    "proverb_id": "MW_029",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "There is strength in unity. | Teaching: It teaches that a person needs to work in collaboration with others in order to succeed in their achievement of wealth. Depending on oneself cannot achieve much. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Wealth comes by cultivating together.",
+    "expert_cultural_meaning": "There is strength in unity.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446429",
+    "kikuyu_text": "Indo ni kurimithanio",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 28
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_030",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "“If your cornfield is far from your house, the birds will eat your corn”- Congo | Teaching: It teaches that the wealth and money of a family should always be managed by the owner because he will ensure good care of it. Usually other people will mismanage it, especially if the owner dies.",
+    "expert_translation": "Wealth is all about the owner.",
+    "expert_cultural_meaning": "“If your cornfield is far from your house, the birds will eat your corn”- Congo",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446466",
+    "kikuyu_text": "Indo ni mwene.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 29
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_031",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "It pays to help others. “Kindness is a language which the blind can see and the deaf can hear.” African proverb | Teaching: Needy people always expect to be assisted by those are economically stable. Generosity is important in a community. This should help one to change their status to become independent. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "They (vultures) haunt the yard of a wealthy man.",
+    "expert_cultural_meaning": "It pays to help others. “Kindness is a language which the blind can see and the deaf can hear.” African proverb",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446508",
+    "kikuyu_text": "Iroobagia ha muoni.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 30
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_032",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Those of the same ilk have some understanding or comradeship. “If you want to go quickly, go alone. If you want to go far, go together. ~ African proverb | Teaching: People of the same ilk have some understanding and comradeship of sorts, and often will not harm each other. The rich also have their own unspoken pact. They will always agree with each other although those related to them may not be in good terms with one another.",
+    "expert_translation": "Two rich persons do not wish each other a bird of ill omen.",
+    "expert_cultural_meaning": "Those of the same ilk have some understanding or comradeship. “If you want to go quickly, go alone. If you want to go far, go together. ~ African proverb",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446545",
+    "kikuyu_text": "Itonga igiri itiri nyoni.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 31
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_033",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "“Whether you come from a council estate or a country estate, your success will be determined by your own confidence and fortitude.” Michelle Obama | Teaching: It teaches that someone should be keen and have self-control, be assertive, and have self-confidence. It is only then that someone can make worthwhile gains, acquire wealth and money, and people will rely on her/him.",
+    "expert_translation": "Steadiness makes wealth.",
+    "expert_cultural_meaning": "“Whether you come from a council estate or a country estate, your success will be determined by your own confidence and fortitude.” Michelle Obama",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446581",
+    "kikuyu_text": "Kahora kari indo.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 32
+  },
+  {
+    "cultural_weight": 0.975,
+    "proverb_id": "MW_034",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Everything has its time, and that time must be watched. | Teaching: It teaches that it is necessary to preserve some of your property/wealth/money in order to ensure stability and comfort in one’s future days. Wealth/money should be used for the right purposes and at the right time.",
+    "expert_translation": "The seed-storing calabash should never be drained before the new crop has matured.",
+    "expert_cultural_meaning": "Everything has its time, and that time must be watched.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446705",
+    "kikuyu_text": "Kigina gitiinikagwo irio hande itari nguru.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 33
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_035",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "An argument with correct facts is worthwhile. “Having a good discussion is like having riches” ~ Kenya | Teaching: It teaches that the power of a fair argument is very valuable. It can make even the most difficult problem to be resolved amicably and justly. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "A fair argument is wealth.",
+    "expert_cultural_meaning": "An argument with correct facts is worthwhile. “Having a good discussion is like having riches” ~ Kenya",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446749",
+    "kikuyu_text": "Kihoto ni indo.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 34
+  },
+  {
+    "cultural_weight": 0.88,
+    "proverb_id": "MW_036",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Money and wealth are not everything. | Teaching: Money can solve almost all matters, but where it is not able to, then it is possible that other means can be used to solve issues. | Focus: Money management and financial wisdom",
+    "expert_translation": "That which is beyond the power of money must be manipulated.",
+    "expert_cultural_meaning": "Money and wealth are not everything.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446782",
+    "kikuyu_text": "Kirema mbeeca ni kigariure. .",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 35
+  },
+  {
+    "cultural_weight": 0.825,
+    "proverb_id": "MW_037",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Riches are not permanent. | Teaching: It teaches that one’s position can change; from rich to poor and vice versa. One should struggle to maintain a comfortable position in life by taking care of their property, or acquiring it rightfully.",
+    "expert_translation": "To acquire wealth is not as difficult as good stewardship.",
+    "expert_cultural_meaning": "Riches are not permanent.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446814",
+    "kikuyu_text": "Kumaatha gutiri hinya ta kuramata.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 36
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_038",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Save for a rainy day. “When you have money, think of the time when you had none.” - Japanese Proverb | Teaching: It teaches that a person can easily get wealth/money, but they lose/misuse, so that it does not last. One must plan usage and ways of saving it.",
+    "expert_translation": "To acquire wealth is not as difficult as good stewardship.",
+    "expert_cultural_meaning": "Save for a rainy day. “When you have money, think of the time when you had none.” - Japanese Proverb",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446856",
+    "kikuyu_text": "Kumaatha gutiri hinya ta kuramata.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 37
+  },
+  {
+    "cultural_weight": 0.95,
+    "proverb_id": "MW_039",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "People have different opportunities and destinies. | Teaching: It teaches that some people get more valuable benefits than others. Others do not achieve much even when good chances present themselves. Some people are luckier than others.",
+    "expert_translation": "There is one who finds wealth and one who merely mends the surface of its cracks.",
+    "expert_cultural_meaning": "People have different opportunities and destinies.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446893",
+    "kikuyu_text": "Kuri mwoni na muraata thi.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 38
+  },
+  {
+    "cultural_weight": 0.875,
+    "proverb_id": "MW_040",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "He who gets out of debt grows rich. | Teaching: It teaches that there is honour in paying other people’s debts. It is advisable to pay debts so that people will respect you, and be able to lend you what you wish in future. Also, offer help to your neigbour as he/she offered you when required to do so. | Focus: Money management and financial wisdom",
+    "expert_translation": "The way of eating a debt is paying it.",
+    "expert_cultural_meaning": "He who gets out of debt grows rich.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446929",
+    "kikuyu_text": "Kuria thiiri wene ni kuriha.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 39
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_041",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Count your blessing! Count the garden by the flowers, never by the leaves that fall. | Teaching: Those with the wealthy tend to assume that it is permanent. It teaches that someone should appreciate what wealth they have, and realize that it can diminish",
+    "expert_translation": "The family of the haves often say that they will never lack.",
+    "expert_cultural_meaning": "Count your blessing! Count the garden by the flowers, never by the leaves that fall.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.446963",
+    "kikuyu_text": "Mbari ya uri moigaga matikaaga.",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 40
+  },
+  {
+    "cultural_weight": 0.91,
+    "proverb_id": "MW_042",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Business is business and has no relatives. | Teaching: It teaches that when doing business, a person should not show favours to anyone, friend or relative. It should be treated as an individual entity for it to succeed. | Focus: Money management and financial wisdom",
+    "expert_translation": "With money there is no child or mother.",
+    "expert_cultural_meaning": "Business is business and has no relatives.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.447069",
+    "kikuyu_text": "Mbeeca itiri mwana kana nyina.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 41
+  },
+  {
+    "cultural_weight": 0.865,
+    "proverb_id": "MW_043",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "The good and the bad go together. | Teaching: It teaches that when someone has wealth, he cannot escape some setbacks, and should therefore, take everything in stride. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "A homestead with goats does not lack miscarriages.",
+    "expert_cultural_meaning": "The good and the bad go together.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.447219",
+    "kikuyu_text": "Mucii uri mburi ndwagaga kihuno.",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 42
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_044",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Always be contented with what we have, because God knows what's best for us. | Teaching: This proverb is an encouragement that a person should take pride in what they own as property, not just fluid cash; and be satisfied with it. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "A farm is the ornament of the owner.",
+    "expert_cultural_meaning": "Always be contented with what we have, because God knows what's best for us.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.447260",
+    "kikuyu_text": "Mugunda ni mugema wa mwene. W",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 43
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_045",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "An ounce of practice is worth more than tons of preaching.\" Gandhi | Teaching: This proverb teaches that a person should not be proud or praise other people’s riches and imagine they too are like them, while they have nothing themselves. It encourages people to acquire their own riches and be proud of them. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Another’s field is not praised.",
+    "expert_cultural_meaning": "An ounce of practice is worth more than tons of preaching.\" Gandhi",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.447301",
+    "kikuyu_text": "Mugunda wene nduinagwo.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 44
+  },
+  {
+    "cultural_weight": 0.89,
+    "proverb_id": "MW_046",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "That is little esteemed, costs little. | Teaching: It teaches that what is acquired without strain is not considered to be valuable, just as something given freely. One may not protect his property from loss if it was given to them or fraudulently obtained.",
+    "expert_translation": "The man who buys something at a place near by is like the man who is given something.",
+    "expert_cultural_meaning": "That is little esteemed, costs little.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.447346",
+    "kikuyu_text": "Mugurira hakuhi nita aheo.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 45
+  },
+  {
+    "cultural_weight": 0.85,
+    "proverb_id": "MW_047",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Take care of your own matters. | Teaching: It teaches that property/wealth should be managed by its owner, and not other people so that it is not stolen or misappropriated.",
+    "expert_translation": "He who stands close to his property does not lose it.",
+    "expert_cultural_meaning": "Take care of your own matters.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.447450",
+    "kikuyu_text": "Muhakana na ciake itimuuragira. .",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 46
+  },
+  {
+    "cultural_weight": 0.905,
+    "proverb_id": "MW_048",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Ill-gotten things make a person insecure. | Teaching: A thief is always eats in a hurry and with the fear of being caught, so he cannot enjoy good health. Such a person is insecure and cannot live a normal life. Therefore, it teaches that one should obtain comfort in life by doing what is right and not to make enemies.",
+    "expert_translation": "The thief cannot keep fit because his stools contain undigested food.",
+    "expert_cultural_meaning": "Ill-gotten things make a person insecure.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.448242",
+    "kikuyu_text": "Muici ndathiragwo ni mari hindi.",
+    "thematic_category": "wealth_management",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 47
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_049",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "One cannot camouflage their true negative self fully and forever. | Teaching: A person who enjoys property/money, which is not his without hiding is soon discovered, while the one who can sham will continue to flourish. It teaches that a person’s true qualities and vises will always be exposed with time, however well one tries to hide to be what they are not. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "An ugly thief is more likely to be caught than one smeared with fat, i.e. carefully dressed.",
+    "expert_cultural_meaning": "One cannot camouflage their true negative self fully and forever.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449166",
+    "kikuyu_text": "Muici uri hunyu arindagira uri maguta.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 48
+  },
+  {
+    "cultural_weight": 0.965,
+    "proverb_id": "MW_050",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Stolen goods belong to the thief if he is not caught. | Teaching: It teaches that one is not to be judged until proven guilty.",
+    "expert_translation": "A thief who has not been caught is like a proprietor who has just spent his own money.",
+    "expert_cultural_meaning": "Stolen goods belong to the thief if he is not caught.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449203",
+    "kikuyu_text": "Muici utari munyiite ni muria gake.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 49
+  },
+  {
+    "cultural_weight": 0.99,
+    "proverb_id": "MW_051",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "A person is usually quick to borrow is always slow to pay. | Teaching: It is used to create awareness to a person, that once you lend out your property, it may not be easy to get paid back; or may not be paid at all. You may have to struggle to get paid back. | Focus: Money management and financial wisdom",
+    "expert_translation": "He who borrows does not like repaying.",
+    "expert_cultural_meaning": "A person is usually quick to borrow is always slow to pay.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449253",
+    "kikuyu_text": "Mukoobi thiiri ndendete kuriha. .",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 50
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_052",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Do not invite unnecessary acrimony. “Angry people are not always wise.” ― Jane Austen, Pride and Prejudice | Teaching: It teaches that a person should deal with their debtors, or other problems themselves sending other people to get involved, especially women because they can inflame the situation. | Focus: Money management and financial wisdom",
+    "expert_translation": "A woman is not sent to fetch debts.",
+    "expert_cultural_meaning": "Do not invite unnecessary acrimony. “Angry people are not always wise.” ― Jane Austen, Pride and Prejudice",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449377",
+    "kikuyu_text": "Mundu-muka ndatumagwo thiriini.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 51
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_053",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Avarice increases with wealth. “The wealth which enslaves the owner isn’t wealth. ~ Yoruba Saying | Teaching: It cautions against a person getting obsessed with his wealth, such that other things in life do not matter. This can ruin their lives. The love of money is the root of all kinds of evil. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "The drunkenness of beer passes away, but that of wealth does not.",
+    "expert_cultural_meaning": "Avarice increases with wealth. “The wealth which enslaves the owner isn’t wealth. ~ Yoruba Saying",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449409",
+    "kikuyu_text": "Muriio wa njoohi niuriukagwo, no wa indo nduriukagwo. . (GJW M 341, Ba",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 52
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_054",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Everyone is able to do better. “It always seems impossible until it’s done.” ~ Nelson Mandela | Teaching: Situations are not permanent and one can change their life for the better so that they are independent and can support themselves economically.",
+    "expert_translation": "A poor man can overcome poverty, but a man poor at heart can never.",
+    "expert_cultural_meaning": "Everyone is able to do better. “It always seems impossible until it’s done.” ~ Nelson Mandela",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449436",
+    "kikuyu_text": "Muthiini niathinukaga, no munyamaari ndathiinukaga.",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 53
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_055",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Retaining a good position anywhere is difficult; just as remaining wealthy. | Teaching: It teaches that a wealthy person will usually have troubles trying to protect his wealth, for fear of becoming poor. However, he should not scorn or show sarcasm to those without, but should appreciate his excesses. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "He who is troubled by wealth surpasses the one troubled by poverty.",
+    "expert_cultural_meaning": "Retaining a good position anywhere is difficult; just as remaining wealthy.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449465",
+    "kikuyu_text": "Muthinio ni kuona akiriite muthinio ni waagi.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 54
+  },
+  {
+    "cultural_weight": 0.77,
+    "proverb_id": "MW_056",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Patience pays! | Teaching: It teaches that a person has to take time to acquire wealth. Quick shortcuts to gain wealth can cause problems for someone. Bible parallel James 1:12 “blessed is the man who endures trial, for when he has stood the test he will receive the crown of life which god has promised to those who love him.” | Focus: Integrated wealth and money management",
+    "expert_translation": "Whoever would like to be rich must have patience.",
+    "expert_cultural_meaning": "Patience pays!",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449492",
+    "kikuyu_text": "Mutongi ndathethukaga. .",
+    "thematic_category": "generosity_sharing",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 55
+  },
+  {
+    "cultural_weight": 0.795,
+    "proverb_id": "MW_057",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "No pains, no gains. | Teaching: A person should not expect to be given service or goods without payment. Everything has a price. Rewards are expected. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Whoever would like to be rich must have patience.",
+    "expert_cultural_meaning": "No pains, no gains.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449517",
+    "kikuyu_text": "Mutongi ndathethukaga. .",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 56
+  },
+  {
+    "cultural_weight": 0.995,
+    "proverb_id": "MW_058",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "A male child is the supposedly reliable pillar of the home. | Teaching: It teaches that a male child acquires, sustains and multiplies the family’s wealth, which he gains or is bequeathed to him; and also other responsibilities and expectations which can be quantified in terms of his net worth. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "A child bears prosperity.",
+    "expert_cultural_meaning": "A male child is the supposedly reliable pillar of the home.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449555",
+    "kikuyu_text": "Mwana ni indo.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 57
+  },
+  {
+    "cultural_weight": 0.995,
+    "proverb_id": "MW_059",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "A son is believed to be prudent in taking care of property. | Teaching: It teaches that a family has higher expectations in the roles of sons as men, than in daughters. However, in current society, the female child is also able to meet some higher roles than those expected of her. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "A male child, is not a female child.",
+    "expert_cultural_meaning": "A son is believed to be prudent in taking care of property.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449582",
+    "kikuyu_text": "Mwana wa kahii ti wa kairiitu.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 58
+  },
+  {
+    "cultural_weight": 0.91,
+    "proverb_id": "MW_060",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Money is the sinew of love as well as war. | Teaching: The proverb teaches that money can be used for a good or bad purpose. One must be careful not to hurt oneself or others using money. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "The youth who has enough to buy his girl, need not beseech her.",
+    "expert_cultural_meaning": "Money is the sinew of love as well as war.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449607",
+    "kikuyu_text": "Mwanake wi na indo ndoihanaga.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 59
+  },
+  {
+    "cultural_weight": 0.885,
+    "proverb_id": "MW_061",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "To sell and to buy are both business. | Teaching: It teaches that a person should be careful in one’s line of business because roles do change. The business owner can lose his business and become an employee of another. | Focus: Integrated wealth and money management",
+    "expert_translation": "The one who sells also buys.",
+    "expert_cultural_meaning": "To sell and to buy are both business.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449736",
+    "kikuyu_text": "Mwendia niaguraga.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 60
+  },
+  {
+    "cultural_weight": 0.975,
+    "proverb_id": "MW_062",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "After death of a wealthy man, his riches also diminish. | Teaching: It teaches that the owner of wealth bequeaths it to his sons in the hope that they will value and multiply it as he did. Unfortunately, it was squandered.",
+    "expert_translation": "An old man is buried with his wealth.",
+    "expert_cultural_meaning": "After death of a wealthy man, his riches also diminish.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449931",
+    "kikuyu_text": "Muthuuri athikagwo na indo.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 61
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_063",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "No living man is all things. Many hands are better than one. | Teaching: A person cannot do everything alone even if he is wealthy. One must partner with others in order for his investments to grow from combined efforts. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "A rich man cannot block the ford.",
+    "expert_cultural_meaning": "No living man is all things. Many hands are better than one.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.449966",
+    "kikuyu_text": "Ndonga imwe ndihingaga iriuko.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 62
+  },
+  {
+    "cultural_weight": 0.895,
+    "proverb_id": "MW_064",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Being mean is a vice not easy to break. | Teaching: It teaches that it is better to be denied by the miser than to be given by an abusive rich man. This cautions that the excesses of wealth can make a person not appreciate others.",
+    "expert_translation": "An arrogant rich man, is surpassed by a miser.",
+    "expert_cultural_meaning": "Being mean is a vice not easy to break.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450004",
+    "kikuyu_text": "Ndonga naanu irugiitwo ni mukari.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 63
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_065",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Choose friends who add value to your life. “To be without a friend is to be poor indeed.” ~ Tanzanian proverb | Teaching: It cautions against being too generous to those who pretend to be one’s friends. All they do is deplete one’s resources either wealth or money.",
+    "expert_translation": "Many acquaintances deplete the pocket.",
+    "expert_cultural_meaning": "Choose friends who add value to your life. “To be without a friend is to be poor indeed.” ~ Tanzanian proverb",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450088",
+    "kikuyu_text": "Ndugu nyingi ithaatagia muhuko.",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 64
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_066",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Do not blow your own trumpet, instead show gratitude to God. | Teaching: This proverb teaches against ungratefulness at the wake of good forturne, and warns those who take blessings for granted, that all can be taken away just as easily as it was given unto them. | Focus: Integrated wealth and money management",
+    "expert_translation": "God is not shown one’s belly.",
+    "expert_cultural_meaning": "Do not blow your own trumpet, instead show gratitude to God.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450137",
+    "kikuyu_text": "Ngai ndoonagio nda.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 65
+  },
+  {
+    "cultural_weight": 0.92,
+    "proverb_id": "MW_067",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Nobody has everything or is self sufficient. | Teaching: It teaches that it is acceptable for a person without property or wealth to borrow from those who have in order to establish themselves. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "A poor person with no debts is not so poor a person.",
+    "expert_cultural_meaning": "Nobody has everything or is self sufficient.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450160",
+    "kikuyu_text": "Ngia itari thiiri ti ngia.",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 66
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_068",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Ignore slander and go about your endeavours. Teaching This proverb teaches when one is rich, they are prone to being talked about, either positively or negatively. This is due to curiosity, admiration, or envy among other feelings. A rich person should therefore shoulder all these burdens and plough on with their business. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "",
+    "expert_cultural_meaning": "Ignore slander and go about your endeavours. Teaching This proverb teaches when one is rich, they are prone to being talked about, either positively or negatively. This is due to curiosity, admiration, or envy among other feelings. A rich person should therefore shoulder all these burdens and plough on with their business.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450186",
+    "kikuyu_text": "Njuuku ni migathi ya ndonga",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 67
+  },
+  {
+    "cultural_weight": 0.96,
+    "proverb_id": "MW_069",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Human beings have similar rough experiences in life. | Teaching: In the dry season neither the rich nor poor people can plant. This proverb teaches that sometimes the rich person experiences harsh and difficult times in life, the same as the poor person. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "The sun has no rich people, but only the poor people.",
+    "expert_cultural_meaning": "Human beings have similar rough experiences in life.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450275",
+    "kikuyu_text": "Riua ritiri gitonga no ngia theri. (Riua ritiui gitonga no ngia their) (GJW R 23,Ba",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 68
+  },
+  {
+    "cultural_weight": 0.87,
+    "proverb_id": "MW_070",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Desire for good things is endless. | Teaching: It teaches that a person cannot be too choosy for him/her to survive. Always make best use of what you have and make it prosper. Good things don’t always satisfy a person. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Selected goods do not fill the granary.",
+    "expert_cultural_meaning": "Desire for good things is endless.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450361",
+    "kikuyu_text": "Ruthuuro rutiiyuragia ikumbi",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 69
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_071",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Do not under-estimate the benefits that small things can bring. | Teaching: This proverb teaches that small things may seem to be of little benefit to the owner. However, if put to good use they can be of great value to the owner. All things are valuable, one way or another. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "A short hide is of no value.",
+    "expert_cultural_meaning": "Do not under-estimate the benefits that small things can bring.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450400",
+    "kikuyu_text": "Ruua rukuhi rutiri thogora.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 70
+  },
+  {
+    "cultural_weight": 0.83,
+    "proverb_id": "MW_072",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "A poor man has no friends. | Teaching: It teaches us not to discriminate or judge others. It is assumed that a poor man has nothing to offer in terms of property. In reality, he may offer other non-monetary help. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "",
+    "expert_cultural_meaning": "A poor man has no friends.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450425",
+    "kikuyu_text": "Thieri itireraga kwa ngia.",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 71
+  },
+  {
+    "cultural_weight": 0.77,
+    "proverb_id": "MW_073",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Troubles pass! | Teaching: Poverty can be removed, if one puts a mind to it. It is not a permanent situation. A person should work hard to eradicate it.",
+    "expert_translation": "Poverty has no roots.",
+    "expert_cultural_meaning": "Troubles pass!",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450446",
+    "kikuyu_text": "Thiina nduri miri .",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 72
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_074",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "As long as one is alive, there is always a chance to overcome one’s enemies. “He that dies pays all debts.”-William Shakespeare | Teaching: All crimes can be paid for with a fine, but a crime of bewitching must be met with a heavier punishment because death is final. A person can harm another , but extreme harm may be impossible to compensate. | Focus: Money management and financial wisdom",
+    "expert_translation": "The only debt which is not payable is the one of poisoning someone.",
+    "expert_cultural_meaning": "As long as one is alive, there is always a chance to overcome one’s enemies. “He that dies pays all debts.”-William Shakespeare",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450473",
+    "kikuyu_text": "Thiiri utarihwo no wa urogi.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 73
+  },
+  {
+    "cultural_weight": 0.89,
+    "proverb_id": "MW_075",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Friendship does not mix with business. | Teaching: It teaches that when doing business all people are equal buyers regardless of their association to the seller. One should not show favour to some because the business will not flourish. “When it is a question of money, everybody is of the same religion. ~Voltaire Bible parallel 2 Corinthians 6:17 “Wherefore Come ye out from among them, and be ye separate, saith the Lord, and touch no unclean thing; And I will receive you,” | Focus: Money management and financial wisdom",
+    "expert_translation": "In business bargain, there is no child or mother.",
+    "expert_cultural_meaning": "Friendship does not mix with business.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450500",
+    "kikuyu_text": "Thogora nduri mwana na nyina.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 74
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_076",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "It is normal to disagree. “Price is what you pay. Value is what you get.” Warren Buffett | Teaching: When people are dealing or discussing issues with each other they may not agree on an opinion or a bargain, and should therefore, respect each other’s views. | Focus: Money management and financial wisdom",
+    "expert_translation": "Buying and selling causes much noice but no strife.",
+    "expert_cultural_meaning": "It is normal to disagree. “Price is what you pay. Value is what you get.” Warren Buffett",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450528",
+    "kikuyu_text": "Thogora ni mururumo utaruo.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 75
+  },
+  {
+    "cultural_weight": 0.955,
+    "proverb_id": "MW_077",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "First impressions matter, but let the buyer beware. | Teaching: It teaches that our convictions are as a result of what we perceive. Our judgement can be influenced by what we see other than the reality, of a situation. However, one should give credit where credit is due. | Focus: Money management and financial wisdom",
+    "expert_translation": "Buying and selling involves the eyes.",
+    "expert_cultural_meaning": "First impressions matter, but let the buyer beware.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450557",
+    "kikuyu_text": "Thogora ni maitho.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 76
+  },
+  {
+    "cultural_weight": 0.985,
+    "proverb_id": "MW_078",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Make a fair deal if you can. Fair exchange is no robbery. | Teaching: It teaches that unfortunately, in collective bargaining one party or the other too often tries to gain an advantage - a bargain, like buying something in a store for less than it is worth. | Focus: Money management and financial wisdom",
+    "expert_translation": "A bargain breaks down over the extra demand.",
+    "expert_cultural_meaning": "Make a fair deal if you can. Fair exchange is no robbery.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450582",
+    "kikuyu_text": "Thogora uuragagwo ni kiongereri.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 77
+  },
+  {
+    "cultural_weight": 0.76,
+    "proverb_id": "MW_079",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Be yourself. | Teaching: It teaches us that a person should live within his/her own means, as their resources can allow. Pretences lead to debts and failure to accept ones status in society.",
+    "expert_translation": "When you are poor do not equate yourself with the rich.",
+    "expert_cultural_meaning": "Be yourself.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450632",
+    "kikuyu_text": "Tiga kwihira uriri wi riikoini. GJW T 85) MW",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 78
+  },
+  {
+    "cultural_weight": 0.875,
+    "proverb_id": "MW_080",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "We are all protective of our turfs. | Teaching: This proverb teaches against selfishness. A person who is comfortable/wealthy should not view the one struggling as being overly greedy. We should appreciate the other person’s efforts towards making his life better.",
+    "expert_translation": "He who is satisfied, calls the hungry one greedy.",
+    "expert_cultural_meaning": "We are all protective of our turfs.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450657",
+    "kikuyu_text": "Uhunii eetaga uhutii mukoroku. .",
+    "thematic_category": "wealth_management",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 79
+  },
+  {
+    "cultural_weight": 0.825,
+    "proverb_id": "MW_081",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Be hospitable as a habit. | Teaching: It teaches that a person should desist from making their stinginess obvious to others so that they do not scorn and hate you. At least give a token and without showing off your wealth. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Hidden miserliness does not attract scorn.",
+    "expert_cultural_meaning": "Be hospitable as a habit.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450678",
+    "kikuyu_text": "Ukari muhithe ndumenanagirwo. MW",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 80
+  },
+  {
+    "cultural_weight": 0.88,
+    "proverb_id": "MW_082",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "God helps those who help themselves. | Teaching: It teaches that a person, with or without wealth, must associate with others constantly in order to get all his needs provided for and to be able to improve his status in life. He should trust in God above all. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Warmth has no wealth, it is the cold that has.",
+    "expert_cultural_meaning": "God helps those who help themselves.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450703",
+    "kikuyu_text": "Urugari nduri indo, ni heho iri indo.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 81
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_083",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Believe in yourself. Fortune favours the brave. “Yes we can!” President Barack Obama | Teaching: A person has to be fearless when dealing with issues in life. Whatever the situation, one must take care and caution in order to succeed in achieving the goal to acquire wealth. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Bravery brings wealth.",
+    "expert_cultural_meaning": "Believe in yourself. Fortune favours the brave. “Yes we can!” President Barack Obama",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450728",
+    "kikuyu_text": "Urume uri iraria.(Urume wi indo)",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 82
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_084",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Too much of anything can cause problems. It is balance that matters. | Teaching: It teaches that a person should share his wealth sensibly and for good reason. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Generosity ruins the man who gives his cows to morning visitors.",
+    "expert_cultural_meaning": "Too much of anything can cause problems. It is balance that matters.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450750",
+    "kikuyu_text": "Utaana uminagira murokerwo ng’ombe.",
+    "thematic_category": "generosity_sharing",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 83
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_085",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Appreciate the help given to you always. “Give thanks for a little and you will find a lot.”- Hausa proverb (Nigeria) | Teaching: A person seeking assistance from others accepts what he is given; even if he is denied what he wants. He perseveres all humiliation and injustices in order to get what he needs.",
+    "expert_translation": "He who has nothing has no heart.",
+    "expert_cultural_meaning": "Appreciate the help given to you always. “Give thanks for a little and you will find a lot.”- Hausa proverb (Nigeria)",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450773",
+    "kikuyu_text": "Utari ndari ngoro (Githumbi/ githumba gitiri ngoro)",
+    "thematic_category": "generosity_sharing",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 84
+  },
+  {
+    "cultural_weight": 0.79,
+    "proverb_id": "MW_086",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Don’t judge others | Teaching: A person without wealth is usually ignored and considered as not having any wisdom to contribute or to advice anyone. Therefore, a person must work hard in order to have consideration in society.",
+    "expert_translation": "A poor man is not invited to a private discussion.",
+    "expert_cultural_meaning": "Don’t judge others",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450799",
+    "kikuyu_text": "Utari ndeetagwo ndundu. .",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 85
+  },
+  {
+    "cultural_weight": 0.94,
+    "proverb_id": "MW_087",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Each person needs another, regardless of status. | Teaching: This proverb teaches that within a family or community, people cannot be equal. Some are poor and others rich. But they need each other for daily objectives to be achieved.",
+    "expert_translation": "A poor man leans on the rich. Kiswahili : Maskini hutegemea matajiri. Meaning: Each person needs another, regardless of status. Teaching: This proverb teaches that within a family or community, people cannot be equal. Some are poor and others rich. But they need each other for daily objectives to be achieved. Bible parallel: 1 Thessalonians 5:11 “Therefore encourage one another and build each other up, just as in fact you are doing.”",
+    "expert_cultural_meaning": "Each person needs another, regardless of status.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450830",
+    "kikuyu_text": "Utari ni wa kwa mari. (Muthiini egiritagia itonga) .",
+    "thematic_category": "community_relations",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 86
+  },
+  {
+    "cultural_weight": 0.83,
+    "proverb_id": "MW_088",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Beauty is not all in life. | Teaching: Physical beauty creates pride and complacency. This proverb discourages this and teaches that beauty does not provide for your human needs. One has to do useful work in order to survive and prosper. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Beauty is not consumed.",
+    "expert_cultural_meaning": "Beauty is not all in life.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450881",
+    "kikuyu_text": "Uthaka nduriagwo.",
+    "thematic_category": "business_wisdom",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 87
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_089",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Accept a person for what they are and not for what they have. “If you marry a monkey for his wealth, the money goes and the monkey remains as is. ~ Egyptian proverb | Teaching: It teaches that a person is judged by what he has in terms of property and wealth. A rich person is acceptable even if he is ugly and has other vices. He can be tolerated because of his money. Women especially, prefer men who have something tender about them — especially the legal kind. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "The beauty of a man is money.",
+    "expert_cultural_meaning": "Accept a person for what they are and not for what they have. “If you marry a monkey for his wealth, the money goes and the monkey remains as is. ~ Egyptian proverb",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450914",
+    "kikuyu_text": "Uthaka wa mundurume ni mbeeca. M",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 88
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_090",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Money is power! “Some are more equal than others!”- The Animal Farm by George Orwell | Teaching: A rich man may have objectionable habits, but people do not pay much attention to him because of his money and position. But inaudibly, it is judged by the same people, and God. No specialty should be given to some.",
+    "expert_translation": "A rich man’s breaking of wind is odourless.",
+    "expert_cultural_meaning": "Money is power! “Some are more equal than others!”- The Animal Farm by George Orwell",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450942",
+    "kikuyu_text": "Uthuri wa gitonga ndunungaga.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 89
+  },
+  {
+    "cultural_weight": 0.79,
+    "proverb_id": "MW_091",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Come easy go easy. | Teaching: It warns against wrongly acquired wealth. One should work hard and meticulously so as to acquire it. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Riches are not rushed for.",
+    "expert_cultural_meaning": "Come easy go easy.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450962",
+    "kikuyu_text": "Utonga nduhanyukagiruo.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 90
+  },
+  {
+    "cultural_weight": 0.775,
+    "proverb_id": "MW_092",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Wealth is good! | Teaching: It teaches that being wealthy is not bad as long as the riches and the position are used for a positive purpose.",
+    "expert_translation": "Riches have no bird of ill will.",
+    "expert_cultural_meaning": "Wealth is good!",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.450982",
+    "kikuyu_text": "Utonga nduri nyoni.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 91
+  },
+  {
+    "cultural_weight": 0.835,
+    "proverb_id": "MW_093",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Riches do not last forever. | Teaching: It teaches that a person should not pursue wealth aimlessly. It may seem easy or obvious to acquire, only for one to realize it is impossible;",
+    "expert_translation": "Riches are but a shadow.",
+    "expert_cultural_meaning": "Riches do not last forever.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.451018",
+    "kikuyu_text": "Utonga ni kiiruru.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 92
+  },
+  {
+    "cultural_weight": 0.825,
+    "proverb_id": "MW_094",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Prosperity comes by fate. | Teaching: It teaches that prosperity comes from God. Each person should live his/her life without comparing themselves to others. We cannot all be equal.",
+    "expert_translation": "Wealth belongs to God.",
+    "expert_cultural_meaning": "Prosperity comes by fate.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.451040",
+    "kikuyu_text": "Utonga ni wa ngai.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 93
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_095",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Children support parents later in life when one is physically weak. “The old woman looks after the child to grow its teeth and the young one in turn looks after the old woman when she loses her teeth.” ~ Akan (Ghana, Ivory Coast) proverb | Teaching: It teaches that children are a treasure to a family because they carry forth the generation. People should have children in order to carry respect and honour., and to have pride and hope about the future. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "The wealth of the poor consists in having children.",
+    "expert_cultural_meaning": "Children support parents later in life when one is physically weak. “The old woman looks after the child to grow its teeth and the young one in turn looks after the old woman when she loses her teeth.” ~ Akan (Ghana, Ivory Coast) proverb",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.451067",
+    "kikuyu_text": "Utonga wa muthiini ni ciana. W",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 94
+  },
+  {
+    "cultural_weight": 0.84,
+    "proverb_id": "MW_096",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Corruption leads to poverty. | Teaching: This proverb warns that fraudulently acquired wealth does not increase one’s prosperity. Instead it ultimately consumes that which he had acquired in the rightful way.",
+    "expert_translation": "Unlawful riches do not prosper, they ruin even the legitimate ones.",
+    "expert_cultural_meaning": "Corruption leads to poverty.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.451087",
+    "kikuyu_text": "Utonga wa muici nduthuunaga, na ni uteeaga wake.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 95
+  },
+  {
+    "cultural_weight": 0.885,
+    "proverb_id": "MW_097",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "A fool and his money are soon parted. | Teaching: People who are spendthrifts and don’t save, view by those who have been saving their money and wealth, with envy and jelousy.",
+    "expert_translation": "He who ate (spent all his resources) persecuted the one who kept some aside. 98.Wagi ndumenanagirwo (GJW W 18, N 641) W English: Poverty does not cause enemity. 99.Waagi wi gitaranio. (KW vol.1 pg 348) W English: Lacking leads to dreamy thoughts of what the opposite would bring. 100.Wooni wi njaci. (Ba 991, KW vol.1 pg 321) MW English: The state of having acquired wealth, breeds contemptuous pride. A COLLECTION OF 100 PROVERBS AND WISE SAYINGS OF THE GIKUYU OF KENYA ABOUT MONEY AND WEALTH",
+    "expert_cultural_meaning": "A fool and his money are soon parted.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.451132",
+    "kikuyu_text": "Waariire aanyamaririe weigiire.",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 96
+  },
+  {
+    "cultural_weight": 0.82,
+    "proverb_id": "MW_098",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Do not despise the poor. | Teaching: It teaches that people should not hate each other because of poverty. Instead they should accept and appreciate each other as human beings. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "Poverty does not cause enemity.",
+    "expert_cultural_meaning": "Do not despise the poor.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.451156",
+    "kikuyu_text": "Wagi ndumenanagirwo.",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 97
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_099",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "There is hope always that a people can change their status positively. | Teaching: This proverb teaches that it is usual for poor people to hope that their financial status can change for the better in future. They imagine what wealth would bring into their lives.",
+    "expert_translation": "Lacking leads to dreamy thoughts of what the opposite would bring.",
+    "expert_cultural_meaning": "There is hope always that a people can change their status positively.",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.451177",
+    "kikuyu_text": "Waagi wi gitaranio.",
+    "thematic_category": "poverty_hardship",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 98
+  },
+  {
+    "cultural_weight": 1.0,
+    "proverb_id": "MW_100",
+    "cultural_authenticity": 5.0,
+    "expert_business_relevance": "Pride comes before a fall. “Make some money but don’t let money make you.” ~ Tanzania | Teaching: It teaches that as a consequence of their wealth, people can look down upon and demean others. A poor man does not have these traits because he is in thought wondering how to deal with his poverty. | Focus: Wealth creation and prosperity principles",
+    "expert_translation": "The state of having acquired wealth, breeds contemptuous pride.",
+    "expert_cultural_meaning": "Pride comes before a fall. “Make some money but don’t let money make you.” ~ Tanzania",
+    "validation_status": "expert_validated",
+    "source": "ireri_expert_2014",
+    "created_date": "2026-01-12T13:21:53.451209",
+    "kikuyu_text": "Wooni wi njaci. (woni wi njaci, wagi gitaranjo)",
+    "thematic_category": "wealth_acquisition",
+    "_labels": [
+      "Proverb"
+    ],
+    "_id": 99
+  }
+]

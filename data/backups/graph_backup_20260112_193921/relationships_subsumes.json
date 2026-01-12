@@ -1,0 +1,502 @@
+[
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "people",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "uri",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "ngui",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "become",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "still",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "labor_effort",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "itiyuragia",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "things",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "investment",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "githaka",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "inalienable",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "gitonga",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "kigiragio",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "exercise of power and control",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "leave",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "inawathe",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "any goat can serve as brideswealth",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "considered",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "kiayo",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "opportunity or change",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "woman",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "fattens",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "comes",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "about",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "(vultures)",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "never",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "praised",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "place",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "stands",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "stools",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "more",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "surpasses",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "need",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "beseech",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "sells",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "also",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "shown",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "Ngai",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "roots",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "business",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "causes",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "much",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "eyes",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "breaks",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "warmth",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "hutegemea",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "teaching:",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "fact",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "348)",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  },
+  {
+    "type": "SUBSUMES",
+    "start_label": "CulturalConcept",
+    "start_id": "greed",
+    "end_label": "CulturalConcept",
+    "end_id": "100wooni",
+    "properties": {
+      "created_date": "2026-01-12T13:22:02.223724"
+    }
+  }
+]
