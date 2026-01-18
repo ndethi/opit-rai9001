@@ -43,7 +43,7 @@ Meanwhile, \citet{sarthi2024raptor} approached the problem from a different angl
 
 Recent advances in graph neural networks have enabled increasingly sophisticated integration with language models. GraphRAG \citep{edge2024graphrag} exemplifies this evolution, employing community detection algorithms to identify semantically related entity clusters within knowledge graphs. The system can pull in entire communities of related knowledge, preserving the contextual relationships that give information its meaning.
 
-\citet{wang2024hyde} pushed this integration even further with HyDE-RAG (Hypothetical Document Embeddings for RAG), which generates hypothetical documents based on queries and uses these to guide retrieval from structured knowledge bases. Their approach achieved a remarkable 32\% improvement in factual accuracy on complex question-answering benchmarks, a result that suggests we're approaching a new level of sophistication in knowledge-grounded generation.
+The integration of hypothetical document generation techniques has opened new possibilities for retrieval systems. \citet{gao2022hyde} introduced HyDE (Hypothetical Document Embeddings), a technique that generates hypothetical documents from queries and uses these synthetic documents to guide retrieval. By encoding relevance patterns in generated documents rather than directly in queries, HyDE achieves more effective zero-shot retrieval, demonstrating how generative models can enhance retrieval mechanisms even without task-specific training.
 
 \section{Implementation Frameworks and Practical Applications}
 
