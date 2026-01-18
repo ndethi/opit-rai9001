@@ -46,9 +46,9 @@ The primary corpus comprised Ireri's 100 Kikuyu wealth proverbs \cite{ireri2019p
 \section{Phase 3: Ontology Construction}
 \label{sec:phase_ontology}
 
-The ontology was developed through iterative refinement following Noy \& McGuinness \cite{noy2001ontology}: (1) scope bounded to wealth-domain proverbs, (2) reused CIDOC CRM \cite{doerr2003cidoc} and SKOS templates, (3) extracted 847 terms via expert elicitation and corpus analysis, (4) organized into 5 top-level classes (Proverb, CulturalTheme, UsageContext, MoralLesson, CulturalEntity) with hierarchical sub-classes, (5) defined relationships (\texttt{expresses}, \texttt{teachesLesson}, \texttt{usedIn}) and properties, (6) instantiated 100 proverbs with manual annotation, (7) validated via OOPS! \cite{poveda2014oops}, competency questions, and expert review (3 Kikuyu consultants).
+The ontology was developed through iterative refinement following Noy \& McGuinness \cite{noy2001ontology}: (1) scope bounded to wealth-domain proverbs, (2) reused CIDOC CRM \cite{doerr2003cidoc} and SKOS templates, (3) extracted cultural concepts via expert elicitation and corpus analysis, (4) organized into 4 top-level node types (Proverb, CulturalConcept, UsageContext, MoralLesson) with hierarchical structures, (5) defined five relationship types (\texttt{EXPRESSES\_CONCEPT}, \texttt{TEACHES\_LESSON}, \texttt{USED\_IN}, \texttt{RELATES\_TO}, \texttt{SUBSUMES}), (6) instantiated 100 proverbs with manual annotation, (7) validated via OOPS! \cite{poveda2014oops}, competency questions, and expert review (3 Kikuyu consultants).
 
-The Neo4j implementation (v5.x) translated OWL to property graphs: 947 nodes, 1,247 edges, average degree 2.6. Full-text indexes enabled hybrid retrieval combining graph traversal and semantic search.
+The Neo4j implementation (v5.x) uses property graphs: 1,069 nodes (959 CulturalConcept, 100 Proverb, 5 UsageContext, 5 MoralLesson), 6,445 relationships, average degree 12.1. Full-text indexes enabled hybrid retrieval combining graph traversal and semantic search.
 
 \subsection{LLM-Assisted Concept Extraction}
 \label{subsec:llm_assisted_ontology}
