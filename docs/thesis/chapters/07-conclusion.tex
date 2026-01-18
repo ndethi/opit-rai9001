@@ -42,6 +42,14 @@ The evaluation protocol would include: (1) standardized training on cultural aut
 
 This validation study would strengthen claims about cultural translation quality and provide empirical foundation for real-world deployment.
 
+\textbf{Interactive Chatbot Interface:} Develop a conversational interface that enables natural language interaction with the Kikuyu proverb knowledge base. Users could query proverbs by theme ("show me proverbs about patience"), request cultural context explanations, or explore relationships between concepts through dialogue. The chatbot would leverage the OG-RAG architecture to provide culturally-informed responses, citing specific proverbs and their meanings while maintaining conversational flow.
+
+Technical implementation would integrate the existing Neo4j knowledge graph with dialogue management frameworks (e.g., Rasa, LangChain) and conversational LLMs. The system would support multilingual interaction (English, Kikuyu, Swahili) to serve diverse user populations including diaspora communities, language learners, and cultural researchers. Conversation history would enable contextual follow-up questions, allowing users to progressively deepen their understanding of cultural concepts.
+
+Key design considerations include: (1) ensuring culturally appropriate responses that respect traditional knowledge protocols, (2) providing transparent citations to source proverbs and cultural consultants, (3) implementing feedback mechanisms for community members to flag inappropriate interpretations, and (4) designing age-appropriate interfaces for educational contexts. Pilot deployment in Kikuyu language classes and cultural centers would validate usability and cultural acceptability.
+
+This conversational approach would democratize access to cultural knowledge, transforming the static knowledge base into an interactive learning tool that can adapt to individual user needs and learning styles.
+
 \textbf{Ontology Expansion and Active Learning:} Scale ontology coverage from 60-70\% to 85-90\% of documented proverb concepts through active learning. Error analysis identified that 68\% of system failures trace to missing concepts, with 15-20 high-frequency cultural frames (e.g., \texttt{Intergenerational\_Knowledge\_Transfer}, \texttt{Ritual\_Timing}) accounting for the majority. Target these high-impact gaps first through community-driven expansion workshops with cultural elders.
 
 \textbf{Evaluation Scale Expansion:} Increase evaluation corpus from 100 to 500+ proverbs (representing ~25\% of documented Kikuyu proverbs in major collections). Larger-scale validation would strengthen generalizability claims and enable more granular analysis of system performance across thematic domains (wealth, family, agriculture, spiritual practices).
