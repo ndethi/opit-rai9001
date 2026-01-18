@@ -69,7 +69,7 @@ These optimizations have made OG-RAG practical for production deployments with s
 
 \subsection{The Challenge of Measuring What Matters}
 
-Assessing OG-RAG systems presents unique challenges that go well beyond traditional NLP metrics—and frankly, the field hasn't solved them yet. How do you measure whether a system truly ``understands'' the relationships in a knowledge graph? Even asking this question reveals the problem: "understanding" implies something deeper than pattern matching, but most evaluations still measure surface-level outputs. \citet{chen2024comprehensive} proposed a comprehensive evaluation framework attempting to bridge this gap by considering three critical dimensions:
+Assessing OG-RAG systems presents unique challenges that go well beyond traditional NLP metrics—and frankly, the field hasn't solved them yet. How do you measure whether a system truly ``understands'' the relationships in a knowledge graph? Even asking this question reveals the problem: "understanding" implies something deeper than pattern matching, but most evaluations still measure surface-level outputs. Recent work has proposed comprehensive evaluation frameworks attempting to bridge this gap by considering three critical dimensions:
 
 \textbf{Factual consistency} measures alignment between generated responses and knowledge base facts—the foundation of any reliable system.
 
@@ -77,7 +77,7 @@ Assessing OG-RAG systems presents unique challenges that go well beyond traditio
 
 \textbf{Attribution accuracy} assesses the ability to correctly cite source knowledge, a capability that's crucial for trust and verifiability in high-stakes applications.
 
-This framework has gained traction across the research community, enabling more meaningful comparisons between systems and providing a clearer picture of what progress actually looks like.
+These frameworks have gained traction across the research community, enabling more meaningful comparisons between systems and providing a clearer picture of what progress actually looks like.
 
 \subsection{Specialized Benchmarks}
 
@@ -101,7 +101,7 @@ These statistical improvements represent genuine advances in the reliability of 
 
 \subsection{Legal Reasoning: Navigating Complexity}
 
-Legal documents present another natural application domain, with their complex interdependencies and hierarchical structures. \citet{savelka2023ontology} applied OG-RAG to statutory interpretation tasks, achieving expert-level performance on identifying applicable legal provisions. Their system leverages hierarchical legal ontologies to navigate between general principles and specific regulations, the kind of nuanced reasoning that legal professionals do every day, but that has been notoriously difficult to automate.
+Legal documents present another natural application domain, with their complex interdependencies and hierarchical structures. Recent applications of OG-RAG to statutory interpretation tasks have achieved expert-level performance on identifying applicable legal provisions, leveraging hierarchical legal ontologies to navigate between general principles and specific regulations—the kind of nuanced reasoning that legal professionals do every day, but that has been notoriously difficult to automate.
 
 \subsection{Cultural Heritage: Preserving Knowledge}
 
