@@ -12,8 +12,8 @@
 
 1. **✅ DIRECTIVE 3**: Bibliography Audit (COMPLETED - 88.7% verified, 12 items flagged for manual review)
 2. **✅ DIRECTIVE 1**: Evaluation Methodology Transparency (COMPLETED - All 4 chapters revised)
-3. **⏳ DIRECTIVE 4**: Deformalize Hypothesis Statements (READY TO START)
-4. **⏳ DIRECTIVE 5**: Update Ontology Description
+3. **✅ DIRECTIVE 4**: Deformalize Hypothesis Statements (COMPLETED - Shifted to exploratory design)
+4. **⏳ DIRECTIVE 5**: Update Ontology Description (READY TO START)
 5. **⏳ DIRECTIVE 2**: Add Chat Interface Future Work
 6. **⏳ DIRECTIVE 6**: General Quality Improvements
 
@@ -128,24 +128,28 @@
 
 ---
 
-## DIRECTIVE 4: DEFORMALIZE HYPOTHESES
+## ✅ DIRECTIVE 4: DEFORMALIZE HYPOTHESES (COMPLETED)
 
-### Files to Update:
-- [ ] `chapters/01-introduction.tex` - Section 1.3 Research Questions
-- [ ] `chapters/03-methodology.tex` - Section 3.1 Research Design
-- [ ] `chapters/05-evaluation.tex` - Results language
+### Files Updated:
+- [x] `chapters/01-introduction.tex` - Replaced Formal Hypotheses section with Research Design Approach
+- [x] `chapters/05-evaluation.tex` - Changed hypothesis validation language to empirical findings
+- [x] `chapters/07-conclusion.tex` - Replaced H1/H2 references with RQ language
 
-### Find-and-Replace Patterns:
-- [ ] H1/H2/H3 → RQ1/RQ2/RQ3
-- [ ] "We hypothesize" → "We investigate"
-- [ ] "hypothesis-driven" → "research question-guided"
-- [ ] "H1 was confirmed" → "RQ1 findings indicate"
-- [ ] "supporting our hypothesis" → "supporting the exploratory finding"
+### Completed Changes:
+- [x] Removed entire "Formal Hypotheses" section (H1, H2, H3 with null/alternative hypotheses, equations)
+- [x] Added new "Research Design Approach" section emphasizing exploratory comparative design
+- [x] Changed "validating our hypothesis (H1)" → "providing strong empirical evidence"
+- [x] Changed "validate the central hypothesis (H1, H2)" → "provide strong empirical evidence"
+- [x] Changed "Empirically validate the hypothesis" → "Empirically investigate whether"
+- [x] Preserved statistical rigor language (paired t-tests, effect sizes, power analysis)
+- [x] Kept Research Questions section (RQ-Main, RQ1, RQ2, RQ3) as primary framing
 
-### Key Additions:
-- [ ] Section 1.3: Rewrite as exploratory research questions
-- [ ] Section 3.1: Add exploratory design justification
-- [ ] Results: Change framing from confirmatory to exploratory
+### Completion Notes:
+- **Commit**: 79181ef "Directive 4: Deformalize hypotheses - shift to exploratory research design"
+- **Date**: January 19, 2026 (Session 3 continued)
+- **Files Changed**: 3 chapter files (11 insertions, 63 deletions - net reduction of formal content)
+- **Key Outcome**: Thesis now uses exploratory research framing while maintaining statistical rigor
+- **Statistical Methods Preserved**: All t-tests, effect sizes, and power analysis retained - just reframed as characterizing findings rather than testing hypotheses
 
 ---
 
@@ -257,11 +261,23 @@
   - Reprioritized Chapter 7 future work (human validation as top priority)
   - Commit: c1137a9 (4 files, 198 insertions, 47 deletions)
 - Key Outcome: Thesis accurately reflects dual-automated evaluation framework
-- Next: Begin Directive 4 (Deformalize Hypothesis Statements)
+
+**Completed**: Deformalize Hypothesis Statements (Directive 4)
+- Status: COMPLETED (Exploratory research design framing)
+- Actions:
+  - Removed "Formal Hypotheses" section with H1, H2, H3 null/alternative hypotheses
+  - Added "Research Design Approach" section emphasizing exploratory comparative design
+  - Replaced hypothesis validation language with empirical investigation language
+  - Updated objectives: "Empirically validate" → "Empirically investigate"
+  - Changed results framing: "validating hypothesis (H1)" → "providing empirical evidence"
+  - Preserved all statistical methods (t-tests, effect sizes, power analysis)
+  - Commit: 79181ef (3 files, 11 insertions, 63 deletions)
+- Key Outcome: Maintains rigor while using exploratory framing
+- Next: Begin Directive 5 (Update Ontology Description)
 
 ---
 
-**Current Status**: 2/6 directives completed (Bibliography 88.7% verified, Evaluation methodology aligned). Ready for Directive 4.
+**Current Status**: 3/6 directives completed (Bibliography 88.7% verified, Evaluation methodology aligned, Hypotheses deformalized). Ready for Directive 5.
 
 ---
 
