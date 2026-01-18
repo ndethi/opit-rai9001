@@ -4,7 +4,11 @@
 % Date: November 17, 2025
 \label{ch:evaluation}
 
-This chapter presents the comprehensive evaluation of the thiLLMo system---an ontology-grounded Retrieval Augmented Generation (OG-RAG) approach for culturally faithful Kikuyu proverb translation. The evaluation was designed to rigorously assess whether the integration of a domain-specific cultural ontology with RAG meaningfully improves translation quality compared to baseline approaches. We present quantitative results from cultural metrics evaluation, statistical significance tests, and qualitative analysis of translation outputs.
+This chapter presents the comprehensive evaluation of the thiLLMo system---an ontology-grounded Retrieval Augmented Generation (OG-RAG) approach for culturally faithful Kikuyu proverb translation. The evaluation was designed to rigorously assess whether the integration of a domain-specific cultural ontology with RAG meaningfully improves translation quality compared to baseline approaches. 
+
+\textbf{Important Note on Evaluation Methods}: As discussed during the defense and detailed in Chapter~\ref{ch:methodology} (Section~\ref{subsec:eval_procedures}), all quantitative results reported in this chapter derive from \emph{automated evaluation metrics}. The evaluation employs a dual-automated framework combining computational cultural metrics (sentence embeddings, ROUGE scores, cultural pattern matching) with LLM-as-judge assessment (Gemini 2.5 Pro). These automated methods were supplemented by informal qualitative review from the researcher (a native Kikuyu speaker), but \emph{no formal human evaluation study with multiple annotators was conducted}.
+
+The automated metrics provide useful comparative signals and identify systematic patterns, but they should be interpreted as preliminary rather than definitive evidence of cultural translation quality. Limitations of this approach and proposals for future validation with community members are discussed in Sections~\ref{subsubsec:eval_validity} and~\ref{subsubsec:future_human_study}.
 
 \section{Evaluation Overview}
 \label{sec:evaluation_overview}
@@ -51,15 +55,15 @@ This three-way comparison enables us to distinguish between the benefits of exte
 
 \subsection{Evaluation Metrics}
 
-Given the limitations of automatic metrics for culturally-sensitive translation tasks, we developed a multi-dimensional evaluation framework:
+The automated evaluation framework comprises two complementary approaches, as detailed in Chapter~\ref{ch:methodology} (Section~\ref{subsec:evaluation_metrics}):
 
-\textbf{Cultural Authenticity (60\% weight):} Measures how well the translation preserves the cultural context, metaphorical meaning, and appropriate usage scenarios of the original Kikuyu proverb. This metric captures whether the translation conveys not just literal meaning but also cultural wisdom and nuance.
+\textbf{Computational Cultural Metrics:} Sentence-BERT embeddings (all-MiniLM-L6-v2) measure semantic similarity against expert reference translations. ROUGE-L scores capture n-gram overlap. Cultural pattern matching detects Kikuyu-specific linguistic features (honorifics, proverb markers, wealth terminology). The composite scoring weights cultural authenticity at 60\% (semantic 40\%, context 30\%, patterns 20\%, themes 10\%) and translation fidelity at 40\% (ROUGE-L 40\%, semantic 35\%, word overlap 15\%, structure 10\%).
 
-\textbf{Translation Fidelity (40\% weight):} Quantifies alignment between system outputs and expert human translations using cosine similarity over sentence embeddings. This metric assesses how closely the automated translation matches expert judgment.
+\textbf{LLM-as-Judge Assessment:} Gemini 2.5 Pro evaluates translations across four dimensions using structured prompts: Cultural Faithfulness (40\%), Translation Accuracy (30\%), Business Relevance (20\%), Overall Fluency (10\%). The LLM provides dimension-specific scores (1-5 scale, normalized to [0,1]) plus qualitative feedback. While this approach offers consistency and scalability, it carries potential Western bias and should not be interpreted as authoritative cultural judgment.
 
-\textbf{Overall Quality:} A composite metric combining cultural authenticity and translation fidelity with the weights specified above. This provides a holistic assessment of translation performance that balances both cultural preservation and semantic accuracy.
+\textbf{Overall Quality:} The primary reported metric combines cultural authenticity (60\%) and translation fidelity (40\%) from the computational framework. Scores are mapped to letter grades: A (0.85-1.0), B (0.75-0.85), C (0.65-0.75), D (0.55-0.65), F (<0.55).
 
-Additionally, we employed traditional surface-level metrics (ROUGE-1, ROUGE-2, ROUGE-L, word overlap) as supplementary indicators, though we acknowledge their limited utility for assessing cultural and metaphorical content.
+These automated metrics enable comparative assessment across 300 translations (100 proverbs × 3 systems) with consistent scoring criteria. However, they cannot capture all nuances of cultural appropriateness, which would require formal human evaluation with community members (proposed in Section~\ref{subsubsec:future_human_study}).
 
 \subsection{Statistical Testing Methodology}
 

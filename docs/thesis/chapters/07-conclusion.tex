@@ -27,15 +27,30 @@ This thesis addressed a critical gap in culturally faithful machine translation 
 \section{Future Directions}
 \label{sec:future_work}
 
-\textbf{Immediate Priorities:} Establish a diverse panel of expert evaluators representing different Kikuyu dialects (Nyeri, Kiambu, Embu), age cohorts (elders and younger speakers), and geographic regions (rural Kenya, urban contexts, diaspora communities). The current study's reliance on a single evaluator, while methodologically necessary given resource constraints, limits assessment of dialectical variation and generational differences in cultural interpretation. This expansion requires addressing practical challenges: developing protocols for identifying and recruiting cultural experts, establishing fair compensation frameworks that respect expert knowledge as intellectual labor, and building trust with communities wary of extractive research practices.
+\textbf{Immediate Priority: Formal Human Evaluation Study:} The most critical next step is conducting rigorous human validation with community members. As detailed in Section~\ref{subsubsec:future_human_study}, this study would recruit 15-20 native Kikuyu speakers representing diverse dialects (Nyeri, Kiambu, Embu), age cohorts (elders and younger speakers), and geographic contexts (rural Kenya, urban settings, diaspora communities).
 
-Additionally, scale the evaluation to larger corpora (targeting 500+ proverbs) and expand ontology coverage through active learning—identifying high-impact conceptual gaps from system error patterns. Deploy pilot applications in Kenyan educational contexts to assess real-world utility and gather user feedback.
+The evaluation protocol would include: (1) standardized training on cultural authenticity criteria, (2) blinded annotation of translations (system identity hidden), (3) structured rubrics adapted from this study's computational metrics, and (4) qualitative feedback on cultural appropriateness. Inter-rater reliability (Krippendorff's alpha $\geq 0.67$) would validate consistency, and human ratings would be compared to automated metrics to assess their validity.
+
+\textbf{Rationale}: The current study's automated evaluation framework (computational metrics + LLM-as-judge) provides comparative signals and identifies systematic patterns, but it cannot replace community judgment about cultural authenticity. Formal human validation is essential to:
+\begin{itemize}
+    \item Verify that automated metrics align with cultural intuitions of community members
+    \item Identify cases where computational similarity masks cultural misinterpretation
+    \item Assess whether translations are appropriate for business contexts (potential unintended offense)
+    \item Capture dialectical variation and generational differences in proverb interpretation
+    \item Center Kikuyu voices in determining what constitutes "culturally faithful" translation
+\end{itemize}
+
+This validation study would strengthen claims about cultural translation quality and provide empirical foundation for real-world deployment.
+
+\textbf{Ontology Expansion and Active Learning:} Scale ontology coverage from 60-70\% to 85-90\% of documented proverb concepts through active learning. Error analysis identified that 68\% of system failures trace to missing concepts, with 15-20 high-frequency cultural frames (e.g., \texttt{Intergenerational\_Knowledge\_Transfer}, \texttt{Ritual\_Timing}) accounting for the majority. Target these high-impact gaps first through community-driven expansion workshops with cultural elders.
+
+\textbf{Evaluation Scale Expansion:} Increase evaluation corpus from 100 to 500+ proverbs (representing ~25\% of documented Kikuyu proverbs in major collections). Larger-scale validation would strengthen generalizability claims and enable more granular analysis of system performance across thematic domains (wealth, family, agriculture, spiritual practices).
 
 \textbf{Cross-Linguistic Transfer:} Test methodology generalizability by applying to related Bantu languages (Kikamba, Kimeru) and structurally distinct African languages (Yoruba, Amharic), then global indigenous languages (Māori, Quechua) to identify language-independent principles.
 
 \textbf{Genre and Modality Expansion:} Extend beyond proverbs to folktales (requiring narrative pattern ontologies) and ceremonial discourse (modeling pragmatic context). Investigate multi-modal cultural knowledge representation linking textual, visual, and auditory heritage artifacts.
 
-\textbf{Community Partnership:} Establish community-governed sustainability models transferring cultural authority and economic benefits to Kikuyu organizations. Develop interpretable retrieval explanations enabling cultural stakeholders to validate and refine system behavior.
+\textbf{Community Partnership and Sustainability:} Establish community-governed sustainability models transferring cultural authority and economic benefits to Kikuyu organizations. Develop interpretable retrieval explanations enabling cultural stakeholders to validate and refine system behavior. Pilot applications in Kenyan educational contexts (language learning platforms, cultural documentation projects) to assess real-world utility.
 
 \textbf{Theoretical Investigation:} Explore limits of ontological formalization—identifying cultural knowledge that resists symbolic representation—and develop frameworks for representing cultural concept evolution through temporal knowledge graphs.
 

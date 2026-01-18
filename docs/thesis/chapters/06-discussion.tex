@@ -168,11 +168,33 @@ Notably, even fully human-expert-developed ontologies exhibit individual biases 
 
 \paragraph{Single Evaluator Limitation}
 
-The human evaluation was conducted by a single evaluator rather than multiple independent annotators. While the evaluator is a native Kikuyu speaker with strong cultural grounding, this design limits inter-rater reliability assessment and introduces potential individual bias. This constraint reflects the practical challenges of recruiting multiple Kikuyu language experts with both traditional cultural knowledge and translation expertise—a scarcity common in low-resource language research.
+\textbf{CRITICAL LIMITATION}: The study did not conduct formal human evaluation with multiple annotators. All quantitative results reported in Chapter~\ref{ch:evaluation} derive from automated metrics (computational cultural metrics and LLM-as-judge assessment using Gemini 2.5 Pro), not from systematic human judgment.
 
-To mitigate this limitation, evaluations were systematically validated against established published sources: Ireri's (2017) comprehensive proverb collection and Gikandi's (1982) cultural analysis. Additionally, the evaluation framework employed detailed rubrics (Tables~\ref{tab:cultural_rubric} and~\ref{tab:fidelity_rubric}) to standardize scoring and reduce subjective variation. Test-retest reliability (92\% score stability across one-week interval) suggests reasonable evaluation consistency.
+The researcher (a native Kikuyu speaker, L1, age 35, Nyeri dialect) conducted informal qualitative review of system outputs to identify patterns and generate insights, but this review was non-systematic and non-blinded. The researcher knew which system produced each translation and did not follow standardized annotation protocols. No inter-rater reliability metrics were computed.
 
-Future work should incorporate a panel of diverse evaluators representing different Kikuyu dialects (Nyeri, Kiambu, Embu), age groups (elders vs. younger speakers), and geographic contexts (rural vs. urban, Kenya vs. diaspora) to capture the full spectrum of cultural interpretation and dialectical variation.
+\textbf{Why this matters}: Cultural authenticity is inherently a human judgment that cannot be fully captured by automated metrics. While the computational metrics measure semantic similarity and cultural pattern preservation, and the LLM judge provides structured assessment, neither approach can replace community-based evaluation by diverse Kikuyu speakers.
+
+\textbf{Implications for claims}: The findings should be interpreted as:
+\begin{itemize}
+    \item Computational evidence that OG-RAG improves measurable aspects of translation (semantic similarity, ROUGE scores, cultural pattern detection)
+    \item Suggestive evidence from LLM judgment that OG-RAG translations exhibit characteristics associated with cultural faithfulness
+    \item Preliminary signals that warrant validation through formal human evaluation
+\end{itemize}
+
+The automated metrics provide useful \emph{comparative} signals (OG-RAG vs. Traditional RAG differences are meaningful) but do not constitute definitive proof that the translations are culturally appropriate or that community members would judge them as authentic.
+
+\textbf{Mitigation strategies employed}:
+\begin{itemize}
+    \item Computational metrics benchmarked against expert reference translations from published sources (Ireri 2017)
+    \item LLM judge configured with culturally-informed prompts emphasizing Kikuyu context
+    \item Informal researcher review provided qualitative triangulation
+    \item All evaluation code, prompts, and outputs version-controlled for transparency and reproducibility
+    \item Limitations explicitly disclosed throughout thesis and during defense
+\end{itemize}
+
+\textbf{Future validation}: Section~\ref{subsubsec:future_human_study} proposes a formal human evaluation study with 15-20 diverse Kikuyu speakers using standardized rubrics, blinded protocols, and inter-rater reliability assessment. This follow-up study would center community voices and provide rigorous validation of the automated evaluation findings.
+
+The current work establishes a computational baseline and demonstrates feasibility of ontology-grounded cultural translation, but stronger claims about cultural adequacy require human validation.
 
 \paragraph{Dialectical and Generational Variation}
 

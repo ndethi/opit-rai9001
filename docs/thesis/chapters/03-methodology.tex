@@ -109,7 +109,9 @@ the Kikuyu worldview embedded in this proverb.
 \section{Phase 5: Evaluation Methodology}
 \label{sec:phase_evaluation}
 
-The evaluation phase employed a multi-dimensional framework combining quantitative metrics with qualitative analysis to rigorously assess system performance.
+\textit{Note: This section incorporates clarifications discussed during the January 14, 2026 thesis defense regarding the evaluation framework and its limitations.}
+
+The evaluation phase employed a dual-automated framework combining computational metrics with AI-assisted assessment to systematically evaluate system performance. As discussed during the defense, all quantitative results reported in Chapter~\ref{chap:evaluation} derive from these automated evaluation methods, supplemented by informal researcher review for qualitative insights.
 
 \subsection{Evaluation Dataset}
 \label{subsec:eval_dataset}
@@ -121,73 +123,181 @@ To control for ordering effects, proverbs were presented to evaluators in random
 \subsection{Evaluation Metrics}
 \label{subsec:eval_metrics}
 
-A two-dimensional metric framework was developed based on preliminary analysis showing that existing MT metrics (BLEU, CHRF++) correlated poorly with expert judgments of cultural fidelity (Pearson's $r = 0.32$, $p < 0.01$).
+The evaluation employed two complementary automated assessment approaches: (1) computational cultural metrics based on sentence transformers and linguistic features, and (2) LLM-as-judge evaluation using Gemini 2.5 Pro. This dual-automated framework was designed to balance objectivity (computational metrics) with cultural sensitivity (LLM assessment), though it has important limitations discussed in Section~\ref{subsec:eval_validity}.
 
-\subsubsection{Cultural Authenticity Metric}
-\label{subsubsec:cultural_authenticity}
+\subsubsection{Computational Cultural Metrics}
+\label{subsubsec:computational_metrics}
 
-Cultural authenticity measures whether the translation accurately conveys the cultural worldview, values, and contextual appropriateness of the original proverb. Evaluators rated translations on a 0-1 continuous scale considering:
+The primary quantitative evaluation utilized automated metrics implemented in \texttt{cultural\_metrics.py}. These metrics combine semantic similarity measures with linguistic features to approximate cultural authenticity and translation fidelity without requiring extensive human annotation.
 
-\begin{itemize}
-    \item \textbf{Thematic Accuracy (40\%)}: Does the translation preserve the core cultural themes (e.g., reciprocity, community, patience)?
-    
-    \item \textbf{Metaphorical Preservation (30\%)}: Are culturally specific metaphors either preserved or appropriately adapted for English-speaking audiences?
-    
-    \item \textbf{Contextual Appropriateness (20\%)}: Would the translation be suitable for the cultural contexts where the original is used?
-    
-    \item \textbf{Value Alignment (10\%)}: Does the translation reflect Kikuyu values without imposing Western cultural assumptions?
-\end{itemize}
-
-The weighted composite score provides a single cultural authenticity value per translation.
-
-\subsubsection{Translation Fidelity Metric}
-\label{subsubsec:translation_fidelity}
-
-Translation fidelity measures linguistic accuracy and semantic correspondence to the original meaning, independent of cultural depth. Components include:
+\paragraph{Cultural Authenticity Score} 
+Computed as a weighted composite of:
 
 \begin{itemize}
-    \item \textbf{Semantic Accuracy (50\%)}: Does the translation capture the denotative meaning of the Kikuyu text?
+    \item \textbf{Semantic Similarity (40\%)}: Cosine similarity between translation and expert reference embeddings using Sentence-BERT \cite{reimers2019sentence} (all-MiniLM-L6-v2 model). Measures how closely the translation aligns with culturally validated references.
     
-    \item \textbf{Fluency (30\%)}: Is the English natural and grammatically correct?
+    \item \textbf{Context Preservation (30\%)}: Presence and preservation of culturally significant concepts identified in the ontology (e.g., reciprocity terms, community metaphors, agricultural symbolism). Binary detection with partial credit for semantic variants.
     
-    \item \textbf{Completeness (20\%)}: Are all elements of the original proverb reflected in the translation?
+    \item \textbf{Cultural Pattern Matching (20\%)}: Overlap with Kikuyu-specific linguistic patterns cataloged in the system (traditional wisdom markers, animal symbolism, moral lesson structures).
+    
+    \item \textbf{Thematic Alignment (10\%)}: Cosine similarity between translation embedding and ontology-derived theme vectors (e.g., wealth, patience, community).
 \end{itemize}
 
-\subsubsection{Overall Quality Metric}
-\label{subsubsec:overall_quality}
+The weighted composite yields a continuous score [0, 1] where higher values indicate stronger cultural authenticity according to the automated metrics.
 
-The overall quality metric combines cultural authenticity (60\% weight) and translation fidelity (40\% weight), reflecting the research priority on cultural faithfulness while maintaining linguistic standards.
+\paragraph{Translation Fidelity Score}
+Combines multiple linguistic metrics:
+
+\begin{itemize}
+    \item \textbf{ROUGE-L F1 (40\%)}: Longest common subsequence overlap with expert reference translations, measuring structural preservation \cite{mathur2020tangled}.
+    
+    \item \textbf{Semantic Similarity (35\%)}: Sentence-BERT cosine similarity with expert translations, capturing meaning preservation beyond surface forms.
+    
+    \item \textbf{Word Overlap (15\%)}: Jaccard similarity of content words (nouns, verbs, adjectives) between translation and reference.
+    
+    \item \textbf{Structural Similarity (10\%)}: Normalized edit distance measuring how much modification is needed to transform the translation into the reference.
+\end{itemize}
+
+\paragraph{Overall Quality Score}
+The composite metric combines cultural authenticity (60\% weight) and translation fidelity (40\% weight), reflecting the research priority on cultural faithfulness while maintaining linguistic standards:
+
+\[
+\text{Overall Quality} = 0.60 \times \text{Cultural Auth.} + 0.40 \times \text{Trans. Fidelity}
+\]
+
+Quality grades were assigned based on overall scores: A (0.8-1.0), B (0.7-0.8), C (0.6-0.7), D (0.5-0.6), F (<0.5).
+
+\subsubsection{LLM-as-Judge Evaluation}
+\label{subsubsec:llm_judge}
+
+As a complementary automated assessment, Gemini 2.5 Pro was employed as an LLM-based evaluator following the "LLM-as-judge" paradigm \cite{wang2024pandalm}. This approach leverages large language models' broad cultural knowledge to provide holistic translation quality assessments.
+
+The LLM judge evaluated each translation along four dimensions using structured prompts:
+
+\begin{itemize}
+    \item \textbf{Cultural Faithfulness (40\% weight)}: Preservation of cultural wisdom, traditional concepts, metaphors, and contextual appropriateness for the Kikuyu cultural framework.
+    
+    \item \textbf{Translation Accuracy (30\% weight)}: Semantic correctness, absence of linguistic errors, and preservation of the original proverb's intent.
+    
+    \item \textbf{Business Relevance (20\% weight)}: Applicability to modern professional contexts while maintaining traditional wisdom—particularly relevant given the wealth-domain focus of the proverb corpus.
+    
+    \item \textbf{Overall Fluency (10\% weight)}: Naturalness, grammatical correctness, and readability in English.
+\end{itemize}
+
+Each dimension received a score (1-5 scale), which was normalized to [0, 1] and weighted to produce an overall LLM judgment score. The prompt engineering approach (detailed in \texttt{llm\_judge.py}) instructed Gemini to:
+
+\begin{enumerate}
+    \item Consider the original Kikuyu proverb and its cultural context
+    \item Evaluate the English translation against all four dimensions
+    \item Provide structured JSON output with scores and detailed feedback
+    \item Assign a confidence score (0-1) indicating certainty in the assessment
+\end{enumerate}
+
+Gemini 2.5 Pro was selected for its demonstrated capabilities in multilingual understanding and cultural reasoning tasks. Cohere's Command-R-Plus was configured as a fallback provider to ensure evaluation continuity, though primary evaluation successfully completed using Gemini.
+
+While LLM judgments offer scalability and consistency advantages, they have known limitations in cultural assessment (potential Western bias, training data composition effects). Therefore, LLM scores were treated as supplementary to the computational metrics rather than as ground truth.
 
 \subsection{Evaluation Procedures}
 \label{subsec:eval_procedures}
 
-\subsubsection{Expert Human Evaluation}
-\label{subsubsec:expert_evaluation}
+The evaluation process consisted of two phases: (1) automated assessment using the computational and LLM-based metrics described above, and (2) informal qualitative review by the researcher to identify patterns and generate insights.
 
-Human evaluation was conducted by a native Kikuyu speaker (L1, age 35, Nyeri dialect) with cultural competence gained through family and community engagement. As a member of the Kikuyu community with deep cultural knowledge, the evaluator assessed all 300 translations using established cultural knowledge bases as reference points. Each evaluation involved:
+\subsubsection{Automated Evaluation Pipeline}
+\label{subsubsec:automated_pipeline}
+
+All 300 translations (100 proverbs × 3 systems) were processed through the automated evaluation pipeline:
 
 \begin{enumerate}
-    \item Reading the original Kikuyu proverb
-    \item Reviewing the three anonymized translations (randomized order)
-    \item Assigning cultural authenticity and translation fidelity scores based on detailed rubrics (Tables~\ref{tab:cultural_rubric} and~\ref{tab:fidelity_rubric})
-    \item Providing qualitative comments on notable strengths and weaknesses
+    \item \textbf{Computational Metrics}: Each translation was scored against expert reference translations using the cultural metrics framework (Section~\ref{subsubsec:computational_metrics}). Scores for cultural authenticity, translation fidelity, and overall quality were computed and stored in structured CSV format (\texttt{cultural\_evaluation\_100proverbs.csv}).
+    
+    \item \textbf{LLM Judge Assessment}: Each translation was independently evaluated by Gemini 2.5 Pro using the structured prompts described in Section~\ref{subsubsec:llm_judge}. The LLM provided dimension-specific scores, overall ratings, and qualitative feedback.
+    
+    \item \textbf{Aggregation}: Results from both automated methods were aggregated for comparative analysis. Inter-metric correlation was computed to assess consistency between computational and LLM-based assessments.
 \end{enumerate}
 
-To ensure evaluation validity despite single-evaluator design, translations were systematically validated against published Kikuyu proverb collections: Ireri's (2017) comprehensive anthology and Gikandi's (1982) cultural analysis. These authoritative sources served as cultural reference points, grounding evaluations in established scholarship rather than solely individual judgment. Evaluation consistency was verified through random re-evaluation of 20 proverbs (20\% sample) one week after initial scoring, achieving 92\% score stability (mean absolute difference < 0.05 points).
+The entire automated evaluation completed in approximately 4.5 hours of computation time (including API rate limiting delays for Gemini calls). All evaluation code, prompts, and raw outputs are version-controlled in the project repository for reproducibility.
 
-\subsubsection{LLM-Assisted Evaluation}
-\label{subsubsec:llm_evaluation}
+\subsubsection{Informal Researcher Review}
+\label{subsubsec:researcher_review}
 
-As a supplementary evaluation method, Gemini 2.5 Pro was configured as an automated judge to provide additional assessment perspectives. Cohere's Command-R-Plus was configured as a fallback provider to ensure evaluation continuity in case of API limitations, though the primary evaluation successfully completed using Gemini. The LLM judge evaluated translations along four dimensions:
+Following automated evaluation, the researcher (native Kikuyu speaker, L1, Nyeri dialect, age 35) conducted an informal qualitative review of system outputs to:
 
 \begin{itemize}
-    \item Cultural Authenticity (0-1 scale)
-    \item Translation Accuracy (0-1 scale)
-    \item Contextual Appropriateness (0-1 scale)
-    \item Overall Quality (0-1 scale)
+    \item Identify systematic translation patterns (success modes and failure modes)
+    \item Assess whether automated metrics align with cultural intuitions
+    \item Generate explanatory hypotheses for quantitative findings
+    \item Select exemplar translations for qualitative analysis
+    \item Spot-check for cultural misinterpretations missed by automated metrics
 \end{itemize}
 
-While LLM judgments showed moderate correlation with expert ratings ($r = 0.64$), they were treated as supplementary rather than authoritative due to potential biases in the LLM's cultural understanding. The primary analysis relies on human expert evaluation.
+\textbf{Important limitations}: This review was \emph{non-systematic and non-blinded}. The researcher knew which system produced each translation and did not follow standardized rubrics or formal annotation protocols. No inter-rater reliability metrics were computed, as this was a single-researcher exploratory process rather than a controlled human evaluation study.
+
+The researcher's cultural competence derives from native speaker status, community participation, and academic study of Kikuyu oral literature. However, this informal review does not constitute independent validation of system performance—rather, it complements the automated metrics with cultural perspective and generates insights for interpreting quantitative results.
+
+All quantitative results reported in Chapter~\ref{chap:evaluation} are based on automated metrics (computational and LLM-based), not on researcher judgments.
+
+\subsubsection{Evaluation Validity and Limitations}
+\label{subsubsec:eval_validity}
+
+The dual-automated evaluation approach has both strengths and limitations that must be acknowledged for proper interpretation of results:
+
+\textbf{Strengths}:
+\begin{itemize}
+    \item \textbf{Scalability}: Automated metrics enable evaluation of 300 translations (100 proverbs × 3 systems) with consistent scoring criteria, which would be time-prohibitive for formal human evaluation.
+    
+    \item \textbf{Reproducibility}: All evaluation code, prompts, and outputs are version-controlled. The evaluation can be replicated exactly using the same computational environment and LLM API configuration.
+    
+    \item \textbf{Objective Consistency}: Unlike human raters, computational metrics produce identical scores for identical inputs, eliminating rater drift and fatigue effects.
+    
+    \item \textbf{Multi-faceted Assessment}: Combining multiple automated approaches (lexical overlap, semantic embeddings, LLM judgment) triangulates different aspects of translation quality.
+\end{itemize}
+
+\textbf{Limitations}:
+\begin{itemize}
+    \item \textbf{No Formal Human Validation}: The study did not conduct controlled human evaluation with multiple annotators, inter-rater reliability measurement, or formal rubrics. This limits claims about cultural authenticity, which is inherently a human judgment.
+    
+    \item \textbf{Reference Translation Dependency}: Computational metrics rely on expert reference translations as gold standards. If reference translations have cultural gaps or stylistic idiosyncrasies, automated scores may reward superficial similarity over genuine cultural understanding.
+    
+    \item \textbf{LLM Cultural Bias}: Gemini 2.5 Pro's training data likely underrepresents Kikuyu language and culture, potentially embedding Western-centric biases in its cultural assessments. The model's judgments should not be interpreted as authoritative cultural evaluation.
+    
+    \item \textbf{Researcher Review Non-Systematic}: The informal qualitative review provides valuable cultural perspective but does not meet standards for systematic human evaluation (blinding, structured protocols, inter-rater reliability).
+    
+    \item \textbf{Limited Generalizability}: Findings are specific to the wealth-domain proverb corpus and cannot be generalized to all Kikuyu proverbs or other cultural translation tasks without further validation.
+\end{itemize}
+
+\textbf{Validity Claims}: Given these limitations, this study makes \emph{preliminary} claims about system performance. The automated metrics provide useful comparative signals (e.g., OG-RAG vs. Traditional RAG differences) and identify systematic patterns, but they do not constitute definitive proof of cultural translation quality. The findings should be interpreted as:
+
+\begin{enumerate}
+    \item Computational evidence that ontology-grounded RAG improves certain measurable aspects of translation (semantic similarity, cultural pattern preservation)
+    \item Suggestive evidence from LLM judgment that OG-RAG translations exhibit characteristics associated with cultural faithfulness
+    \item Qualitative researcher observations that align with quantitative trends
+\end{enumerate}
+
+Stronger claims about cultural adequacy would require formal human evaluation with community members, which is proposed as future work (Section~\ref{subsubsec:future_human_study}).
+
+\subsubsection{Future Human Validation Study}
+\label{subsubsec:future_human_study}
+
+To rigorously validate the findings from automated evaluation, a follow-up human evaluation study is proposed with the following design:
+
+\textbf{Participants}: 15-20 native Kikuyu speakers (L1) representing diverse age groups (25-65), regional dialects (Nyeri, Muranga, Kiambu), and educational backgrounds. Participants should have active engagement with Kikuyu oral tradition through family, community, or cultural organizations.
+
+\textbf{Evaluation Protocol}:
+\begin{enumerate}
+    \item \textbf{Training Phase}: Participants receive standardized instructions on evaluation criteria (cultural authenticity, translation accuracy, business relevance) with example annotations.
+    
+    \item \textbf{Annotation Task}: Each participant evaluates a subset of translations (50 proverbs × 3 systems = 150 translations) using Likert scales (1-5) for each dimension. Translations are presented in randomized, blinded order (system identity hidden).
+    
+    \item \textbf{Qualitative Feedback}: Participants provide open-ended comments on particularly successful or problematic translations to identify qualitative patterns.
+    
+    \item \textbf{Cultural Sensitivity Check}: Participants flag any translations that might be culturally inappropriate or offensive in business contexts.
+\end{enumerate}
+
+\textbf{Analysis}: Inter-rater reliability would be assessed using Krippendorff's alpha ($\alpha \geq 0.67$ acceptable). Human ratings would be compared to automated metrics (Spearman correlation) to validate metric alignment with community judgments. Disagreement analysis would identify cases where automated metrics diverge from human cultural intuitions.
+
+\textbf{Ethical Considerations}: Participants would receive fair compensation (\$25/hour, estimated 2-3 hours). The study would require IRB approval for human subjects research. Community ownership of cultural knowledge would be respected through collaborative result interpretation and co-authorship opportunities for interested participants.
+
+This proposed study would address the primary limitation of the current work by centering Kikuyu community voices in the evaluation of cultural translation quality.
 
 \subsection{Statistical Analysis Methods}
 \label{subsec:statistical_methods}
