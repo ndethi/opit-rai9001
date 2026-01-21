@@ -9,15 +9,22 @@
 
 ## CURRENT STATUS
 
-**Total Citations**: 97  
-**Verified**: 86 (88.7%)  
-**Pending Work**: 11 entries requiring action
+**Total Citations**: 91 (down from 97)  
+**Verified in CSV**: 91/91 (100%)  
+**Actually Verified from URLs**: ~68/91 (75%)  
+**Remaining Work**: Phase 5 URL re-verification (23 entries)
 
-### Breakdown by Action Required:
-- 🔍 **PENDING** (3 entries) - Need URL/venue verification
-- ✏️ **NEEDS_CORRECTION** (5 entries) - Year mismatches in citation keys
-- 🔗 **VERIFY_DUPLICATE** (4 entries) - Potential duplicate entries
-- ❌ **Special Cases** (1 entry) - "fail" but marked VERIFIED (needs review)
+### Phase Completion Status:
+- ✅ **Phase 1 COMPLETE**: 3 PENDING entries resolved (1 verified, 2 deleted)
+- ✅ **Phase 2 COMPLETE**: 5 year mismatches corrected
+- ✅ **Phase 3 COMPLETE**: 4 duplicate pairs consolidated
+- ⏸️ **Phase 4 PENDING**: 2 special cases (deferred until after Phase 5)
+- � **Phase 5 CRITICAL**: 23 entries with URLs in ok_alt need FRESH metadata extraction
+- ⏸️ **Phase 6 PENDING**: Final consolidation
+- ⏸️ **Phase 7 PENDING**: Final documentation
+
+### Critical Discovery (January 21, 2026 - Post Phase 3):
+**User identified verification gap**: Many entries marked VERIFIED in CSV have URLs in ok_alt column but metadata was NOT freshly extracted from those authoritative sources per Rule 2. This violates "ok_alt is ground truth" principle. Phase 5 scope expanded from 8→23 entries.
 
 ---
 
@@ -56,177 +63,383 @@ THEN → Keep highest-quality metadata version
 
 ---
 
-## PHASE 1: PENDING ENTRIES (3 items)
+## PHASE 1: PENDING ENTRIES ✅ COMPLETE
 
-### Entry 1: guo2024lazygraphrag
+**Completion Date**: January 21, 2026  
+**Commit**: d035b22  
+**Results**: 1 verified, 2 deleted → 97→95 citations
+
+### Entry 1: guo2024lazygraphrag ❌ DELETED
 - **ok_alt**: `https://www.microsoft.com/en-us/research/blog/lazygraphrag-setting-a-new-standard-for-quality-and-cost/`
-- **Action**: Visit Microsoft Research blog link
-- **Tasks**:
-  1. Extract full author list
-  2. Verify title: "LazyGraphRAG: Setting a New Standard for Quality and Cost"
-  3. Determine if published on arXiv (search arXiv.org)
-  4. Update venue (blog vs. arXiv vs. conference)
-  5. Mark VERIFIED if found, DELETE if blog-only gray literature
+- **Resolution**: Blog post only - gray literature, NOT cited in thesis
+- **Action Taken**: Marked GRAY_LITERATURE_DELETE in CSV
+- **BibTeX**: Removed from references.bib
 
-### Entry 2: zhang2024triplex
+### Entry 2: zhang2024triplex ❌ DELETED
 - **ok_alt**: `Fail`
-- **Venue**: Unknown
-- **Action**: Determine if legitimate reference
-- **Tasks**:
-  1. Search Google Scholar: "Triplex Zhang 2024 graph knowledge"
-  2. Search arXiv: "Triplex" + "Zhang" + "2024"
-  3. Check thesis chapters for citation usage context
-  4. If found: Update with verified metadata
-  5. If NOT found: **DELETE** and remove from thesis chapters
+- **Resolution**: Could not verify existence, NOT cited in thesis
+- **Action Taken**: Marked NOT_FOUND_DELETE in CSV
+- **BibTeX**: Removed from references.bib
 
-### Entry 3: guo2024lightrag
+### Entry 3: guo2024lightrag ✅ VERIFIED
 - **ok_alt**: `https://arxiv.org/abs/2410.05779`
-- **Action**: Visit arXiv link and extract metadata
-- **Tasks**:
-  1. Parse arXiv page for authors, title, date
-  2. Extract: Full author list (likely multiple)
-  3. Verify title: "LightRAG: Simple and Fast Retrieval-Augmented Generation"
-  4. Confirm publication date (Oct 2024)
-  5. Update venue to arXiv:2410.05779
-  6. Mark VERIFIED
+- **Resolution**: Verified 5 authors from arXiv (submitted Oct 8, 2024)
+- **Metadata Extracted**:
+  - Authors: Guo, Z., Xia, L., Yu, Y., Ao, T., & Huang, C.
+  - Title: LightRAG: Simple and Fast Retrieval-Augmented Generation
+  - Venue: arXiv:2410.05779
+  - Year: 2024
+- **Action Taken**: Updated CSV with verified metadata, marked VERIFIED
+- **BibTeX**: No changes needed
+
+**Impact**: 97→95 citations, 88.7%→91.6% verification rate
 
 ---
 
-## PHASE 2: YEAR MISMATCHES (5 items)
+## PHASE 2: YEAR MISMATCHES ✅ COMPLETE
 
-### Entry 1: agarwal2024llm → agarwal2022llm
-- **Current Key**: agarwal2024llm
-- **Correct Year**: 2022 (arXiv:2211.10511)
-- **Action**: Update citation key throughout thesis
+**Completion Date**: January 21, 2026  
+**Commit**: [hash]  
+**Results**: 5 citation keys corrected → 95 citations maintained
 
-### Entry 2: you2021graph → you2018graph
-- **Current Key**: you2021graph
-- **Correct Year**: 2018 (ICML 2018)
-- **Action**: Update citation key throughout thesis
+### Entry 1: agarwal2024llm → agarwal2022llm ✅ CORRECTED
+- **Issue**: Key said 2024, actual year 2022 (arXiv:2211.10511)
+- **Action Taken**: Renamed BibTeX key, updated references.bib
+- **Impact**: No thesis citations to update (not cited)
 
-### Entry 3: wang2024pandalm → wang2023pandalm
-- **Current Key**: wang2024pandalm
-- **Correct Year**: 2023 (arXiv:2306.05087)
-- **Action**: Update citation key throughout thesis
+### Entry 2: you2021graph → you2018graph ✅ CORRECTED
+- **Issue**: Key said 2021, actual year 2018 (ICML 2018)
+- **Action Taken**: Renamed BibTeX key, updated references.bib
+- **Impact**: No thesis citations to update (not cited)
 
-### Entry 4: BuildingDataFramework
-- **Current**: Year = "Unknown"
-- **Action**: Visit `https://www.llamaindex.ai/blog/building-the-data-framework-for-llms-bca068e89e0e`
-- **Tasks**:
-  1. Extract publication date from blog post
-  2. Update year field
-  3. Confirm as @misc (blog post)
+### Entry 3: wang2024pandalm → wang2023pandalm ✅ CORRECTED
+- **Issue**: Key said 2024, actual year 2023 (arXiv:2306.05087)
+- **Action Taken**: 
+  - Renamed BibTeX key in references.bib
+  - Updated chapters/03-methodology.tex: \cite{wang2024pandalm} → \cite{wang2023pandalm}
+- **Impact**: 1 citation updated in thesis
 
-### Entry 5: khattab2021baleen → khattab2022baleen
-- **Current Key**: khattab2021baleen
-- **Correct Year**: 2022 (arXiv:2212.14024)
-- **Action**: Update citation key throughout thesis
+### Entry 4: BuildingDataFramework ✅ CORRECTED
+- **Issue**: Year field was missing
+- **Resolution**: Blog post dated June 6, 2023
+- **Action Taken**: Added year=2023, month=jun, author="Liu, Jerry" to BibTeX
+- **Impact**: No thesis citations to update (not cited)
 
-**PHASE 2 WORKFLOW**:
-1. For each entry: `grep -r "cite{OLD_KEY}" chapters/*.tex`
-2. Replace: `sed -i 's/\\cite{OLD_KEY}/\\cite{NEW_KEY}/g' chapters/*.tex`
-3. Update BibTeX: Rename `@article{OLD_KEY,` → `@article{NEW_KEY,`
-4. Ensure year field matches key year
-5. Verify compilation with `pdflatex main.tex`
+### Entry 5: khattab2021baleen → khattab2022baleen ✅ CORRECTED
+- **Issue**: Key said 2021, actual year 2022 (arXiv:2212.14024)
+- **Action Taken**: Renamed BibTeX key, updated references.bib
+- **Impact**: No thesis citations to update (not cited)
+
+**Impact**: 95 citations, 91.6%→96.8% verification rate
 
 ---
 
-## PHASE 3: VERIFY DUPLICATES (4 items)
+## PHASE 3: VERIFY DUPLICATES ✅ COMPLETE
 
-### Duplicate 1: bai2024hipporag vs jimenezgutierrezHipporagNeurobiologicallyInspired2024
+**Completion Date**: January 21, 2026  
+**Commit**: 83f0983  
+**Results**: 4 duplicates removed → 95→91 citations
+
+### Duplicate 1: bai2024hipporag ❌ DELETED
+- **Issue**: Wrong first author (Bai vs. Jimenez Gutierrez)
 - **Paper**: HippoRAG - Neurobiologically Inspired Long-Term Memory
-- **arXiv**: 2405.14831
-- **Venue**: NeurIPS 2024
-- **Action**:
-  1. Compare author lists (Bai vs. Jimenez Gutierrez - first author difference?)
-  2. Visit arXiv:2405.14831 to confirm actual first author
-  3. **Keep**: Entry with correct first author from arXiv
-  4. **Delete**: Duplicate entry
-  5. Update all \cite{} commands to unified key
+- **arXiv**: 2405.14831 (visited to confirm first author)
+- **Resolution**: Kept jimenezgutierrezHipporagNeurobiologicallyInspired2024 (correct first author)
+- **Action Taken**: 
+  - Deleted bai2024hipporag from references.bib
+  - Marked DUPLICATE_DELETE in CSV
+- **Impact**: No thesis citations affected (not cited)
 
-### Duplicate 2: edge2024graphrag vs edge2024local
+### Duplicate 2: edge2024graphrag ❌ DELETED
+- **Issue**: Identical to edge2024local (same arXiv:2404.16130)
 - **Paper**: From Local to Global: A Graph RAG Approach
-- **arXiv**: 2404.16130
-- **Authors**: Edge, D. et al. (Microsoft Research)
-- **Action**:
-  1. Both reference same paper (same arXiv ID)
-  2. **Keep**: edge2024graphrag (better key name)
-  3. **Delete**: edge2024local
-  4. Replace all \cite{edge2024local} → \cite{edge2024graphrag}
+- **Resolution**: Kept edge2024local (CITED in chapters/01-introduction.tex)
+- **Action Taken**:
+  - Deleted edge2024graphrag from references.bib
+  - Marked DUPLICATE_DELETE in CSV
+- **Impact**: No thesis updates needed (duplicate not cited)
 
-### Duplicate 3: ireri2019 vs ireri2019proverbs
+### Duplicate 3: ireri2019 ❌ DELETED
+- **Issue**: Identical to ireri2019proverbs (same book)
 - **Paper**: 100 Kikuyu Proverbs and Wise Sayings
-- **Author**: Ireri, M. W.
-- **Year**: 2019 (Self-published Nairobi)
-- **Action**:
-  1. Verify both keys reference same book
-  2. **Keep**: ireri2019proverbs (more descriptive key)
-  3. **Delete**: ireri2019
-  4. Replace all \cite{ireri2019} → \cite{ireri2019proverbs}
+- **Resolution**: Kept ireri2019proverbs (more descriptive key, CITED 4× in thesis)
+- **Action Taken**:
+  - Deleted ireri2019 from references.bib
+  - Marked DUPLICATE_DELETE in CSV
+- **Impact**: No thesis updates needed (duplicate not cited)
 
-### Duplicate 4: yasunaga2021qa vs yasunaga2021qagnn
+### Duplicate 4: yasunaga2021qa ❌ DELETED
+- **Issue**: Identical to yasunaga2021qagnn (same NAACL 2021 paper)
 - **Paper**: QA-GNN: Reasoning with LMs and KGs for QA
-- **Venue**: NAACL 2021
-- **Action**:
-  1. Verify both reference same NAACL 2021 paper
-  2. **Keep**: yasunaga2021qagnn (matches standard naming)
-  3. **Delete**: yasunaga2021qa
-  4. Replace all \cite{yasunaga2021qa} → \cite{yasunaga2021qagnn}
+- **Resolution**: Kept yasunaga2021qagnn (standard naming convention)
+- **Action Taken**:
+  - Deleted yasunaga2021qa from references.bib
+  - Marked DUPLICATE_DELETE in CSV
+- **Impact**: No thesis citations affected (not cited)
 
-**PHASE 3 WORKFLOW**:
-1. Visit arXiv/ACL Anthology links to confirm same paper
-2. Choose canonical key (more descriptive or standard convention)
-3. `grep -r "cite{DUPLICATE_KEY}" chapters/*.tex` to find usages
-4. Replace: `sed -i 's/\\cite{DUPLICATE_KEY}/\\cite{CANONICAL_KEY}/g' chapters/*.tex`
-5. Delete duplicate from references.bib
-6. Verify no orphaned citations remain
+**Impact**: 95→91 citations, 96.8%→100% marked VERIFIED in CSV
 
 ---
 
-## PHASE 4: SPECIAL CASES (1 item)
+## PHASE 4: SPECIAL CASES ⏸️ DEFERRED
 
-### Entry: he2024gretriever
+**Status**: Deferred until after Phase 5 completion  
+**Reason**: Need to complete bulk URL re-verification first per Rule 2
+
+### Entry 1: he2024gretriever
 - **ok_alt**: `fail`
 - **Verification_Status**: VERIFIED
 - **Issue**: Contradictory (fail but verified?)
-- **Action**:
+- **Deferred Action**:
   1. Review notes: "Confirmed 8 authors including LeCun"
   2. Check Where_Found: https://openreview.net/forum?id=M4diZmkPp8
   3. Visit OpenReview link to verify
   4. If verified: Change ok_alt from "fail" → "ok" or add URL
   5. If not verified: Investigate why marked VERIFIED
 
-### Entry: chase2022langchain
+### Entry 2: chase2022langchain
 - **ok_alt**: `fail`
 - **Verification_Status**: VERIFIED
 - **Notes**: "GitHub repository"
-- **Action**:
+- **Deferred Action**:
   1. GitHub repos are gray literature but acceptable for tools
   2. Change ok_alt to: https://github.com/langchain-ai/langchain
   3. Confirm as @misc entry type
   4. Mark fully VERIFIED
 
+**Will execute after Phase 5 completion**
+
 ---
 
-## PHASE 5: BULK RE-VERIFICATION FROM LINKS
+## PHASE 5: BULK RE-VERIFICATION FROM LINKS 🔴 CRITICAL - IN PROGRESS
 
-**Entries with ok_alt = URL (need fresh metadata extraction)**:
+**Status**: EXPANDED SCOPE - 23 entries require fresh metadata extraction  
+**Discovery Date**: January 21, 2026 (post Phase 3)  
+**Critical Issue**: Many entries marked VERIFIED have URLs in ok_alt but metadata NOT extracted per Rule 2
 
-1. wang2024hypergraphrag → https://arxiv.org/abs/2503.21322
-2. zhang2024graphvis → https://proceedings.neurips.cc/...
-3. bai2024hipporag → https://proceedings.neurips.cc/...
-4. neo4j2024graphrag → https://neo4j.com/books/...
-5. he2022ontology → https://aclanthology.org/K19-1015/
-6. fernandez2019ontology → https://aaai.org/papers/...
-7. you2021graph → https://arxiv.org/abs/1802.08773
-8. jimenezgutierrezHipporagNeurobiologicallyInspired2024 → https://arxiv.org/abs/2405.14831
+**Rule 2 Violation**: "IF ok_alt = URL THEN visit link, parse fresh metadata, update all columns"  
+**Impact**: ~25% of bibliography may have unverified or incorrect metadata
 
-**For each**:
-1. Visit URL
-2. Extract: Full author list, exact title, publication year, venue
-3. Update CSV with authoritative metadata
-4. Cross-check BibTeX entry matches
-5. Update if discrepancies found
+---
+
+### CATEGORY A: ALREADY VERIFIED (Notes confirm fresh metadata extraction)
+
+These entries have URLs in ok_alt AND notes showing metadata was extracted:
+
+1. ✅ **wang2024hypergraphrag** → https://arxiv.org/abs/2503.21322
+   - Notes: "Updated with 20 authors from authoritative source" ✓
+   
+2. ✅ **zhang2024graphvis** → https://proceedings.neurips.cc/paper_files/paper/2024/hash/7cb04f510593c9ba30da398f5e0a7e7b-Abstract-Conference.html
+   - Notes: "Verified 6 authors from arXiv" ✓
+   
+3. ✅ **guo2024lightrag** → https://arxiv.org/abs/2410.05779
+   - Notes: "Verified with 5 authors from arXiv (submitted Oct 8 2024)" ✓
+
+**Status**: NO ACTION NEEDED (already properly verified)
+
+---
+
+### CATEGORY B: NEEDS FRESH VERIFICATION (URLs present but no extraction evidence)
+
+These entries have URLs in ok_alt but notes DON'T indicate fresh metadata extraction:
+
+#### 🔴 HIGH PRIORITY - Year Discrepancies Detected
+
+1. **he2022ontology** → https://aclanthology.org/K19-1015/
+   - **CRITICAL**: Citation key says 2022, ACL Anthology URL says K19 (2019)
+   - Current: Authors: "He, S. et al.", Year: 2022, Title: "Learning to Represent Bilingual Dictionaries"
+   - Action: Visit K19-1015, extract actual metadata, likely rename to he2019ontology
+   - Notes: "Bilingual learning" (no verification evidence)
+
+2. **brown2023figurative** → https://aclanthology.org/2022.emnlp-main.481.pdf
+   - **CRITICAL**: Citation key says 2023, ACL Anthology URL says 2022.emnlp
+   - Current: Authors: "Brown, T. C. et al.", Year: 2023, Title: "Figurative Language Understanding: A Survey"
+   - Action: Visit URL, extract metadata, likely rename to brown2022figurative
+   - Notes: "Figurative language survey" (no verification evidence)
+
+3. **chen2024multilingual** → https://aclanthology.org/2020.findings-emnlp.290/
+   - **CRITICAL**: Citation key says 2024, ACL Anthology URL says 2020.findings-emnlp
+   - Current: Authors: "Chen, Z. et al.", Year: 2024, Title: "MultiLingual Knowledge Graph Completion via Ensemble Knowledge Distillation"
+   - Action: Visit URL, extract metadata, likely rename to chen2020multilingual
+   - Notes: "Multilingual KG completion" (no verification evidence)
+
+#### 🟡 MEDIUM PRIORITY - arXiv URLs (Need Author/Title Verification)
+
+4. **sarthi2024raptor** → https://arxiv.org/abs/2401.18059
+   - Current: Authors: "Sarthi, P. et al.", Year: 2024
+   - Notes: "Added OpenReview URL" (URL added but metadata not extracted)
+   - Action: Visit arXiv, extract full author list, verify title exactly
+
+5. **lewis2020retrieval** → https://arxiv.org/abs/2005.11401
+   - Current: Authors: "Lewis, P. et al.", Year: 2020
+   - Notes: "Foundational RAG paper" (no verification evidence)
+   - Action: Visit arXiv, extract full author list (likely Facebook AI authors)
+
+6. **you2018graph** → https://arxiv.org/abs/1802.08773
+   - Current: Authors: "You, J. et al.", Year: 2018
+   - Notes: "Year corrected: key updated from you2021graph to you2018graph"
+   - Action: Visit arXiv, verify authors and title (year already corrected)
+
+7. **zhou2024collaborative** → https://arxiv.org/html/2411.04920v1
+   - Current: Authors: "Zhou, X. et al.", Year: 2024
+   - Notes: "LLM knowledge construction" (no verification evidence)
+   - Action: Visit arXiv, extract full author list, verify title
+
+8. **chenOmniRAGComprehensiveRetrievalAugmented2025** → https://arxiv.org/abs/2501.02460
+   - Current: Authors: "Chen, Z. et al.", Year: 2025
+   - Notes: "Medical RAG comprehensive" (no verification evidence)
+   - Action: Visit arXiv, extract authors, verify title
+
+9. **zhao2025medrag** → https://arxiv.org/abs/2502.04413
+   - Current: Authors: "Zhao, X. et al.", Year: 2025
+   - Notes: "Replacement for jin2024medrag" (no verification evidence)
+   - Action: Visit arXiv, extract authors, verify title
+
+10. **costa2022no** → https://arxiv.org/abs/2207.04672
+    - Current: Authors: "Costa-jussà, M. R. et al.", Year: 2022
+    - Notes: "Multilingual MT foundation" (no verification evidence)
+    - Action: Visit arXiv, extract full author list (NLLB paper, many authors)
+
+11. **zhao2020knowledge** → https://arxiv.org/abs/2106.07935
+    - Current: Authors: "Zhao, W. et al.", Year: 2020
+    - Notes: "Readability with KG" (no verification evidence)
+    - Action: Visit arXiv, verify year matches (arXiv ID is 2106 = June 2021, not 2020!)
+
+12. **sun2020knowledge** → https://arxiv.org/abs/1809.00782
+    - Current: Authors: "Sun, H. et al.", Year: 2020
+    - Notes: "KB-text fusion" (no verification evidence)
+    - Action: Visit arXiv, verify year (arXiv ID is 1809 = Sept 2018, not 2020!)
+
+#### 🟢 LOW PRIORITY - Book/Misc URLs (Need Title/Metadata Verification)
+
+13. **neo4j2024graphrag** → https://neo4j.com/books/definitive-guide-graph-databases-rdbms-developer/
+    - Current: Authors: "Neo4j Inc.", Year: 2024
+    - Notes: "Changed to @book with exact title" (title extracted but needs verification)
+    - Action: Visit URL, verify title exactly, check publication date
+
+14. **liu2022llamaindex** → https://www.ibm.com/think/topics/llamaindex
+    - Current: Authors: "Liu, J.", Year: 2022
+    - Notes: "GitHub repository" (contradicts ok_alt which is IBM blog)
+    - Action: Visit IBM blog, extract metadata, determine if @misc or @online
+
+15. **christie2019indigenous** → https://www.msd.govt.nz/about-msd-and-our-work/publications-resources/journals-and-magazines/social-policy-journal/spj17/decolonizing-methodologies-research-and-indigenous-peoples.html
+    - Current: Authors: "Christie, M.", Year: 2019
+    - Notes: "Indigenous research ethics" (no verification evidence)
+    - Action: Visit URL, extract authors, title, journal details
+
+16. **fernandez2019ontology** → https://aaai.org/papers/0005-ss97-06-005-methontology-from-ontological-art-towards-ontological-engineering/
+    - Current: Authors: "Fernández-López, M. et al.", Year: 2000
+    - Notes: "Ontology methodology" (no verification evidence)
+    - Action: Visit AAAI URL (says ss97 = 1997, not 2000!), extract metadata
+
+17. **poveda2014oops** → https://www.semantic-web-journal.net/system/files/swj989.pdf
+    - Current: Authors: "Poveda-Villalón, M. et al.", Year: 2014
+    - Notes: "Ontology validation tool" (no verification evidence)
+    - Action: Visit PDF, extract authors, verify title and year
+
+18. **kenyatta1938facing** → https://sahistory.org.za/sites/default/files/archive-files3/jomo_kenyatta_facing_mount_kenya_the_tribal_lifbook4me.org_.pdf
+    - Current: Authors: "Kenyatta, J.", Year: 1938
+    - Notes: "Kikuyu ethnography" (no verification evidence)
+    - Action: Visit PDF, verify title page matches 1938 Secker and Warburg edition
+
+19. **noy2001ontology** → https://protege.stanford.edu/publications/ontology_development/ontology101.pdf
+    - Current: Authors: "Noy, N. F. & McGuinness, D. L.", Year: 2001
+    - Notes: "Ontology development guide" (no verification evidence)
+    - Action: Visit Stanford PDF, extract metadata from document
+
+20. **suarez2012ontology** → https://link.springer.com/chapter/10.1007/978-3-642-24794-1_1
+    - Current: Authors: "Suárez-Figueroa, M. C. et al.", Year: 2012
+    - Notes: "Ontology engineering" (no verification evidence)
+    - Action: Visit Springer link, extract authors, verify title
+
+21. **ma2023hybrid** → https://medium.com/@zhengbuqian/enhancing-information-retrieval-with-learned-sparse-embeddings-16e701db4003
+    - Current: Authors: "Ma, X. et al.", Year: 2023
+    - Notes: "Hybrid retrieval" (no verification evidence)
+    - Action: Visit Medium blog, determine if blog post or links to paper
+
+22. **almeida2019challenges** → https://chnt.at/wp-content/uploads/Bordoni_2014.pdf
+    - Current: Authors: "Almeida, J. P. et al.", Year: 2019
+    - Notes: "Domain ontology" (no verification evidence)
+    - Action: Visit PDF (URL says Bordoni 2014, not Almeida 2019!), extract metadata
+
+23. **keegan2017maori** → https://researchcommons.waikato.ac.nz/entities/publication/46ddab82-fb00-4911-8e70-d1ac59879fc8
+    - Current: Authors: "Keegan, T. T. et al.", Year: 2017
+    - Notes: "Indigenous language tech" (no verification evidence)
+    - Action: Visit Waikato repository, extract full metadata
+
+---
+
+### PHASE 5 WORKFLOW
+
+**For each entry in Category B (23 entries)**:
+
+1. **Visit ok_alt URL** using fetch_webpage tool
+2. **Extract authoritative metadata**:
+   - Full author list (all authors, not "et al.")
+   - Exact title (word-for-word from source)
+   - Publication year (from source, not arXiv submission date)
+   - Venue (journal, conference, book publisher)
+3. **Compare extracted vs. CSV data**:
+   - Authors match? (check first author especially)
+   - Year matches? (RED FLAG if discrepancy)
+   - Title matches? (check for errors)
+   - Venue correct?
+4. **Update CSV if discrepancies found**:
+   - Authors column: Update with full list
+   - Year column: Correct to authoritative source
+   - Title column: Fix any errors
+   - Venue column: Update with official venue
+   - Notes column: Add "Verified from [URL] - [metadata extracted]"
+5. **Update references.bib if needed**:
+   - If year changed: Rename citation key
+   - If authors changed: Update author field
+   - If title changed: Update title field
+   - If venue changed: Update journal/booktitle/etc.
+6. **Update thesis chapters if citation key changed**:
+   - Search for \cite{OLD_KEY}
+   - Replace with \cite{NEW_KEY}
+7. **Mark entry as truly VERIFIED**:
+   - Update Verification_Status if needed
+   - Update ok_alt to "ok" after URL verification complete
+
+---
+
+### EXPECTED ISSUES TO FIX
+
+Based on URL analysis, likely corrections needed:
+
+**Year Mismatches** (6+ entries):
+- he2022ontology → he2019ontology (K19 = 2019)
+- brown2023figurative → brown2022figurative (2022.emnlp)
+- chen2024multilingual → chen2020multilingual (2020.findings-emnlp)
+- zhao2020knowledge → zhao2021knowledge (arXiv 2106 = June 2021)
+- sun2020knowledge → sun2018knowledge (arXiv 1809 = Sept 2018)
+- fernandez2019ontology → fernandez1997ontology (ss97 = 1997)
+- almeida2019challenges → bordoni2014... (URL says 2014)
+
+**Author Mismatches** (unknown until verification):
+- liu2022llamaindex: May need corporate author or different author
+- ma2023hybrid: Verify first author from actual paper
+- Others TBD
+
+**Title Errors** (unknown until verification):
+- Multiple entries may have slight title variations
+
+---
+
+### PHASE 5 TIMELINE
+
+**Estimated Time**: 4-5 hours total
+- High Priority (3 year discrepancies): 45 min
+- Medium Priority (12 arXiv URLs): 2 hours
+- Low Priority (8 misc URLs): 1.5 hours
+- CSV + BibTeX updates: 1 hour
+
+**Completion Target**: January 21, 2026 (end of day)
+
+---
+
+**NEXT ACTION**: Start with HIGH PRIORITY entries (year discrepancies) first
 
 ---
 
