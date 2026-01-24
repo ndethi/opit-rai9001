@@ -16,6 +16,32 @@
 
 ## What Changed Between Versions
 
+### Content Revisions (Post-Defense Directives)
+
+The December 30 version included initial post-defense revisions. The January 24 version includes **additional substantive revisions**:
+
+**Directive 1: Evaluation Methodology Transparency (Jan 18)**
+- Chapter 3 (Methodology): +180 lines of detailed explanation
+- Clarified automated evaluation approach
+- Added transparency about LLM-as-judge limitations
+- Removed explicit defense references (let transparency stand alone)
+
+**Directive 2: Future Work Expansion (Jan 19)**
+- Chapter 7 (Conclusion): Added interactive chatbot interface section
+- Expanded practical applications discussion
+
+**Directive 3: Africa Proverbs Working Group (Jan 19)**
+- Chapter 7 (Conclusion): Added collaborative future work
+- Highlighted broader African language applications
+
+**Directive 4: Research Design Refinement (Jan 19)**
+- Deformalized hypotheses → exploratory research design
+- Emphasized rigorous comparative evaluation framework
+
+**Directive 5: Database Accuracy (Jan 19)**
+- Chapters 1, 3, 4, 7: Updated ontology counts
+- Aligned with actual AuraDB database: 959 concepts, 6,445 relationships
+
 ### Bibliography & Citations
 
 | Item | Before | After | Impact |
@@ -27,16 +53,19 @@
 | **URL Verification** | Not verified | **87%** | ✅ Verified |
 | **Metadata Accuracy** | ~8 errors | **0** | ✅ Fixed |
 
-### Citation Corrections by Chapter
+### Post-Defense Revisions by Chapter
 
-| Chapter | Corrections Made |
-|---------|-----------------|
-| **01-introduction.tex** | 1 error fixed (ireri2017kikuyu → ireri2019proverbs) |
-| **02-literature-review-simple.tex** | 1 duplicate fixed (edge2024graphrag → edge2024local) |
-| **02-literature-review-v2.0.0.tex** | 2 duplicates fixed (edge2024graphrag → edge2024local) |
-| **05-evaluation.tex** | 1 duplicate fixed (ireri2019 → ireri2019proverbs) |
-| **06-discussion.tex** | 1 duplicate fixed (yasunaga2021qa → yasunaga2021qagnn) |
-| **references.bib** | 10+ new entries, 2 deletions, 4 consolidations |
+| Chapter | Content Revisions | Citation Corrections |
+|---------|------------------|---------------------|
+| **01-introduction.tex** | Updated ontology counts to match AuraDB database | 1 error fixed (ireri2017kikuyu → ireri2019proverbs) |
+| **02-literature-review-simple.tex** | - | 1 duplicate fixed (edge2024graphrag → edge2024local) |
+| **02-literature-review-v2.0.0.tex** | - | 2 duplicates fixed (edge2024graphrag → edge2024local) |
+| **03-methodology.tex** | **Major: 180+ lines added** - Evaluation methodology transparency, removed defense references | Fixed citation keys |
+| **04-design-implementation.tex** | Updated ontology counts to match database | - |
+| **05-evaluation.tex** | Methodology transparency updates | 1 duplicate fixed (ireri2019 → ireri2019proverbs) |
+| **06-discussion.tex** | Methodology transparency, future work additions | 1 duplicate fixed (yasunaga2021qa → yasunaga2021qagnn) |
+| **07-conclusion.tex** | Added Africa Proverbs Working Group, chatbot interface future work, ontology count updates | - |
+| **references.bib** | - | 10+ new entries, 2 deletions, 4 consolidations |
 
 ---
 
