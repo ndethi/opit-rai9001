@@ -33,7 +33,7 @@ These early efforts established the technical feasibility of integrating structu
 
 \subsection{Architectural Breakthroughs}
 
-Today's OG-RAG systems represent a fundamental departure from these earlier attempts, though whether they've solved the core problems or merely shifted them remains debatable. \citet{edge2024graphrag} introduced what might be the most significant conceptual advance: hypergraph-based retrieval, where knowledge is organized as hyperedges connecting multiple entities simultaneously. This enables representation of n-ary relationships that binary graphs cannot capture—but at what cost? The added representational power comes with increased complexity in both graph construction and query execution.
+Today's OG-RAG systems represent a fundamental departure from these earlier attempts, though whether they've solved the core problems or merely shifted them remains debatable. \citet{edge2024local} introduced what might be the most significant conceptual advance: hypergraph-based retrieval, where knowledge is organized as hyperedges connecting multiple entities simultaneously. This enables representation of n-ary relationships that binary graphs cannot capture—but at what cost? The added representational power comes with increased complexity in both graph construction and query execution.
 
 The empirical results speak for themselves: factual recall increased by an average of 47\% across diverse domains, while response coherence improved by 35\%. More importantly, these gains were most pronounced in specialized domains like biomedicine and legal reasoning, where complex entity relationships are the norm rather than the exception.
 
@@ -41,7 +41,7 @@ Meanwhile, \citet{sarthi2024raptor} approached the problem from a different angl
 
 \subsection{Graph Neural Networks Come of Age}
 
-Recent advances in graph neural networks have enabled increasingly sophisticated integration with language models. GraphRAG \citep{edge2024graphrag} exemplifies this evolution, employing community detection algorithms to identify semantically related entity clusters within knowledge graphs. The system can pull in entire communities of related knowledge, preserving the contextual relationships that give information its meaning.
+Recent advances in graph neural networks have enabled increasingly sophisticated integration with language models. GraphRAG \citep{edge2024local} exemplifies this evolution, employing community detection algorithms to identify semantically related entity clusters within knowledge graphs. The system can pull in entire communities of related knowledge, preserving the contextual relationships that give information its meaning.
 
 The integration of hypothetical document generation techniques has opened new possibilities for retrieval systems. \citet{gao2022hyde} introduced HyDE (Hypothetical Document Embeddings), a technique that generates hypothetical documents from queries and uses these synthetic documents to guide retrieval. By encoding relevance patterns in generated documents rather than directly in queries, HyDE achieves more effective zero-shot retrieval, demonstrating how generative models can enhance retrieval mechanisms even without task-specific training.
 
