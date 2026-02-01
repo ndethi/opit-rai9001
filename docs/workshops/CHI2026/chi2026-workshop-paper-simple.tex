@@ -1,0 +1,271 @@
+% CHI 2026 Workshop Paper: AI Across Cultures
+% thiLLMo: Ontology-Grounded RAG for Culturally Faithful Kikuyu Proverb Translation
+% Author: Charles Watson Ndethi Kibaki
+% Note: Using standard article class for easier compilation
+
+\documentclass[11pt,twocolumn]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{cite}
+
+% Hyperlink setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=blue,
+}
+
+% Title and Author
+\title{\textbf{Ontology-Grounded RAG for Culturally Faithful Kikuyu Proverb Translation: A Case Study in AI for Low-Resource Languages}\\
+\vspace{0.5em}
+\large Workshop Paper: AI Across Cultures @ CHI 2026}
+
+\author{
+Charles Watson Ndethi Kibaki\\
+Open Institute of Technology (OPIT)\\
+St. Julian's, Malta\\
+\texttt{charleswatsonndeth.k@students.opit.com}
+}
+
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent Artificial Intelligence systems for translation often fail catastrophically when dealing with culturally embedded expressions like proverbs, particularly for low-resource languages. This paper presents \textit{thiLLMo}, an Ontology-Grounded Retrieval Augmented Generation (OG-RAG) system designed for culturally faithful Kikuyu-to-English proverb translation. 
+
+We developed a formal cultural ontology capturing 100 Kikuyu proverbs focused on wealth and prosperity, encoding cultural themes, metaphorical meanings, and usage contexts. Our evaluation demonstrates that OG-RAG significantly outperforms both baseline GPT-4 (10.5\% improvement in cultural authenticity, p < 0.000001) and traditional RAG approaches (7.4\% improvement, p < 0.000001).
+
+This work contributes: (1) empirical evidence that formal ontologies enhance cultural preservation in LLM-based translation; (2) a methodology for developing culturally-grounded AI systems for indigenous languages; and (3) insights into evaluation challenges for cultural translation tasks. We discuss limitations of automated evaluation and propose community-based validation as critical future work for culturally respectful AI development.
+
+\textbf{Keywords:} Cultural AI, Low-Resource Languages, Kikuyu, Proverb Translation, Ontology-Grounded RAG, Indigenous Knowledge Systems
+\end{abstract}
+
+\section{Introduction}
+
+While AI and Human-Computer Interaction are often presented as universal, their design, data, and governance remain predominantly rooted in high-resource environments. This creates significant gaps when addressing culturally diverse communities and indigenous languages \cite{nekoto2020participatory}. Nowhere is this more evident than in translation of culturally embedded expressions like proverbs, which encode worldviews, values, and historical wisdom that resist direct lexical mapping \cite{finnegan2012oral}.
+
+\subsection{The Challenge of Cultural Translation}
+
+Kikuyu, a Bantu language spoken by over 8 million people in Kenya, exemplifies the challenges of low-resource language AI. Traditional machine translation fails catastrophically for Kikuyu proverbs because:
+
+\begin{itemize}
+    \item \textbf{Cultural Context Loss:} Proverbs are embedded in cultural worldviews with no direct equivalents
+    \item \textbf{Metaphorical Complexity:} Figurative language requires nuanced cultural understanding
+    \item \textbf{Data Scarcity:} Limited digital resources and parallel translation corpora
+    \item \textbf{LLM Limitations:} Even advanced models hallucinate or produce culturally inappropriate translations
+\end{itemize}
+
+Consider the Kikuyu proverb ``\textit{Andu ni indo}'' (literally: ``People are wealth''). A literal translation misses the profound cultural teaching that community relationships and social capital constitute true prosperity---a worldview fundamentally different from Western individualistic notions of wealth.
+
+\subsection{Our Contribution}
+
+This paper presents \textit{thiLLMo}\footnote{thiLLMo combines ``thimo'' (Kikuyu word for proverbs) with ``LLM'' (Large Language Model)}, an Ontology-Grounded Retrieval Augmented Generation system that:
+
+\begin{enumerate}
+    \item Encodes Kikuyu cultural knowledge in a formal ontology (Neo4j knowledge graph with 100 proverbs, 50+ cultural concepts, 500+ relationships)
+    \item Integrates ontology-based retrieval with GPT-4 for culturally faithful translation
+    \item Demonstrates 10.5\% improvement in cultural authenticity over baseline GPT-4 (p < 0.000001)
+    \item Establishes culturally-aware evaluation metrics addressing limitations of standard MT metrics
+\end{enumerate}
+
+Our work provides empirical evidence that explicitly integrating structured cultural knowledge enhances LLM-based translation for culturally embedded expressions, offering a methodology applicable to other indigenous language contexts.
+
+\section{Related Work}
+
+\subsection{AI for Low-Resource Languages}
+
+Recent work has highlighted the severe underrepresentation of African languages in NLP systems \cite{nekoto2020participatory}. While projects like Masakhane \cite{orife2020masakhane} have made progress in neural machine translation for African languages, these approaches often struggle with figurative and culturally nuanced expressions due to data scarcity and lack of cultural context encoding.
+
+\subsection{Retrieval Augmented Generation}
+
+RAG has emerged as a promising approach to enhance LLM outputs by grounding generation in external knowledge \cite{lewis2020retrieval}. However, most RAG implementations use unstructured document retrieval, which may not capture the relational and hierarchical nature of cultural knowledge. Ontology-grounded approaches \cite{li2024ontology} show promise for structured domain knowledge integration.
+
+\subsection{Cultural Preservation in NLP}
+
+Work on culturally-aware NLP has emphasized the need for evaluation frameworks that go beyond lexical similarity \cite{hershcovich2022challenges}. Our contribution extends this by demonstrating how formal ontologies can encode and preserve cultural context in translation tasks.
+
+\section{Methodology}
+
+\subsection{Cultural Ontology Development}
+
+We developed a domain-specific ontology for Kikuyu proverbs related to wealth and prosperity using the following methodology:
+
+\textbf{Data Collection:} 100 proverbs from ``1000 Kikuyu Proverbs'' and Margaret Wambere Ireri's collection on money and wealth \cite{ireri2019proverbs}, with expert translations providing culturally-informed English interpretations.
+
+\textbf{Concept Extraction:} LLM-assisted extraction (GPT-4) identified 50+ cultural concepts including:
+\begin{itemize}
+    \item \textit{Utonga} (holistic wealth: material + social capital)
+    \item \textit{Ngwatio} (reciprocity in wealth distribution)
+    \item Agricultural metaphors (granary, land, cultivation)
+    \item Social structures (clan, community, kinship)
+\end{itemize}
+
+\textbf{Ontology Structure:} Neo4j knowledge graph with nodes (Proverbs, Concepts, Themes, Contexts) and relationships (HAS\_THEME, RELATES\_TO, USED\_IN, TEACHES\_ABOUT).
+
+\subsection{OG-RAG System Architecture}
+
+Our system comprises four key components:
+
+\begin{enumerate}
+    \item \textbf{Ontology Retrieval:} Cypher queries retrieve culturally relevant concepts based on semantic similarity (Sentence-BERT embeddings) and graph relationships
+    \item \textbf{Context Assembly:} Retrieved concepts structured into cultural context including themes, metaphors, usage scenarios, and related proverbs
+    \item \textbf{Prompt Engineering:} Ontology-derived context integrated into GPT-4 prompts with explicit instructions for cultural preservation
+    \item \textbf{Translation Generation:} GPT-4 generates translations grounded in cultural knowledge
+\end{enumerate}
+
+\subsection{Evaluation Framework}
+
+We compared three systems:
+\begin{itemize}
+    \item \textbf{Raw GPT-4:} Direct translation without knowledge augmentation
+    \item \textbf{Traditional RAG:} Vector-similarity retrieval over unstructured documents
+    \item \textbf{OG-RAG (thiLLMo):} Ontology-grounded retrieval with structured cultural context
+\end{itemize}
+
+\textbf{Automated Metrics:}
+\begin{itemize}
+    \item \textbf{Cultural Authenticity (60\%):} Sentence-BERT semantic similarity, cultural pattern matching, theme preservation
+    \item \textbf{Translation Fidelity (40\%):} ROUGE-L, word overlap, structural similarity
+    \item \textbf{LLM-as-Judge:} Gemini 2.5 Pro evaluation across cultural faithfulness, accuracy, business relevance, fluency
+\end{itemize}
+
+\textbf{Important Limitation:} All metrics are automated; no formal human evaluation with community members was conducted (see Section \ref{sec:limitations}).
+
+\section{Results}
+
+\subsection{Quantitative Evaluation}
+
+Table \ref{tab:results} presents evaluation results across 100 proverbs.
+
+\begin{table}[h]
+\centering
+\caption{Cultural Metrics Summary Statistics}
+\label{tab:results}
+\begin{tabular}{lccc}
+\toprule
+\textbf{System} & \textbf{Cultural} & \textbf{Trans.} & \textbf{Overall} \\
+ & \textbf{Auth.} & \textbf{Fidelity} &  \\
+\midrule
+Raw GPT-4 & 0.568 & 0.308 & 0.335 \\
+ & $\pm$ 0.080 & $\pm$ 0.154 & $\pm$ 0.083 \\
+Trad RAG & 0.584 & 0.334 & 0.351 \\
+ & $\pm$ 0.088 & $\pm$ 0.167 & $\pm$ 0.091 \\
+\textbf{OG-RAG} & \textbf{0.627} & \textbf{0.369} & \textbf{0.380} \\
+ & $\pm$ \textbf{0.089} & $\pm$ \textbf{0.151} & $\pm$ \textbf{0.085} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Statistical Significance:} Paired t-tests confirmed OG-RAG's superiority:
+\begin{itemize}
+    \item OG-RAG vs Raw GPT-4: $t = 7.468$, $p < 0.000001$
+    \item OG-RAG vs Traditional RAG: $t = 5.341$, $p < 0.000001$
+\end{itemize}
+
+\subsection{Qualitative Analysis}
+
+\textbf{Example 1 - Cultural Preservation:}
+
+\begin{quote}
+\textit{Kikuyu:} ``Andu ni indo''\\
+\textit{Expert:} ``People are wealth''\\
+\textit{Raw GPT-4:} ``People are wealth''\\
+\textit{Trad RAG:} ``People are wealth''\\
+\textit{OG-RAG:} ``People are the true wealth''
+\end{quote}
+
+OG-RAG adds ``true'' to emphasize the cultural teaching that community relationships constitute genuine prosperity, not just material possessions.
+
+\textbf{Example 2 - Metaphor Handling:}
+
+\begin{quote}
+\textit{Kikuyu:} ``Cia thuguri itiyuragia ikumbi''\\
+\textit{Expert:} ``Bought things do not fill the granary''\\
+\textit{Cultural Meaning:} ``One must work hard to achieve wealth''\\
+\textit{Raw GPT-4:} ``The ways of a thief are not a secret''\\
+\textit{Trad RAG:} ``The fruits of hard work are sweet''\\
+\textit{OG-RAG:} ``Purchased goods do not fill the barn''
+\end{quote}
+
+OG-RAG preserves the agricultural metaphor (granary/barn) while maintaining cultural meaning about self-reliance, whereas Raw GPT-4 hallucinates unrelated content.
+
+\section{Discussion}
+
+\subsection{Implications for Culturally-Grounded AI}
+
+Our results demonstrate that formal knowledge representation can meaningfully enhance LLM-based cultural translation. The 10.5\% improvement in cultural authenticity, while statistically significant, suggests there is substantial room for improvement---possibly through:
+
+\begin{itemize}
+    \item Richer ontology structure (more concepts, deeper relationships)
+    \item Community-sourced cultural knowledge
+    \item Fine-tuning on culturally-grounded parallel corpora
+    \item Hybrid approaches combining symbolic and neural methods
+\end{itemize}
+
+\subsection{Evaluation Challenges}
+\label{sec:limitations}
+
+\textbf{Critical Limitation:} All evaluation was automated. Standard MT metrics like BLEU fail for cultural translation because they prioritize lexical overlap over semantic and cultural preservation. Our custom metrics provide comparative signals but cannot validate cultural appropriateness.
+
+\textbf{Future Work:} Community-based participatory evaluation with native Kikuyu speakers is essential. This would involve:
+\begin{itemize}
+    \item Multi-annotator cultural fidelity assessment
+    \item Elder/expert validation of cultural accuracy
+    \item Usage context appropriateness evaluation
+    \item Community ownership of evaluation criteria
+\end{itemize}
+
+\subsection{Ethical Considerations}
+
+Working with indigenous cultural knowledge raises important questions:
+\begin{itemize}
+    \item \textbf{Representation:} Who has authority to encode cultural knowledge?
+    \item \textbf{Ownership:} How do we ensure community ownership of digital cultural artifacts?
+    \item \textbf{Benefit:} How does this work serve the Kikuyu community's priorities?
+\end{itemize}
+
+Our work represents a technical demonstration, but true cultural AI requires participatory co-design with communities, not just technical solutions imposed from outside.
+
+\section{Conclusion and Future Work}
+
+This paper demonstrates that ontology-grounded RAG can enhance cultural preservation in LLM-based translation for low-resource languages. Our results show significant improvements over baseline approaches, but also reveal critical gaps in evaluation methodology and community participation.
+
+\textbf{Key Takeaways:}
+\begin{itemize}
+    \item Formal cultural ontologies provide structured context that enhances LLM translation
+    \item Standard MT metrics fail for cultural translation tasks
+    \item Automated evaluation cannot replace community validation
+    \item Culturally-grounded AI requires participatory design, not just technical solutions
+\end{itemize}
+
+\textbf{Future Directions:}
+\begin{enumerate}
+    \item Community-based participatory evaluation framework
+    \item Expanded ontology with elder/expert knowledge co-creation
+    \item Multi-lingual extension to other Kenyan languages (Luo, Swahili, Luhya)
+    \item Policy framework for ethical indigenous knowledge AI
+\end{enumerate}
+
+We invite the CHI 2026 ``AI Across Cultures'' workshop community to engage with these challenges and opportunities for building truly culturally-grounded AI systems.
+
+\section*{Acknowledgments}
+
+This work was conducted as part of the MSc in Responsible AI program at Open Institute of Technology (OPIT). Thanks to the Kikuyu community and cultural experts who provided translations and knowledge that made this research possible.
+
+% Bibliography
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
