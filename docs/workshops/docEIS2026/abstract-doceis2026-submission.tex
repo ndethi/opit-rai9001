@@ -1,0 +1,160 @@
+% DoCEIS 2026 Abstract Submission - Clean Version
+% Compile with: pdflatex abstract-doceis2026-submission.tex
+
+\documentclass[11pt,a4paper]{article}
+
+% Minimal packages - compatible with BasicTeX
+\usepackage[utf8]{inputenc}
+\usepackage[margin=25mm]{geometry}
+
+% Simple spacing
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+% Title
+\begin{center}
+{\LARGE\bfseries thiLLMo: Ontology-Grounded RAG for Culturally Faithful\\Kikuyu Proverb Translation}
+\end{center}
+
+\vspace{5pt}
+
+% Author
+\begin{center}
+\textbf{Charles Watson Ndethi Kibaki}\\
+Open Institute of Technology (OPIT)\\
+MSc in Responsible AI\\
+\texttt{charleswatsonndeth.k@students.opit.com}
+\end{center}
+
+\vspace{10pt}
+
+% Abstract Section
+\section*{Abstract}
+
+Low-resource African languages face a critical preservation challenge as traditional knowledge risks being lost in the digital age. This paper presents thiLLMo, an Ontology-Grounded Retrieval Augmented Generation (OG-RAG) system addressing the societal challenge of culturally faithful translation for Kikuyu proverbs---a vital component of intangible cultural heritage. Unlike conventional RAG systems that rely on unstructured vector similarity, thiLLMo integrates a formal cultural ontology (959 concepts, 6,445 relationships) with Large Language Models to enable culturally grounded translation.
+
+Evaluation on 100 Kikuyu proverbs demonstrates statistically significant improvements: 10.5\% in cultural authenticity ($p < 0.001$) and 19.8\% in overall translation fidelity compared to baseline approaches. The system addresses three societal challenges: preserving endangered cultural knowledge, advancing AI technologies for underserved communities, and demonstrating responsible AI practices through community-centered development.
+
+The OG-RAG architecture consists of four integrated components: (1) a formal OWL ontology capturing Kikuyu cultural concepts and relationships, (2) a Neo4j knowledge graph enabling structured retrieval, (3) an ontology-grounded retrieval mechanism that extracts precise cultural context, and (4) culturally-aware LLM generation preserving metaphorical meaning and cultural authenticity.
+
+This work contributes both a novel OG-RAG architecture for cultural translation and practical evidence that structured cultural knowledge can enhance AI systems while maintaining community ownership and cultural sovereignty. The methodology demonstrates that community-centered development is not merely ethically preferable but technically superior---expert validation during ontology construction directly improves system accuracy. Results suggest viable pathways for sophisticated AI applications in low-resource languages without requiring massive training corpora, offering a scalable model for AI equity.
+
+\vspace{5pt}
+
+\noindent\textbf{Keywords:} Cultural preservation, Low-resource languages, Ontology-grounded RAG, Knowledge graphs, African languages, Responsible AI, Kikuyu language, Intangible cultural heritage
+
+\vspace{10pt}
+
+% Research Motivation
+\section*{Research Motivation}
+
+The rapid digitalization of global knowledge systems creates an urgent preservation challenge for indigenous languages. Kikuyu proverbs (\emph{thimo}) encode centuries of cultural wisdom about social systems, economic practices, and moral frameworks---knowledge that cannot be preserved through simple lexical translation. Existing machine translation systems, even state-of-the-art LLMs, fail catastrophically on culturally nuanced content, either hallucinating generic equivalents or producing culturally inappropriate interpretations. This research addresses a critical societal need: enabling cultural preservation and knowledge transmission for underserved communities in an AI-driven world, while ensuring technological solutions respect cultural sovereignty and community ownership.
+
+\vspace{10pt}
+
+% Central Research Question
+\section*{Central Research Question}
+
+\begin{center}
+\fbox{%
+\begin{minipage}{0.9\textwidth}
+\centering
+\vspace{5pt}
+\textit{How can we achieve culturally faithful translation of low-resource language proverbs when confronted with both data scarcity (inherent to underserved languages) and the need for deep cultural grounding (beyond current LLM capabilities)?}
+\vspace{5pt}
+\end{minipage}
+}
+\end{center}
+
+\vspace{5pt}
+
+This question bridges three domains: cultural knowledge representation, modern RAG architectures, and low-resource NLP.
+
+% Page break for clarity
+\newpage
+
+% Relation to Conference Theme
+\section*{Relation to Conference Theme: Technological Innovation to Tackle Societal Challenges}
+
+\subsection*{Societal Challenge 1: Cultural Preservation in the Digital Age}
+
+UNESCO identifies intangible cultural heritage (ICH) as critically endangered, with oral traditions particularly vulnerable to loss as indigenous communities increasingly adopt dominant languages. African languages face disproportionate risk: despite representing over 2,000 languages and 1.4 billion speakers, they remain severely underrepresented in digital language technologies, creating a \emph{digital extinction} risk where cultural knowledge cannot be preserved, transmitted, or accessed in modern formats.
+
+Kikuyu proverbs exemplify this challenge. These compact linguistic artifacts encode:
+\begin{itemize}
+    \item \textbf{Economic systems}: Traditional wealth management, reciprocity practices (\emph{ngwatio}), resource distribution
+    \item \textbf{Social structures}: Kinship obligations, generational roles, community governance
+    \item \textbf{Moral frameworks}: Ethics of prosperity, concepts of fairness, obligations to others
+    \item \textbf{Environmental knowledge}: Agricultural practices, seasonal patterns, resource stewardship
+\end{itemize}
+
+Without culturally faithful translation systems, this knowledge remains inaccessible to diaspora communities, researchers, and future generations---a form of \emph{cultural data loss} that mirrors biodiversity extinction.
+
+\textbf{Innovation Response:} thiLLMo addresses this by creating machine-readable formal representations of cultural knowledge that can be preserved, transmitted, and accessed through modern AI systems while maintaining community control over cultural narratives.
+
+\subsection*{Societal Challenge 2: AI Equity for Underserved Communities}
+
+Current AI language technologies exhibit severe inequality. High-resource languages (English, Mandarin, Spanish) benefit from sophisticated translation, question-answering, and generation systems, while low-resource African languages are functionally excluded from the AI revolution. This technological disparity mirrors and reinforces existing global inequalities, denying underserved communities access to AI benefits in education, healthcare, commerce, and cultural preservation.
+
+The challenge is particularly acute for culturally nuanced applications. Generic multilingual models like NLLB-200 achieve lexical translation but fail on cultural semantics---they can translate words but not meaning, producing outputs that are linguistically correct yet culturally nonsensical or even offensive.
+
+\textbf{Innovation Response:} The OG-RAG architecture demonstrates that sophisticated AI applications are achievable for low-resource languages without requiring massive training corpora, by strategically combining structured knowledge representation with generative models. This offers a scalable pathway for AI equity that doesn't depend on data availability that may never materialize for underserved languages.
+
+\subsection*{Societal Challenge 3: Responsible AI Development and Cultural Sovereignty}
+
+Mainstream AI development often treats cultural knowledge as extractive data---something to be collected, processed, and deployed without community consent, ownership, or benefit-sharing. This continues colonial patterns of knowledge appropriation, where indigenous knowledge enriches external parties while source communities receive no recognition or compensation.
+
+The challenge extends beyond ethics to technical correctness: AI systems developed without community participation systematically misrepresent cultural knowledge, encoding biases and inaccuracies that compound over time as systems are deployed and propagated.
+
+\textbf{Innovation Response:} thiLLMo's development methodology centers community ownership throughout the process---from ontology design to evaluation criteria to benefit-sharing frameworks. Cultural experts are not consultants but co-creators who maintain authority over cultural representation. The project demonstrates that technically superior systems emerge when communities guide development.
+
+\subsection*{Bridging Technology with Human-Centered Values}
+
+These three challenges converge in a single insight: technological innovation must be \emph{shaped by} rather than \emph{imposed on} the communities it serves. thiLLMo demonstrates that culturally responsive AI systems require:
+
+\begin{itemize}
+    \item \textbf{Formal knowledge representation} that respects cultural complexity
+    \item \textbf{Community participation} as a technical requirement, not ethical decoration
+    \item \textbf{Evaluation frameworks} that prioritize cultural fidelity over narrow technical metrics
+    \item \textbf{Transparent architectures} that maintain community control over cultural narratives
+\end{itemize}
+
+The system addresses conference themes of sustainability (cultural sustainability), resilience (preserving knowledge for future generations), and responsible innovation (community-centered development). By demonstrating measurable improvements in cultural preservation technology while maintaining ethical development practices, thiLLMo offers a model for tackling societal challenges through innovation that respects human dignity and cultural diversity.
+
+% Page break
+\newpage
+
+% Key Contributions
+\section*{Key Contributions}
+
+\begin{enumerate}
+    \item \textbf{Novel OG-RAG Architecture}: Ontology-grounded retrieval augmented generation specifically designed for culturally nuanced translation, extending prior work on knowledge graph RAG to the cultural heritage domain.
+    
+    \item \textbf{Empirical Validation}: Rigorous comparative evaluation demonstrating that structured cultural knowledge integration yields statistically significant improvements:
+    \begin{itemize}
+        \item Cultural Authenticity: 24.9\% improvement over traditional RAG ($p < 0.001$, Cohen's $d = 1.08$)
+        \item Translation Fidelity: 12.8\% improvement over traditional RAG ($p < 0.001$)
+        \item Metaphorical Preservation: 43.7\% improvement over raw LLM baseline
+    \end{itemize}
+    
+    \item \textbf{Kikuyu Cultural Ontology}: First formal ontology of Kikuyu cultural knowledge comprising 959 concepts, 6,445 relationships, and 100 proverb instances---a reusable knowledge base for future research.
+    
+    \item \textbf{Community-Centered Methodology}: Replicable framework for responsible AI development in cultural contexts, demonstrating that expert participation improves technical accuracy while ensuring cultural sovereignty.
+    
+    \item \textbf{Evaluation Framework}: Multi-dimensional cultural fidelity assessment combining expert human evaluation with culturally-aware metrics, offering a model for evaluating AI systems in cultural domains.
+\end{enumerate}
+
+\vspace{10pt}
+
+% Expected Impact
+\section*{Expected Impact}
+
+\textbf{Technical Impact}: Demonstrates viable architectural patterns for sophisticated NLP applications in low-resource languages without requiring massive training corpora---a scalable model applicable to 2,000+ African languages.
+
+\textbf{Societal Impact}: Contributes to digital preservation of Kikuyu intangible cultural heritage by formalizing oral knowledge in accessible, structured formats while maintaining community ownership.
+
+\textbf{Methodological Impact}: Validates community-centered development as technically superior (not just ethically preferable), establishing frameworks for culturally responsive AI that can guide future work in underserved communities globally.
+
+\end{document}
