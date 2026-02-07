@@ -1,0 +1,173 @@
+% Section 3: Methodology
+% Target: 3-4 pages (~2000-2500 words)
+% Focus: Architecture, Ontology Development, Evaluation Design
+
+\section{Methodology}
+\label{sec:methodology}
+
+\subsection{System Architecture}
+\label{subsec:architecture}
+
+\subsubsection{Ontology-Grounded RAG Pipeline}
+
+Figure~\ref{fig:architecture} illustrates the \thillmo{} architecture, comprising four main components:
+
+\paragraph{1. Ontology-Based Retrieval} Given an input Kikuyu proverb, the system queries a Neo4j knowledge graph to retrieve structured cultural context. Unlike vector-based RAG that returns unstructured text chunks, graph retrieval returns interconnected concepts with typed relationships (e.g., \texttt{SYMBOLIZES}, \texttt{USED\_IN}, \texttt{RELATES\_TO}).
+
+The retrieval algorithm operates in three phases:
+\begin{itemize}
+    \item \textbf{Exact Match}: Query for proverb nodes matching input text
+    \item \textbf{Concept Expansion}: Traverse relationships to retrieve connected cultural concepts, themes, and usage contexts (depth-2 traversal)
+    \item \textbf{Context Assembly}: Serialize graph neighborhood into structured prompt context preserving relationship types
+\end{itemize}
+
+\paragraph{2. Hybrid Fallback Mechanism} To handle proverbs not yet in the ontology, the system implements a three-tier fallback:
+\begin{enumerate}
+    \item \textbf{Tier 1 (Ontology)}: Full graph retrieval if proverb exists
+    \item \textbf{Tier 2 (Vector RAG)}: Semantic similarity retrieval over proverb corpus using sentence-BERT embeddings~\cite{reimers2019sentence}
+    \item \textbf{Tier 3 (Raw LLM)}: Direct translation without augmentation
+\end{enumerate}
+
+This design ensures graceful degradation while maximizing use of structured knowledge when available.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/system-architecture.pdf}
+\caption{thiLLMo system architecture showing ontology-grounded retrieval pipeline with hybrid fallback mechanisms.}
+\label{fig:architecture}
+\end{figure}
+
+\paragraph{3. LLM Translation Generation} Retrieved context augments a carefully crafted prompt template that instructs GPT-4 to:
+\begin{itemize}
+    \item Preserve cultural metaphors and symbolic meanings
+    \item Adapt to business contexts when appropriate
+    \item Provide explanations of cultural significance
+    \item Maintain grammatical fluency in English
+\end{itemize}
+
+\paragraph{4. Quality Assessment} Optional post-processing evaluates translation quality using the dual-metric framework described in Section~\ref{subsec:evaluation}.
+
+% TODO: Add architecture diagram
+% \begin{figure}[t]
+% \centering
+% \includegraphics[width=\textwidth]{figures/system-architecture.pdf}
+% \caption{thiLLMo system architecture showing ontology-grounded retrieval pipeline with hybrid fallback mechanisms.}
+% \label{fig:architecture}
+% \end{figure}
+
+\subsection{Kikuyu Proverb Ontology Development}
+\label{subsec:ontology}
+
+\subsubsection{Design Principles}
+
+The ontology development process balanced three competing requirements:
+\begin{itemize}
+    \item \textbf{Cultural Fidelity}: Representing Kikuyu conceptual structures authentically rather than imposing Western categories
+    \item \textbf{Computational Tractability}: Enabling efficient graph queries and relationship traversal
+    \item \textbf{Community Ownership}: Ensuring knowledge authority and benefit sharing with source communities
+\end{itemize}
+
+We adopted a participatory design approach~\cite{schuler1993participatory}, engaging Kikuyu elders as co-creators rather than informants.
+
+\subsubsection{Ontology Schema}
+
+The ontology employs a node-relationship graph structure with five entity types:
+
+\begin{enumerate}
+    \item \textbf{Proverb Nodes}: Individual proverbs with Kikuyu text, English translation, cultural explanation
+    \item \textbf{Concept Nodes}: Abstract cultural concepts (e.g., \texttt{Reciprocity}, \texttt{Intergenerational\_Wealth})
+    \item \textbf{Theme Nodes}: Broad cultural domains (e.g., \texttt{Wealth}, \texttt{Community}, \texttt{Ethics})
+    \item \textbf{Context Nodes}: Usage scenarios (e.g., \texttt{Wedding\_Ceremonies}, \texttt{Business\_Negotiations})
+    \item \textbf{Symbol Nodes}: Cultural symbols and metaphors (e.g., \texttt{Granary}, \texttt{Banana\_Tree})
+\end{enumerate}
+
+Five relationship types connect these entities:
+
+\begin{itemize}
+    \item \texttt{EXPRESSES}: Proverb → Concept
+    \item \texttt{BELONGS\_TO}: Concept → Theme
+    \item \texttt{USED\_IN}: Proverb → Context
+    \item \texttt{SYMBOLIZES}: Symbol → Concept
+    \item \texttt{RELATES\_TO}: Concept $\leftrightarrow$ Concept
+\end{itemize}
+
+This schema captures both hierarchical structure (themes subsume concepts) and lateral relationships (concepts interconnect).
+
+\subsubsection{Concept Extraction Process}
+
+We developed a semi-automated extraction pipeline combining computational assistance with expert validation:
+
+\paragraph{Phase 1: Computational Extraction} GPT-4 analyzed 100 expert-translated proverbs to propose cultural concepts, guided by prompts emphasizing Kikuyu-specific rather than universal concepts. This reduced manual effort by approximately 40\% compared to fully manual extraction.
+
+\paragraph{Phase 2: Expert Validation} Proposed concepts were reviewed by the researcher (a native Kikuyu speaker) and cross-referenced against ethnographic literature~\cite{kenyatta1938facing,mbiti1990african}. Concepts lacking cultural specificity or misrepresenting Kikuyu thought were rejected.
+
+\paragraph{Phase 3: Relationship Mapping} Expert-validated concepts were connected via relationship types, with attention to avoiding Western ontological assumptions (e.g., strict category boundaries). We employed prototypicality-based fuzzy boundaries~\cite{rosch1973natural} allowing concepts to participate in multiple themes.
+
+\paragraph{Phase 4: Iterative Refinement} The ontology underwent three refinement cycles based on retrieval quality and translation performance, adding missing high-impact concepts and pruning low-utility nodes.
+
+\subsubsection{Final Ontology Statistics}
+
+The completed ontology contains:
+\begin{itemize}
+    \item 959 cultural concepts
+    \item 6,445 semantic relationships
+    \item 100 proverb instances (evaluation corpus)
+    \item 18 high-level themes
+    \item 247 cultural symbols
+\end{itemize}
+
+Estimated coverage: 60-70\% of documented Kikuyu proverb concepts based on analysis of major collections~\cite{barra1960kikuyu,ireri2019proverbs}.
+
+\subsection{Evaluation Design}
+\label{subsec:evaluation}
+
+\subsubsection{Dataset and Gold Standard}
+
+The evaluation corpus comprises 100 Kikuyu proverbs focused on wealth and prosperity, selected from Margaret Ireri's collection~\cite{ireri2019proverbs}. Each proverb includes:
+\begin{itemize}
+    \item Original Kikuyu text
+    \item Expert English translation (gold standard)
+    \item Cultural explanation and usage context
+\end{itemize}
+
+This domain focus ensures thematic coherence while covering diverse linguistic phenomena (metaphors, idioms, cultural references).
+
+\subsubsection{Systems Compared}
+
+Three translation approaches were evaluated:
+
+\begin{enumerate}
+    \item \textbf{\raw{} (Baseline)}: Direct GPT-4 translation without external knowledge
+    \item \textbf{\trad{}}: GPT-4 + vector-based retrieval over unstructured proverb corpus
+    \item \textbf{\ograg{} (\thillmo{})}: GPT-4 + graph-based ontology retrieval (our system)
+\end{enumerate}
+
+This design isolates the contribution of (1) external knowledge augmentation and (2) structured vs. unstructured knowledge representation.
+
+\subsubsection{Evaluation Metrics}
+\label{subsec:evaluation_metrics}
+
+We developed a dual-metric framework addressing both cultural authenticity and translation accuracy:
+
+\paragraph{Cultural Authenticity (60\% weight)} Measures preservation of cultural meaning:
+\begin{itemize}
+    \item Semantic similarity to reference (sentence-BERT embeddings)
+    \item Cultural pattern matching (Kikuyu-specific terminology, honorifics)
+    \item Thematic alignment (concept coverage from ontology)
+    \item Contextual appropriateness
+\end{itemize}
+
+\paragraph{Translation Fidelity (40\% weight)} Measures linguistic accuracy:
+\begin{itemize}
+    \item ROUGE-L n-gram overlap with reference
+    \item Lexical precision and recall
+    \item Structural similarity
+\end{itemize}
+
+Scores are normalized to [0,1] and combined via weighted average. Letter grades: A (0.85-1.0), B (0.75-0.85), C (0.65-0.75), D (0.55-0.65), F (<0.55).
+
+\paragraph{Statistical Validation} Paired t-tests ($\alpha = 0.05$) assess significance of performance differences, with Bonferroni correction for multiple comparisons. Effect sizes reported via Cohen's $d$.
+
+\subsubsection{Methodological Limitations}
+
+This evaluation employs \emph{automated metrics} rather than formal human evaluation. While computational metrics enable systematic comparison across 300 translations, they cannot fully capture cultural appropriateness as judged by community members. We supplemented automated evaluation with qualitative review by the researcher (a native speaker), but formal multi-annotator human evaluation remains future work (see Section~\ref{sec:discussion}).

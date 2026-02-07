@@ -1,0 +1,43 @@
+% Section 1: Introduction
+% Target: 2 pages (~1200-1400 words)
+% Focus: Societal challenge → Research gap → Our contribution
+
+\section{Introduction}
+\label{sec:introduction}
+
+\subsection{The Cultural Knowledge Extinction Crisis}
+\label{subsec:crisis}
+
+By conservative estimates, 50\% of the world's 7,000 languages will disappear by 2100~\cite{krauss1992worlds}, taking with them irreplaceable cultural knowledge systems. African languages face disproportionate risk: while representing 30\% of global linguistic diversity, they constitute less than 0.1\% of digital language resources~\cite{joshi2020state}.
+
+Kikuyu, a Bantu language spoken by 7 million people in Kenya, exemplifies this crisis. Its proverbial tradition (\emph{thimo}) encodes sophisticated knowledge spanning agricultural practices, economic philosophy, and ethical frameworks. \emph{``Andu ni indo''} (``People are wealth'') represents an economic philosophy prioritizing community capital over material accumulation~\cite{mbiti1990african}. Yet digital language technologies systematically fail to preserve this cultural depth. Standard MT systems, including LLMs, generate translations achieving surface fluency while stripping cultural authenticity~\cite{blodgett2020language}. This represents a critical challenge: \textbf{how can AI support cultural preservation rather than accelerate homogenization?}
+
+\subsection{The Technical Challenge: Beyond Data Scarcity}
+\label{subsec:technical_challenge}
+
+Culturally faithful translation faces a double-bind: (1) \textbf{Data Insufficiency}---neural MT requires millions of parallel sentences~\cite{koehn2017neural}, but Kikuyu-English proverb corpora contain only hundreds of examples~\cite{barra1960kikuyu,ireri2019proverbs}; (2) \textbf{Cultural Opacity}---LLMs trained on predominantly Western sources~\cite{bender2021dangers} generate generic interpretations missing specific cultural contexts.
+
+While Retrieval-Augmented Generation (RAG)~\cite{lewis2020retrieval} offers promise by augmenting LLMs with external knowledge, existing systems retrieve \emph{unstructured} text chunks, failing to capture the \emph{relational} structure inherent in cultural knowledge. A proverb's meaning connects to broader themes, usage contexts, and moral frameworks forming semantic networks inadequately represented through text-chunk retrieval.
+
+\textbf{Research Gap}: Can explicitly encoding cultural knowledge in formal ontologies enable RAG systems to achieve superior cultural translation quality?
+
+\subsection{Our Contribution: Ontology-Grounded RAG}
+\label{subsec:contribution}
+
+This paper presents \thillmo{} (combining \emph{thimo}---Kikuyu for proverbs---with ``LLM''), an ontology-grounded RAG system for culturally faithful Kikuyu proverb translation. The core innovation is replacing vector-based text retrieval with graph-based structured knowledge retrieval.
+
+Our contributions are:
+
+\begin{enumerate}
+    \item \textbf{Technical Architecture}: An \ograg{} system integrating Neo4j graph retrieval with hybrid fallback mechanisms (Section~\ref{sec:methodology}).
+    
+    \item \textbf{Cultural Knowledge Artifact}: A Kikuyu proverb ontology encoding 959 concepts, 6,445 relationships, and 100 proverb instances, developed with community elders (Section~\ref{subsec:ontology}).
+    
+    \item \textbf{Empirical Validation}: Statistically significant improvements over baselines: 10.5\% in cultural authenticity ($p<0.001$), 19.8\% in translation fidelity ($p<0.001$) (Section~\ref{sec:results}).
+    
+    \item \textbf{Methodological Template}: A replicable process for integrating indigenous knowledge into AI (Section~\ref{sec:discussion}).
+\end{enumerate}
+
+All artifacts (code, ontology, evaluation corpus) are openly available.\footnote{Repository URL anonymized for double-blind review.}
+
+Section~\ref{sec:related} surveys related work; Section~\ref{sec:methodology} presents the \ograg{} architecture and evaluation; Section~\ref{sec:results} reports results; Section~\ref{sec:discussion} discusses implications and limitations; Section~\ref{sec:conclusion} concludes.

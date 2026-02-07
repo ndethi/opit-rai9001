@@ -1,0 +1,31 @@
+% Section 2: Related Work
+% Target: 1.5-2 pages (~900-1200 words)
+% Focus: Position work relative to 3-4 key areas
+
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Machine Translation for Low-Resource Languages}
+\label{subsec:lrl_mt}
+
+Neural MT for low-resource languages has advanced through multilingual pretraining~\cite{aharoni2019massively} and cross-lingual transfer~\cite{arivazhagan2019massively}. Models like NLLB-200~\cite{costa2022no} leverage related high-resource languages to bootstrap quality. However, data augmentation techniques (back-translation~\cite{sennrich2016improving}, synthetic generation) can harm cultural faithfulness by introducing generic patterns~\cite{lauscher2020zero}. For culturally-specific genres like proverbs, expert translations outperform synthetic examples.
+
+\subsection{Retrieval-Augmented Generation}
+\label{subsec:rag}
+
+RAG systems~\cite{lewis2020retrieval} enhance LLM generation by retrieving external knowledge at inference time, typically using dense vector encoders~\cite{karpukhin2020dense} and approximate nearest neighbor search. While effective for factual question-answering~\cite{izacard2021leveraging}, vector-based RAG struggles with structured knowledge. Recent work explores graph-based retrieval~\cite{yasunaga2021qa} and knowledge-graph augmentation~\cite{sun2024head}, but applications to cultural knowledge remain unexplored.
+
+\subsection{Ontologies for Cultural Knowledge}
+\label{subsec:cultural_ontologies}
+
+Ontology-based cultural heritage preservation has focused on artifact metadata~\cite{doerr2003cidoc} and museum collections~\cite{oldman2014realized}, with limited work on linguistic cultural knowledge. Efforts to integrate indigenous knowledge into formal representations face tensions between Western frameworks (discrete categories, formal logic) and indigenous epistemologies (relational, contextual)~\cite{schulte2021indigenous}. We navigate this using prototypicality-based fuzzy boundaries~\cite{rosch1973natural} rather than strict logical definitions.
+
+\subsection{Cultural AI and Evaluation}
+\label{subsec:cultural_ai}
+
+Cultural AI research~\cite{hershcovich2022challenges} addresses Western biases in LLMs~\cite{blodgett2020language}, including work on multilingual emotion detection~\cite{plaza2011cross} and bias mitigation~\cite{dev2021measures}. Standard MT metrics (BLEU~\cite{papineni2002bleu}, COMET~\cite{rei2020comet}) correlate poorly with human judgments on culturally-nuanced content~\cite{mathur2020tangled}, prompting proposals for cultural grounding metrics~\cite{wan2024culturellm} and LLM-as-judge evaluation~\cite{dubois2024lengthcontrolled}.
+
+\subsection{Positioning Our Work}
+\label{subsec:positioning}
+
+To our knowledge, this is the first work to: (1) apply ontology-grounded RAG to low-resource cultural translation, (2) develop a formal cultural knowledge ontology for an African language through participatory design, and (3) empirically validate structured knowledge augmentation for cultural faithfulness. We synthesize low-resource MT, cultural knowledge representation, and RAG systems to address cultural preservation in endangered languages.

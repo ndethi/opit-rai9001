@@ -1,0 +1,10 @@
+% Abstract (200-250 words)
+% Emphasis: Societal challenge → Solution → Impact
+
+Approximately half of the world's 7,000 languages face extinction by 2100, threatening millennia of cultural knowledge encoded in oral traditions. Kikuyu, a low-resource Bantu language spoken by 7 million Kenyans, exemplifies this crisis. Its proverbs (\emph{thimo}) preserve sophisticated philosophical, ethical, and economic frameworks, yet current language technologies fail to capture their cultural depth. Large Language Models (LLMs), trained predominantly on Western corpora, produce translations that are lexically accurate but culturally hollow---a form of \emph{cultural homogenization}.
+
+This paper presents \thillmo{}, an ontology-grounded Retrieval-Augmented Generation (OG-RAG) system for culturally faithful Kikuyu proverb translation. Unlike traditional RAG approaches that retrieve unstructured text, \thillmo{} uses a formal Kikuyu cultural ontology (959 concepts, 6,445 relationships) to provide LLMs with structured cultural context. The ontology was developed through participatory design with community elders.
+
+Evaluation on 100 expert-translated proverbs demonstrates significant improvements: 10.5\% in cultural authenticity ($p<0.001$), 19.8\% in translation fidelity ($p<0.001$), and 13.5\% in overall quality. Qualitative analysis shows that ontology-grounded retrieval preserves metaphorical meanings and cultural pragmatics that surface-level approaches miss.
+
+Beyond technical contributions, this work provides a methodology for integrating indigenous knowledge into AI architectures, with applications in language education, digital archiving, and diaspora cultural connection. All artifacts (code, ontology, evaluation corpus) are open-source to support similar efforts across Africa's 2000+ languages.
